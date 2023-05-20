@@ -92,11 +92,6 @@
   font-weight: 700;
 }
 
-.button-continue-text {
-  color: #BDBACA;
-  font-size: 18px;
-  font-weight: 700;
-}
 
 .button-continue {
   padding-left: 3rem;
@@ -108,8 +103,18 @@
 }
 
 .button-continue:hover {
-  background-color: #E0CDFF;
+  background-color: #231A50;
   cursor: pointer;
+
+  .button-continue-text {
+    color: #fff;
+  }
+}
+
+.button-continue-text {
+  color: #BDBACA;
+  font-size: 18px;
+  font-weight: 700;
 }
 
 .button-back {
@@ -117,8 +122,19 @@
   flex-direction: row;
   align-items: center;
   gap: 1rem;
-  cursor: pointer;
   margin-top: -1.3rem;
+}
+
+.button-back:hover {
+  cursor: pointer;
+
+  .button-back-icon {
+    background-color: #231A50;
+  }
+
+  .button-back-text {
+    color: #231A50;
+  }
 }
 
 .button-back-icon {
