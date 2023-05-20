@@ -1,5 +1,11 @@
+import LeftSide from '../components/Home/LeftSide';
+
 function Home() {
-  return <>Home</>;
+  return (
+    <>
+      <LeftSide />
+    </>
+  );
 }
 
 export default Home;
