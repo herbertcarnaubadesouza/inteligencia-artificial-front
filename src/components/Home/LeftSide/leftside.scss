@@ -1,6 +1,13 @@
+.left-side-container {
+  padding-left: 31px;
+  padding-top: 33px;
+}
+
 .progressBar-container {
   display: flex;
   align-items: center;
+  margin-top: 70px;
+  gap: 15px;
 }
 
 .progress {
@@ -11,11 +18,11 @@
   width: 19px;
   position: relative;
   overflow: hidden;
-  height: 72% !important;
+  height: 697px;
 }
 
 .icons-container {
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 93px;
 }
