@@ -1,6 +1,9 @@
 .left-side-container {
   padding-left: 31px;
   padding-top: 33px;
+  width: 35%;
+  height: 100%;
+  padding-bottom: 3rem;
 }
 
 .progressBar-container {
@@ -11,18 +14,19 @@
 }
 
 .progress {
-  background: #b2d1ff;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(247, 250, 255, 1) 10%, rgba(178, 209, 255, 1) 13%);
   box-shadow: 0 2px 4px rgba(81, 69, 135, 0.24);
   border-radius: 50px;
   height: 100%;
   width: 19px;
   position: relative;
   overflow: hidden;
-  height: 697px;
+  height: 38rem;
 }
 
 .icons-container {
   display: flex;
   flex-direction: column;
-  gap: 93px;
+  gap: 4.5rem;
 }

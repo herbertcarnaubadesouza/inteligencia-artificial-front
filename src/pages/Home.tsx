@@ -1,9 +1,13 @@
 import LeftSide from '../components/Home/LeftSide';
+import RightSide from '../components/Home/RightSide';
 
 function Home() {
   return (
     <>
-      <LeftSide />
+      <div className="main-container">
+        <LeftSide />
+        <RightSide />
+      </div>
     </>
   );
 }
