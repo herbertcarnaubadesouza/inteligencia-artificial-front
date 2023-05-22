@@ -21,20 +21,39 @@
 }
 
 .progress {
-  background: rgb(255, 255, 255);
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(247, 250, 255, 1) 10%,
-    rgba(178, 209, 255, 1) 13%
-  );
-  box-shadow: 0 2px 4px rgba(81, 69, 135, 0.24);
-  border-radius: 50px;
-  height: 100%;
-  width: 19px;
-  position: relative;
-  overflow: hidden;
-  height: 44rem;
+
+
+  &.style-one {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(180deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(247, 250, 255, 1) 10%,
+        rgba(178, 209, 255, 1) 13%);
+    box-shadow: 0 2px 4px rgba(81, 69, 135, 0.24);
+    border-radius: 50px;
+    height: 100%;
+    width: 19px;
+    position: relative;
+    overflow: hidden;
+    height: 44rem;
+    opacity: 1;
+  }
+
+  &.style-two {
+    transition: background 2s ease-in-out;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(180deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(247, 250, 255, 1) 22%,
+        rgba(178, 209, 255, 1) 28%);
+    box-shadow: 0 2px 4px rgba(81, 69, 135, 0.24);
+    border-radius: 50px;
+    height: 100%;
+    width: 19px;
+    position: relative;
+    overflow: hidden;
+    height: 44rem;
+  }
 }
 
 .icons-container {
