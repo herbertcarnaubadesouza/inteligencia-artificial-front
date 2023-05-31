@@ -1,15 +1,24 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { BeatLoader } from 'react-spinners';
 import './question02.scss';
 
+
 interface Question02Props {
-  exibirQuestion02: () => void;
+  ocultarQuestion02: () => void;
+  voltarQuestion02: () => void;
 }
 
-import { textoClicado } from '../../Question01';
-
 function Question02(props: Question02Props) {
-  const { exibirQuestion02 } = props;
+  const { ocultarQuestion02 } = props;
+  const { voltarQuestion02 } = props;
+
+  useEffect(() => {
+    const topContainer = document.getElementById("top-container");
+    if (topContainer) {
+      topContainer.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, []);
+
 
   const [showQuestion, setShowQuestion] = useState(false);
   const [showButtons, setShowButtons] = useState(false);
@@ -33,19 +42,32 @@ function Question02(props: Question02Props) {
     setActiveTab(index);
   };
 
-  const [isActive, setIsActive] = useState(true);
-  const [isButtonActive, setIsButtonActive] = useState(false);
+  const [buttonStates, setButtonStates] = useState<{ [key: string]: boolean }>({});
+  const [textoClicadoDois, setTextoClicadoDois] = useState<string[]>([]);
 
-  const trocarDivs = () => {
-    setIsActive(!isActive);
-    setIsButtonActive(!isButtonActive);
+  const handleChoice = (texto: string) => {
+    setButtonStates(prevStates => {
+      const updatedStates = { ...prevStates };
+
+      if (updatedStates[texto]) {
+        delete updatedStates[texto];
+
+        setTextoClicadoDois(prevTextos => prevTextos.filter(t => t !== texto));
+      } else {
+        updatedStates[texto] = true;
+
+        setTextoClicadoDois(prevTextos => [...prevTextos, texto]);
+      }
+
+      const lista = Object.keys(updatedStates).filter(key => updatedStates[key]);
+
+      setTextoClicadoDois(lista);
+      localStorage.setItem('escolha02', lista.join(', '));
+
+      return updatedStates;
+    });
   };
 
-  const handleButtonClick = () => {
-    if (isButtonActive) {
-      trocarDivs();
-    }
-  };
 
   return (
     <>
@@ -64,58 +86,67 @@ function Question02(props: Question02Props) {
           <div className="question-selected-container">
             <img src="./images/selected.svg" alt="" />
             <p className="question-normal-label">
-              Minha escolha: {textoClicado}
+              Minha escolha: {localStorage.getItem('textoClicado')}
             </p>
           </div>
         </div>
 
         <div id="quention01">
-          <div className="top-container">
+          <div id="top-container" className="top-container">
             {showQuestion && (
               <div className="question-container">
                 <img src="./images/logoQuestion.png" alt="" />
-                <p className="question-normal-label">
-                  Qual categoria melhor descreve o objetivo do seu site? (por
-                  exemplo, loja virtual, serviços online, portfólio, blog)
+                <p className="question">
+                  Personalize o seu site escolhendo os serviços que você vai oferecer (você pode mudar isso depois)
                 </p>
               </div>
             )}
+            {showLoading && !showButtons && (
+              <div className="while-typing">
+                <p>Rei do Sites IA está digitando...</p>
+                <BeatLoader speedMultiplier={0.6} size={12} color="#ccc" />
+              </div>
+            )}
 
-            {showQuestion && (
+            {showButtons && (
               <div className="second-block-right-side-container">
 
                 <div className="choice-container">
 
                   <div className="normal-buttons-container">
 
-                    <div className="normal-button" onClick={trocarDivs}>
-                      <p className="button-text">Rock Climbing Harness</p>
+                    <div className={buttonStates['Tatuagem personalizada'] ? 'normal-button clicked' : 'normal-button'}
+                      onClick={() => handleChoice('Tatuagem personalizada')}>
+                      <p className="button-text">Tatuagem personalizada</p>
                     </div>
 
-                    <div className="normal-button" onClick={trocarDivs}>
-                      <p className="button-text">Rock Climbing Harness</p>
+                    <div className={buttonStates['Retoque de tatuagem'] ? 'normal-button clicked' : 'normal-button'}
+                      onClick={() => handleChoice('Retoque de tatuagem')}>
+                      <p className="button-text">Retoque de tatuagem</p>
                     </div>
 
-                    <div className="normal-button" onClick={trocarDivs}>
-                      <p className="button-text">Rock Climbing Harness</p>
+                    <div className={buttonStates['Tatuagem tribal'] ? 'normal-button clicked' : 'normal-button'}
+                      onClick={() => handleChoice('Tatuagem tribal')}>
+                      <p className="button-text">Tatuagem tribal</p>
                     </div>
-
                   </div>
 
                   <div className="normal-buttons-container">
 
-                    <div className="normal-button" onClick={trocarDivs}>
-                      <p className="button-text">Rock Climbing Harness</p>
+                    <div className={buttonStates['Tatuagem Preto e Branco'] ? 'normal-button clicked' : 'normal-button'}
+                      onClick={() => handleChoice('Tatuagem Preto e Branco')}>
+                      <p className="button-text">Tatuagem Preto e Branco</p>
                     </div>
 
-                    <div className="normal-button" onClick={trocarDivs}>
-                      <p className="button-text">Rock Climbing Harness</p>
+                    <div className={buttonStates['Remoção a laser'] ? 'normal-button clicked' : 'normal-button'}
+                      onClick={() => handleChoice('Remoção a laser')}>
+                      <p className="button-text">Remoção a laser</p>
                     </div>
 
-                    <div className="normal-button" onClick={trocarDivs}>
-                      <p className="button-text">Rock Climbing Harness</p>
+                    <div className={buttonStates['Tatuagem temporária'] ? 'normal-button clicked' : 'normal-button'}
+                      onClick={() => handleChoice('Tatuagem temporária')}>
+                      <p className="button-text">Tatuagem temporária</p>
                     </div>
-
                   </div>
 
                 </div>
@@ -130,16 +161,16 @@ function Question02(props: Question02Props) {
       <div className="down-container">
         <div className="linha"></div>
         <div className="nav-container">
-          <div className={`button-back ${isButtonActive ? 'active' : ''}`} onClick={handleButtonClick}>
+          <div className="button-back" onClick={props.voltarQuestion02}>
             <img
               className="button-back-icon"
               src="./images/back.svg"
               alt=""
             />
-            <p className="button-back-text">{isButtonActive ? 'Voltar para todas as categorias' : 'Voltar'}</p>
+            <p className="button-back-text">Voltar</p>
           </div>
-          <div className="button-continue">
-            <p className="button-continue-text">Continuar</p>
+          <div className="button-continue" onClick={props.ocultarQuestion02}>
+            <p className="button-continue-text" >Continuar</p>
           </div>
         </div>
       </div>

@@ -250,6 +250,26 @@
   &.style.two {
     display: none;
   }
+
+  &.style-tree {
+    display: none;
+  }
+
+  &.style-four {
+    display: none;
+  }
+
+  &.style-five {
+    display: none;
+  }
+
+  &.style-six {
+    display: none;
+  }
+
+  &.style-seven {
+    display: none;
+  }
 }
 
 .tooltip-two {
@@ -281,6 +301,287 @@
       height: 18px;
     }
   }
+
+  &.style-tree {
+    display: none;
+  }
+
+  &.style-four {
+    display: none;
+  }
+
+  &.style-five {
+    display: none;
+  }
+
+  &.style-six {
+    display: none;
+  }
+
+  &.style-seven {
+    display: none;
+  }
+}
+
+.tooltip-tree {
+  &.style-one {
+    display: none;
+  }
+
+  &.style-two {
+    display: none;
+  }
+
+  &.style-tree {
+    transition: 1s;
+    display: flex;
+    align-items: center;
+    white-space: pre;
+    background: #fff;
+    border-radius: 25px 25px 25px 0;
+    padding: 6px 16px;
+    font-size: 0.9rem;
+    color: #231a50;
+    margin: -15px 6px 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    p {
+      margin: 0px;
+    }
+
+    img {
+      width: 18px;
+      height: 18px;
+    }
+
+
+  }
+
+  &.style-four {
+    display: none;
+  }
+
+  &.style-five {
+    display: none;
+  }
+
+  &.style-six {
+    display: none;
+  }
+
+  &.style-seven {
+    display: none;
+  }
+}
+
+.tooltip-four {
+  &.style-one {
+    display: none;
+  }
+
+  &.style-two {
+    display: none;
+  }
+
+  &.style-tree {
+    display: none;
+  }
+
+  &.style-four {
+    transition: 1s;
+    display: flex;
+    align-items: center;
+    white-space: pre;
+    background: #fff;
+    border-radius: 25px 25px 25px 0;
+    padding: 6px 16px;
+    font-size: 0.9rem;
+    color: #231a50;
+    margin: -15px 6px 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    p {
+      margin: 0px;
+    }
+
+    img {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &.style-five {
+    display: none;
+  }
+
+  &.style-six {
+    display: none;
+  }
+
+  &.style-seven {
+    display: none;
+  }
+}
+
+.tooltip-five {
+  &.style-one {
+    display: none;
+  }
+
+  &.style-two {
+    display: none;
+  }
+
+  &.style-tree {
+    display: none;
+  }
+
+  &.style-four {
+    display: none;
+  }
+
+  &.style-five {
+    transition: 1s;
+    display: flex;
+    align-items: center;
+    white-space: pre;
+    background: #fff;
+    border-radius: 25px 25px 25px 0;
+    padding: 6px 16px;
+    font-size: 0.9rem;
+    color: #231a50;
+    margin: -15px 6px 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    p {
+      margin: 0px;
+    }
+
+    img {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &.style-six {
+    display: none;
+  }
+
+  &.style-seven {
+    display: none;
+  }
+
+}
+
+.tooltip-six {
+  &.style-one {
+    display: none;
+  }
+
+  &.style-two {
+    display: none;
+  }
+
+  &.style-tree {
+    display: none;
+  }
+
+  &.style-four {
+    display: none;
+  }
+
+  &.style-five {
+    display: none;
+  }
+
+  &.style-six {
+    transition: 1s;
+    display: flex;
+    align-items: center;
+    white-space: pre;
+    background: #fff;
+    border-radius: 25px 25px 25px 0;
+    padding: 6px 16px;
+    font-size: 0.9rem;
+    color: #231a50;
+    margin: -15px 6px 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    p {
+      margin: 0px;
+    }
+
+    img {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &.style-seven {
+    display: none;
+  }
+
+}
+
+.tooltip-seven {
+  &.style-one {
+    display: none;
+  }
+
+  &.style-two {
+    display: none;
+  }
+
+  &.style-tree {
+    display: none;
+  }
+
+  &.style-four {
+    display: none;
+  }
+
+  &.style-five {
+    display: none;
+  }
+
+  &.style-six {
+    display: none;
+  }
+
+  &.style-seven {
+    transition: 1s;
+    display: flex;
+    align-items: center;
+    white-space: pre;
+    background: #fff;
+    border-radius: 25px 25px 25px 0;
+    padding: 6px 16px;
+    font-size: 0.9rem;
+    color: #231a50;
+    margin: -15px 6px 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    p {
+      margin: 0px;
+    }
+
+    img {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+
 }
 
 @keyframes fadeIn {

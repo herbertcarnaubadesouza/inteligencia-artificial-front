@@ -18,6 +18,8 @@
   padding-right: 1rem;
   scrollbar-width: thin;
   scrollbar-color: #ffffff #E9E8ED;
+  scroll-padding-top: 200px;
+
 }
 
 
@@ -135,6 +137,7 @@
     typing 6s steps(40, end) forwards 2s; // digitação começa após 1 segundo
 }
 
+
 .label {
   color: #3f3767;
   font-size: 18px;
@@ -161,6 +164,11 @@
   font-size: 18px;
   font-weight: 600;
   border: none;
+}
+
+.choice-container {
+  background-color: #F9F8FA;
+  padding-bottom: 2rem;
 }
 
 .choice-container-two {
@@ -203,10 +211,11 @@
   gap: 1rem;
 }
 
-.choices-array {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
+.choice {
+  &.clicked {
+    border: 2px solid #231a50;
+    background-color: #E0CDFF;
+  }
 }
 
 .choice {
@@ -214,7 +223,6 @@
   margin-top: 1.5rem;
   border-radius: 2rem;
   border: 2px solid #ffffff;
-  margin-right: 1rem;
 }
 
 .choice:hover {
@@ -225,9 +233,15 @@
 .choice-text {
   color: #3f3767;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 400;
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+.choice-selected {
+  color: #3f3767;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .buttons-container {
@@ -236,6 +250,16 @@
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
+}
+
+.normal-buttons-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 5rem;
+  padding-right: 2rem;
 }
 
 .button {
@@ -253,6 +277,34 @@
 
 .button:hover {
   background-color: #e0cdff;
+  cursor: pointer;
+}
+
+.normal-button {
+  &.clicked {
+    background-color: #fff;
+    border: 2px solid #231a50;
+  }
+}
+
+.normal-button {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  padding-left: 2rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  background-color: #F5EEFF;
+  border: 2px solid #F5EEFF;
+  border-radius: 0.5rem;
+
+}
+
+.normal-button:hover {
+  background-color: #fff;
+  border: 2px solid #231a50;
   cursor: pointer;
 }
 
@@ -336,6 +388,13 @@
   padding-bottom: 1rem;
 }
 
+.right-nav-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
+}
+
 .search {
   width: 100%;
 
@@ -380,7 +439,7 @@
     }
   }
 
-  &.style.two {
+  &.style-two {
     display: none;
   }
 }
@@ -391,7 +450,7 @@
     display: none;
   }
 
-  &.style.two {
+  &.style-two {
     transition: 1s;
     display: flex;
     align-items: center;

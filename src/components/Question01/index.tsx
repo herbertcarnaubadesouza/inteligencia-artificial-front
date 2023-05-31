@@ -2,11 +2,71 @@ import { useEffect, useState } from 'react';
 import { BeatLoader } from 'react-spinners';
 import './question01.scss';
 
+
+
 interface Question01Props {
   ocultarQuestion: () => void;
 }
 
-export const textoClicado = '';
+const buttonsOne = [
+  { text: 'Loja online', imgSrc: './images/store.svg' },
+  { text: 'Oferecer serviços', imgSrc: './images/offer.svg' },
+  { text: 'Cursos (Online ou Offline)', imgSrc: './images/courses.svg' },
+];
+
+const buttonsTwo = [
+  { text: 'Um Blog', imgSrc: './images/blog.svg' },
+  { text: 'Criar um Portfolio', imgSrc: './images/portfolio.svg' },
+  { text: 'Bebidas e Alimentos', imgSrc: './images/food.svg' },
+];
+
+const options = [
+  {
+    id: 0,
+    name: 'Todos',
+    choices: ['Salão de beleza', 'Tatuador', 'Barbeiro']
+  },
+  {
+    id: 1,
+    name: 'Saúde e beleza',
+    choices: ['hair removal master', 'tatto artist']
+  },
+  {
+    id: 2,
+    name: 'Esporte',
+    choices: ['personal trainer', 'gym instructor']
+  },
+  {
+    id: 3,
+    name: 'Finanças',
+    choices: ['accountant', 'financial advisor']
+  },
+  {
+    id: 4,
+    name: 'Casa & Lar',
+    choices: ['cleaner', 'gardener']
+  },
+  {
+    id: 5,
+    name: 'Autocuidado',
+    choices: ['doctor', 'nurse']
+  },
+  // ...
+];
+
+interface ButtonProps {
+  imgSrc: string;
+  text: string;
+  onClick: () => void;
+}
+
+const Button: React.FC<ButtonProps> = ({ imgSrc, text, onClick }) => (
+  <div className="button" onClick={onClick}>
+    <img className="button-icon" src={imgSrc} alt="" />
+    <p className="button-text">{text}</p>
+  </div>
+);
+
 
 function Question01(props: Question01Props) {
   const { ocultarQuestion } = props;
@@ -29,8 +89,8 @@ function Question01(props: Question01Props) {
 
   const [activeTab, setActiveTab] = useState(0);
 
-  const handleTabClick = (index: number) => {
-    setActiveTab(index);
+  const handleTabClick = (tabId: number) => {
+    setActiveTab(tabId);
   };
 
   const [isActive, setIsActive] = useState(true);
@@ -57,23 +117,35 @@ function Question01(props: Question01Props) {
   const [buttonStates, setButtonStates] = useState<{ [key: string]: boolean }>({});
   const [textoClicado, setTextoClicado] = useState('');
 
-  const handleChoice = (texto: string) => {
-    const updatedStates: { [key: string]: boolean } = {};
-
-    // Desativa todos os botões
-    for (const key in buttonStates) {
-      updatedStates[key] = false;
-    }
-
-    // Ativa o botão clicado atual
-    updatedStates[texto] = true;
-
-    setButtonStates(updatedStates);
-    setTextoClicado("Opção selecionada: " + texto);
-
-
+  const handleChoice = (choiceName: string) => {
+    setButtonStates((prevStates) => ({
+      ...prevStates,
+      [choiceName]: !prevStates[choiceName],
+    }));
   };
 
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filteredButtonsOne, setFilteredButtonsOne] = useState(buttonsOne);
+  const [filteredButtonsTwo, setFilteredButtonsTwo] = useState(buttonsTwo);
+
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value);
+  };
+
+  useEffect(() => {
+    const filteredOne = buttonsOne.filter((button) =>
+      button.text.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    const filteredTwo = buttonsTwo.filter((button) =>
+      button.text.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    setFilteredButtonsOne(filteredOne);
+    setFilteredButtonsTwo(filteredTwo);
+  }, [searchTerm]);
+
+  const activeChoices = options[activeTab].choices;
 
   return (
     <>
@@ -128,55 +200,34 @@ function Question01(props: Question01Props) {
                     className="search"
                     type="text"
                     placeholder="Por exemplo: Salão de Beleza, Loja de Roupas, Agência de Marketing"
+                    value={searchTerm}
+                    onChange={handleSearchChange}
                   />
                 </div>
 
                 <div className={`choice-container-one ${isActive ? '' : 'inactive'}`}>
                   <p className="label">Ou navegue pelas categorias:</p>
 
+
                   <div className="buttons-container">
-                    <div className="button" onClick={trocarDivs}>
-                      <img
-                        className="button-icon"
-                        src="./images/store.svg"
-                        alt=""
+                    {filteredButtonsOne.map((button, index) => (
+                      <Button
+                        key={index}
+                        imgSrc={button.imgSrc}
+                        text={button.text}
+                        onClick={trocarDivs}
                       />
-                      <p className="button-text">Loja online</p>
-                    </div>
-                    <div className="button" onClick={trocarDivs}>
-                      <img
-                        className="button-icon"
-                        src="./images/offer.svg"
-                        alt=""
-                      />
-                      <p className="button-text">Oferecer serviços</p>
-                    </div>
-                    <div className="button" onClick={trocarDivs}>
-                      <img
-                        className="button-icon"
-                        src="./images/courses.svg"
-                        alt=""
-                      />
-                      <p className="button-text">Cursos (Online ou Offline)</p>
-                    </div>
+                    ))}
                   </div>
                   <div className="buttons-container">
-                    <div className="button" onClick={trocarDivs}>
-                      <img className="button-icon" src="./images/blog.svg" alt="" />
-                      <p className="button-text">Um Blog</p>
-                    </div>
-                    <div className="button" onClick={trocarDivs}>
-                      <img
-                        className="button-icon"
-                        src="./images/portfolio.svg"
-                        alt=""
+                    {filteredButtonsTwo.map((button, index) => (
+                      <Button
+                        key={index}
+                        imgSrc={button.imgSrc}
+                        text={button.text}
+                        onClick={trocarDivs}
                       />
-                      <p className="button-text">Criar um Portfolio</p>
-                    </div>
-                    <div className="button" onClick={trocarDivs}>
-                      <img className="button-icon" src="./images/food.svg" alt="" />
-                      <p className="button-text">Bebidas e Alimentos</p>
-                    </div>
+                    ))}
                   </div>
                 </div>
 
@@ -185,153 +236,32 @@ function Question01(props: Question01Props) {
                     <img className="choice-icon" src="./images/offer.svg" alt="" />
                     <p className="button-text">Oferecer Serviços</p>
                   </div>
-
                   <div>
                     <ul>
-                      <li className={activeTab === 0 ? 'active' : ''} onClick={() => handleTabClick(0)}>All results</li>
-                      <li className={activeTab === 1 ? 'active' : ''} onClick={() => handleTabClick(1)}>beauty & wellness</li>
-                      <li className={activeTab === 2 ? 'active' : ''} onClick={() => handleTabClick(2)}>sport & fitness</li>
-                      <li className={activeTab === 3 ? 'active' : ''} onClick={() => handleTabClick(3)}>business & finance</li>
-                      <li className={activeTab === 4 ? 'active' : ''} onClick={() => handleTabClick(4)}>household</li>
-                      <li className={activeTab === 5 ? 'active' : ''} onClick={() => handleTabClick(5)}>healthcare</li>
+                      {options.map((option) => (
+                        <li
+                          className={activeTab === option.id ? 'active' : ''}
+                          onClick={() => handleTabClick(option.id)}
+                        >
+                          {option.name}
+                        </li>
+                      ))}
                     </ul>
-                    <div>
-                      {activeTab === 0 &&
-                        <div className="choices">
-                          <div className="choices-line">
-
-                            <div
-                              className={buttonStates['hair removal master'] ? 'choice clicked' : 'choice'}
-                              onClick={() => handleChoice('hair removal master')}
-                            >
-                              <p className="choice-text">hair removal master</p>
-                            </div>
-
-                            <div
-                              className={buttonStates['tatto artist'] ? 'choice clicked' : 'choice'}
-                              onClick={() => handleChoice('tatto artist')}
-                            >
-                              <p className="choice-text">tatto artist</p>
-                            </div>
-
+                    <div className="choices-array">
+                      {activeChoices
+                        .filter((choice) => choice.toLowerCase().includes(searchTerm.toLowerCase()))
+                        .map((choice) => (
+                          <div
+                            className={buttonStates[choice] ? 'choice clicked' : 'choice'}
+                            onClick={() => handleChoice(choice)}
+                          >
+                            <p className="choice-text">{choice}</p>
                           </div>
-
-                        </div>
-                      }
-                      {activeTab === 1 &&
-                        <div className="choices">
-                          <div className="choices-line">
-
-                            <div
-                              className={buttonStates['hair removal master'] ? 'choice clicked' : 'choice'}
-                              onClick={() => handleChoice('hair removal master')}
-                            >
-                              <p className="choice-text">hair removal master</p>
-                            </div>
-
-                            <div
-                              className={buttonStates['tatto artist'] ? 'choice clicked' : 'choice'}
-                              onClick={() => handleChoice('tatto artist')}
-                            >
-                              <p className="choice-text">tatto artist</p>
-                            </div>
-
-                          </div>
-
-                        </div>
-                      }
-                      {activeTab === 2 &&
-                        <div className="choices">
-                          <div className="choices-line">
-
-                            <div
-                              className={buttonStates['hair removal master'] ? 'choice clicked' : 'choice'}
-                              onClick={() => handleChoice('hair removal master')}
-                            >
-                              <p className="choice-text">hair removal master</p>
-                            </div>
-
-                            <div
-                              className={buttonStates['tatto artist'] ? 'choice clicked' : 'choice'}
-                              onClick={() => handleChoice('tatto artist')}
-                            >
-                              <p className="choice-text">tatto artist</p>
-                            </div>
-
-                          </div>
-
-                        </div>
-                      }
-                      {activeTab === 3 &&
-                        <div className="choices">
-                          <div className="choices-line">
-
-                            <div
-                              className={buttonStates['hair removal master'] ? 'choice clicked' : 'choice'}
-                              onClick={() => handleChoice('hair removal master')}
-                            >
-                              <p className="choice-text">hair removal master</p>
-                            </div>
-
-                            <div
-                              className={buttonStates['tatto artist'] ? 'choice clicked' : 'choice'}
-                              onClick={() => handleChoice('tatto artist')}
-                            >
-                              <p className="choice-text">tatto artist</p>
-                            </div>
-
-                          </div>
-
-                        </div>
-                      }
-                      {activeTab === 4 &&
-                        <div className="choices">
-                          <div className="choices-line">
-
-                            <div
-                              className={buttonStates['hair removal master'] ? 'choice clicked' : 'choice'}
-                              onClick={() => handleChoice('hair removal master')}
-                            >
-                              <p className="choice-text">hair removal master</p>
-                            </div>
-
-                            <div
-                              className={buttonStates['tatto artist'] ? 'choice clicked' : 'choice'}
-                              onClick={() => handleChoice('tatto artist')}
-                            >
-                              <p className="choice-text">tatto artist</p>
-                            </div>
-
-                          </div>
-
-                        </div>
-                      }
-                      {activeTab === 5 &&
-                        <div className="choices">
-                          <div className="choices-line">
-
-                            <div
-                              className={buttonStates['hair removal master'] ? 'choice clicked' : 'choice'}
-                              onClick={() => handleChoice('hair removal master')}
-                            >
-                              <p className="choice-text">hair removal master</p>
-                            </div>
-
-                            <div
-                              className={buttonStates['tatto artist'] ? 'choice clicked' : 'choice'}
-                              onClick={() => handleChoice('tatto artist')}
-                            >
-                              <p className="choice-text">tatto artist</p>
-                            </div>
-
-                          </div>
-
-                        </div>
-                      }
+                        ))}
                     </div>
                   </div>
-
                 </div>
+
               </div>
             )}
           </div>

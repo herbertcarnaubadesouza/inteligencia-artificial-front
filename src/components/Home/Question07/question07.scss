@@ -135,10 +135,19 @@
     typing 6s steps(40, end) forwards 2s; // digitação começa após 1 segundo
 }
 
+
 .label {
   color: #3f3767;
   font-size: 18px;
   font-weight: 500;
+}
+
+.adress-label {
+  color: #3f3767;
+  font-size: 22px;
+  font-weight: 500;
+  margin-left: 5rem;
+  padding-top: 2rem;
 }
 
 .search-container {
@@ -147,6 +156,17 @@
   border: 2px solid #3f3767;
   align-items: center;
   margin-bottom: 3rem;
+  display: flex;
+}
+
+.adress-search-container {
+  padding: 1.2rem;
+  border-radius: 2.5rem;
+  border: 2px solid #3f3767;
+  align-items: center;
+  margin-bottom: 3rem;
+  // margin-left: 5rem;
+  margin-right: 2rem;
   display: flex;
 }
 
@@ -161,6 +181,66 @@
   font-size: 18px;
   font-weight: 600;
   border: none;
+}
+
+
+.search {
+  width: 100%;
+
+  &::placeholder {
+    color: #918da8;
+    font-weight: 500;
+    opacity: 0.9;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.autocomplete-dropdown-container {
+  color: #000000;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  background-color: #ffffff00;
+  position: absolute;
+  width: 100%;
+  top: 81%;
+  padding-bottom: 5rem;
+}
+
+.suggestion-item--active {
+  background-color: #fff;
+}
+
+
+.adress-search {
+  color: #a8a5ba;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  background-color: #85151500;
+}
+
+
+.adress-search {
+  width: 100%;
+
+  &::placeholder {
+    color: #918da8;
+    font-weight: 500;
+    opacity: 0.9;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.choice-container {
+  background-color: #F9F8FA;
+  padding-bottom: 2rem;
 }
 
 .choice-container-two {
@@ -192,6 +272,18 @@
   height: 32px;
 }
 
+.local-icon-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.choice-local-icon {
+  width: 73px;
+  height: 65px;
+  padding-left: 15rem;
+}
+
 .choices {
   display: flex;
   flex-direction: column;
@@ -203,10 +295,11 @@
   gap: 1rem;
 }
 
-.choices-array {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
+.choice {
+  &.clicked {
+    border: 2px solid #231a50;
+    background-color: #E0CDFF;
+  }
 }
 
 .choice {
@@ -214,7 +307,6 @@
   margin-top: 1.5rem;
   border-radius: 2rem;
   border: 2px solid #ffffff;
-  margin-right: 1rem;
 }
 
 .choice:hover {
@@ -225,9 +317,15 @@
 .choice-text {
   color: #3f3767;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 400;
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+.choice-selected {
+  color: #3f3767;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .buttons-container {
@@ -236,6 +334,16 @@
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
+}
+
+.normal-buttons-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 5rem;
+  padding-right: 2rem;
 }
 
 .button {
@@ -256,10 +364,65 @@
   cursor: pointer;
 }
 
+.normal-button {
+  &.clicked {
+    background-color: #fff;
+    border: 2px solid #231a50;
+  }
+}
+
+.normal-button {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  padding-left: 2rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  background-color: #F5EEFF;
+  border: 2px solid #F5EEFF;
+  border-radius: 0.5rem;
+
+}
+
+.local-button {
+  &.clicked {
+    border: 2px solid #231a50;
+  }
+}
+
+.local-button {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  padding-left: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+  background-color: #F5EEFF;
+  border: 2px solid #F5EEFF;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.normal-button:hover {
+  background-color: #fff;
+  border: 2px solid #231a50;
+  cursor: pointer;
+}
+
 .button-text {
   color: #3f3767;
   font-size: 18px;
   font-weight: 700;
+}
+
+.local-text {
+  color: #3f3767;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .button-continue {
@@ -336,19 +499,13 @@
   padding-bottom: 1rem;
 }
 
-.search {
-  width: 100%;
-
-  &::placeholder {
-    color: #918da8;
-    font-weight: 500;
-    opacity: 0.9;
-  }
-
-  &:focus {
-    outline: none;
-  }
+.right-nav-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
 }
+
 
 .block-image-left-side {
   display: flex;
@@ -380,7 +537,7 @@
     }
   }
 
-  &.style.two {
+  &.style-two {
     display: none;
   }
 }
@@ -391,7 +548,7 @@
     display: none;
   }
 
-  &.style.two {
+  &.style-two {
     transition: 1s;
     display: flex;
     align-items: center;
