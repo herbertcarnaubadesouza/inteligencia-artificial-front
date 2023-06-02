@@ -4,6 +4,7 @@ import './question07.scss';
 import PlacesAutocomplete from 'react-places-autocomplete';
 import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import { Suggestion } from "react-places-autocomplete";
+import { useNavigate } from 'react-router-dom';
 
 
 interface Question07Props {
@@ -140,6 +141,12 @@ function Question07(props: Question07Props) {
   useEffect(() => {
     localStorage.setItem('nomeEmpresa', nomeEmpresa);
   }, [nomeEmpresa]);
+
+  const navigate = useNavigate();
+
+  const goToPreview = () => {
+    navigate('/preview');
+  };
 
   return (
     <>
@@ -314,7 +321,7 @@ function Question07(props: Question07Props) {
             <p className="button-back-text">Voltar</p>
           </div>
           <div className="button-continue">
-            <p className="button-continue-text">Continuar</p>
+            <p className="button-continue-text" onClick={goToPreview}>Continuar</p>
           </div>
         </div>
       </div>

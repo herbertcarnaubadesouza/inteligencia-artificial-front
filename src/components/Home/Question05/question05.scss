@@ -298,7 +298,7 @@
 .choice {
   &.clicked {
     border: 2px solid #231a50;
-    background-color: #E0CDFF;
+    background-color: #CDDEFF;
   }
 }
 
@@ -360,7 +360,7 @@
 }
 
 .button:hover {
-  background-color: #e0cdff;
+  background-color: #CDDEFF;
   cursor: pointer;
 }
 
@@ -380,8 +380,8 @@
   padding-left: 2rem;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
-  background-color: #F5EEFF;
-  border: 2px solid #F5EEFF;
+  background-color: #E8F4FF;
+  border: 2px solid #E8F4FF;
   border-radius: 0.5rem;
 
 }
@@ -401,8 +401,8 @@
   padding-left: 2rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  background-color: #F5EEFF;
-  border: 2px solid #F5EEFF;
+  background-color: #E8F4FF;
+  border: 2px solid #E8F4FF;
   border-radius: 0.5rem;
   cursor: pointer;
 }

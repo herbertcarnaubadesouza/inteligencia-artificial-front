@@ -252,7 +252,7 @@ function Question04(props: Question04Props) {
                         onSelect={handleAddressSelect}
                       >
                         {({ getInputProps, suggestions, getSuggestionItemProps, loading }: IChildProps) => (
-                          <div>
+                          <div className="adress-search-input">
                             <input
                               id="adress"
                               className="adress-search"

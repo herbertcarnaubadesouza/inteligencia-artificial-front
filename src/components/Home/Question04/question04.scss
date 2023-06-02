@@ -13,6 +13,8 @@
 }
 
 .real-top-container {
+  overflow-x: hidden;
+
   overflow: auto;
   height: 80vh;
   padding-right: 1rem;
@@ -43,6 +45,11 @@
   display: block;
   margin-left: 10px;
   /* Adiciona margem esquerda à barra de rolagem */
+}
+
+.second-block-right-side-container {
+  overflow-x: hidden;
+
 }
 
 .inactive {
@@ -160,15 +167,26 @@
   display: flex;
 }
 
+.adress-container {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
 .adress-search-container {
+  display: flex;
+  align-items: center;
   padding: 1.2rem;
   border-radius: 2.5rem;
   border: 2px solid #3f3767;
-  align-items: center;
   margin-bottom: 3rem;
   margin-left: 5rem;
   margin-right: 2rem;
+}
+
+.adress-search-input {
   display: flex;
+  width: 100%;
 }
 
 .search-icon {
@@ -305,7 +323,7 @@
 .choice {
   &.clicked {
     border: 2px solid #231a50;
-    background-color: #E0CDFF;
+    background-color: #CDDEFF;
   }
 }
 
@@ -367,7 +385,7 @@
 }
 
 .button:hover {
-  background-color: #e0cdff;
+  background-color: #CDDEFF;
   cursor: pointer;
 }
 
@@ -387,8 +405,8 @@
   padding-left: 2rem;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
-  background-color: #F5EEFF;
-  border: 2px solid #F5EEFF;
+  background-color: #E8F4FF;
+  border: 2px solid #E8F4FF;
   border-radius: 0.5rem;
 
 }
@@ -408,8 +426,8 @@
   padding-left: 2rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  background-color: #F5EEFF;
-  border: 2px solid #F5EEFF;
+  background-color: #E8F4FF;
+  border: 2px solid #E8F4FF;
   border-radius: 0.5rem;
   cursor: pointer;
 }

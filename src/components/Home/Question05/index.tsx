@@ -231,7 +231,7 @@ function Question05(props: Question05Props) {
                 <div className="choice-container">
                   <div className="adress-search-container">
                     <img className="search-icon" src="./images/browse.svg" alt="" />
-                    <div>
+                    <div className="adress-search-input">
                       <input
                         id="name"
                         className="adress-search"

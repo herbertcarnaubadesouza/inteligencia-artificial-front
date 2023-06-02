@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { BeatLoader } from 'react-spinners';
 import './rightside.scss';
 
-import Question01 from '../../Question01';
+import Question01 from '../Question01';
 import Question02 from '../Question02';
 import Question03 from '../Question03';
 import Question04 from '../Question04';
