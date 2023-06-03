@@ -65,12 +65,16 @@ const HeaderFooter = styled.div`
   }
 
   h1 {
+    text-align: center;
+    width: 50%;
     font-size: 48px;
     color: ${(props: ThemeProps) => props.theme.headerFooterTextColor};
     z-index: 999;
   }
 
   h2 {
+    text-align: center;
+    width: 50%;
     color: ${(props: ThemeProps) => props.theme.headerFooterTextColor};
     font-family: ${(props: ThemeProps) => props.theme.font.fontFamily};
     z-index: 999;
@@ -132,10 +136,60 @@ const Parallax = styled.section`
 
   h2 {
     font-size: 40px;
-    max-width: 60rem;
+    max-width: 50rem;
     color: ${(props: ThemeProps) => props.theme.headerFooterTextColor};
     font-family: ${(props: ThemeProps) => props.theme.font.fontFamily};
     z-index: 999;
+    margin-top: 0;
+  }
+  h4 {
+    color: ${(props: ThemeProps) => props.theme.headerFooterTextColor};
+    font-family: ${(props: ThemeProps) => props.theme.font.fontFamily};
+    z-index: 999;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 10%;
+    background-color: ${(props: ThemeProps) => props.theme.headerFooterBgColor};
+  }
+`;
+
+const ParallaxContact = styled.section`
+  padding-block: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('./images/template01/contact.png');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  position: relative;
+
+  h2 {
+    font-size: 40px;
+    max-width: 50rem;
+    color: ${(props: ThemeProps) => props.theme.headerFooterTextColor};
+    font-family: ${(props: ThemeProps) => props.theme.font.fontFamily};
+    z-index: 999;
+    margin-top: 0;
+  }
+  h3 {
+    max-width: 50rem;
+    color: ${(props: ThemeProps) => props.theme.headerFooterTextColor};
+    font-family: ${(props: ThemeProps) => props.theme.font.fontFamily};
+    z-index: 999;
+    font-weight: 400;
     margin-top: 0;
   }
   h4 {
@@ -202,6 +256,15 @@ const Line = styled.div`
   z-index: 999;
 `;
 
+const LineSmall = styled.div`
+  height: 3px;
+  width: 4rem;
+  background-color: ${(props: ThemeProps) => props.theme.fontTitleColor};
+  border: none;
+  margin-bottom: 1rem;
+  z-index: 999;
+`;
+
 const LineParallax = styled.div`
   height: 2px;
   width: 4rem;
@@ -215,6 +278,131 @@ const Info = styled.div`
   display: flex;
 `;
 
+const PracticeArea = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+
+  h1 {
+    color: ${(props: ThemeProps) => props.theme.fontTitleColor};
+  }
+
+  h3 {
+    color: ${(props: ThemeProps) => props.theme.fontTitleColor};
+    margin-bottom: -1rem;
+    font-weight: 300;
+  }
+
+  h4 {
+    text-align: center;
+    width: 70%;
+    color: ${(props: ThemeProps) => props.theme.fontTitleColor};
+  }
+
+  button {
+    background-color: ${(props: ThemeProps) => props.theme.fontTitleColor};
+    font-family: ${(props: ThemeProps) => props.theme.font.fontFamily};
+    font-size: 20px;
+    color: #fff;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    border-radius: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    cursor: pointer;
+    z-index: 999;
+    border: none;
+  }
+`
+
+const PracticeAreaContentAll = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 12rem;
+  padding-right: 12rem;
+  gap: 2rem;
+`
+
+const PracticeAreaContent = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 1.5rem;
+`
+
+const PracticeContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-left: 2rem;
+  padding-right: 2rem;
+`
+
+const Contact = styled.div`
+  display: flex;
+  align-items: center;
+  justfy-content: center;
+  gap: 2rem;
+
+  h2 {
+    font-size: 40px;
+    max-width: 50rem;
+    color: ${(props: ThemeProps) => props.theme.headerFooterTextColor};
+    font-family: ${(props: ThemeProps) => props.theme.font.fontFamily};
+    z-index: 999;
+    padding-top: 2rem;
+  }
+`
+
+const Footer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 8rem;
+  padding-right:8rem;
+  padding-top: 3rem;
+  padding-bottom: 5rem;
+`
+
+const FooterContent = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    font-size: 20px;
+    min-width: 12rem;
+    margin-bottom: -0.5rem;
+    color: ${(props: ThemeProps) => props.theme.headerFooterBgColor};
+  }
+
+  h3 {
+    width: 50%;
+    font-size: 20px;
+    color: ${(props: ThemeProps) => props.theme.headerFooterBgColor};
+    font-family: ${(props: ThemeProps) => props.theme.font.fontFamily};
+  }
+
+  h4 {
+    font-size: 16px;
+    font-weight: 300;
+    margin-bottom: -0.5rem;
+    color: ${(props: ThemeProps) => props.theme.fontTitleColor};
+    font-family: ${(props: ThemeProps) => props.theme.font.fontFamily};
+  }
+`
+
+const FooterRight = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 10rem;
+`
+
 export {
   Container,
   HeaderFooter,
@@ -222,8 +410,18 @@ export {
   AboutSection,
   LogoTemplate,
   Line,
+  LineSmall,
   LineParallax,
   Parallax,
+  ParallaxContact,
+  Contact,
   ParallaxContent,
+  PracticeArea,
+  PracticeAreaContent,
+  PracticeContent,
+  PracticeAreaContentAll,
   Info,
+  Footer,
+  FooterContent,
+  FooterRight
 };
