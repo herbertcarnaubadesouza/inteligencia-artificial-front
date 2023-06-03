@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import './leftside.scss';
+import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { PaletteOne, PaletteTwo, PaletteTree, PaletteFour, FontOne, FontTwo, FontThree, FontFour } from '../Theme';
+import { FontOne, FontThree, FontTwo, PaletteOne } from '../Theme';
+import './leftside.scss';
 
-import Template01 from '../Template01'
-import Template02 from '../Template02'
-import Template03 from '../Template03'
+import Template01 from '../Template01';
+import Template02 from '../Template02';
+import Template03 from '../Template03';
 
 export function useLeftSide() {
   const [isVisible01, setIsVisible01] = useState(true);
@@ -38,18 +38,14 @@ export function useLeftSide() {
     setCurrentFont(FontThree);
   };
 
+  console.log(currentPalette);
+
   const jsx = (
     <ThemeProvider theme={{ ...currentPalette, font: currentFont }}>
       <div className="template-side-container">
-        {isVisible01 && (
-          <Template01 isVisible01={isVisible01} />
-        )}
-        {isVisible02 && (
-          <Template02 isVisible02={isVisible02} />
-        )}
-        {isVisible03 && (
-          <Template03 isVisible03={isVisible03} />
-        )}
+        {isVisible01 && <Template01 isVisible01={isVisible01} />}
+        {isVisible02 && <Template02 isVisible02={isVisible02} />}
+        {isVisible03 && <Template03 isVisible03={isVisible03} />}
       </div>
     </ThemeProvider>
   );
@@ -63,6 +59,6 @@ export function useLeftSide() {
     isVisible02,
     isVisible03,
     setCurrentPalette,
-    setCurrentFont
+    setCurrentFont,
   };
 }
