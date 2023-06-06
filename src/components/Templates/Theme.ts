@@ -8,8 +8,9 @@ export const FontTwo = {
 };
 
 export const FontThree = {
-  fontFamily: 'Inter, sans-serif'
+  fontFamily: 'Source Serif Pro, serif'
 };
+
 
 export const FontFour = {
   fontFamily: 'Sora, sans-serif'

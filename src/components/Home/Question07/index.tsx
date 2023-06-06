@@ -320,8 +320,8 @@ function Question07(props: Question07Props) {
             <img className="button-back-icon" src="./images/back.svg" alt="" />
             <p className="button-back-text">Voltar</p>
           </div>
-          <div className="button-continue">
-            <p className="button-continue-text" onClick={goToPreview}>Continuar</p>
+          <div className="button-continue" onClick={goToPreview}>
+            <p className="button-continue-text" >Continuar</p>
           </div>
         </div>
       </div>

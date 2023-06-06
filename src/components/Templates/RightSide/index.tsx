@@ -92,7 +92,7 @@ function RightSide() {
             </div>
             <div className="template-buttons-container">
               <div className="font-button" onClick={handleFontThreeClick}>
-                <p className="font-text">Inter</p>
+                <p className="font-text">Source Serif</p>
               </div>
               <div className="font-button" onClick={handleFontFourClick}>
                 <p className="font-text">Sora</p>
