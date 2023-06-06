@@ -241,10 +241,16 @@ const ParallaxContent = styled.div`
 
 const LogoTemplate = styled.img`
   width: 30rem;
-  height: auto;
+  height: 40rem;
   margin-top: -7rem;
   margin-right: 3rem;
   z-index: 999;
+  object-fit: cover;
+
+  @media only screen and (max-width: 1540px) {
+    width: 40rem;
+    height: 30rem;
+  }
 `;
 
 const Line = styled.div`
@@ -318,7 +324,7 @@ const PracticeArea = styled.div`
     z-index: 999;
     border: none;
   }
-`
+`;
 
 const PracticeAreaContentAll = styled.div`
   display: flex;
@@ -327,7 +333,7 @@ const PracticeAreaContentAll = styled.div`
   padding-left: 12rem;
   padding-right: 12rem;
   gap: 2rem;
-`
+`;
 
 const PracticeAreaContent = styled.div`
   display: flex;
@@ -335,19 +341,19 @@ const PracticeAreaContent = styled.div`
   align-items: center;
   justify-content: center;
   padding-bottom: 1.5rem;
-`
+`;
 
 const PracticeContent = styled.div`
   display: flex;
   flex-direction: column;
   padding-left: 2rem;
   padding-right: 2rem;
-`
+`;
 
 const Contact = styled.div`
   display: flex;
   align-items: center;
-  justfy-content: center;
+  justify-content: center;
   gap: 2rem;
 
   h2 {
@@ -358,17 +364,21 @@ const Contact = styled.div`
     z-index: 999;
     padding-top: 2rem;
   }
-`
+`;
 
 const Footer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding-left: 8rem;
-  padding-right:8rem;
+  padding-right: 8rem;
   padding-top: 3rem;
   padding-bottom: 5rem;
-`
+
+  @media only screen and (max-width: 1540px) {
+    padding-inline: 4rem;
+  }
+`;
 
 const FooterContent = styled.div`
   display: flex;
@@ -382,8 +392,8 @@ const FooterContent = styled.div`
   }
 
   h3 {
-    width: 50%;
-    font-size: 20px;
+    width: 70%;
+    font-size: 18px;
     color: ${(props: ThemeProps) => props.theme.headerFooterBgColor};
     font-family: ${(props: ThemeProps) => props.theme.font.fontFamily};
   }
@@ -395,13 +405,13 @@ const FooterContent = styled.div`
     color: ${(props: ThemeProps) => props.theme.fontTitleColor};
     font-family: ${(props: ThemeProps) => props.theme.font.fontFamily};
   }
-`
+`;
 
 const FooterRight = styled.div`
   display: flex;
   flex-direction: row;
   gap: 10rem;
-`
+`;
 
 export {
   Container,
@@ -423,5 +433,5 @@ export {
   Info,
   Footer,
   FooterContent,
-  FooterRight
+  FooterRight,
 };
