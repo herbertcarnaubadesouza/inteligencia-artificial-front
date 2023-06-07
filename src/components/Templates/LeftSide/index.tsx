@@ -60,5 +60,7 @@ export function useLeftSide() {
     isVisible03,
     setCurrentPalette,
     setCurrentFont,
+    currentPalette,
+    currentFont,
   };
 }
