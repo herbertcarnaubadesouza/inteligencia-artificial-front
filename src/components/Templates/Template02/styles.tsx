@@ -489,7 +489,7 @@ export const Footer = styled.div`
     padding-inline: 6rem;
     padding-block: 20px;
     background-color: ${(props: ThemeProps) =>
-      mix(0.8, '#000', props.theme.headerFooterBgColor)};
+      mix(0.9, '#000', props.theme.headerFooterBgColor)};
 
     p {
       font-size: 15px;

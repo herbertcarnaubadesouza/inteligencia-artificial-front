@@ -33,7 +33,6 @@ import {
   ServicesSection,
   WhyUs,
 } from './styles';
-import './template01.scss';
 
 interface Template02Props {
   isVisible02: boolean;
