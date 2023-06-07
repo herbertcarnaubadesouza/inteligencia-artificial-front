@@ -15,6 +15,8 @@ import {
 
 function RightSide() {
   const leftSide = useLeftSide();
+  const [currentPaletteName, setCurrentPaletteName] = useState('');
+  const [currentFontName, setCurrentFontName] = useState('');
 
   const [clickedPalette, setClickedPalette] = useState(null);
   const [clickedFont, setClickedFont] = useState(null);
@@ -24,42 +26,42 @@ function RightSide() {
 
   const handlePaletteOneClick = () => {
     leftSide.setCurrentPalette(PaletteOne);
-    setClickedPaletteName('PaletteOne');
+    setCurrentPaletteName('palette-one');
   };
 
   const handlePaletteTwoClick = () => {
     leftSide.setCurrentPalette(PaletteTwo);
-    setClickedPaletteName('PaletteTwo');
+    setCurrentPaletteName('palette-two');
   };
 
   const handlePaletteTreeClick = () => {
     leftSide.setCurrentPalette(PaletteTree);
-    setClickedPaletteName('PaletteTree');
+    setCurrentPaletteName('palette-tree');
   };
 
   const handlePaletteFourClick = () => {
     leftSide.setCurrentPalette(PaletteFour);
-    setClickedPaletteName('PaletteFour');
+    setCurrentPaletteName('palette-four');
   };
 
   const handleFontOneClick = () => {
     leftSide.setCurrentFont(FontOne);
-    setClickedFontName('FontOne');
+    setCurrentFontName('font-one');
   };
 
   const handleFontTwoClick = () => {
     leftSide.setCurrentFont(FontTwo);
-    setClickedFontName('FontTwo');
+    setCurrentFontName('font-two');
   };
 
   const handleFontThreeClick = () => {
     leftSide.setCurrentFont(FontThree);
-    setClickedFontName('FontThree');
+    setCurrentFontName('font-tree');
   };
 
   const handleFontFourClick = () => {
     leftSide.setCurrentFont(FontFour);
-    setClickedFontName('FontFour');
+    setCurrentFontName('font-four');
   };
 
   return (
@@ -98,19 +100,11 @@ function RightSide() {
 
           <div>
             <p className="template-label">PALETA DE CORES</p>
-
-            <div
-              className={`template-buttons-container ${
-                clickedPaletteName === 'PaletteOne' ||
-                clickedPaletteName === 'PaletteTwo'
-                  ? 'clicked'
-                  : ''
-              } `}
-            >
+            <div className="template-buttons-container">
               <div
                 id="palette-one"
                 className={`template-button ${
-                  clickedPaletteName === 'PaletteOne' ? 'clicked' : ''
+                  currentPaletteName === 'palette-one' ? 'clicked' : ''
                 }`}
                 onClick={handlePaletteOneClick}
               >
@@ -119,7 +113,7 @@ function RightSide() {
               <div
                 id="palette-two"
                 className={`template-button ${
-                  clickedPaletteName === 'PaletteTwo' ? 'clicked' : ''
+                  currentPaletteName === 'palette-two' ? 'clicked' : ''
                 }`}
                 onClick={handlePaletteTwoClick}
               >
@@ -127,18 +121,11 @@ function RightSide() {
               </div>
             </div>
 
-            <div
-              className={`template-buttons-container ${
-                clickedPaletteName === 'PaletteTree' ||
-                clickedPaletteName === 'PaletteFour'
-                  ? 'clicked'
-                  : ''
-              } `}
-            >
+            <div className="template-buttons-container">
               <div
                 id="palette-tree"
                 className={`template-button ${
-                  clickedPaletteName === 'PaletteTree' ? 'clicked' : ''
+                  currentPaletteName === 'palette-tree' ? 'clicked' : ''
                 }`}
                 onClick={handlePaletteTreeClick}
               >
@@ -147,7 +134,7 @@ function RightSide() {
               <div
                 id="palette-four"
                 className={`template-button ${
-                  clickedPaletteName === 'PaletteFour' ? 'clicked' : ''
+                  currentPaletteName === 'palette-four' ? 'clicked' : ''
                 }`}
                 onClick={handlePaletteFourClick}
               >
@@ -158,17 +145,10 @@ function RightSide() {
 
           <div>
             <p className="template-label">TIPOGRAFIA</p>
-
-            <div
-              className={`template-buttons-container ${
-                clickedFontName === 'FontOne' || clickedFontName === 'FontTwo'
-                  ? 'clicked'
-                  : ''
-              } `}
-            >
+            <div className="template-buttons-container">
               <div
                 className={`font-button ${
-                  clickedFontName === 'FontOne' ? 'clicked' : ''
+                  currentFontName === 'font-one' ? 'clicked' : ''
                 }`}
                 onClick={handleFontOneClick}
               >
@@ -176,22 +156,17 @@ function RightSide() {
               </div>
               <div
                 className={`font-button ${
-                  clickedFontName === 'FontTwo' ? 'clicked' : ''
+                  currentFontName === 'font-two' ? 'clicked' : ''
                 }`}
                 onClick={handleFontTwoClick}
               >
                 <p className="font-text">Montserrat</p>
               </div>
             </div>
-
-            <div
-              className={`template-buttons-container ${
-                clickedFontName === 'FontThree' ? 'clicked' : ''
-              } `}
-            >
+            <div className="template-buttons-container">
               <div
                 className={`font-button ${
-                  clickedFontName === 'FontThree' ? 'clicked' : ''
+                  currentFontName === 'font-tree' ? 'clicked' : ''
                 }`}
                 onClick={handleFontThreeClick}
               >
@@ -199,7 +174,7 @@ function RightSide() {
               </div>
               <div
                 className={`font-button ${
-                  clickedFontName === 'FontFour' ? 'clicked' : ''
+                  currentFontName === 'font-four' ? 'clicked' : ''
                 }`}
                 onClick={handleFontFourClick}
               >

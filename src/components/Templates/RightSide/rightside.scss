@@ -17,7 +17,6 @@
   scrollbar-color: #888888 #f4f4f4;
 }
 
-
 .real-top-container::-webkit-scrollbar {
   width: 6px;
 }
@@ -129,7 +128,7 @@
 }
 
 .button:hover {
-  background-color: #CDDEFF;
+  background-color: #cddeff;
   cursor: pointer;
 }
 
@@ -355,8 +354,6 @@
       width: 18px;
       height: 18px;
     }
-
-
   }
 
   &.style-four {
@@ -476,7 +473,6 @@
   &.style-seven {
     display: none;
   }
-
 }
 
 .tooltip-six {
@@ -528,7 +524,6 @@
   &.style-seven {
     display: none;
   }
-
 }
 
 .tooltip-seven {
@@ -580,8 +575,6 @@
       height: 18px;
     }
   }
-
-
 }
 
 @keyframes fadeIn {
@@ -623,13 +616,11 @@
 }
 
 @keyframes blink {
-
   0%,
   100% {
     border-color: transparent;
   }
 }
-
 
 .template-buttons-container {
   display: flex;
@@ -656,7 +647,7 @@
 }
 
 .button:hover {
-  background-color: #CDDEFF;
+  background-color: #cddeff;
   cursor: pointer;
 }
 
@@ -676,13 +667,12 @@
   gap: 1rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  background-color: #E8F4FF;
-  border: 2px solid #E8F4FF;
+  background-color: #e8f4ff;
+  border: 2px solid #e8f4ff;
   border-radius: 0.5rem;
 
   &.clicked {
     border: 2px solid #231a50;
-
   }
 }
 
@@ -700,10 +690,13 @@
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   padding-left: 1rem;
-  background-color: #E8F4FF;
-  border: 2px solid #E8F4FF;
+  background-color: #e8f4ff;
+  border: 2px solid #e8f4ff;
   border-radius: 0.5rem;
 
+  &.clicked {
+    border: 2px solid #231a50;
+  }
 }
 
 .font-button:hover {
