@@ -34,7 +34,7 @@ export const Container = styled.div`
     text-align: left;
     margin-bottom: 10rem;
     margin-top: 10px;
-    margin-right: 15%;
+    margin-right: 35%;
   }
   h2 {
     color: ${(props: ThemeProps) =>
@@ -254,7 +254,7 @@ export const ServicesSection = styled.section`
 
   .full-content-website {
     padding-inline: 6rem;
-    padding-block: 5rem;
+    padding-block: 6rem;
     margin-inline: auto;
   }
 `;
@@ -298,4 +298,204 @@ export const Row = styled.div`
 `;
 export const Column = styled.div`
   margin-top: 2rem;
+`;
+
+export const WhyUs = styled.section`
+  display: flex;
+  width: 100%;
+  position: relative;
+  background-image: url('./images/template02/b203.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  .full-content-whyus {
+    padding-block: 10rem;
+    margin-inline: 6rem;
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 55%;
+    background-color: #000;
+    background-color: ${(props: ThemeProps) =>
+      mix(0.95, '#000', props.theme.headerFooterBgColor)};
+  }
+
+  .block-whyus {
+    display: flex;
+    flex-direction: column;
+    z-index: 999px;
+    position: relative;
+    gap: 40px;
+    margin-top: 30px;
+
+    .wrap-block-whyus {
+      display: flex;
+      align-items: baseline;
+      gap: 15px;
+    }
+  }
+
+  .block-whyus-text {
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  h2,
+  h4,
+  h5 {
+    color: #fff;
+    position: relative;
+  }
+
+  h4 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 1.5em;
+  }
+
+  h5 {
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  text {
+    font-weight: inherit;
+    color: #d3d3d3;
+    font-size: 15px;
+  }
+`;
+export const RightSideWhyUs = styled.div`
+  .rows-block {
+    display: flex;
+  }
+
+  .row-div-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid #d3d3d369;
+    width: 270px;
+    height: 160px;
+    gap: 20px;
+
+    h2 {
+      margin: 0;
+    }
+
+    &:hover {
+      background: #ffffff37;
+      cursor: pointer;
+    }
+  }
+`;
+
+export const ContactSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding-block: 80px;
+  gap: 30px;
+
+  .separator-section {
+    position: relative;
+  }
+
+  .separator-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  h4 {
+    font-weight: 700;
+    font-size: 1.2em;
+    margin: 0;
+  }
+
+  h2 {
+    margin: 0;
+  }
+
+  h3 {
+    font-weight: 600;
+    font-size: 2.5em;
+    color: #000;
+    font-weight: normal;
+    margin: 0;
+  }
+
+  p {
+    font-size: 15px;
+    color: #353535c4;
+    font-weight: normal;
+    margin: 0;
+  }
+  button {
+    width: 240px;
+    height: 48px;
+    margin-inline: auto;
+    border-radius: 0;
+    border: none;
+    background: ${(props: ThemeProps) => props.theme.fontTitleColor};
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 14px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+`;
+
+export const LineDivisorLeft = styled.div`
+  height: 1.1px;
+  width: 6rem;
+  background-color: ${(props: ThemeProps) => props.theme.fontTitleColor};
+  border: none;
+  z-index: 999;
+`;
+export const LineDivisorRight = styled.div`
+  height: 1.1px;
+  width: 6rem;
+  background-color: ${(props: ThemeProps) => props.theme.fontTitleColor};
+  border: none;
+  z-index: 999;
+  /* position: absolute; */
+  left: 60px;
+`;
+
+export const Footer = styled.div`
+  width: 100%;
+
+  .content-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 6rem;
+    padding-block: 20px;
+    background-color: ${(props: ThemeProps) =>
+      mix(0.8, '#000', props.theme.headerFooterBgColor)};
+
+    p {
+      font-size: 15px;
+      color: rgba(198, 198, 198, 0.77);
+      font-weight: normal;
+      margin: 0px;
+    }
+  }
 `;

@@ -16,16 +16,22 @@ import {
 import {
   AboutSection,
   Column,
+  ContactSection,
   Container,
   FirstBlockAbout,
+  Footer,
   HeaderBlock,
   LineAbout,
   LineAboutSection,
+  LineDivisorLeft,
+  LineDivisorRight,
   LineHeader,
   LineHeaderBottom,
+  RightSideWhyUs,
   Row,
   SecondBlockAbout,
   ServicesSection,
+  WhyUs,
 } from './styles';
 import './template01.scss';
 
@@ -170,6 +176,90 @@ function Template02({ isVisible02 }: Template02Props) {
           </Column>
         </div>
       </ServicesSection>
+      <WhyUs>
+        <div className="full-content-whyus">
+          <div className="left-side-whyus">
+            <div className="container-block-header">
+              <LineHeader></LineHeader>
+              <span>
+                Advogada de direito de família profissional e experiente
+              </span>
+            </div>
+            <h2>Por que escolher nossa empresa</h2>
+            <div className="block-whyus">
+              <div className="wrap-block-whyus">
+                <h5>01</h5>
+                <div className="block-whyus-text">
+                  <h4>Excelente Histórico</h4>
+                  <text>
+                    This is a short description elaborating the reason that you
+                    have mentioned above. Tell them why you are good!
+                  </text>
+                </div>
+              </div>
+              <div className="wrap-block-whyus">
+                <h5>02</h5>
+                <div className="block-whyus-text">
+                  <h4>Excelente Histórico</h4>
+                  <text>
+                    This is a short description elaborating the reason that you
+                    have mentioned above. Tell them why you are good!
+                  </text>
+                </div>
+              </div>
+              <div className="wrap-block-whyus">
+                <h5>03</h5>
+                <div className="block-whyus-text">
+                  <h4>Excelente Histórico</h4>
+                  <text>
+                    This is a short description elaborating the reason that you
+                    have mentioned above. Tell them why you are good!
+                  </text>
+                </div>
+              </div>
+            </div>
+          </div>
+          <RightSideWhyUs>
+            <div className="rows-block">
+              <div className="row-div-block">
+                <h2>2000+</h2>
+                <span>Client Consutations</span>
+              </div>
+              <div className="row-div-block">
+                <h2>93%</h2>
+                <span>Successful Cases</span>
+              </div>
+            </div>
+            <div className="rows-block">
+              <div className="row-div-block">
+                <h2>40+</h2>
+                <span>Professional Attorneys</span>
+              </div>
+              <div className="row-div-block">
+                <h2>20mlns</h2>
+                <span>Recovered Cost</span>
+              </div>
+            </div>
+          </RightSideWhyUs>
+        </div>
+      </WhyUs>
+      <ContactSection>
+        <h4>Ligue para nós 24/7</h4>
+        <h3>91 123-456-7890/91</h3>
+        <div className="separator-section">
+          <LineDivisorLeft></LineDivisorLeft>
+          <p>OR</p>
+          <LineDivisorRight></LineDivisorRight>
+        </div>
+        <h2>Faça sua primeira consulta GRÁTIS!</h2>
+        <button>Solicitar agendamento</button>
+      </ContactSection>
+      <Footer>
+        <div className="content-footer">
+          <p>Copyright © 2023 Rei do Sites</p>
+          <p>Powered by Rei do Sites</p>
+        </div>
+      </Footer>
     </Container>
   );
 }
