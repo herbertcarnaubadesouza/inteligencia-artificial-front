@@ -92,13 +92,33 @@ function Template01({ isVisible01 }: Template01Props) {
     data: corpoDaSolicitacao
   };
 
-  let messageId;
+  let messageId: any;
 
   axios(config)
     .then(function (response) {
       console.log(response.data);
       messageId = response.data.messageId;
       console.log(`O messageId é: ${messageId}`);
+
+      // Busca as requisições no webhook.site
+      axios.get(`https://webhook.site/token/3e24f805-8c12-4739-80ad-f61e295afa43/requests`)
+        .then(function (response) {
+          const requests = response.data.data;
+
+          // Procura pela requisição com o 'originatingMessageId' correspondente
+          const matchingRequest = requests.find((request: { content: { originatingMessageId: any; }; }) => request.content && request.content.originatingMessageId === messageId);
+
+          let imageUrl = matchingRequest.content.imageUrl;
+
+          if (matchingRequest) {
+            console.log('URL da imagem: ', matchingRequest.content.imageUrl);
+          } else {
+            console.log('Nenhuma requisição correspondente encontrada');
+          }
+        })
+        .catch(function (error) {
+          console.log('Erro ao buscar requisições: ', error);
+        });
     })
     .catch(function (error) {
       console.log('Erro:', error);
