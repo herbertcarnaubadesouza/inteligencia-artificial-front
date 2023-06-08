@@ -21,11 +21,89 @@ import {
   PracticeContent,
 } from './styles';
 
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+
+// const getGpt3Response = async (input: string) => {
+//   const response = await axios.post('/api/gpt3', { input });
+//   return response.data;
+// };
+
+// getGpt3Response('Olá, mundo!').then(response => {
+//   console.log(response);
+// });
+
+
 interface Template01Props {
   isVisible01: boolean;
 }
 
 function Template01({ isVisible01 }: Template01Props) {
+
+  const [response, setResponse] = useState(null);
+  let nome = "Rei dos advogados"
+
+  useEffect(() => {
+    const getResponse = async () => {
+      try {
+        const result = await axios.post('https://api.openai.com/v1/chat/completions', {
+          model: 'gpt-3.5-turbo',
+          messages: [
+            {
+              role: 'user',
+              content: `Faça dois paragrafos sobre uma empresa de advocacia chamada ${nome}`
+            }
+          ]
+        }, {
+          headers: {
+            'Authorization': `Bearer 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`,
+            'Content-Type': 'application/json'
+          }
+        });
+
+        setResponse(result.data.choices[0].message.content);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    getResponse();
+  }, []);
+
+  console.log(response);
+
+
+  // MIDJOURNEY
+
+  const url = 'https://api.thenextleg.io/';
+
+  const corpoDaSolicitacao = {
+    cmd: "imagine",
+    msg: "Um banner sofisticado para o site institucional de um escritório de advocacia corporativo, apresentando uma vista panorâmica de um horizonte de cidade agitada ao anoitecer, com arranha-céus altos iluminados por luzes douradas, um rio tranquilo fluindo em primeiro plano, e uma ponte proeminente conectando ambos os lados, evocando um sentimento de progresso e conectividade. O clima é elegante e profissional, transmitindo confiança e autoridade. O estilo é fotografia, capturada com uma câmera DSLR de quadro completo usando uma lente grande angular, aumentando a sensação de grandiosidade e profundidade, realista --ar 16:9"
+  };
+
+  const config = {
+    method: 'post',
+    url: url,
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ab9ba449-948d-436e-aa5d-44573d622523'
+    },
+    data: corpoDaSolicitacao
+  };
+
+  let messageId;
+
+  axios(config)
+    .then(function (response) {
+      console.log(response.data);
+      messageId = response.data.messageId;
+      console.log(`O messageId é: ${messageId}`);
+    })
+    .catch(function (error) {
+      console.log('Erro:', error);
+    });
+
   return (
     <Container>
       <HeaderFooter as="header">
@@ -45,21 +123,7 @@ function Template01({ isVisible01 }: Template01Props) {
             <div>
               <h2>Sobre Nós</h2>
               <p>
-                Bem-vindo(a) à nossa empresa de advogados criminais,
-                especializada em proteger os direitos e garantir a justiça para
-                nossos clientes. Com uma equipe experiente e comprometida,
-                estamos aqui para fornecer representação legal de alta qualidade
-                em todos os aspectos do direito penal. Nossa missão é oferecer
-                serviços jurídicos de excelência, buscando sempre a melhor
-                estratégia de defesa para cada caso que assumimos. Compreendemos
-                que enfrentar um processo criminal é uma situação desafiadora, e
-                estamos aqui para orientar e apoiar nossos clientes em todas as
-                etapas do processo. Nossos advogados são altamente qualificados
-                e possuem um profundo conhecimento das leis e procedimentos
-                criminais. Com experiência em uma ampla gama de casos, desde
-                delitos de menor gravidade até crimes mais complexos, nossa
-                equipe está preparada para lidar com qualquer desafio jurídico
-                que nossos clientes enfrentem.
+                {response}
               </p>
             </div>
           </Info>
