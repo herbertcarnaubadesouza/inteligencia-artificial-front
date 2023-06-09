@@ -33,33 +33,35 @@ import { useEffect, useState } from 'react';
 //   console.log(response);
 // });
 
-
 interface Template01Props {
   isVisible01: boolean;
 }
 
 function Template01({ isVisible01 }: Template01Props) {
-
   const [response, setResponse] = useState(null);
-  let nome = "Rei dos advogados"
+  let nome = 'Rei dos advogados';
 
   useEffect(() => {
     const getResponse = async () => {
       try {
-        const result = await axios.post('https://api.openai.com/v1/chat/completions', {
-          model: 'gpt-3.5-turbo',
-          messages: [
-            {
-              role: 'user',
-              content: `Faça dois paragrafos sobre uma empresa de advocacia chamada ${nome}`
-            }
-          ]
-        }, {
-          headers: {
-            'Authorization': `Bearer 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`,
-            'Content-Type': 'application/json'
-          }
-        });
+        const result = await axios.post(
+          'https://api.openai.com/v1/chat/completions',
+          {
+            model: 'gpt-3.5-turbo',
+            messages: [
+              {
+                role: 'user',
+                content: `Faça dois paragrafos sobre uma empresa de advocacia chamada ${nome}`,
+              },
+            ],
+          },
+          {
+            headers: {
+              Authorization: `Bearer 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`,
+              'Content-Type': 'application/json',
+            },
+          },
+        );
 
         setResponse(result.data.choices[0].message.content);
       } catch (error) {
@@ -72,14 +74,13 @@ function Template01({ isVisible01 }: Template01Props) {
 
   console.log(response);
 
-
   // MIDJOURNEY
 
   const url = 'https://api.thenextleg.io/';
 
   const corpoDaSolicitacao = {
-    cmd: "imagine",
-    msg: "Um banner sofisticado para o site institucional de um escritório de advocacia corporativo, apresentando uma vista panorâmica de um horizonte de cidade agitada ao anoitecer, com arranha-céus altos iluminados por luzes douradas, um rio tranquilo fluindo em primeiro plano, e uma ponte proeminente conectando ambos os lados, evocando um sentimento de progresso e conectividade. O clima é elegante e profissional, transmitindo confiança e autoridade. O estilo é fotografia, capturada com uma câmera DSLR de quadro completo usando uma lente grande angular, aumentando a sensação de grandiosidade e profundidade, realista --ar 16:9"
+    cmd: 'imagine',
+    msg: 'Um banner sofisticado para o site institucional de um escritório de advocacia corporativo, apresentando uma vista panorâmica de um horizonte de cidade agitada ao anoitecer, com arranha-céus altos iluminados por luzes douradas, um rio tranquilo fluindo em primeiro plano, e uma ponte proeminente conectando ambos os lados, evocando um sentimento de progresso e conectividade. O clima é elegante e profissional, transmitindo confiança e autoridade. O estilo é fotografia, capturada com uma câmera DSLR de quadro completo usando uma lente grande angular, aumentando a sensação de grandiosidade e profundidade, realista --ar 16:9',
   };
 
   const config = {
@@ -87,9 +88,9 @@ function Template01({ isVisible01 }: Template01Props) {
     url: url,
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ab9ba449-948d-436e-aa5d-44573d622523'
+      Authorization: 'Bearer ab9ba449-948d-436e-aa5d-44573d622523',
     },
-    data: corpoDaSolicitacao
+    data: corpoDaSolicitacao,
   };
 
   let messageId: any;
@@ -101,12 +102,18 @@ function Template01({ isVisible01 }: Template01Props) {
       console.log(`O messageId é: ${messageId}`);
 
       // Busca as requisições no webhook.site
-      axios.get(`https://webhook.site/token/3e24f805-8c12-4739-80ad-f61e295afa43/requests`)
+      axios
+        .get(`http://localhost:3001/webhookData`)
         .then(function (response) {
+          console.log(response);
           const requests = response.data.data;
 
           // Procura pela requisição com o 'originatingMessageId' correspondente
-          const matchingRequest = requests.find((request: { content: { originatingMessageId: any; }; }) => request.content && request.content.originatingMessageId === messageId);
+          const matchingRequest = requests.find(
+            (request: { content: { originatingMessageId: any } }) =>
+              request.content &&
+              request.content.originatingMessageId === messageId,
+          );
 
           let imageUrl = matchingRequest.content.imageUrl;
 
@@ -142,9 +149,7 @@ function Template01({ isVisible01 }: Template01Props) {
             <LogoTemplate src="./images/template01/about.png" alt="Sobre nós" />
             <div>
               <h2>Sobre Nós</h2>
-              <p>
-                {response}
-              </p>
+              <p>{response}</p>
             </div>
           </Info>
         </section>
