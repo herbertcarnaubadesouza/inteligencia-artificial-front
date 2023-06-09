@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { FontOne, FontThree, FontTwo, PaletteOne } from '../Theme';
 import './leftside.scss';
@@ -6,6 +5,9 @@ import './leftside.scss';
 import Template01 from '../Template01';
 import Template02 from '../Template02';
 import Template03 from '../Template03';
+
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 export function useLeftSide() {
   const [isVisible01, setIsVisible01] = useState(true);
@@ -38,7 +40,8 @@ export function useLeftSide() {
     setCurrentFont(FontThree);
   };
 
-  console.log(currentPalette);
+
+
 
   const jsx = (
     <ThemeProvider theme={{ ...currentPalette, font: currentFont }}>

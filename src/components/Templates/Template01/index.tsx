@@ -24,14 +24,7 @@ import {
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-// const getGpt3Response = async (input: string) => {
-//   const response = await axios.post('/api/gpt3', { input });
-//   return response.data;
-// };
 
-// getGpt3Response('Olá, mundo!').then(response => {
-//   console.log(response);
-// });
 
 interface Template01Props {
   isVisible01: boolean;
@@ -57,7 +50,7 @@ function Template01({ isVisible01 }: Template01Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization: `Bearer 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`,
               'Content-Type': 'application/json',
             },
           },
@@ -72,70 +65,133 @@ function Template01({ isVisible01 }: Template01Props) {
     getResponse();
   }, []);
 
-  console.log(response);
 
   // MIDJOURNEY
 
-  const url = 'https://api.thenextleg.io/';
+  const [imageUrl, setImageUrl] = useState('');
 
-  const corpoDaSolicitacao = {
-    cmd: 'imagine',
-    msg: 'Um banner sofisticado para o site institucional de um escritório de advocacia corporativo, apresentando uma vista panorâmica de um horizonte de cidade agitada ao anoitecer, com arranha-céus altos iluminados por luzes douradas, um rio tranquilo fluindo em primeiro plano, e uma ponte proeminente conectando ambos os lados, evocando um sentimento de progresso e conectividade. O clima é elegante e profissional, transmitindo confiança e autoridade. O estilo é fotografia, capturada com uma câmera DSLR de quadro completo usando uma lente grande angular, aumentando a sensação de grandiosidade e profundidade, realista --ar 16:9',
-  };
+  useEffect(() => {
+    const url = 'https://api.thenextleg.io/';
 
-  const config = {
-    method: 'post',
-    url: url,
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: 'Bearer ab9ba449-948d-436e-aa5d-44573d622523',
-    },
-    data: corpoDaSolicitacao,
-  };
+    const corpoDaSolicitacao = {
+      cmd: 'imagine',
+      msg: ' A successful law firms executive office with floor-to-ceiling windows overlooking a bustling cityscape, polished mahogany furniture, elegant leather chairs, a large oak desk with a computer and legal documents neatly arranged, a panoramic view of the citys skyline, conveying a sense of power and professionalism, Photography, wide-angle lens (24mm) --ar 16:9',
+    };
 
-  let messageId: any;
+    const config = {
+      method: 'post',
+      url: url,
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ab9ba449-948d-436e-aa5d-44573d622523',
+      },
+      data: corpoDaSolicitacao,
+    };
 
-  axios(config)
-    .then(function (response) {
-      console.log(response.data);
-      messageId = response.data.messageId;
-      console.log(`O messageId é: ${messageId}`);
+    let messageId: any;
 
-      // Adiciona um delay de 30 segundos
-      setTimeout(() => {
-        // Busca as requisições no webhook.site
-        axios
-          .get(`http://localhost:3001/webhookData`)
-          .then(function (response) {
-            console.log(response);
-            const requests = response.data.data;
+    axios(config)
+      .then(function (response) {
+        messageId = response.data.messageId;
+        console.log(`O messageId é: ${messageId}`);
 
-            // Procura pela requisição com o 'originatingMessageId' correspondente
-            const matchingRequest = requests.find(
-              (request: { content: { originatingMessageId: any } }) =>
-                request.content &&
-                request.content.originatingMessageId === messageId,
-            );
+        // Adiciona um delay de 30 segundos
+        setTimeout(() => {
+          // Busca as requisições no webhook.site
+          axios
+            .get(`http://localhost:3001/webhookData`)
+            .then(function (response) {
+              const requests = response.data.data;
+              console.log(requests);
 
-            if (matchingRequest) {
-              let imageUrl = matchingRequest.content.imageUrl;
-              console.log('URL da imagem: ', imageUrl);
-            } else {
-              console.log('Nenhuma requisição correspondente encontrada');
-            }
-          })
-          .catch(function (error) {
-            console.log('Erro ao buscar requisições: ', error);
-          });
-      }, 60000); // 30 segundos de delay
-    })
-    .catch(function (error) {
-      console.log('Erro:', error);
-    });
+              // Procura pela requisição com o 'originatingMessageId' correspondente
+              const matchingRequest = requests.find(
+                (request: any) => {
+                  if (request.content) {
+                    const content = JSON.parse(request.content); // Converte a string JSON em objeto
+                    return content.originatingMessageId === messageId;
+                  }
+                  return false;
+                }
+              );
+
+              if (matchingRequest) {
+                const content = JSON.parse(matchingRequest.content); // Converte a string JSON em objeto
+                const buttonMessageId = content.buttonMessageId;
+                console.log('ButtonMessageId: ', buttonMessageId);
+
+                // Cria uma nova requisição para https://api.thenextleg.io/
+                axios
+                  .post(
+                    'https://api.thenextleg.io/',
+                    {
+                      "button": "U1",
+                      "buttonMessageId": buttonMessageId
+                    },
+                    {
+                      headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ab9ba449-948d-436e-aa5d-44573d622523',
+                      },
+                    }
+                  )
+                  .then(function (response) {
+                    console.log('Resposta da API thenextleg: ', response.data);
+                    messageId = response.data.messageId;
+                    console.log("Novo message Id:", messageId);
+
+                    // Adiciona um novo delay de 75 segundos
+                    setTimeout(() => {
+                      // Faz uma nova chamada para buscar as requisições no webhook.site
+                      axios
+                        .get(`http://localhost:3001/webhookData`)
+                        .then(function (response) {
+                          const newRequests = response.data.data;
+                          const newMatchingRequest = newRequests.find(
+                            (request: any) => {
+                              if (request.content) {
+                                const content = JSON.parse(request.content);
+                                return content.originatingMessageId === messageId;
+                              }
+                              return false;
+                            }
+                          );
+
+                          if (newMatchingRequest) {
+                            let content = JSON.parse(newMatchingRequest.content);
+                            let imageUrl = content.imageUrl;
+                            console.log('URL da imagem: ', imageUrl);
+                            setImageUrl(imageUrl);
+                          } else {
+                            console.log('Nenhuma requisição correspondente encontrada');
+                          }
+                        })
+                        .catch(function (error) {
+                          console.log('Erro ao buscar novas requisições: ', error);
+                        });
+                    }, 75000);
+                  })
+                  .catch(function (error) {
+                    console.log('Erro na requisição para API thenextleg: ', error);
+                  });
+
+              } else {
+                console.log('Nenhuma requisição correspondente encontrada');
+              }
+            })
+            .catch(function (error) {
+              console.log('Erro ao buscar requisições: ', error);
+            });
+        }, 75000);
+      })
+      .catch(function (error) {
+        console.log('Erro:', error);
+      });
+  }, []);
 
   return (
     <Container>
-      <HeaderFooter as="header">
+      <HeaderFooter bgImage={imageUrl} as="header">
         <h1>Advogados de Defesa Criminal</h1>
         <Line></Line>
         <h2>

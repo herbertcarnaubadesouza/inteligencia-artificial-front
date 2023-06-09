@@ -108,9 +108,7 @@ function Question07(props: Question07Props) {
     try {
       const results = await geocodeByAddress(address);
       const latLng = await getLatLng(results[0]);
-      console.log('Endereço selecionado:', address);
-      console.log('Latitude:', latLng.lat);
-      console.log('Longitude:', latLng.lng);
+
     } catch (error) {
       console.error('Erro ao obter latitude e longitude:', error);
     }

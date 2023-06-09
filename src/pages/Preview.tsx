@@ -1,5 +1,5 @@
 // Arquivo Home.js ou Home.tsx
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import RightSide from '../components/Templates/RightSide';
 
 function Preview() {
@@ -14,6 +14,8 @@ function Preview() {
   const exibirQuestion02 = () => {
     setIsQuestion02Visible(true);
   };
+
+
 
   return (
     <>

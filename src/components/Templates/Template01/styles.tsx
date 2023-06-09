@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { mix } from 'polished';
+
 
 interface FontProps {
   fontFamily: string;
@@ -36,14 +38,14 @@ const Container = styled.div`
   }
 `;
 
-const HeaderFooter = styled.div`
+const HeaderFooter = styled.div<{ bgImage?: string }>`
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   width: 100%;
   position: relative;
-  background-image: url('./images/template01/bg01.png');
+  background-image: url('https://cdn.discordapp.com/attachments/1116206739373691010/1116573743058268180/ThomasiWilson1_A_successful_law_firms_executive_office_with_flo_acf05fba-84f6-4416-bf37-b27f5d02a190.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -60,8 +62,9 @@ const HeaderFooter = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 20%;
-    background-color: ${(props: ThemeProps) => props.theme.headerFooterBgColor};
+    opacity: 50%;
+    background-color: ${(props: ThemeProps) =>
+    mix(0.6, '#000', props.theme.headerFooterBgColor)};
   }
 
   h1 {

@@ -112,9 +112,7 @@ function Question04(props: Question04Props) {
     try {
       const results = await geocodeByAddress(address);
       const latLng = await getLatLng(results[0]);
-      console.log('Endereço selecionado:', address);
-      console.log('Latitude:', latLng.lat);
-      console.log('Longitude:', latLng.lng);
+
     } catch (error) {
       console.error('Erro ao obter latitude e longitude:', error);
     }
@@ -272,11 +270,10 @@ function Question04(props: Question04Props) {
                     </div>
                   </div>
                   <div
-                    className={`adress-container ${
-                      isPhysicalCompanySelected || isServiceAreaSelected
+                    className={`adress-container ${isPhysicalCompanySelected || isServiceAreaSelected
                         ? ''
                         : 'inactive'
-                    }`}
+                      }`}
                   >
                     <p className="adress-label">
                       Insira endereço da sua empresa
