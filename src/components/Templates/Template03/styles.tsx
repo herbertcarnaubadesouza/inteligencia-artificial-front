@@ -226,24 +226,24 @@ export const LineAboutSection = styled.div`
 `;
 
 export const IconSection = styled.section`
-width: 100%;
-.Container-blocks{
-  padding-block: 5rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 5rem;
-  background-color: ${(props: ThemeProps) =>
-        mix(0.8, '#d4d2d21c', props.theme.headerFooterBgColor)};
+  width: 100%;
+  .Container-blocks {
+    padding-block: 5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5rem;
+    background-color: ${(props: ThemeProps) =>
+      mix(0.8, '#d4d2d21c', props.theme.headerFooterBgColor)};
   }
-  .meta-icons{
+  .meta-icons {
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 10px;
     align-items: center;
 
-    h3{
+    h3 {
       font-size: 27px;
       color: ${(props: ThemeProps) =>
         mix(0.8, '#252424c5', props.theme.headerFooterBgColor)};
@@ -258,9 +258,9 @@ width: 100%;
     }
   }
   svg {
-      fill: ${(props: ThemeProps) => props.theme.fontTitleColor};
-    }
-  `;
+    fill: ${(props: ThemeProps) => props.theme.fontTitleColor};
+  }
+`;
 
 export const AwardsSection = styled.section`
   display: flex;
@@ -272,11 +272,10 @@ export const AwardsSection = styled.section`
 `;
 
 export const HeaderAwards = styled.section`
-display: flex;
-flex-direction: column;
-gap: 0.1rem;
-  .header-awards{
-
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  .header-awards {
     h2,
     h3 {
       color: ${(props: ThemeProps) =>
@@ -294,36 +293,34 @@ gap: 0.1rem;
       font-weight: 500;
     }
     p {
-    color: ${(props: ThemeProps) =>
-      mix(0.8, '#555555ca', props.theme.headerFooterBgColor)};
-    width:45%;
-    font-weight: 400;
-    line-height: 1.5rem;
+      color: ${(props: ThemeProps) =>
+        mix(0.8, '#555555ca', props.theme.headerFooterBgColor)};
+      width: 45%;
+      font-weight: 400;
+      line-height: 1.5rem;
     }
   }
-
 `;
 
 export const AwardsRow1 = styled.section`
-margin-top: 30px;
-display: flex;
-flex-direction: row;
-gap: 1rem;
-justify-content: center;
-
-
-.awards-block{
-  display:flex;
-  flex-direction: column;
-  margin-right: 20px;
-  background-color: ${(props: ThemeProps) =>
-      mix( 0.95, '#d9d9d912', props.theme.headerFooterBgColor)};
-  border-radius: 15px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
   gap: 1rem;
-  padding: 20px;
-  box-shadow: 0 25px 80px -10px rgba(23.469701086956523,24.000447704985824,25.5,.15);
+  justify-content: center;
 
-  img{
+  .awards-block {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+    background-color: ${(props: ThemeProps) =>
+      mix(0.95, '#d9d9d912', props.theme.headerFooterBgColor)};
+    border-radius: 15px;
+    gap: 1rem;
+    padding: 20px;
+    box-shadow: 0 25px 80px -10px rgba(23.469701086956523, 24.000447704985824, 25.5, 0.15);
+
+    img {
       width: 60px;
       height: auto;
     }
@@ -346,13 +343,13 @@ justify-content: center;
     }
 
     p {
-    color: ${(props: ThemeProps) =>
-      mix(0.8, '#555555ca', props.theme.headerFooterBgColor)};
-    width:80%;
-    font-weight: 400;
-    line-height: 1.5rem;
+      color: ${(props: ThemeProps) =>
+        mix(0.8, '#555555ca', props.theme.headerFooterBgColor)};
+      width: 80%;
+      font-weight: 400;
+      line-height: 1.5rem;
+    }
   }
-}
 `;
 
 export const LineAwardsSection = styled.div`
@@ -368,7 +365,7 @@ export const PraticaceSection = styled.div`
   align-items: center;
   justify-content: space-between;
   background-color: ${(props: ThemeProps) =>
-      mix( 0.95, '#d9d9d912', props.theme.headerFooterBgColor)};;
+    mix(0.95, '#d9d9d912', props.theme.headerFooterBgColor)};
   padding-block: 100px;
   padding-left: 6rem;
   padding-right: 8.2rem;
@@ -380,12 +377,14 @@ export const LeftAwardBlock = styled.div`
   width: 70%;
   gap: 0.5rem;
 
-  img{
+  img {
     margin-top: 30px;
     width: 507px;
     height: 338px;
     object-fit: cover;
-    box-shadow: 40px 40px 0 0 ${(props: ThemeProps) => mix(0.1, '#ffffffc6', props.theme.headerFooterBgColor)};
+    box-shadow: 40px 40px 0 0
+      ${(props: ThemeProps) =>
+        mix(0.1, '#ffffffc6', props.theme.headerFooterBgColor)};
   }
 
   p {
@@ -401,12 +400,11 @@ export const RigthAwardBlock = styled.div`
   flex-direction: column;
   width: 30%;
   gap: 2.5rem;
-  
-  .Areas-block{ 
+
+  .Areas-block {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-
 
     h2 {
       font-weight: 500;
@@ -420,11 +418,11 @@ export const RigthAwardBlock = styled.div`
     }
 
     p {
-    color: #3a3a3a;
-    font-weight: 400;
-    line-height: 1.5rem;
-    width: 90%;
-  }
+      color: #3a3a3a;
+      font-weight: 400;
+      line-height: 1.5rem;
+      width: 90%;
+    }
   }
 `;
 
@@ -434,8 +432,115 @@ export const HowWorksSection = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
+  width: 100%;
+  height: 800px;
 `;
 
 export const HowWorksHeaderSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 60%;
+  gap: 10px;
 
+  .Header-How-Work {
+    margin: 0 auto;
+    height: 50%;
+    width: 90%;
+  }
+  .containe-title {
+    width: 100%;
+    height: 200px;
+    margin-top: 60px;
+
+    h2 {
+      text-align: center;
+      font-size: 45px;
+
+      margin-bottom: 40px;
+    }
+
+    p {
+      text-align: center;
+      margin: 0 auto;
+      text-align: center;
+      width: 60%;
+      font-size: 22px;
+
+      color: #000;
+    }
+  }
+
+  .container-works-pai {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    .container-works {
+      width: 33%;
+      height: 270px;
+      background-color: ${(props: ThemeProps) =>
+        mix(0.95, '#d9d9d912', props.theme.headerFooterBgColor)};
+      justify-content: space-a;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      border-radius: 7%;
+
+      h1 {
+        margin-top: 20px;
+        height: 33%;
+        width: 100%;
+        text-align: center;
+        font-size: 70px;
+        color: #b7bfc9;
+      }
+      h2 {
+        height: 15%;
+        font-size: 25px;
+        color: #000000;
+      }
+      p {
+        height: 40%;
+        width: 85%;
+        text-align: center;
+        margin: 0 auto;
+        font-size: 18px;
+
+        color: ${(props: ThemeProps) =>
+          mix(0.8, '#555555ca', props.theme.headerFooterBgColor)};
+      }
+    }
+  }
+
+  .container-btn {
+    width: 100%;
+    height: 80px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-top: 20px;
+
+    .btn {
+      width: 200px;
+      height: 50px;
+      border: none;
+      font-size: 20px;
+      border-radius: 10px;
+      background-color: ${(props: ThemeProps) => props.theme.fontTitleColor};
+      color: #fff;
+      cursor: pointer;
+      font-family: ${(props: ThemeProps) => props.theme.font.fontFamily};
+
+      &:hover {
+        background-color: #f9c349;
+      }
+    }
+  }
 `;
+
+export const HowLocationSection = styled.div``;

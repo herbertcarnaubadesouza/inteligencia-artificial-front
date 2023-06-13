@@ -18,8 +18,15 @@ import {
   PraticaceSection,
   RightSideBlock,
   RigthAwardBlock,
+  HowLocationSection,
 } from './styles';
-import { BagSimple, Buildings, Hammer, Scales } from '@phosphor-icons/react';
+import {
+  BagSimple,
+  Buildings,
+  Hammer,
+  Scales,
+  MapPin,
+} from '@phosphor-icons/react';
 
 interface Template03Props {
   isVisible03: boolean;
@@ -79,161 +86,252 @@ function Template03({ isVisible03 }: Template03Props) {
         </RightSideBlock>
       </AboutSection>
       <IconSection>
-        <div className='Container-blocks'>
+        <div className="Container-blocks">
           <div className="meta-icons">
-          <Scales size={50} weight="fill" />
-          <h3>120+</h3>
-          <p>Casos Resolvidos</p>
+            <Scales size={50} weight="fill" />
+            <h3>120+</h3>
+            <p>Casos Resolvidos</p>
           </div>
 
           <div className="meta-icons">
-          <Hammer size={50} weight="fill" />
-          <h3>120+</h3>
-          <p>Clientes Satisfeitos</p>
+            <Hammer size={50} weight="fill" />
+            <h3>120+</h3>
+            <p>Clientes Satisfeitos</p>
           </div>
 
           <div className="meta-icons">
-          <Buildings size={50} weight="fill" />
-          <h3>120+</h3>
-          <p>Escritorios</p>
+            <Buildings size={50} weight="fill" />
+            <h3>120+</h3>
+            <p>Escritorios</p>
           </div>
 
           <div className="meta-icons">
-          <BagSimple size={50} weight="fill" />
-          <h3>120+</h3>
-          <p>Associados Legais</p>
+            <BagSimple size={50} weight="fill" />
+            <h3>120+</h3>
+            <p>Associados Legais</p>
           </div>
         </div>
       </IconSection>
       <AwardsSection>
-      <LineAwardsSection></LineAwardsSection>
+        <LineAwardsSection></LineAwardsSection>
         <HeaderAwards>
-          <div className='header-awards'>
-          <h2>Prêmios e reconhecimentos</h2>
-          <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque.</p>
-        </div>
+          <div className="header-awards">
+            <h2>Prêmios e reconhecimentos</h2>
+            <p>
+              Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+              posuere cubilia Curae; Donec velit neque.
+            </p>
+          </div>
         </HeaderAwards>
 
         <AwardsRow1>
+          <div className="awards-block">
+            <img src="./images/template03/award5.png" alt="" />
+            <h3>Prêmio de Melhor Escritório de Advocacia</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
+              tellus, luctus nec ullamcorper mattis.
+            </p>
+          </div>
 
-        <div className='awards-block'>
-        <img src="./images/template03/award5.png" alt="" />
-        <h3>Prêmio de Melhor Escritório de Advocacia</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
-        </div>
+          <div className="awards-block">
+            <img src="./images/template03/award5.png" alt="" />
+            <h3>Prêmio de Melhor Escritório de Advocacia</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
+              tellus, luctus nec ullamcorper mattis.
+            </p>
+          </div>
 
-        <div className='awards-block'>
-        <img src="./images/template03/award5.png" alt="" />
-        <h3>Prêmio de Melhor Escritório de Advocacia</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
-        </div>
-
-        <div className='awards-block'>
-        <img src="./images/template03/award5.png" alt="" />
-        <h3>Prêmio de Melhor Escritório de Advocacia</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
-        </div>
-
+          <div className="awards-block">
+            <img src="./images/template03/award5.png" alt="" />
+            <h3>Prêmio de Melhor Escritório de Advocacia</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
+              tellus, luctus nec ullamcorper mattis.
+            </p>
+          </div>
         </AwardsRow1>
 
         <AwardsRow1>
+          <div className="awards-block">
+            <img src="./images/template03/award5.png" alt="" />
+            <h3>Prêmio de Melhor Escritório de Advocacia</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
+              tellus, luctus nec ullamcorper mattis.
+            </p>
+          </div>
 
-        <div className='awards-block'>
-        <img src="./images/template03/award5.png" alt="" />
-        <h3>Prêmio de Melhor Escritório de Advocacia</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
-        </div>
+          <div className="awards-block">
+            <img src="./images/template03/award5.png" alt="" />
+            <h3>Prêmio de Melhor Escritório de Advocacia</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
+              tellus, luctus nec ullamcorper mattis.
+            </p>
+          </div>
 
-        <div className='awards-block'>
-        <img src="./images/template03/award5.png" alt="" />
-        <h3>Prêmio de Melhor Escritório de Advocacia</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
-        </div>
-
-        <div className='awards-block'>
-        <img src="./images/template03/award5.png" alt="" />
-        <h3>Prêmio de Melhor Escritório de Advocacia</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
-        </div>
-
+          <div className="awards-block">
+            <img src="./images/template03/award5.png" alt="" />
+            <h3>Prêmio de Melhor Escritório de Advocacia</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
+              tellus, luctus nec ullamcorper mattis.
+            </p>
+          </div>
         </AwardsRow1>
 
-      
-      <div className='awards-row2'>
-
-      </div>
+        <div className="awards-row2"></div>
       </AwardsSection>
 
       <PraticaceSection>
+        <LeftAwardBlock>
+          <LineAwardsSection></LineAwardsSection>
+          <h2>Nossas Áreas de Atuação</h2>
+          <p>
+            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+            posuere cubilia Curae; Donec velit neque.
+          </p>
+          <img src="./images/template03/practiceareas1.jpg" alt="" />
+        </LeftAwardBlock>
 
-      <LeftAwardBlock>
+        <RigthAwardBlock>
+          <div className="Areas-block">
+            <h3>Separação e Divórcio</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
+              tellus, luctus nec ullamcorper mattis.
+            </p>
+          </div>
 
-      <LineAwardsSection></LineAwardsSection>
-        <h2>Nossas Áreas de Atuação</h2>
-        <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque.</p>
-        <img src="./images/template03/practiceareas1.jpg" alt="" />
+          <div className="Areas-block">
+            <h3>Custódia da criança</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
+              tellus, luctus nec ullamcorper mattis.
+            </p>
+          </div>
 
-      </LeftAwardBlock>
-        
-      <RigthAwardBlock>
-      <div className='Areas-block'>
-          <h3>Separação e Divórcio</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
-        </div>
-        
-        <div className='Areas-block'>
-          <h3>Custódia da criança</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
-        </div>
-        
-        <div className='Areas-block'>
-          <h3>Pensão alimentícia</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
-        </div>
-        
-        <div className='Areas-block'>
-          <h3>Apoio do cônjuge</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
-        </div>
-        
-      </RigthAwardBlock>
+          <div className="Areas-block">
+            <h3>Pensão alimentícia</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
+              tellus, luctus nec ullamcorper mattis.
+            </p>
+          </div>
 
-      <RigthAwardBlock>
-      <div className='Areas-block'>
-          <h3>Assuntos Internacionais</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
-        </div>
-        
-        <div className='Areas-block'>
-          <h3>Apelações de direito de família</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
-        </div>
-        
-        <div className='Areas-block'>
-          <h3>Proteção de patrimônio</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
-        </div>
-        
-        <div className='Areas-block'>
-          <h3>Serviços de alto patrimônio líquido</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
-        </div>
-        
-      </RigthAwardBlock>
+          <div className="Areas-block">
+            <h3>Apoio do cônjuge</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
+              tellus, luctus nec ullamcorper mattis.
+            </p>
+          </div>
+        </RigthAwardBlock>
+
+        <RigthAwardBlock>
+          <div className="Areas-block">
+            <h3>Assuntos Internacionais</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
+              tellus, luctus nec ullamcorper mattis.
+            </p>
+          </div>
+
+          <div className="Areas-block">
+            <h3>Apelações de direito de família</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
+              tellus, luctus nec ullamcorper mattis.
+            </p>
+          </div>
+
+          <div className="Areas-block">
+            <h3>Proteção de patrimônio</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
+              tellus, luctus nec ullamcorper mattis.
+            </p>
+          </div>
+
+          <div className="Areas-block">
+            <h3>Serviços de alto patrimônio líquido</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
+              tellus, luctus nec ullamcorper mattis.
+            </p>
+          </div>
+        </RigthAwardBlock>
       </PraticaceSection>
 
       <HowWorksSection>
         <LineAwardsSection></LineAwardsSection>
-      <HowWorksHeaderSection>
-
-        <div className="Header-How-Work">
-          <h2>Como trabalhamos</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-        </div>
-
-      </HowWorksHeaderSection>
+        <HowWorksHeaderSection>
+          <div className="Header-How-Work">
+            <div className="containe-title">
+              <h2>Como trabalhamos </h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
+                tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+              </p>
+            </div>
+          </div>
+          <div className="Header-How-Work">
+            <div className="container-works-pai">
+              <div className="container-works">
+                <h1>01</h1>
+                <h2>Consulta sobre</h2>
+                <p>
+                  Vestibulum ante ipsum primis in faucibus orci luctus et
+                  ultrices posuere cubilia Curae; Donec velit neque.
+                </p>
+              </div>
+              <div className="container-works">
+                <h1>02</h1>
+                <h2>Tome uma atitude</h2>
+                <p>
+                  Vestibulum ante ipsum primis in faucibus orci luctus et
+                  ultrices posuere cubilia Curae; Donec velit neque.
+                </p>
+              </div>
+              <div className="container-works">
+                <h1>03</h1>
+                <h2>Criar estratégias</h2>
+                <p>
+                  Vestibulum ante ipsum primis in faucibus orci luctus et
+                  ultrices posuere cubilia Curae; Donec velit neque.
+                </p>
+              </div>
+            </div>
+            <div className="container-btn">
+              <button className="btn"> LETS DISCUSS</button>
+            </div>
+          </div>
+        </HowWorksHeaderSection>
       </HowWorksSection>
-
+      <HowLocationSection>
+        <div className="container-location">
+          <div className="container-title">
+            <h1> Locais de escritórios</h1>
+            <p>
+              {' '}
+              Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+              posuere cubilia Curae; Donec velit neque.
+            </p>
+          </div>
+          <div className="continer-modalLocation">
+            <h3>Montreal </h3>
+            <p>Howe St, Vancouver, BC VZS</p>
+            <p>2S8, Canada.</p>
+            <p> +1 12345 67890</p>
+            <p>
+              {' '}
+              <Hammer size={50} weight="fill" />
+            </p>
+          </div>
+        </div>
+      </HowLocationSection>
     </Container>
   );
 }
