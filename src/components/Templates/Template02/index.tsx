@@ -38,10 +38,13 @@ interface Template02Props {
   isVisible02: boolean;
 }
 
+const bannerUrl = localStorage.getItem("bannerTemplate02");
+console.log("dois", bannerUrl);
+const bannerImage = typeof bannerUrl === "string" ? bannerUrl : undefined;
 function Template02({ isVisible02 }: Template02Props) {
   return (
     <Container>
-      <HeaderBlock>
+      <HeaderBlock bgImage={bannerImage}>
         <div className="container-block-header">
           <LineHeader></LineHeader>
           <span>Comprometidos em ajudar nossos clientes a ter sucesso</span>
@@ -112,7 +115,7 @@ function Template02({ isVisible02 }: Template02Props) {
                 <h3>Divórcio e Separação</h3>
                 <text>
                   This is a short description elaborating the service you have
-                  mentioned above.​
+                  mentioned above.
                 </text>
               </div>
               <div className="content-block-atuacao">
@@ -120,7 +123,7 @@ function Template02({ isVisible02 }: Template02Props) {
                 <h3>Direitos dos avós</h3>
                 <text>
                   This is a short description elaborating the service you have
-                  mentioned above.​
+                  mentioned above.
                 </text>
               </div>
               <div className="content-block-atuacao">
@@ -128,7 +131,7 @@ function Template02({ isVisible02 }: Template02Props) {
                 <h3>Custódia de criança</h3>
                 <text>
                   This is a short description elaborating the service you have
-                  mentioned above.​
+                  mentioned above.
                 </text>
               </div>
               <div className="content-block-atuacao">
@@ -136,7 +139,7 @@ function Template02({ isVisible02 }: Template02Props) {
                 <h3>Domestic Violence​​</h3>
                 <text>
                   This is a short description elaborating the service you have
-                  mentioned above.​
+                  mentioned above.
                 </text>
               </div>
             </Row>
@@ -146,7 +149,7 @@ function Template02({ isVisible02 }: Template02Props) {
                 <h3>Casamento/Uniões Civis​</h3>
                 <text>
                   This is a short description elaborating the service you have
-                  mentioned above.​
+                  mentioned above.
                 </text>
               </div>
               <div className="content-block-atuacao">
@@ -154,7 +157,7 @@ function Template02({ isVisible02 }: Template02Props) {
                 <h3>Adoção e barriga de aluguel​</h3>
                 <text>
                   This is a short description elaborating the service you have
-                  mentioned above.​
+                  mentioned above.
                 </text>
               </div>
               <div className="content-block-atuacao">
@@ -162,7 +165,7 @@ function Template02({ isVisible02 }: Template02Props) {
                 <h3>Acordos de propriedade​​​</h3>
                 <text>
                   This is a short description elaborating the service you have
-                  mentioned above.​
+                  mentioned above.
                 </text>
               </div>
               <div className="content-block-atuacao">

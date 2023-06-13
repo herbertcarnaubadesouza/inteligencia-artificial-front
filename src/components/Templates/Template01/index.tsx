@@ -24,13 +24,20 @@ import {
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-
+import { collection, db, getDoc, doc } from "../../../firebase";
+import { getDocs } from "firebase/firestore";
+import { deleteDoc } from "firebase/firestore";
 
 interface Template01Props {
   isVisible01: boolean;
 }
 
+interface Template01 {
+  imgUrl: string;
+}
+
 function Template01({ isVisible01 }: Template01Props) {
+
   const [response, setResponse] = useState(null);
   const [domesticBurglary, setDomesticBurglaryResponse] = useState(null);
   const [gunCrimesResponse, setGunCrimesResponse] = useState(null);
@@ -71,7 +78,7 @@ function Template01({ isVisible01 }: Template01Props) {
     getResponse();
   }, []);
 
-    useEffect(() => {
+  useEffect(() => {
     const getdomesticBurglary = async () => {
       try {
         const result = await axios.post(
@@ -257,510 +264,179 @@ function Template01({ isVisible01 }: Template01Props) {
     getHarassmentCrimeResponse();
   }, []);
 
-  
 
-
-  // MIDJOURNEY 
-
+  // BANNER 
+  const [banner, setBanner] = useState<Template01[]>([]);
   const [imageUrl, setImageUrl] = useState('');
+  const [secondImageUrl, setSecondImageUrl] = useState('');
+  const [thirdImageUrl, setThirdImageUrl] = useState('');
+  const [bannerId, setBannerId] = useState('');
+  const [secondBannerId, setSecondBannerId] = useState('');
+  const [thirdBannerId, setThirdBannerId] = useState('');
+
   useEffect(() => {
-    const url = 'https://api.thenextleg.io/';
+    const fetchData = async () => {
 
-    const corpoDaSolicitacao = {
-      cmd: 'imagine',
-      msg: ' A successful law firms executive office with floor-to-ceiling windows overlooking a bustling cityscape, polished mahogany furniture, elegant leather chairs, a large oak desk with a computer and legal documents neatly arranged, a panoramic view of the citys skyline, conveying a sense of power and professionalism, Photography, wide-angle lens (24mm) --ar 16:9',
-    };
+      const advogadoDocRef = doc(db, "sites", "advogado");
+      const bannerCollectionRef = collection(advogadoDocRef, "banner");
+      const bannerSnapshot = await getDocs(bannerCollectionRef);
 
-    const config = {
-      method: 'post',
-      url: url,
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ab9ba449-948d-436e-aa5d-44573d622523',
-      },
-      data: corpoDaSolicitacao,
-    };
+      let bannerList = bannerSnapshot.docs.map(doc => {
+        const data = doc.data();
 
-    let messageId: any;
-
-    axios(config)
-      .then(function (response) {
-        messageId = response.data.messageId;
-        console.log(`O messageId da Primeira: ${messageId}`);
-
-        // Adiciona um delay de 30 segundos
-        setTimeout(() => {
-          // Busca as requisições no webhook.site
-          axios
-            .get(`http://localhost:3001/webhookData`)
-            .then(function (response) {
-              const requests = response.data.data;
-              console.log(requests);
-
-              // Procura pela requisição com o 'originatingMessageId' correspondente
-              const matchingRequest = requests.find(
-                (request: any) => {
-                  if (request.content) {
-                    const content = JSON.parse(request.content); // Converte a string JSON em objeto
-                    return content.originatingMessageId === messageId;
-                  }
-                  return false;
-                }
-              );
-
-              if (matchingRequest) {
-                const content = JSON.parse(matchingRequest.content); // Converte a string JSON em objeto
-                const buttonMessageId = content.buttonMessageId;
-                console.log('ButtonMessageId da Primeira: ', buttonMessageId);
-
-                // Cria uma nova requisição para https://api.thenextleg.io/
-                axios
-                  .post(
-                    'https://api.thenextleg.io/',
-                    {
-                      "button": "U1",
-                      "buttonMessageId": buttonMessageId
-                    },
-                    {
-                      headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': 'Bearer ab9ba449-948d-436e-aa5d-44573d622523',
-                      },
-                    }
-                  )
-                  .then(function (response) {
-                    console.log('Resposta da API thenextleg: ', response.data);
-                    messageId = response.data.messageId;
-                    console.log("Novo message Id da Primeira:", messageId);
-
-                    // Adiciona um novo delay de 75 segundos
-                    setTimeout(() => {
-                      // Faz uma nova chamada para buscar as requisições no webhook.site
-                      axios
-                        .get(`http://localhost:3001/webhookData`)
-                        .then(function (response) {
-                          const newRequests = response.data.data;
-                          const newMatchingRequest = newRequests.find(
-                            (request: any) => {
-                              if (request.content) {
-                                const content = JSON.parse(request.content);
-                                return content.originatingMessageId === messageId;
-                              }
-                              return false;
-                            }
-                          );
-
-                          if (newMatchingRequest) {
-                            let content = JSON.parse(newMatchingRequest.content);
-                            let imageUrl = content.imageUrl;
-                            
-                            console.log('URL da imagem da Primeira: ', imageUrl)
-                            
-                        setImageUrl(imageUrl);
-                            
-                          } else {
-                            console.log('Nenhuma requisição correspondente encontrada da Primeira');
-                          }
-                        })
-                        .catch(function (error) {
-                          console.log('Erro ao buscar novas requisições da Primeira: ', error);
-                        });
-                    }, 75000);
-                  })
-                  .catch(function (error) {
-                    console.log('Erro na requisição para API thenextleg da Primeira: ', error);
-                  });
-
-              } else {
-                console.log('Nenhuma requisição correspondente encontrada da Primeira');
-              }
-            })
-            .catch(function (error) {
-              console.log('Erro ao buscar requisições da Primeira: ', error);
-            });
-        }, 75000);
-      })
-      .catch(function (error) {
-        console.log('Erro:', error);
+        const banner = {
+          id: doc.id,
+          imgUrl: data.imgUrl,
+        };
+        return banner;
       });
+
+      // BANNER TEMPLATE 01
+      const randomIndex = Math.floor(Math.random() * bannerList.length);
+      const randomBanner = bannerList[randomIndex];
+      setImageUrl(randomBanner.imgUrl);
+      setBannerId(randomBanner.id);
+
+      bannerList = bannerList.filter((_, index) => index !== randomIndex);
+
+      // BANNER TEMPLATE 02
+      const secondRandomIndex = Math.floor(Math.random() * bannerList.length);
+      const secondRandomBanner = bannerList[secondRandomIndex];
+      setSecondImageUrl(secondRandomBanner.imgUrl);
+      setSecondBannerId(secondRandomBanner.id);
+      localStorage.setItem("bannerTemplate02", secondImageUrl);
+
+      bannerList = bannerList.filter((_, index) => index !== secondRandomIndex);
+
+      // BANNER TEMPLATE 03
+      const thirdRandomIndex = Math.floor(Math.random() * bannerList.length);
+      const thirdRandomBanner = bannerList[thirdRandomIndex];
+      setThirdImageUrl(thirdRandomBanner.imgUrl);
+      setThirdBannerId(thirdRandomBanner.id);
+
+      localStorage.setItem("bannerTemplate03", thirdImageUrl);
+
+      setBanner(bannerList);
+    };
+
+    fetchData();
   }, []);
 
-  // SEGUNDA 
+
+  // ABOUT 
+  const [about, setAbout] = useState<Template01[]>([]);
   const [imageUrlSegunda, setImageUrlSegunda] = useState('');
+  const [secondImageUrlSegunda, setSecondImageUrlSegunda] = useState('');
+  const [thirdImageUrlSegunda, setThirdImageUrlSegunda] = useState('');
+  const [aboutId, setAboutId] = useState('');
+  const [secondAboutId, setSecondAboutId] = useState('');
+  const [thirdAboutId, setThirdAboutId] = useState('');
+
   useEffect(() => {
-    const url = 'https://api.thenextleg.io/';
+    const fetchData = async () => {
+      const advogadoDocRef = doc(db, "sites", "advogado");
+      const aboutCollectionRef = collection(advogadoDocRef, "subtitulo");
+      const aboutSnapshot = await getDocs(aboutCollectionRef);
 
-    const corpoDaSolicitacao = {
-      cmd: 'imagine',
-      msg: 'In a bustling metropolis, where the pillars of law and order hold society in balance, there stands an awe-inspiring statue of justice. Your task is to describe this statue in vivid detail, capturing its realism and conveying a sense of powerful symbolism, Photography, wide-angle lens (24mm) --ar 16:9',
-    };
+      let aboutList = aboutSnapshot.docs.map(doc => {
+        const data = doc.data();
 
-    const config = {
-      method: 'post',
-      url: url,
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ab9ba449-948d-436e-aa5d-44573d622523',
-      },
-      data: corpoDaSolicitacao,
-    };
+        const about = {
+          id: doc.id,
+          imgUrl: data.imgUrl,
+        };
 
-    let messageId: any;
-
-    axios(config)
-      .then(function (response) {
-        messageId = response.data.messageId;
-        console.log(`O messageId da Segunda é: ${messageId}`);
-
-        // Adiciona um delay de 30 segundos
-        setTimeout(() => {
-          // Busca as requisições no webhook.site
-          axios
-            .get(`http://localhost:3001/webhookData`)
-            .then(function (response) {
-              const requests = response.data.data;
-              console.log(requests);
-
-              // Procura pela requisição com o 'originatingMessageId' correspondente
-              const matchingRequest = requests.find(
-                (request: any) => {
-                  if (request.content) {
-                    const content = JSON.parse(request.content); // Converte a string JSON em objeto
-                    return content.originatingMessageId === messageId;
-                  }
-                  return false;
-                }
-              );
-
-              if (matchingRequest) {
-                const content = JSON.parse(matchingRequest.content); // Converte a string JSON em objeto
-                const buttonMessageId = content.buttonMessageId;
-                console.log('ButtonMessageId da Segunda: ', buttonMessageId);
-
-                // Cria uma nova requisição para https://api.thenextleg.io/
-                axios
-                  .post(
-                    'https://api.thenextleg.io/',
-                    {
-                      "button": "U1",
-                      "buttonMessageId": buttonMessageId
-                    },
-                    {
-                      headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': 'Bearer ab9ba449-948d-436e-aa5d-44573d622523',
-                      },
-                    }
-                  )
-                  .then(function (response) {
-                    console.log('Resposta da API thenextleg da Segunda: ', response.data);
-                    messageId = response.data.messageId;
-                    console.log("Novo message Id da Segunda:", messageId);
-
-                    // Adiciona um novo delay de 75 segundos
-                    setTimeout(() => {
-                      // Faz uma nova chamada para buscar as requisições no webhook.site
-                      axios
-                        .get(`http://localhost:3001/webhookData`)
-                        .then(function (response) {
-                          const newRequests = response.data.data;
-                          const newMatchingRequest = newRequests.find(
-                            (request: any) => {
-                              if (request.content) {
-                                const content = JSON.parse(request.content);
-                                return content.originatingMessageId === messageId;
-                              }
-                              return false;
-                            }
-                          );
-
-                          if (newMatchingRequest) {
-                            let content = JSON.parse(newMatchingRequest.content);
-                            let imageUrl = content.imageUrl;
-                            
-                            console.log('URL da imagem da Segunda: ', imageUrl)
-                            
-                        setImageUrlSegunda(imageUrl);
-                        console.log(imageUrl);
-                            
-                          } else {
-                            console.log('Nenhuma requisição correspondente encontrada da Segunda');
-                          }
-                        })
-                        .catch(function (error) {
-                          console.log('Erro ao buscar novas requisições da Segunda: ', error);
-                        });
-                    }, 75000);
-                  })
-                  .catch(function (error) {
-                    console.log('Erro na requisição para API thenextleg da Segunda: ', error);
-                  });
-
-              } else {
-                console.log('Nenhuma requisição correspondente encontrada da Segunda');
-              }
-            })
-            .catch(function (error) {
-              console.log('Erro ao buscar requisições da Segunda: ', error);
-            });
-        }, 75000);
+        return about;
       })
-      .catch(function (error) {
-        console.log('Erro:', error);
-      });
+
+      // ABOUT TEMPLATE 01
+      const randomIndex = Math.floor(Math.random() * aboutList.length);
+      const randomAbout = aboutList[randomIndex];
+      setImageUrlSegunda(randomAbout.imgUrl);
+      setAboutId(randomAbout.id);
+
+      aboutList = aboutList.filter((_, index) => index !== randomIndex);
+
+      //ABOUT TEMPLATE 02
+      const secondRandomIndex = Math.floor(Math.random() * aboutList.length);
+      const secondRandomAbout = aboutList[secondRandomIndex];
+      setSecondImageUrlSegunda(secondRandomAbout.imgUrl);
+      setSecondAboutId(secondRandomAbout.id);
+      localStorage.setItem("aboutTemplate02", secondImageUrlSegunda);
+
+      aboutList = aboutList.filter((_, index) => index !== secondRandomIndex);
+
+      // ABOUT TEMPLATE 03
+      const thirdRandomIndex = Math.floor(Math.random() * aboutList.length);
+      const thirdRandomAbout = aboutList[thirdRandomIndex];
+      setThirdImageUrlSegunda(thirdRandomAbout.imgUrl);
+      setThirdAboutId(thirdRandomAbout.id);
+
+      localStorage.setItem("aboutTemplate03", thirdImageUrlSegunda);
+
+      setAbout(aboutList);
+    }
+
+    fetchData();
   }, []);
 
-  // TERCEIRA
+  // PARALLAX
+  const [parallax, setParallax] = useState<Template01[]>([]);
   const [imageUrlTerceira, setImageUrlTerceira] = useState('');
+  const [secondImageUrlTerceira, setSecondImageUrlTerceira] = useState('');
+  const [thirdImageUrlTerceira, setThirdImageUrlTerceira] = useState('');
+  const [parallaxId, setParallaxId] = useState('');
+  const [secondParallaxId, setSecondParallaxId] = useState('');
+  const [thirdParallaxId, setThirdParallaxId] = useState('');
+
   useEffect(() => {
-    const url = 'https://api.thenextleg.io/';
+    const fetchData = async () => {
+      const advogadoDocRef = doc(db, "sites", "advogado");
+      const parallaxCollectionRef = collection(advogadoDocRef, "bannerparalax");
+      const parallaxSnapshot = await getDocs(parallaxCollectionRef);
 
-    const corpoDaSolicitacao = {
-      cmd: 'imagine',
-      msg: 'Step into an elegant Washington, D.C. office, where influential figures engage in impactful discussions. In this scene, capture the essence of a formal meeting among well-dressed individuals who exude authority and importance, Photography, wide-angle lens (24mm) --ar 16:9',
-    };
+      let parallaxList = parallaxSnapshot.docs.map(doc => {
+        const data = doc.data();
 
-    const config = {
-      method: 'post',
-      url: url,
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ab9ba449-948d-436e-aa5d-44573d622523',
-      },
-      data: corpoDaSolicitacao,
-    };
+        const parallax = {
+          id: doc.id,
+          imgUrl: data.imgUrl,
+        };
 
-    let messageId: any;
-
-    axios(config)
-      .then(function (response) {
-        messageId = response.data.messageId;
-        console.log(`O messageId da Terceira é: ${messageId}`);
-
-        // Adiciona um delay de 30 segundos
-        setTimeout(() => {
-          // Busca as requisições no webhook.site
-          axios
-            .get(`http://localhost:3001/webhookData`)
-            .then(function (response) {
-              const requests = response.data.data;
-              console.log(requests);
-
-              // Procura pela requisição com o 'originatingMessageId' correspondente
-              const matchingRequest = requests.find(
-                (request: any) => {
-                  if (request.content) {
-                    const content = JSON.parse(request.content); // Converte a string JSON em objeto
-                    return content.originatingMessageId === messageId;
-                  }
-                  return false;
-                }
-              );
-
-              if (matchingRequest) {
-                const content = JSON.parse(matchingRequest.content); // Converte a string JSON em objeto
-                const buttonMessageId = content.buttonMessageId;
-                console.log('ButtonMessageId da Terceira : ', buttonMessageId);
-
-                // Cria uma nova requisição para https://api.thenextleg.io/
-                axios
-                  .post(
-                    'https://api.thenextleg.io/',
-                    {
-                      "button": "U1",
-                      "buttonMessageId": buttonMessageId
-                    },
-                    {
-                      headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': 'Bearer ab9ba449-948d-436e-aa5d-44573d622523',
-                        
-                      },
-                    }
-                  )
-                  .then(function (response) {
-                    console.log('Resposta da API thenextleg da Terceira : ', response.data);
-                    messageId = response.data.messageId;
-                    console.log("Novo message Id da Terceira :", messageId);
-
-                    // Adiciona um novo delay de 75 segundos
-                    setTimeout(() => {
-                      // Faz uma nova chamada para buscar as requisições no webhook.site
-                      axios
-                        .get(`http://localhost:3001/webhookData`)
-                        .then(function (response) {
-                          const newRequests = response.data.data;
-                          const newMatchingRequest = newRequests.find(
-                            (request: any) => {
-                              if (request.content) {
-                                const content = JSON.parse(request.content);
-                                return content.originatingMessageId === messageId;
-                              }
-                              return false;
-                            }
-                          );
-
-                          if (newMatchingRequest) {
-                            let content = JSON.parse(newMatchingRequest.content);
-                            let imageUrl = content.imageUrl;
-                            
-                            console.log('URL da imagem da Terceira : ', imageUrl)
-                            
-                        setImageUrlTerceira(imageUrl);
-                        console.log(imageUrlTerceira);
-                            
-                          } else {
-                            console.log('Nenhuma requisição correspondente encontrada da Terceira ');
-                          }
-                        })
-                        .catch(function (error) {
-                          console.log('Erro ao buscar novas requisições da Terceira : ', error);
-                        });
-                    }, 75000);
-                  })
-                  .catch(function (error) {
-                    console.log('Erro na requisição para API thenextleg da Terceira : ', error);
-                  });
-
-              } else {
-                console.log('Nenhuma requisição correspondente encontrada da Terceira ');
-              }
-            })
-            .catch(function (error) {
-              console.log('Erro ao buscar requisições da Terceira : ', error);
-            });
-        }, 75000);
+        return parallax;
       })
-      .catch(function (error) {
-        console.log('Erro:', error);
-      });
+
+      // ABOUT TEMPLATE 01
+      const randomIndex = Math.floor(Math.random() * parallaxList.length);
+      const randomParallax = parallaxList[randomIndex];
+      setImageUrlTerceira(randomParallax.imgUrl);
+      setParallaxId(randomParallax.id);
+
+      parallaxList = parallaxList.filter((_, index) => index !== randomIndex);
+
+      //ABOUT TEMPLATE 02
+      const secondRandomIndex = Math.floor(Math.random() * parallaxList.length);
+      const secondRandomParallax = parallaxList[secondRandomIndex];
+      setSecondImageUrlTerceira(secondRandomParallax.imgUrl);
+      setSecondParallaxId(secondRandomParallax.id);
+      localStorage.setItem("parallaxTemplate02", secondImageUrlTerceira);
+
+      parallaxList = parallaxList.filter((_, index) => index !== secondRandomIndex);
+
+      // ABOUT TEMPLATE 03
+      const thirdRandomIndex = Math.floor(Math.random() * parallaxList.length);
+      const thirdRandomParallax = parallaxList[thirdRandomIndex];
+      setThirdImageUrlTerceira(thirdRandomParallax.imgUrl);
+      setThirdParallaxId(thirdRandomParallax.id);
+
+      localStorage.setItem("parallaxTemplate03", thirdImageUrlTerceira);
+
+      setParallax(parallaxList);
+    }
+
+    fetchData();
   }, []);
-  // QUARTA
-  const [imageUrlQuarta, setImageUrlQuarta] = useState('');
-  useEffect(() => {
-    const url = 'https://api.thenextleg.io/';
 
-    const corpoDaSolicitacao = {
-      cmd: 'imagine',
-      msg: 'intertwines with mortal existence. Your task is to craft a vivid description of a grand array of statues representing the deities of Greek mytholog,. Photography, wide-angle lens (24mm) --ar 16:9',
-    };
-
-    const config = {
-      method: 'post',
-      url: url,
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ab9ba449-948d-436e-aa5d-44573d622523',
-      },
-      data: corpoDaSolicitacao,
-    };
-
-    let messageId: any;
-
-    axios(config)
-      .then(function (response) {
-        messageId = response.data.messageId;
-        console.log(`O messageId da Quarta é: ${messageId}`);
-
-        // Adiciona um delay de 30 segundos
-        setTimeout(() => {
-          // Busca as requisições no webhook.site
-          axios
-            .get(`http://localhost:3001/webhookData`)
-            .then(function (response) {
-              const requests = response.data.data;
-              console.log(requests);
-
-              // Procura pela requisição com o 'originatingMessageId' correspondente
-              const matchingRequest = requests.find(
-                (request: any) => {
-                  if (request.content) {
-                    const content = JSON.parse(request.content); // Converte a string JSON em objeto
-                    return content.originatingMessageId === messageId;
-                  }
-                  return false;
-                }
-              );
-
-              if (matchingRequest) {
-                const content = JSON.parse(matchingRequest.content); // Converte a string JSON em objeto
-                const buttonMessageId = content.buttonMessageId;
-                console.log('ButtonMessageId da Quarta: ', buttonMessageId);
-
-                // Cria uma nova requisição para https://api.thenextleg.io/
-                axios
-                  .post(
-                    'https://api.thenextleg.io/',
-                    {
-                      "button": "U1",
-                      "buttonMessageId": buttonMessageId
-                    },
-                    {
-                      headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': 'Bearer ab9ba449-948d-436e-aa5d-44573d622523',
-                        
-                      },
-                    }
-                  )
-                  .then(function (response) {
-                    console.log('Resposta da API thenextleg da Quarta: ', response.data);
-                    messageId = response.data.messageId;
-                    console.log("Novo message Id da Quarta:", messageId);
-
-                    // Adiciona um novo delay de 75 segundos
-                    setTimeout(() => {
-                      // Faz uma nova chamada para buscar as requisições no webhook.site
-                      axios
-                        .get(`http://localhost:3001/webhookData`)
-                        .then(function (response) {
-                          const newRequests = response.data.data;
-                          const newMatchingRequest = newRequests.find(
-                            (request: any) => {
-                              if (request.content) {
-                                const content = JSON.parse(request.content);
-                                return content.originatingMessageId === messageId;
-                              }
-                              return false;
-                            }
-                          );
-
-                          if (newMatchingRequest) {
-                            let content = JSON.parse(newMatchingRequest.content);
-                            let imageUrl = content.imageUrl;
-                            
-                            console.log('URL da imagem da Quarta: ', imageUrl)
-                            
-                        setImageUrlQuarta(imageUrl);
-                        console.log(imageUrlQuarta);
-                            
-                          } else {
-                            console.log('Nenhuma requisição correspondente encontrada da Quarta');
-                          }
-                        })
-                        .catch(function (error) {
-                          console.log('Erro ao buscar novas requisições da Quarta: ', error);
-                        });
-                    }, 75000);
-                  })
-                  .catch(function (error) {
-                    console.log('Erro na requisição para API thenextleg da Quarta: ', error);
-                  });
-
-              } else {
-                console.log('Nenhuma requisição correspondente encontrada da Quarta');
-              }
-            })
-            .catch(function (error) {
-              console.log('Erro ao buscar requisições da Quarta: ', error);
-            });
-        }, 75000);
-      })
-      .catch(function (error) {
-        console.log('Erro:', error);
-      });
-  }, []);
- 
 
   return (
     <Container>
@@ -777,7 +453,7 @@ function Template01({ isVisible01 }: Template01Props) {
       <AboutSection>
         <section className="about">
           <Info>
-          <LogoTemplate src={imageUrlSegunda ? imageUrlSegunda : "https://cdn.discordapp.com/attachments/1116206739373691010/1116758018403614750/ThomasiWilson1_In_a_bustling_metropolis_where_the_pillars_of_la_56479b76-2b1a-45f8-92e6-e7298d120c8c.png"} alt='carregando' />
+            <LogoTemplate src={imageUrlSegunda ? imageUrlSegunda : "https://cdn.discordapp.com/attachments/1116206739373691010/1116758018403614750/ThomasiWilson1_In_a_bustling_metropolis_where_the_pillars_of_la_56479b76-2b1a-45f8-92e6-e7298d120c8c.png"} alt='carregando' />
             <div>
               <h2>Sobre Nós</h2>
               <p>{response}</p>
@@ -785,7 +461,7 @@ function Template01({ isVisible01 }: Template01Props) {
           </Info>
         </section>
       </AboutSection>
-      <Parallax  bgImage={imageUrlTerceira} >
+      <Parallax bgImage={imageUrlTerceira} >
         <ParallaxContent>
           <h4>EXPERIÊNCIA É IMPORTANTE</h4>
           <LineParallax></LineParallax>
@@ -845,7 +521,7 @@ function Template01({ isVisible01 }: Template01Props) {
               <h2>Audiencia de fiança</h2>
               <LineSmall></LineSmall>
               <p>
-               {bailHearingResponse}
+                {bailHearingResponse}
               </p>
             </PracticeContent>
             <PracticeContent>
@@ -859,7 +535,7 @@ function Template01({ isVisible01 }: Template01Props) {
           </PracticeAreaContent>
         </PracticeAreaContentAll>
       </PracticeArea>
-      <ParallaxContact  bgImage={imageUrlQuarta}>
+      <ParallaxContact bgImage={imageUrlTerceira}>
         <ParallaxContent>
           <h4>NÃO ESPERE MAIS</h4>
           <LineParallax></LineParallax>

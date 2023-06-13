@@ -38,7 +38,7 @@ export const Container = styled.div`
   }
   h2 {
     color: ${(props: ThemeProps) =>
-      mix(0.8, '#000', props.theme.headerFooterBgColor)};
+    mix(0.8, '#000', props.theme.headerFooterBgColor)};
     font-family: ${(props: ThemeProps) => props.theme.font.fontFamily};
     z-index: 999;
     font-size: 2.5em;
@@ -48,7 +48,7 @@ export const Container = styled.div`
 
   h3 {
     color: ${(props: ThemeProps) =>
-      mix(0.8, '#000', props.theme.headerFooterBgColor)};
+    mix(0.8, '#000', props.theme.headerFooterBgColor)};
     font-family: ${(props: ThemeProps) => props.theme.font.fontFamily};
     z-index: 999;
     font-size: 1.2em;
@@ -78,7 +78,7 @@ export const Container = styled.div`
   }
 `;
 
-export const HeaderBlock = styled.section`
+export const HeaderBlock = styled.div < { bgImage?: string }>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,7 +103,7 @@ export const HeaderBlock = styled.section`
     opacity: 50%;
     background-color: #000;
     background-color: ${(props: ThemeProps) =>
-      mix(0.9, '#000', props.theme.headerFooterBgColor)};
+    mix(0.9, '#000', props.theme.headerFooterBgColor)};
   }
 
   .container-header-footer-block {
@@ -327,7 +327,7 @@ export const WhyUs = styled.section`
     opacity: 55%;
     background-color: #000;
     background-color: ${(props: ThemeProps) =>
-      mix(0.95, '#000', props.theme.headerFooterBgColor)};
+    mix(0.95, '#000', props.theme.headerFooterBgColor)};
   }
 
   .block-whyus {
@@ -489,7 +489,7 @@ export const Footer = styled.div`
     padding-inline: 6rem;
     padding-block: 20px;
     background-color: ${(props: ThemeProps) =>
-      mix(0.9, '#000', props.theme.headerFooterBgColor)};
+    mix(0.9, '#000', props.theme.headerFooterBgColor)};
 
     p {
       font-size: 15px;
