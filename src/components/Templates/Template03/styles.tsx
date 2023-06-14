@@ -71,12 +71,12 @@ export const Container = styled.div`
     font-family: ${(props: ThemeProps) => props.theme.font.fontFamily};
   }
 `;
-export const HeaderBlock = styled.section`
+export const HeaderBlock = styled.section<{ bgImage?: string }>`
   display: flex;
   justify-content: center;
   flex-direction: column;
   position: relative;
-  background-image: url('./images/template03/bg03.jpg');
+  background-image: url(${(props) =>  props.bgImage? props.bgImage : 'https://cdn.discordapp.com/attachments/1116206739373691010/1116573743058268180/ThomasiWilson1_A_successful_law_firms_executive_office_with_flo_acf05fba-84f6-4416-bf37-b27f5d02a190.png'});
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -484,7 +484,7 @@ export const HowWorksHeaderSection = styled.div`
       width: 33%;
       height: 270px;
       background-color: ${(props: ThemeProps) =>
-        mix(0.95, '#d9d9d912', props.theme.headerFooterBgColor)};
+        mix(0.95, '#eeeeee', props.theme.headerFooterBgColor)};
       justify-content: space-a;
       display: flex;
       flex-direction: column;
@@ -512,7 +512,7 @@ export const HowWorksHeaderSection = styled.div`
         font-size: 18px;
 
         color: ${(props: ThemeProps) =>
-          mix(0.8, '#555555ca', props.theme.headerFooterBgColor)};
+          mix(0.8, '#c9c7c7af', props.theme.headerFooterBgColor)};
       }
     }
   }
@@ -543,4 +543,195 @@ export const HowWorksHeaderSection = styled.div`
   }
 `;
 
-export const HowLocationSection = styled.div``;
+export const HowLocationSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 700px;
+
+  .container-location {
+    margin: 0 auto;
+    width: 90%;
+    height: 80%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .container-title {
+    width: 100%;
+    height: 35%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+      margin: 0 auto;
+      text-align: center;
+      width: 80%;
+      font-size: 50px;
+      margin-bottom: 20px;
+      color: #000;
+      font-weight: 500;
+    }
+    p {
+      margin: 0 auto;
+      text-align: center;
+      width: 50%;
+      font-size: 20px;
+      color: #000;
+    }
+  }
+  .container-modalLocation {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+
+    .modalLocation {
+      background-color: ${(props: ThemeProps) =>
+        mix(0.95, '#eeeeee', props.theme.headerFooterBgColor)};
+      width: 33%;
+      height: 300px;
+      border-radius: 30px;
+      text-align: start;
+
+      .container-icon {
+        height: 90px;
+        margin: 0 auto;
+        margin-top: 10px;
+        width: 85%;
+
+        h3 {
+          margin-top: 10px;
+
+          font-size: 30px;
+        }
+      }
+      .container-p {
+        height: 130px;
+        margin: 0 auto;
+        width: 85%;
+
+        p {
+          margin: 12px 0px;
+          font-size: 22px;
+          color: #000;
+        }
+      }
+      .container-ping {
+        margin: 0 auto;
+        width: 85%;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+
+        span {
+          margin-left: 7px;
+          font-size: 21px;
+        }
+        p {
+          color: ${(props: ThemeProps) => props.theme.fontTitleColor};
+        }
+      }
+    }
+  }
+`;
+
+export const HowHelpSection = styled.div<{ bgImage?: string }>`
+width:100%;
+height:500px;
+display: flex;
+    align-items: center;
+    justify-content:center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(${(props) =>  props.bgImage? props.bgImage : 'https://cdn.discordapp.com/attachments/1116206739373691010/1116573743058268180/ThomasiWilson1_A_successful_law_firms_executive_office_with_flo_acf05fba-84f6-4416-bf37-b27f5d02a190.png'});
+.container-help{
+  height:70%;
+width:80%;
+margin: 0 auto;
+
+  display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction:column;
+    
+}
+
+
+.container-inf{
+  display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction:column;
+  height:80%;
+width:100%;
+
+
+h1 {
+  text-align:center;
+  margin: 0 auto;
+  width:90%;
+  font-size:45;
+  font-weight:400;
+  margin-bottom:40px;
+}
+p{
+  text-align:center;
+  margin: 0 auto;
+  width:70%;
+  font-size:22px;
+  margin-bottom:60px;
+}
+.btn {
+      width: 300px;
+      height: 50px;
+      border: none;
+      font-size: 20px;
+      font-weight:400;
+      border-radius: 10px;
+      background-color: ${(props: ThemeProps) => props.theme.fontTitleColor};
+      color: #fff;
+      cursor: pointer;
+      font-family: ${(props: ThemeProps) => props.theme.font.fontFamily};
+
+      &:hover {
+        background-color: #f9c349;
+      }
+    }
+  
+}
+`;
+
+
+export const Footer = styled.div`
+  width: 100%;
+
+  .content-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 6rem;
+    padding-block: 20px;
+    background-color: ${(props: ThemeProps) =>
+      mix(0.9, '#000', props.theme.headerFooterBgColor)};
+
+    p {
+      font-size: 15px;
+      color: rgba(198, 198, 198, 0.77);
+      font-weight: normal;
+      margin: 0px;
+    }
+  }
+`;

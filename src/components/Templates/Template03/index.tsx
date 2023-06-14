@@ -19,6 +19,8 @@ import {
   RightSideBlock,
   RigthAwardBlock,
   HowLocationSection,
+  HowHelpSection,
+  Footer
 } from './styles';
 import {
   BagSimple,
@@ -26,16 +28,206 @@ import {
   Hammer,
   Scales,
   MapPin,
+  House,
 } from '@phosphor-icons/react';
 
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+
+import { collection, db, getDoc, doc } from '../../../firebase';
+import { getDocs } from 'firebase/firestore';
+import { deleteDoc } from 'firebase/firestore';
 interface Template03Props {
   isVisible03: boolean;
 }
 
+
+
+
+
+
+interface Template03 {
+  imgUrl: string;
+}
+
 function Template03({ isVisible03 }: Template03Props) {
+
+  // BANNER
+  const [banner, setBanner] = useState<Template03[]>([]);
+  const [imageUrl, setImageUrl] = useState('');
+  const [secondImageUrl, setSecondImageUrl] = useState('');
+  const [thirdImageUrl, setThirdImageUrl] = useState('');
+  const [bannerId, setBannerId] = useState('');
+  const [secondBannerId, setSecondBannerId] = useState('');
+  const [thirdBannerId, setThirdBannerId] = useState('');
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const advogadoDocRef = doc(db, 'sites', 'advogado');
+      const bannerCollectionRef = collection(advogadoDocRef, 'banner');
+      const bannerSnapshot = await getDocs(bannerCollectionRef);
+
+      let bannerList = bannerSnapshot.docs.map((doc) => {
+        const data = doc.data();
+
+        const banner = {
+          id: doc.id,
+          imgUrl: data.imgUrl,
+        };
+        return banner;
+      });
+
+      // BANNER TEMPLATE 01
+      const randomIndex = Math.floor(Math.random() * bannerList.length);
+      const randomBanner = bannerList[randomIndex];
+      setImageUrl(randomBanner.imgUrl);
+      setBannerId(randomBanner.id);
+
+      bannerList = bannerList.filter((_, index) => index !== randomIndex);
+
+      // BANNER TEMPLATE 02
+      const secondRandomIndex = Math.floor(Math.random() * bannerList.length);
+      const secondRandomBanner = bannerList[secondRandomIndex];
+      setSecondImageUrl(secondRandomBanner.imgUrl);
+      setSecondBannerId(secondRandomBanner.id);
+      localStorage.setItem('bannerTemplate02', secondImageUrl);
+
+      bannerList = bannerList.filter((_, index) => index !== secondRandomIndex);
+
+      // BANNER TEMPLATE 03
+      const thirdRandomIndex = Math.floor(Math.random() * bannerList.length);
+      const thirdRandomBanner = bannerList[thirdRandomIndex];
+      setThirdImageUrl(thirdRandomBanner.imgUrl);
+      setThirdBannerId(thirdRandomBanner.id);
+
+      localStorage.setItem('bannerTemplate03', thirdImageUrl);
+
+      setBanner(bannerList);
+    };
+
+    fetchData();
+  }, []);
+
+  // ABOUT
+  const [about, setAbout] = useState<Template03[]>([]);
+  const [imageUrlSegunda, setImageUrlSegunda] = useState('');
+  const [secondImageUrlSegunda, setSecondImageUrlSegunda] = useState('');
+  const [thirdImageUrlSegunda, setThirdImageUrlSegunda] = useState('');
+  const [aboutId, setAboutId] = useState('');
+  const [secondAboutId, setSecondAboutId] = useState('');
+  const [thirdAboutId, setThirdAboutId] = useState('');
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const advogadoDocRef = doc(db, 'sites', 'advogado');
+      const aboutCollectionRef = collection(advogadoDocRef, 'subtitulo');
+      const aboutSnapshot = await getDocs(aboutCollectionRef);
+
+      let aboutList = aboutSnapshot.docs.map((doc) => {
+        const data = doc.data();
+
+        const about = {
+          id: doc.id,
+          imgUrl: data.imgUrl,
+        };
+
+        return about;
+      });
+
+      // ABOUT TEMPLATE 01
+      const randomIndex = Math.floor(Math.random() * aboutList.length);
+      const randomAbout = aboutList[randomIndex];
+      setImageUrlSegunda(randomAbout.imgUrl);
+      setAboutId(randomAbout.id);
+
+      aboutList = aboutList.filter((_, index) => index !== randomIndex);
+
+      //ABOUT TEMPLATE 02
+      const secondRandomIndex = Math.floor(Math.random() * aboutList.length);
+      const secondRandomAbout = aboutList[secondRandomIndex];
+      setSecondImageUrlSegunda(secondRandomAbout.imgUrl);
+      setSecondAboutId(secondRandomAbout.id);
+      localStorage.setItem('aboutTemplate02', secondImageUrlSegunda);
+
+      aboutList = aboutList.filter((_, index) => index !== secondRandomIndex);
+
+      // ABOUT TEMPLATE 03
+      const thirdRandomIndex = Math.floor(Math.random() * aboutList.length);
+      const thirdRandomAbout = aboutList[thirdRandomIndex];
+      setThirdImageUrlSegunda(thirdRandomAbout.imgUrl);
+      setThirdAboutId(thirdRandomAbout.id);
+
+      localStorage.setItem('aboutTemplate03', thirdImageUrlSegunda);
+
+      setAbout(aboutList);
+    };
+
+    fetchData();
+  }, []);
+
+  // PARALLAX
+  const [parallax, setParallax] = useState<Template03[]>([]);
+  const [imageUrlTerceira, setImageUrlTerceira] = useState('');
+  const [secondImageUrlTerceira, setSecondImageUrlTerceira] = useState('');
+  const [thirdImageUrlTerceira, setThirdImageUrlTerceira] = useState('');
+  const [parallaxId, setParallaxId] = useState('');
+  const [secondParallaxId, setSecondParallaxId] = useState('');
+  const [thirdParallaxId, setThirdParallaxId] = useState('');
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const advogadoDocRef = doc(db, 'sites', 'advogado');
+      const parallaxCollectionRef = collection(advogadoDocRef, 'bannerparalax');
+      const parallaxSnapshot = await getDocs(parallaxCollectionRef);
+
+      let parallaxList = parallaxSnapshot.docs.map((doc) => {
+        const data = doc.data();
+
+        const parallax = {
+          id: doc.id,
+          imgUrl: data.imgUrl,
+        };
+
+        return parallax;
+      });
+
+      // ABOUT TEMPLATE 01
+      const randomIndex = Math.floor(Math.random() * parallaxList.length);
+      const randomParallax = parallaxList[randomIndex];
+      setImageUrlTerceira(randomParallax.imgUrl);
+      setParallaxId(randomParallax.id);
+
+      parallaxList = parallaxList.filter((_, index) => index !== randomIndex);
+
+      //ABOUT TEMPLATE 02
+      const secondRandomIndex = Math.floor(Math.random() * parallaxList.length);
+      const secondRandomParallax = parallaxList[secondRandomIndex];
+      setSecondImageUrlTerceira(secondRandomParallax.imgUrl);
+      setSecondParallaxId(secondRandomParallax.id);
+      localStorage.setItem('parallaxTemplate02', secondImageUrlTerceira);
+
+      parallaxList = parallaxList.filter(
+        (_, index) => index !== secondRandomIndex,
+      );
+
+      // ABOUT TEMPLATE 03
+      const thirdRandomIndex = Math.floor(Math.random() * parallaxList.length);
+      const thirdRandomParallax = parallaxList[thirdRandomIndex];
+      setThirdImageUrlTerceira(thirdRandomParallax.imgUrl);
+      setThirdParallaxId(thirdRandomParallax.id);
+
+      localStorage.setItem('parallaxTemplate03', thirdImageUrlTerceira);
+
+      setParallax(parallaxList);
+    };
+
+    fetchData();
+  }, []);
+
+
   return (
     <Container>
-      <HeaderBlock>
+      <HeaderBlock  bgImage={imageUrl}>
         <span>1º Escritório De Advocacia Eleito Pelos Pares</span>
         <h1>
           Advogados de família de primeira classe e advogados de divórcio em
@@ -82,7 +274,11 @@ function Template03({ isVisible03 }: Template03Props) {
           <button>fale conosco</button>
         </LeftSideBlock>
         <RightSideBlock>
-          <img src="./images/template03/bg05.jpg"></img>
+          <img  src={
+                imageUrlSegunda
+                  ? imageUrlSegunda
+                  : 'https://cdn.discordapp.com/attachments/1116206739373691010/1116758018403614750/ThomasiWilson1_In_a_bustling_metropolis_where_the_pillars_of_la_56479b76-2b1a-45f8-92e6-e7298d120c8c.png'
+              }></img>
         </RightSideBlock>
       </AboutSection>
       <IconSection>
@@ -193,7 +389,11 @@ function Template03({ isVisible03 }: Template03Props) {
             Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
             posuere cubilia Curae; Donec velit neque.
           </p>
-          <img src="./images/template03/practiceareas1.jpg" alt="" />
+          <img  src={
+                imageUrlSegunda
+                  ? imageUrlSegunda
+                  : 'https://cdn.discordapp.com/attachments/1116206739373691010/1116758018403614750/ThomasiWilson1_In_a_bustling_metropolis_where_the_pillars_of_la_56479b76-2b1a-45f8-92e6-e7298d120c8c.png'
+              } alt="" />
         </LeftAwardBlock>
 
         <RigthAwardBlock>
@@ -320,18 +520,86 @@ function Template03({ isVisible03 }: Template03Props) {
               posuere cubilia Curae; Donec velit neque.
             </p>
           </div>
-          <div className="continer-modalLocation">
-            <h3>Montreal </h3>
-            <p>Howe St, Vancouver, BC VZS</p>
-            <p>2S8, Canada.</p>
-            <p> +1 12345 67890</p>
-            <p>
-              {' '}
-              <Hammer size={50} weight="fill" />
-            </p>
+          <div className="container-modalLocation">
+            <div className="modalLocation">
+              <div className="container-icon">
+                <House size={40} weight="fill" />
+                <h3>Montreal </h3>
+              </div>
+
+              <div className="container-p">
+                <p>Howe St, Vancouver, BC VZS</p>
+                <p>2S8, Canada.</p>
+                <p> +1 12345 67890</p>
+              </div>
+              <div className="container-ping">
+                <p>
+                  <MapPin size={20} weight="fill" />
+                  <span>OBTER DIREÇÕES</span>
+                </p>
+              </div>
+            </div>
+            <div className="modalLocation">
+              <div className="container-icon">
+                <House size={40} weight="fill" />
+                <h3>Montreal </h3>
+              </div>
+
+              <div className="container-p">
+                <p>Howe St, Vancouver, BC VZS</p>
+                <p>2S8, Canada.</p>
+                <p> +1 12345 67890</p>
+              </div>
+              <div className="container-ping">
+                <p>
+                  <MapPin size={20} weight="fill" />
+                  <span>OBTER DIREÇÕES</span>
+                </p>
+              </div>
+            </div>
+            <div className="modalLocation">
+              <div className="container-icon">
+                <House size={40} weight="fill" />
+                <h3>Montreal </h3>
+              </div>
+
+              <div className="container-p">
+                <p>Howe St, Vancouver, BC VZS</p>
+                <p>2S8, Canada.</p>
+                <p> +1 12345 67890</p>
+              </div>
+              <div className="container-ping">
+                <p>
+                  <MapPin size={20} weight="fill" />
+                  <span>OBTER DIREÇÕES</span>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </HowLocationSection>
+
+      <HowHelpSection bgImage={imageUrlTerceira}>
+        <div className="container-help">
+          <LineAwardsSection></LineAwardsSection>
+
+          <div className="container-inf">
+            <h1>Ajudamos a resolver seus problemas legais</h1>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
+              tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+            </p>
+
+            <button className='btn'>AGENDE UMA CONSULTA</button>
+          </div>
+        </div>
+      </HowHelpSection>
+      <Footer>
+        <div className="content-footer">
+          <p>Copyright © 2023 Rei do Sites</p>
+          <p>Powered by Rei do Sites</p>
+        </div>
+      </Footer>
     </Container>
   );
 }

@@ -34,14 +34,200 @@ import {
   WhyUs,
 } from './styles';
 
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+
+import { collection, db, getDoc, doc } from '../../../firebase';
+import { getDocs } from 'firebase/firestore';
+import { deleteDoc } from 'firebase/firestore';
 interface Template02Props {
   isVisible02: boolean;
 }
+interface Template02 {
+  imgUrl: string;
+}
+
+
+
 
 function Template02({ isVisible02 }: Template02Props) {
+
+ // BANNER
+ const [banner, setBanner] = useState<Template02[]>([]);
+ const [imageUrl, setImageUrl] = useState('');
+ const [secondImageUrl, setSecondImageUrl] = useState('');
+ const [thirdImageUrl, setThirdImageUrl] = useState('');
+ const [bannerId, setBannerId] = useState('');
+ const [secondBannerId, setSecondBannerId] = useState('');
+ const [thirdBannerId, setThirdBannerId] = useState('');
+
+ useEffect(() => {
+   const fetchData = async () => {
+     const advogadoDocRef = doc(db, 'sites', 'advogado');
+     const bannerCollectionRef = collection(advogadoDocRef, 'banner');
+     const bannerSnapshot = await getDocs(bannerCollectionRef);
+
+     let bannerList = bannerSnapshot.docs.map((doc) => {
+       const data = doc.data();
+
+       const banner = {
+         id: doc.id,
+         imgUrl: data.imgUrl,
+       };
+       return banner;
+     });
+
+     // BANNER TEMPLATE 01
+     const randomIndex = Math.floor(Math.random() * bannerList.length);
+     const randomBanner = bannerList[randomIndex];
+     setImageUrl(randomBanner.imgUrl);
+     setBannerId(randomBanner.id);
+
+     bannerList = bannerList.filter((_, index) => index !== randomIndex);
+
+     // BANNER TEMPLATE 02
+     const secondRandomIndex = Math.floor(Math.random() * bannerList.length);
+     const secondRandomBanner = bannerList[secondRandomIndex];
+     setSecondImageUrl(secondRandomBanner.imgUrl);
+     setSecondBannerId(secondRandomBanner.id);
+     localStorage.setItem('bannerTemplate02', secondImageUrl);
+
+     bannerList = bannerList.filter((_, index) => index !== secondRandomIndex);
+
+     // BANNER TEMPLATE 03
+     const thirdRandomIndex = Math.floor(Math.random() * bannerList.length);
+     const thirdRandomBanner = bannerList[thirdRandomIndex];
+     setThirdImageUrl(thirdRandomBanner.imgUrl);
+     setThirdBannerId(thirdRandomBanner.id);
+
+     localStorage.setItem('bannerTemplate03', thirdImageUrl);
+
+     setBanner(bannerList);
+   };
+
+   fetchData();
+ }, []);
+
+ // ABOUT
+ const [about, setAbout] = useState<Template02[]>([]);
+ const [imageUrlSegunda, setImageUrlSegunda] = useState('');
+ const [secondImageUrlSegunda, setSecondImageUrlSegunda] = useState('');
+ const [thirdImageUrlSegunda, setThirdImageUrlSegunda] = useState('');
+ const [aboutId, setAboutId] = useState('');
+ const [secondAboutId, setSecondAboutId] = useState('');
+ const [thirdAboutId, setThirdAboutId] = useState('');
+
+ useEffect(() => {
+   const fetchData = async () => {
+     const advogadoDocRef = doc(db, 'sites', 'advogado');
+     const aboutCollectionRef = collection(advogadoDocRef, 'subtitulo');
+     const aboutSnapshot = await getDocs(aboutCollectionRef);
+
+     let aboutList = aboutSnapshot.docs.map((doc) => {
+       const data = doc.data();
+
+       const about = {
+         id: doc.id,
+         imgUrl: data.imgUrl,
+       };
+
+       return about;
+     });
+
+     // ABOUT TEMPLATE 01
+     const randomIndex = Math.floor(Math.random() * aboutList.length);
+     const randomAbout = aboutList[randomIndex];
+     setImageUrlSegunda(randomAbout.imgUrl);
+     setAboutId(randomAbout.id);
+
+     aboutList = aboutList.filter((_, index) => index !== randomIndex);
+
+     //ABOUT TEMPLATE 02
+     const secondRandomIndex = Math.floor(Math.random() * aboutList.length);
+     const secondRandomAbout = aboutList[secondRandomIndex];
+     setSecondImageUrlSegunda(secondRandomAbout.imgUrl);
+     setSecondAboutId(secondRandomAbout.id);
+     localStorage.setItem('aboutTemplate02', secondImageUrlSegunda);
+
+     aboutList = aboutList.filter((_, index) => index !== secondRandomIndex);
+
+     // ABOUT TEMPLATE 03
+     const thirdRandomIndex = Math.floor(Math.random() * aboutList.length);
+     const thirdRandomAbout = aboutList[thirdRandomIndex];
+     setThirdImageUrlSegunda(thirdRandomAbout.imgUrl);
+     setThirdAboutId(thirdRandomAbout.id);
+
+     localStorage.setItem('aboutTemplate03', thirdImageUrlSegunda);
+
+     setAbout(aboutList);
+   };
+
+   fetchData();
+ }, []);
+
+ // PARALLAX
+ const [parallax, setParallax] = useState<Template02[]>([]);
+ const [imageUrlTerceira, setImageUrlTerceira] = useState('');
+ const [secondImageUrlTerceira, setSecondImageUrlTerceira] = useState('');
+ const [thirdImageUrlTerceira, setThirdImageUrlTerceira] = useState('');
+ const [parallaxId, setParallaxId] = useState('');
+ const [secondParallaxId, setSecondParallaxId] = useState('');
+ const [thirdParallaxId, setThirdParallaxId] = useState('');
+
+ useEffect(() => {
+   const fetchData = async () => {
+     const advogadoDocRef = doc(db, 'sites', 'advogado');
+     const parallaxCollectionRef = collection(advogadoDocRef, 'bannerparalax');
+     const parallaxSnapshot = await getDocs(parallaxCollectionRef);
+
+     let parallaxList = parallaxSnapshot.docs.map((doc) => {
+       const data = doc.data();
+
+       const parallax = {
+         id: doc.id,
+         imgUrl: data.imgUrl,
+       };
+
+       return parallax;
+     });
+
+     // ABOUT TEMPLATE 01
+     const randomIndex = Math.floor(Math.random() * parallaxList.length);
+     const randomParallax = parallaxList[randomIndex];
+     setImageUrlTerceira(randomParallax.imgUrl);
+     setParallaxId(randomParallax.id);
+
+     parallaxList = parallaxList.filter((_, index) => index !== randomIndex);
+
+     //ABOUT TEMPLATE 02
+     const secondRandomIndex = Math.floor(Math.random() * parallaxList.length);
+     const secondRandomParallax = parallaxList[secondRandomIndex];
+     setSecondImageUrlTerceira(secondRandomParallax.imgUrl);
+     setSecondParallaxId(secondRandomParallax.id);
+     localStorage.setItem('parallaxTemplate02', secondImageUrlTerceira);
+
+     parallaxList = parallaxList.filter(
+       (_, index) => index !== secondRandomIndex,
+     );
+
+     // ABOUT TEMPLATE 03
+     const thirdRandomIndex = Math.floor(Math.random() * parallaxList.length);
+     const thirdRandomParallax = parallaxList[thirdRandomIndex];
+     setThirdImageUrlTerceira(thirdRandomParallax.imgUrl);
+     setThirdParallaxId(thirdRandomParallax.id);
+
+     localStorage.setItem('parallaxTemplate03', thirdImageUrlTerceira);
+
+     setParallax(parallaxList);
+   };
+
+   fetchData();
+ }, []);
+
+
   return (
     <Container>
-      <HeaderBlock>
+      <HeaderBlock  bgImage={imageUrl} >
         <div className="container-block-header">
           <LineHeader></LineHeader>
           <span>Comprometidos em ajudar nossos clientes a ter sucesso</span>
@@ -99,7 +285,11 @@ function Template02({ isVisible02 }: Template02Props) {
           </div>
         </FirstBlockAbout>
         <SecondBlockAbout>
-          <img src="./images/template02/about.jpg"></img>
+          <img src={
+                imageUrlSegunda
+                  ? imageUrlSegunda
+                  : 'https://cdn.discordapp.com/attachments/1116206739373691010/1116758018403614750/ThomasiWilson1_In_a_bustling_metropolis_where_the_pillars_of_la_56479b76-2b1a-45f8-92e6-e7298d120c8c.png'
+              }></img>
         </SecondBlockAbout>
       </AboutSection>
       <ServicesSection>
@@ -112,7 +302,7 @@ function Template02({ isVisible02 }: Template02Props) {
                 <h3>Divórcio e Separação</h3>
                 <text>
                   This is a short description elaborating the service you have
-                  mentioned above.​
+                  mentioned above.
                 </text>
               </div>
               <div className="content-block-atuacao">
@@ -120,7 +310,7 @@ function Template02({ isVisible02 }: Template02Props) {
                 <h3>Direitos dos avós</h3>
                 <text>
                   This is a short description elaborating the service you have
-                  mentioned above.​
+                  mentioned above.
                 </text>
               </div>
               <div className="content-block-atuacao">
@@ -128,7 +318,7 @@ function Template02({ isVisible02 }: Template02Props) {
                 <h3>Custódia de criança</h3>
                 <text>
                   This is a short description elaborating the service you have
-                  mentioned above.​
+                  mentioned above.
                 </text>
               </div>
               <div className="content-block-atuacao">
@@ -136,7 +326,7 @@ function Template02({ isVisible02 }: Template02Props) {
                 <h3>Domestic Violence​​</h3>
                 <text>
                   This is a short description elaborating the service you have
-                  mentioned above.​
+                  mentioned above.
                 </text>
               </div>
             </Row>
@@ -146,7 +336,7 @@ function Template02({ isVisible02 }: Template02Props) {
                 <h3>Casamento/Uniões Civis​</h3>
                 <text>
                   This is a short description elaborating the service you have
-                  mentioned above.​
+                  mentioned above.
                 </text>
               </div>
               <div className="content-block-atuacao">
@@ -154,7 +344,7 @@ function Template02({ isVisible02 }: Template02Props) {
                 <h3>Adoção e barriga de aluguel​</h3>
                 <text>
                   This is a short description elaborating the service you have
-                  mentioned above.​
+                  mentioned above.
                 </text>
               </div>
               <div className="content-block-atuacao">
@@ -162,7 +352,7 @@ function Template02({ isVisible02 }: Template02Props) {
                 <h3>Acordos de propriedade​​​</h3>
                 <text>
                   This is a short description elaborating the service you have
-                  mentioned above.​
+                  mentioned above.
                 </text>
               </div>
               <div className="content-block-atuacao">
@@ -175,7 +365,7 @@ function Template02({ isVisible02 }: Template02Props) {
           </Column>
         </div>
       </ServicesSection>
-      <WhyUs>
+      <WhyUs bgImage={imageUrlTerceira}>
         <div className="full-content-whyus">
           <div className="left-side-whyus">
             <div className="container-block-header">
