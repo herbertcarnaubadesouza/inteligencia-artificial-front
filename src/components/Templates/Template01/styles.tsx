@@ -18,7 +18,8 @@ interface ThemeProps {
 }
 
 const Container = styled.div`
-  display: flex;
+  width: 100%;
+  display: flex; 
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -299,8 +300,11 @@ const PracticeArea = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align:center;
   padding-top: 5rem;
   padding-bottom: 5rem;
+
+  width: 100%;
 
   h1 {
     color: ${(props: ThemeProps) => props.theme.fontTitleColor};
@@ -342,7 +346,10 @@ const PracticeAreaContentAll = styled.div`
   justify-content: center;
   padding-left: 12rem;
   padding-right: 12rem;
-  gap: 2rem;
+  gap: 5rem;
+  width:100%;
+
+  
 `;
 
 const PracticeAreaContent = styled.div`
@@ -351,6 +358,12 @@ const PracticeAreaContent = styled.div`
   align-items: center;
   justify-content: center;
   padding-bottom: 1.5rem;
+  width:70%;
+  margin: 0 auto;
+
+
+ 
+
 `;
 
 const PracticeContent = styled.div`
@@ -358,6 +371,9 @@ const PracticeContent = styled.div`
   flex-direction: column;
   padding-left: 2rem;
   padding-right: 2rem;
+ text-align:start;
+  width:30%;
+
 `;
 
 const Contact = styled.div`

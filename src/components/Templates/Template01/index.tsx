@@ -46,6 +46,10 @@ function Template01({ isVisible01 }: Template01Props) {
   const [harassmentCrimeResponse, setHarassmentCrimeResponse] = useState(null);
   let nome = 'Rei dos advogados';
 
+
+
+// Text Empresa
+
   useEffect(() => {
     const getResponse = async () => {
       try {
@@ -62,7 +66,7 @@ function Template01({ isVisible01 }: Template01Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization: `Bearer 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`,
               'Content-Type': 'application/json',
             },
           },
@@ -74,9 +78,9 @@ function Template01({ isVisible01 }: Template01Props) {
       }
     };
 
-    getResponse();
+    setTimeout(getResponse, 5000); 
   }, []);
-
+// Crime de assalto
   useEffect(() => {
     const getdomesticBurglary = async () => {
       try {
@@ -93,7 +97,7 @@ function Template01({ isVisible01 }: Template01Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization: `Bearer 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`,
               'Content-Type': 'application/json',
             },
           },
@@ -105,9 +109,9 @@ function Template01({ isVisible01 }: Template01Props) {
       }
     };
 
-    getdomesticBurglary();
+    setTimeout(getdomesticBurglary, 15000)
   }, []);
-
+// Crime de armas
   useEffect(() => {
     const getGunCrimesResponse = async () => {
       try {
@@ -124,7 +128,7 @@ function Template01({ isVisible01 }: Template01Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization: `Bearer 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`,
               'Content-Type': 'application/json',
             },
           },
@@ -136,9 +140,9 @@ function Template01({ isVisible01 }: Template01Props) {
       }
     };
 
-    getGunCrimesResponse();
+    setTimeout(getGunCrimesResponse, 40000)
   }, []);
-
+// Crime de drogas
   useEffect(() => {
     const getDrugCrimesResponse = async () => {
       try {
@@ -155,7 +159,7 @@ function Template01({ isVisible01 }: Template01Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization: `Bearer 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`,
               'Content-Type': 'application/json',
             },
           },
@@ -166,10 +170,10 @@ function Template01({ isVisible01 }: Template01Props) {
         console.error(error);
       }
     };
-
-    getDrugCrimesResponse();
+    setTimeout(getDrugCrimesResponse, 60000)
+   
   }, []);
-
+// Crimes de propriedade
   useEffect(() => {
     const getPropertyCrimesResponse = async () => {
       try {
@@ -186,7 +190,7 @@ function Template01({ isVisible01 }: Template01Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization: `Bearer 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`,
               'Content-Type': 'application/json',
             },
           },
@@ -197,10 +201,10 @@ function Template01({ isVisible01 }: Template01Props) {
         console.error(error);
       }
     };
-
-    getPropertyCrimesResponse();
+    setTimeout(getPropertyCrimesResponse, 80000);
+ 
   }, []);
-
+// FIANÇA
   useEffect(() => {
     const getBailHearingResponse = async () => {
       try {
@@ -217,7 +221,7 @@ function Template01({ isVisible01 }: Template01Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization: `Bearer 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`,
               'Content-Type': 'application/json',
             },
           },
@@ -228,10 +232,10 @@ function Template01({ isVisible01 }: Template01Props) {
         console.error(error);
       }
     };
-
-    getBailHearingResponse();
+    setTimeout(getBailHearingResponse, 100000);
+    
   }, []);
-
+// ASSEDIO
   useEffect(() => {
     const getHarassmentCrimeResponse = async () => {
       try {
@@ -248,7 +252,7 @@ function Template01({ isVisible01 }: Template01Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization: `Bearer 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`,
               'Content-Type': 'application/json',
             },
           },
@@ -259,8 +263,8 @@ function Template01({ isVisible01 }: Template01Props) {
         console.error(error);
       }
     };
-
-    getHarassmentCrimeResponse();
+    setTimeout(getHarassmentCrimeResponse, 120000);
+   
   }, []);
 
   // BANNER
@@ -465,7 +469,7 @@ function Template01({ isVisible01 }: Template01Props) {
           </Info>
         </section>
       </AboutSection>
-      <Parallax bgImage={imageUrlTerceira}>
+      <Parallax bgImage={thirdImageUrlTerceira}>
         <ParallaxContent>
           <h4>EXPERIÊNCIA É IMPORTANTE</h4>
           <LineParallax></LineParallax>
@@ -488,7 +492,7 @@ function Template01({ isVisible01 }: Template01Props) {
               <h3>01</h3>
               <h2>Assalto doméstico</h2>
               <LineSmall></LineSmall>
-              <p>a{domesticBurglary}</p>
+              <p>{domesticBurglary}</p>
             </PracticeContent>
             <PracticeContent>
               <h3>02</h3>

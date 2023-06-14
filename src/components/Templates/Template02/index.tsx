@@ -52,6 +52,269 @@ interface Template02 {
 
 function Template02({ isVisible02 }: Template02Props) {
 
+  const [response, setResponse] = useState(null);
+  const [domesticBurglary, setDomesticBurglaryResponse] = useState(null);
+  const [gunCrimesResponse, setGunCrimesResponse] = useState(null);
+  const [drugCrimesResponse, setDrugCrimesResponse] = useState(null);
+  const [propertyCrimesResponse, setPropertyCrimesResponse] = useState(null);
+  const [bailHearingResponse, setBailHearingResponse] = useState(null);
+  const [harassmentCrimeResponse, setHarassmentCrimeResponse] = useState(null);
+  const [acordoCrimeResponse, setAcordoCrimeResponse] = useState(null);
+  let nome = 'Rei dos advogados';
+
+
+
+// Text Empresa
+  useEffect(() => {
+    const getResponse = async () => {
+      try {
+        const result = await axios.post(
+          'https://api.openai.com/v1/chat/completions',
+          {
+            model: 'gpt-3.5-turbo',
+            messages: [
+              {
+                role: 'user',
+                content: `Faça dois paragrafos sobre uma empresa de advocacia chamada Rei Advocacia , dizendo aos clientes como a empresa e boa e provando que fez a melhor escolha. `,
+              },
+            ],
+          },
+          {
+            headers: {
+              Authorization: `Bearer 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`,
+              'Content-Type': 'application/json',
+            },
+          },
+        );
+
+        setResponse(result.data.choices[0].message.content);
+        console.log(result.data.choices[0].message.content)
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    setTimeout(getResponse, 5000); 
+  }, []);
+// Divorsio e separação
+  useEffect(() => {
+    const getdomesticBurglary = async () => {
+      try {
+        const result = await axios.post(
+          'https://api.openai.com/v1/chat/completions',
+          {
+            model: 'gpt-3.5-turbo',
+            messages: [
+              {
+                role: 'user',
+                content: `Faça um pequeno texto de no maximo 2 linhas dizendo sobre como atua em casos de Divorsio e separação sendo um advogado`,
+              },
+            ],
+          },
+          {
+            headers: {
+              Authorization: `Bearer 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`,
+              'Content-Type': 'application/json',
+            },
+          },
+        );
+
+        setDomesticBurglaryResponse(result.data.choices[0].message.content);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    setTimeout(getdomesticBurglary, 15000); 
+  }, []);
+// Direitos dos avos
+  useEffect(() => {
+    const getGunCrimesResponse = async () => {
+      try {
+        const result = await axios.post(
+          'https://api.openai.com/v1/chat/completions',
+          {
+            model: 'gpt-3.5-turbo',
+            messages: [
+              {
+                role: 'user',
+                content: `Faça um pequeno texto de no maximo 2 linhas dizendo sobre como atua em casos de Diretos dos avos sendo um advogado`,
+              },
+            ],
+          },
+          {
+            headers: {
+              Authorization: `Bearer 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`,
+              'Content-Type': 'application/json',
+            },
+          },
+        );
+
+        setGunCrimesResponse(result.data.choices[0].message.content);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    setTimeout(getGunCrimesResponse, 40000)
+  }, []);
+// Custoria de criança
+  useEffect(() => {
+    const getDrugCrimesResponse = async () => {
+      try {
+        const result = await axios.post(
+          'https://api.openai.com/v1/chat/completions',
+          {
+            model: 'gpt-3.5-turbo',
+            messages: [
+              {
+                role: 'user',
+                content: `Faça um pequeno texto de no maximo 2 linhas dizendo sobre como atua em casos de Custodia de crinça sendo um advogado`,
+              },
+            ],
+          },
+          {
+            headers: {
+              Authorization: `Bearer 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`,
+              'Content-Type': 'application/json',
+            },
+          },
+        );
+
+        setDrugCrimesResponse(result.data.choices[0].message.content);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    setTimeout(getDrugCrimesResponse, 60000)
+  }, []);
+// Violencia domestica
+  useEffect(() => {
+    const getPropertyCrimesResponse = async () => {
+      try {
+        const result = await axios.post(
+          'https://api.openai.com/v1/chat/completions',
+          {
+            model: 'gpt-3.5-turbo',
+            messages: [
+              {
+                role: 'user',
+                content: `Faça um pequeno texto de no maximo 2 linhas dizendo sobre como atua em casos de Violencia domestica sendo um advogado`,
+              },
+            ],
+          },
+          {
+            headers: {
+              Authorization: `Bearer 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`,
+              'Content-Type': 'application/json',
+            },
+          },
+        );
+
+        setPropertyCrimesResponse(result.data.choices[0].message.content);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    setTimeout(getPropertyCrimesResponse, 80000);
+  }, []);
+// Casamento E uniao civil 
+  useEffect(() => {
+    const getBailHearingResponse = async () => {
+      try {
+        const result = await axios.post(
+          'https://api.openai.com/v1/chat/completions',
+          {
+            model: 'gpt-3.5-turbo',
+            messages: [
+              {
+                role: 'user',
+                content: `Faça um pequeno texto de no maximo 2 linhas dizendo sobre como atua em casos de Casamento e Uniao Civil sendo um advogado`,
+              },
+            ],
+          },
+          {
+            headers: {
+              Authorization: `Bearer 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`,
+              'Content-Type': 'application/json',
+            },
+          },
+        );
+
+        setBailHearingResponse(result.data.choices[0].message.content);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    setTimeout(getBailHearingResponse, 100000);
+  }, []);
+// Adocao e barriga de aluguel
+  useEffect(() => {
+    const getHarassmentCrimeResponse = async () => {
+      try {
+        const result = await axios.post(
+          'https://api.openai.com/v1/chat/completions',
+          {
+            model: 'gpt-3.5-turbo',
+            messages: [
+              {
+                role: 'user',
+                content: `Faça um pequeno texto de no maximo 2 linhas dizendo sobre como atua em casos de Adoção e barriga de aluguel sendo um advogado`,
+              },
+            ],
+          },
+          {
+            headers: {
+              Authorization: `Bearer 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`,
+              'Content-Type': 'application/json',
+            },
+          },
+        );
+
+        setHarassmentCrimeResponse(result.data.choices[0].message.content);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    setTimeout(getHarassmentCrimeResponse, 120000);
+  }, []);
+
+  // Acordos de propiedades
+  useEffect(() => {
+    const getAcordoCrimeResponse = async () => {
+      try {
+        const result = await axios.post(
+          'https://api.openai.com/v1/chat/completions',
+          {
+            model: 'gpt-3.5-turbo',
+            messages: [
+              {
+                role: 'user',
+                content: `Faça um pequeno texto de no maximo 2 linhas dizendo sobre como atua em casos de acordo de propiedades sendo um advogado`,
+              },
+            ],
+          },
+          {
+            headers: {
+              Authorization: `Bearer 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`,
+              'Content-Type': 'application/json',
+            },
+          },
+        );
+
+        setAcordoCrimeResponse(result.data.choices[0].message.content);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    setTimeout(getAcordoCrimeResponse, 150000);
+  }, []);
+
+
  // BANNER
  const [banner, setBanner] = useState<Template02[]>([]);
  const [imageUrl, setImageUrl] = useState('');
@@ -262,25 +525,20 @@ function Template02({ isVisible02 }: Template02Props) {
           </div>
           <h2>Você veio ao lugar certo</h2>
           <p>
-            Um parágrafo descritivo que diz aos clientes como você é bom e prova
-            que você é a melhor escolha que eles fizeram. Este parágrafo também
-            é para aqueles que procuram um advogado confiável. Você pode usar
-            algumas palavras atraentes e exibir suas capacidades que irão atrair
-            futuros clientes e incentivá-los a contratá-lo imediatamente. Liste
-            seus conhecimentos e experiência para provar que você é o melhor.
+            {response}
           </p>
           <div className="bottom-about-section">
             <div className="block-bottom">
               <LineAboutSection />
               <Scales size={32} weight="fill" />
               <h3>5 Anos de Experiência</h3>
-              <p>Officia officiis vitae hendrerit interdum pretium.</p>
+              <p>Já estamos a 5 anos no mercado ganhando casos.</p>
             </div>
             <div className="block-bottom">
               <LineAboutSection />
               <FlagCheckered size={32} weight="fill" />
               <h3>Definindo o sucesso</h3>
-              <p>Officia officiis vitae hendrerit interdum pretium.</p>
+              <p>Te levamos ao topo.</p>
             </div>
           </div>
         </FirstBlockAbout>
@@ -300,60 +558,53 @@ function Template02({ isVisible02 }: Template02Props) {
               <div className="content-block-atuacao">
                 <LinkSimpleBreak size={32} weight="bold" />
                 <h3>Divórcio e Separação</h3>
-                <text>
-                  This is a short description elaborating the service you have
-                  mentioned above.
-                </text>
+                <p>
+                  {domesticBurglary}
+                </p>
               </div>
               <div className="content-block-atuacao">
                 <NotePencil size={32} weight="bold" />
                 <h3>Direitos dos avós</h3>
-                <text>
-                  This is a short description elaborating the service you have
-                  mentioned above.
-                </text>
+                <p>
+                {gunCrimesResponse}
+                </p>
               </div>
               <div className="content-block-atuacao">
                 <Handshake size={32} weight="bold" />
                 <h3>Custódia de criança</h3>
-                <text>
-                  This is a short description elaborating the service you have
-                  mentioned above.
-                </text>
+                <p>
+                  {drugCrimesResponse}
+                </p>
               </div>
               <div className="content-block-atuacao">
                 <Baby size={32} weight="bold" />
                 <h3>Domestic Violence​​</h3>
-                <text>
-                  This is a short description elaborating the service you have
-                  mentioned above.
-                </text>
+                <p>
+                  {propertyCrimesResponse}
+                </p>
               </div>
             </Row>
             <Row>
               <div className="content-block-atuacao">
                 <Heart size={32} weight="bold" />
                 <h3>Casamento/Uniões Civis​</h3>
-                <text>
-                  This is a short description elaborating the service you have
-                  mentioned above.
-                </text>
+                <p>
+                {bailHearingResponse}
+                </p>
               </div>
               <div className="content-block-atuacao">
                 <User size={32} weight="bold" />
                 <h3>Adoção e barriga de aluguel​</h3>
-                <text>
-                  This is a short description elaborating the service you have
-                  mentioned above.
-                </text>
+                <p>
+                  {harassmentCrimeResponse}
+                </p>
               </div>
               <div className="content-block-atuacao">
                 <Scroll size={32} weight="bold" />
                 <h3>Acordos de propriedade​​​</h3>
-                <text>
-                  This is a short description elaborating the service you have
-                  mentioned above.
-                </text>
+                <p>
+                  {acordoCrimeResponse}
+                </p>
               </div>
               <div className="content-block-atuacao">
                 <div className="last-block-atuacao">
@@ -378,32 +629,32 @@ function Template02({ isVisible02 }: Template02Props) {
             <div className="block-whyus">
               <div className="wrap-block-whyus">
                 <h5>01</h5>
-                <div className="block-whyus-text">
+                <div className="block-whyus-p">
                   <h4>Excelente Histórico</h4>
-                  <text>
+                  <p>
                     This is a short description elaborating the reason that you
                     have mentioned above. Tell them why you are good!
-                  </text>
+                  </p>
                 </div>
               </div>
               <div className="wrap-block-whyus">
                 <h5>02</h5>
-                <div className="block-whyus-text">
+                <div className="block-whyus-p">
                   <h4>Excelente Histórico</h4>
-                  <text>
+                  <p>
                     This is a short description elaborating the reason that you
                     have mentioned above. Tell them why you are good!
-                  </text>
+                  </p>
                 </div>
               </div>
               <div className="wrap-block-whyus">
                 <h5>03</h5>
-                <div className="block-whyus-text">
+                <div className="block-whyus-p">
                   <h4>Excelente Histórico</h4>
-                  <text>
+                  <p>
                     This is a short description elaborating the reason that you
                     have mentioned above. Tell them why you are good!
-                  </text>
+                  </p>
                 </div>
               </div>
             </div>

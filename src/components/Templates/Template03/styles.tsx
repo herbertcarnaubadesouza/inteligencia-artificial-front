@@ -174,7 +174,8 @@ export const LeftSideBlock = styled.div`
       display: flex;
       flex-direction: column;
       gap: 1rem;
-      width: 100%;
+      width: 40%;
+     
 
       p {
         width: 100%;
@@ -380,7 +381,7 @@ export const LeftAwardBlock = styled.div`
   img {
     margin-top: 30px;
     width: 507px;
-    height: 338px;
+    height: 650px;
     object-fit: cover;
     box-shadow: 40px 40px 0 0
       ${(props: ThemeProps) =>
