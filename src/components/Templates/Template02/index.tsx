@@ -81,7 +81,7 @@ function Template02({ isVisible02 }: Template02Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization: `Bearer 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`,
               'Content-Type': 'application/json',
             },
           },
@@ -113,7 +113,7 @@ function Template02({ isVisible02 }: Template02Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization: `Bearer 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`,
               'Content-Type': 'application/json',
             },
           },
@@ -125,7 +125,7 @@ function Template02({ isVisible02 }: Template02Props) {
       }
     };
 
-    setTimeout(getdomesticBurglary, 15000); 
+    setTimeout(getdomesticBurglary, 20000); 
   }, []);
 // Direitos dos avos
   useEffect(() => {
@@ -144,7 +144,7 @@ function Template02({ isVisible02 }: Template02Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization: `Bearer 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`,
               'Content-Type': 'application/json',
             },
           },
@@ -175,7 +175,7 @@ function Template02({ isVisible02 }: Template02Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization: `Bearer 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`,
               'Content-Type': 'application/json',
             },
           },
@@ -205,7 +205,7 @@ function Template02({ isVisible02 }: Template02Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization: `Bearer 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`,
               'Content-Type': 'application/json',
             },
           },
@@ -236,7 +236,7 @@ function Template02({ isVisible02 }: Template02Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization: `Bearer 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`,
               'Content-Type': 'application/json',
             },
           },
@@ -267,7 +267,7 @@ function Template02({ isVisible02 }: Template02Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization: `Bearer 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`,
               'Content-Type': 'application/json',
             },
           },
@@ -299,7 +299,7 @@ function Template02({ isVisible02 }: Template02Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization: `Bearer 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`,
               'Content-Type': 'application/json',
             },
           },

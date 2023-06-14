@@ -93,6 +93,12 @@ export const HeaderBlock = styled.div<{ bgImage?: string }>`
   padding-bottom: 2rem;
   padding-inline: 6rem;
   text-align: center;
+   margin: 0 auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 95%;
+  position: relative;
 
   &::before {
     content: '';
