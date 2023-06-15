@@ -47,7 +47,7 @@ interface Template02 {
   imgUrl: string;
 }
 
-
+const apiKey = process.env.REACT_APP_API_KEY;
 
 
 function Template02({ isVisible02 }: Template02Props) {
@@ -81,7 +81,7 @@ function Template02({ isVisible02 }: Template02Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization: `Bearer ${apiKey}`,
               'Content-Type': 'application/json',
             },
           },
@@ -113,7 +113,7 @@ function Template02({ isVisible02 }: Template02Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization: `Bearer ${apiKey}`,
               'Content-Type': 'application/json',
             },
           },
@@ -144,7 +144,7 @@ function Template02({ isVisible02 }: Template02Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization: `Bearer ${apiKey}`,
               'Content-Type': 'application/json',
             },
           },
@@ -175,7 +175,7 @@ function Template02({ isVisible02 }: Template02Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization: `Bearer ${apiKey}`,
               'Content-Type': 'application/json',
             },
           },
@@ -205,7 +205,7 @@ function Template02({ isVisible02 }: Template02Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization: `Bearer ${apiKey}`,
               'Content-Type': 'application/json',
             },
           },
@@ -236,7 +236,7 @@ function Template02({ isVisible02 }: Template02Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization: `Bearer ${apiKey}`,
               'Content-Type': 'application/json',
             },
           },
@@ -267,7 +267,7 @@ function Template02({ isVisible02 }: Template02Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization: `Bearer ${apiKey}`,
               'Content-Type': 'application/json',
             },
           },
@@ -299,7 +299,7 @@ function Template02({ isVisible02 }: Template02Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization: `Bearer ${apiKey}`,
               'Content-Type': 'application/json',
             },
           },

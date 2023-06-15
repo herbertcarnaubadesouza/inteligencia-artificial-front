@@ -50,6 +50,9 @@ interface Template03 {
   imgUrl: string;
 }
 
+const apiKey = process.env.REACT_APP_API_KEY;
+
+
 function Template03({ isVisible03 }: Template03Props) {
 
   const [response, setResponse] = useState(null);
@@ -85,7 +88,7 @@ useEffect(() => {
         },
         {
           headers: {
-            Authorization: `Bearer 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`,
+            Authorization: `Bearer ${apiKey}`,
             'Content-Type': 'application/json',
           },
         },
@@ -118,7 +121,7 @@ useEffect(() => {
         },
         {
           headers: {
-            Authorization: `Bearer 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`,
+              Authorization: `Bearer ${apiKey}`,
             'Content-Type': 'application/json',
           },
         },
@@ -149,7 +152,7 @@ useEffect(() => {
         },
         {
           headers: {
-            Authorization: `Bearer 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`,
+              Authorization: `Bearer ${apiKey}`,
             'Content-Type': 'application/json',
           },
         },
@@ -180,7 +183,7 @@ useEffect(() => {
         },
         {
           headers: {
-            Authorization: `Bearer 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`,
+              Authorization: `Bearer ${apiKey}`,
             'Content-Type': 'application/json',
           },
         },
@@ -210,7 +213,7 @@ useEffect(() => {
         },
         {
           headers: {
-            Authorization: `Bearer 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`,
+              Authorization: `Bearer ${apiKey}`,
             'Content-Type': 'application/json',
           },
         },
@@ -241,7 +244,7 @@ useEffect(() => {
         },
         {
           headers: {
-            Authorization: `Bearer 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`,
+              Authorization: `Bearer ${apiKey}`,
             'Content-Type': 'application/json',
           },
         },
@@ -272,7 +275,7 @@ useEffect(() => {
         },
         {
           headers: {
-            Authorization: `Bearer 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`,
+              Authorization: `Bearer ${apiKey}`,
             'Content-Type': 'application/json',
           },
         },
@@ -306,7 +309,7 @@ useEffect(() => {
         },
         {
           headers: {
-            Authorization: `Bearer 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`,
+              Authorization: `Bearer ${apiKey}`,
             'Content-Type': 'application/json',
           },
         },
@@ -344,7 +347,7 @@ useEffect(() => {
         },
         {
           headers: {
-            Authorization: `Bearer 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`,
+              Authorization: `Bearer ${apiKey}`,
             'Content-Type': 'application/json',
           },
         },

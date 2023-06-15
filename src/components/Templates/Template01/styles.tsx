@@ -56,7 +56,6 @@ const HeaderFooter = styled.div<{ bgImage?: string }>`
   padding-left: 45rem;
   padding-right: 45rem;
   text-align: center;
- 
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -127,7 +126,7 @@ const Navigation = styled.div`
 `;
 
 const AboutSection = styled.section`
-width:80%;
+width:50%;
 margin-top:0 auto;
   justify-content:space-around;
   display: flex;
@@ -137,7 +136,7 @@ margin-top:0 auto;
   padding-right: 12rem;
   padding-top: 3.5rem;
   height:700px;
-
+ 
   
 
   

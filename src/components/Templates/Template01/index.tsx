@@ -1,3 +1,4 @@
+
 import { Phone, Play } from '@phosphor-icons/react';
 import {
   AboutSection,
@@ -21,12 +22,19 @@ import {
   PracticeContent,
 } from './styles';
 
+const apiKey = process.env.REACT_APP_API_KEY;
+
+
+
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 import { collection, db, getDoc, doc } from '../../../firebase';
 import { getDocs } from 'firebase/firestore';
 import { deleteDoc } from 'firebase/firestore';
+
+
+
 
 interface Template01Props {
   isVisible01: boolean;
@@ -46,7 +54,8 @@ function Template01({ isVisible01 }: Template01Props) {
   const [harassmentCrimeResponse, setHarassmentCrimeResponse] = useState(null);
   let nome = 'Rei dos advogados';
 
-
+ 
+  
 
 // Text Empresa
 
@@ -66,7 +75,7 @@ function Template01({ isVisible01 }: Template01Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization:`Bearer ${apiKey}`,
               'Content-Type': 'application/json',
             },
           },
@@ -75,6 +84,8 @@ function Template01({ isVisible01 }: Template01Props) {
         setResponse(result.data.choices[0].message.content);
       } catch (error) {
         console.error(error);
+        console.log(apiKey)
+       
       }
     };
 
@@ -97,7 +108,7 @@ function Template01({ isVisible01 }: Template01Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization: `Bearer ${apiKey}`,
               'Content-Type': 'application/json',
             },
           },
@@ -128,7 +139,7 @@ function Template01({ isVisible01 }: Template01Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization:`Bearer ${apiKey}`,
               'Content-Type': 'application/json',
             },
           },
@@ -159,7 +170,7 @@ function Template01({ isVisible01 }: Template01Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization:`Bearer ${apiKey}`,
               'Content-Type': 'application/json',
             },
           },
@@ -190,7 +201,7 @@ function Template01({ isVisible01 }: Template01Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization:`Bearer ${apiKey}`,
               'Content-Type': 'application/json',
             },
           },
@@ -221,7 +232,7 @@ function Template01({ isVisible01 }: Template01Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization:`Bearer ${apiKey}`,
               'Content-Type': 'application/json',
             },
           },
@@ -252,7 +263,7 @@ function Template01({ isVisible01 }: Template01Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization:`Bearer ${apiKey}`,
               'Content-Type': 'application/json',
             },
           },
