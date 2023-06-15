@@ -52,7 +52,7 @@ interface Template02 {
 
 function Template02({ isVisible02 }: Template02Props) {
 
-  const [response, setResponse] = useState(null);
+   const [response, setResponse] = useState(null);
   const [domesticBurglary, setDomesticBurglaryResponse] = useState(null);
   const [gunCrimesResponse, setGunCrimesResponse] = useState(null);
   const [drugCrimesResponse, setDrugCrimesResponse] = useState(null);
@@ -81,7 +81,7 @@ function Template02({ isVisible02 }: Template02Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization: `Bearer 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`,
               'Content-Type': 'application/json',
             },
           },
@@ -113,7 +113,7 @@ function Template02({ isVisible02 }: Template02Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization: `Bearer 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`,
               'Content-Type': 'application/json',
             },
           },
@@ -144,7 +144,7 @@ function Template02({ isVisible02 }: Template02Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization: `Bearer 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`,
               'Content-Type': 'application/json',
             },
           },
@@ -175,7 +175,7 @@ function Template02({ isVisible02 }: Template02Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization: `Bearer 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`,
               'Content-Type': 'application/json',
             },
           },
@@ -205,7 +205,7 @@ function Template02({ isVisible02 }: Template02Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization: `Bearer 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`,
               'Content-Type': 'application/json',
             },
           },
@@ -236,7 +236,7 @@ function Template02({ isVisible02 }: Template02Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization: `Bearer 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`,
               'Content-Type': 'application/json',
             },
           },
@@ -267,7 +267,7 @@ function Template02({ isVisible02 }: Template02Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization: `Bearer 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`,
               'Content-Type': 'application/json',
             },
           },
@@ -299,7 +299,7 @@ function Template02({ isVisible02 }: Template02Props) {
           },
           {
             headers: {
-              Authorization: `Bearer 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`,
+              Authorization: `Bearer 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`,
               'Content-Type': 'application/json',
             },
           },
