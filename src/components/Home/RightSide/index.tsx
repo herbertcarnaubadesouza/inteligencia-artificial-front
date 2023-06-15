@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { BeatLoader } from 'react-spinners';
-import './rightside.scss';
+import styles from '../../../styles/Rightside.module.scss';
 
 import Question01 from '../Question01';
 import Question02 from '../Question02';
@@ -142,42 +142,44 @@ function RightSide() {
 
   return (
     <>
-      <LeftSide
-        isQuestionVisible={isQuestionVisible}
-        isQuestion02Visible={isQuestion02Visible}
-        isQuestion03Visible={isQuestion03Visible}
-        isQuestion04Visible={isQuestion04Visible}
-        isQuestion05Visible={isQuestion05Visible}
-        isQuestion06Visible={isQuestion06Visible}
-        isQuestion07Visible={isQuestion07Visible}
-      />
-      <div className="rightside-container">
-        {isQuestionVisible && (
-          <Question01 ocultarQuestion={ocultarQuestion} />
-        )}
-        {isQuestion02Visible && (
-          <Question02 ocultarQuestion02={ocultarQuestion02}
-            voltarQuestion02={voltarQuestion02} />
-        )}
-        {isQuestion03Visible && (
-          <Question03 ocultarQuestion03={ocultarQuestion03}
-            voltarQuestion03={voltarQuestion03} />
-        )}
-        {isQuestion04Visible && (
-          <Question04 ocultarQuestion04={ocultarQuestion04}
-            voltarQuestion04={voltarQuestion04} />
-        )}
-        {isQuestion05Visible && (
-          <Question05 ocultarQuestion05={ocultarQuestion05}
-            voltarQuestion05={voltarQuestion05} />
-        )}
-        {isQuestion06Visible && (
-          <Question06 ocultarQuestion06={ocultarQuestion06}
-            voltarQuestion06={voltarQuestion06} />
-        )}
-        {isQuestion07Visible && (
-          <Question07 voltarQuestion07={voltarQuestion07} />
-        )}
+      <div className={styles.FullContainer}>
+        <LeftSide
+          isQuestionVisible={isQuestionVisible}
+          isQuestion02Visible={isQuestion02Visible}
+          isQuestion03Visible={isQuestion03Visible}
+          isQuestion04Visible={isQuestion04Visible}
+          isQuestion05Visible={isQuestion05Visible}
+          isQuestion06Visible={isQuestion06Visible}
+          isQuestion07Visible={isQuestion07Visible}
+        />
+        <div className={styles.RightSideContainer}>
+          {isQuestionVisible && (
+            <Question01 ocultarQuestion={ocultarQuestion} />
+          )}
+          {isQuestion02Visible && (
+            <Question02 ocultarQuestion02={ocultarQuestion02}
+              voltarQuestion02={voltarQuestion02} />
+          )}
+          {isQuestion03Visible && (
+            <Question03 ocultarQuestion03={ocultarQuestion03}
+              voltarQuestion03={voltarQuestion03} />
+          )}
+          {isQuestion04Visible && (
+            <Question04 ocultarQuestion04={ocultarQuestion04}
+              voltarQuestion04={voltarQuestion04} />
+          )}
+          {isQuestion05Visible && (
+            <Question05 ocultarQuestion05={ocultarQuestion05}
+              voltarQuestion05={voltarQuestion05} />
+          )}
+          {isQuestion06Visible && (
+            <Question06 ocultarQuestion06={ocultarQuestion06}
+              voltarQuestion06={voltarQuestion06} />
+          )}
+          {isQuestion07Visible && (
+            <Question07 voltarQuestion07={voltarQuestion07} />
+          )}
+        </div>
       </div>
     </>
   );

@@ -15,7 +15,7 @@ function LeftSide({ isQuestionVisible, isQuestion02Visible, isQuestion03Visible,
   return (
     <>
       <div className="left-side-container">
-        <img src="./images/logo.svg" className="logo"></img>
+        {/* <img src="./images/logo.svg" className="logo"></img> */}
         <div className="progressBar-container">
           <div className={`progress ${isQuestionVisible ? 'style-one' : ''} ${isQuestion02Visible ? 'style-two' : ''} ${isQuestion03Visible ? 'style-tree' : ''} ${isQuestion04Visible ? 'style-four' : ''} ${isQuestion05Visible ? 'style-five' : ''} ${isQuestion06Visible ? 'style-six' : ''}  ${isQuestion07Visible ? 'style-seven' : ''}`}></div>
           <div className="icons-container">

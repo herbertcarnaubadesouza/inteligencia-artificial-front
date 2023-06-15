@@ -1,12 +1,24 @@
-.rightside-container {
-  background-color: #fff;
+.FullContainer {
+  display: flex;
+  flex-direction: row-reverse;
+  padding-top: 7.9rem;
+  padding-left: 3.6rem;
+  padding-bottom: 5rem;
+  max-height: 100vh !important;
+}
+
+.full-container>* {
+  max-height: 100%;
+}
+
+.RightSideContainer {
+  background-color: #ffffff48;
   width: 100%;
-  height: 96.5vh;
+  height: 100%;
   padding-top: 2rem;
   padding-left: 2rem;
   padding-right: 3.4rem;
-  border-top-left-radius: 3rem;
-  border-bottom-left-radius: 3rem;
+  border-radius: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

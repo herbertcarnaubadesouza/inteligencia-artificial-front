@@ -1,20 +1,5 @@
-.rightside-container {
-  background-color: #fff;
-  width: 100%;
-  height: 96.5vh;
-  padding-top: 2rem;
-  padding-left: 2rem;
-  padding-right: 3.4rem;
-  border-top-left-radius: 3rem;
-  border-bottom-left-radius: 3rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
 .real-top-container {
   overflow: auto;
-  height: 80vh;
   padding-right: 1rem;
   scrollbar-width: thin;
   scrollbar-color: #ffffff #E9E8ED;
@@ -54,7 +39,7 @@
   flex-direction: row;
   align-items: center;
   gap: 1rem;
-  background-color: #f9f8fa;
+  background-color: #ffffff3b;
   border-radius: 0.5rem;
   padding-block: 1rem;
   padding-inline: 5px;
@@ -65,7 +50,7 @@
   flex-direction: row;
   align-items: center;
   gap: 1rem;
-  background-color: #ffffff;
+  background-color: #ffffff3b;
   border-radius: 0.5rem;
   padding-block: 1rem;
   padding-inline: 5px;
@@ -76,7 +61,7 @@
   flex-direction: row;
   align-items: center;
   gap: 1rem;
-  background-color: #f9f8fa;
+  background-color: #ffffff3b;
   border-radius: 0.5rem;
   padding-block: 1rem;
   padding-inline: 5px;
@@ -172,7 +157,7 @@
 .choice-container-two {
   display: flex;
   flex-direction: column;
-  background-color: #F6F5F8;
+  background-color: #ffffff3b;
   padding-top: 1rem;
   padding-left: 1.5rem;
   padding-bottom: 2rem;
@@ -210,7 +195,7 @@
 }
 
 .choice {
-  background-color: #fff;
+  background-color: #ffffff3b;
   margin-top: 1.5rem;
   border-radius: 2rem;
   border: 2px solid #231a50;
@@ -247,7 +232,7 @@
   padding-left: 2rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
-  background-color: #f6f5f8;
+  background-color: #ffffff54;
   border-radius: 0.5rem;
 }
 
