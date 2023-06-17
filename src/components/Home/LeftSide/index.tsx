@@ -17,58 +17,42 @@ function LeftSide({ isQuestionVisible, isQuestion02Visible, isQuestion03Visible,
       <div className="left-side-container">
         {/* <img src="./images/logo.svg" className="logo"></img> */}
         <div className="progressBar-container">
-          <div className={`progress ${isQuestionVisible ? 'style-one' : ''} ${isQuestion02Visible ? 'style-two' : ''} ${isQuestion03Visible ? 'style-tree' : ''} ${isQuestion04Visible ? 'style-four' : ''} ${isQuestion05Visible ? 'style-five' : ''} ${isQuestion06Visible ? 'style-six' : ''}  ${isQuestion07Visible ? 'style-seven' : ''}`}></div>
+          <div className={`progress ${isQuestionVisible ? 'style-one' : ''} ${isQuestion02Visible ? 'style-one' : ''} ${isQuestion03Visible ? 'style-two' : ''} ${isQuestion04Visible ? 'style-tree' : ''} ${isQuestion05Visible ? 'style-four' : ''} ${isQuestion06Visible ? 'style-four' : ''}  ${isQuestion07Visible ? 'style-five' : ''}`}></div>
+
           <div className="icons-container">
-            <div className="block-image-left-side">
-              <img src="./images/bag.svg"></img>
-              <div className={`tooltip ${isQuestionVisible ? 'style-one' : ''} ${isQuestion02Visible ? 'style-two' : ''} ${isQuestion03Visible ? 'style-tree' : ''} ${isQuestion04Visible ? 'style-four' : ''} ${isQuestion05Visible ? 'style-five' : ''} ${isQuestion06Visible ? 'style-six' : ''}  ${isQuestion07Visible ? 'style-seven' : ''}`}>
-                <p>Vamos lá!</p>
-                <img src="./images/rocket.png"></img>
-              </div>
-            </div>
 
             <div className="block-image-left-side">
-              <img src="./images/constructing.svg"></img>
-              <div className={`tooltip-two ${isQuestionVisible ? 'style-one' : ''} ${isQuestion02Visible ? 'style-two' : ''} ${isQuestion03Visible ? 'style-tree' : ''} ${isQuestion04Visible ? 'style-four' : ''} ${isQuestion05Visible ? 'style-five' : ''} ${isQuestion06Visible ? 'style-six' : ''}  ${isQuestion07Visible ? 'style-seven' : ''}`}>
-                <p>Bom trabalho!</p>
-                <img src="./images/ok.png"></img>
-              </div>
-            </div>
+              <img className={`iconProgressFour ${isQuestionVisible ? 'style-one' : ''} ${isQuestion02Visible ? 'style-two' : ''} ${isQuestion03Visible ? 'style-tree' : ''} ${isQuestion04Visible ? 'style-tree' : ''} ${isQuestion05Visible ? 'style-tree' : ''} ${isQuestion06Visible ? 'style-four' : ''}  ${isQuestion07Visible ? 'style-five' : ''}`} src="./images/popper.svg"></img>
 
-            <div className="block-image-left-side">
-              <img src="./images/location.svg"></img>
-              <div className={`tooltip-tree ${isQuestionVisible ? 'style-one' : ''} ${isQuestion02Visible ? 'style-two' : ''} ${isQuestion03Visible ? 'style-tree' : ''} ${isQuestion04Visible ? 'style-four' : ''} ${isQuestion05Visible ? 'style-five' : ''} ${isQuestion06Visible ? 'style-six' : ''}  ${isQuestion07Visible ? 'style-seven' : ''}`}>
-                <p>Você faz isso parecer fácil!</p>
-                <img src="./images/emoji.png"></img>
-              </div>
-            </div>
-            <div className="block-image-left-side">
-              <img src="./images/tag.svg"></img>
-              <div className={`tooltip-four ${isQuestionVisible ? 'style-one' : ''} ${isQuestion02Visible ? 'style-two' : ''} ${isQuestion03Visible ? 'style-tree' : ''} ${isQuestion04Visible ? 'style-four' : ''} ${isQuestion05Visible ? 'style-five' : ''} ${isQuestion06Visible ? 'style-six' : ''}  ${isQuestion07Visible ? 'style-seven' : ''}`}>
+              {/* <div className={`tooltip-four ${isQuestionVisible ? 'style-one' : ''} ${isQuestion02Visible ? 'style-two' : ''} ${isQuestion03Visible ? 'style-tree' : ''} ${isQuestion04Visible ? 'style-four' : ''} ${isQuestion05Visible ? 'style-five' : ''} ${isQuestion06Visible ? 'style-six' : ''}  ${isQuestion07Visible ? 'style-seven' : ''}`}>
                 <p>Não desista agora!</p>
                 <img src="./images/hang.png"></img>
-              </div>
+              </div> */}
             </div>
             <div className="block-image-left-side">
-              <img src="./images/diamond.svg"></img>
-              <div className={`tooltip-five ${isQuestionVisible ? 'style-one' : ''} ${isQuestion02Visible ? 'style-two' : ''} ${isQuestion03Visible ? 'style-tree' : ''} ${isQuestion04Visible ? 'style-four' : ''} ${isQuestion05Visible ? 'style-five' : ''} ${isQuestion06Visible ? 'style-six' : ''}  ${isQuestion07Visible ? 'style-seven' : ''}`}>
+              <img className={`iconProgressTree ${isQuestionVisible ? 'style-one' : ''} ${isQuestion02Visible ? 'style-two' : ''} ${isQuestion03Visible ? 'style-tree' : ''} ${isQuestion04Visible ? 'style-tree' : ''} ${isQuestion05Visible ? 'style-four' : ''} ${isQuestion06Visible ? 'style-four' : ''}  ${isQuestion07Visible ? 'style-four' : ''}`} src="./images/magic.svg"></img>
+
+              {/* <div className={`tooltip-tree ${isQuestionVisible ? 'style-one' : ''} ${isQuestion02Visible ? 'style-two' : ''} ${isQuestion03Visible ? 'style-tree' : ''} ${isQuestion04Visible ? 'style-four' : ''} ${isQuestion05Visible ? 'style-five' : ''} ${isQuestion06Visible ? 'style-six' : ''}  ${isQuestion07Visible ? 'style-seven' : ''}`}>
                 <p>Espetacular, continue assim!</p>
                 <img src="./images/biceps.png"></img>
-              </div>
+              </div> */}
             </div>
             <div className="block-image-left-side">
-              <img src="./images/email.svg"></img>
-              <div className={`tooltip-six ${isQuestionVisible ? 'style-one' : ''} ${isQuestion02Visible ? 'style-two' : ''} ${isQuestion03Visible ? 'style-tree' : ''} ${isQuestion04Visible ? 'style-four' : ''} ${isQuestion05Visible ? 'style-five' : ''} ${isQuestion06Visible ? 'style-six' : ''}  ${isQuestion07Visible ? 'style-seven' : ''}`}>
+              <img className={`iconProgressTwo ${isQuestionVisible ? 'style-one' : ''} ${isQuestion02Visible ? 'style-two' : ''} ${isQuestion03Visible ? 'style-two' : ''} ${isQuestion04Visible ? 'style-tree' : ''} ${isQuestion05Visible ? 'style-four' : ''} ${isQuestion06Visible ? 'style-four' : ''}  ${isQuestion07Visible ? 'style-four' : ''}`} src="./images/style.svg"></img>
+
+              {/* <div className={`tooltip-two ${isQuestionVisible ? 'style-one' : ''} ${isQuestion02Visible ? 'style-two' : ''} ${isQuestion03Visible ? 'style-tree' : ''} ${isQuestion04Visible ? 'style-four' : ''} ${isQuestion05Visible ? 'style-five' : ''} ${isQuestion06Visible ? 'style-six' : ''}  ${isQuestion07Visible ? 'style-seven' : ''}`}>
                 <p>Você está quase terminando!</p>
                 <img src="./images/finish.png"></img>
-              </div>
+              </div> */}
             </div>
             <div className="block-image-left-side">
-              <img src="./images/doc.svg"></img>
-              <div className={`tooltip-seven ${isQuestionVisible ? 'style-one' : ''} ${isQuestion02Visible ? 'style-two' : ''} ${isQuestion03Visible ? 'style-tree' : ''} ${isQuestion04Visible ? 'style-four' : ''} ${isQuestion05Visible ? 'style-five' : ''} ${isQuestion06Visible ? 'style-six' : ''}  ${isQuestion07Visible ? 'style-seven' : ''}`}>
+              <img className={`iconProgressOne ${isQuestionVisible ? 'style-one' : ''} ${isQuestion02Visible ? 'style-two' : ''} ${isQuestion03Visible ? 'style-tree' : ''} ${isQuestion04Visible ? 'style-four' : ''} ${isQuestion05Visible ? 'style-four' : ''} ${isQuestion06Visible ? 'style-four' : ''}  ${isQuestion07Visible ? 'style-four' : ''}`} src="./images/doc.svg"></img>
+
+              {/* <div className={`tooltip-one ${isQuestionVisible ? 'style-one' : ''} ${isQuestion02Visible ? 'style-two' : ''} ${isQuestion03Visible ? 'style-tree' : ''} ${isQuestion04Visible ? 'style-four' : ''} ${isQuestion05Visible ? 'style-five' : ''} ${isQuestion06Visible ? 'style-six' : ''}  ${isQuestion07Visible ? 'style-seven' : ''}`}>
                 <p>Agora só mais um!</p>
-                <img src="./images/happy.png"></img>
-              </div>
+              </div> */}
+
+              <img className={`progressRocket ${isQuestionVisible ? 'style-one' : ''} ${isQuestion02Visible ? 'style-one' : ''} ${isQuestion03Visible ? 'style-two' : ''} ${isQuestion04Visible ? 'style-tree' : ''} ${isQuestion05Visible ? 'style-four' : ''} ${isQuestion06Visible ? 'style-four' : ''}  ${isQuestion07Visible ? 'style-five' : ''}`} src="./images/progressRocket.svg" alt="" />
             </div>
           </div>
         </div>

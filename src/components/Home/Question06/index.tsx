@@ -144,17 +144,19 @@ function Question06(props: Question06Props) {
       <div className='real-top-container'>
         <div className="question01-label">
           <div className="question-label-container">
-            <img src="./images/logoQuestion.png" alt="" />
-            <p className="question-normal-label">
-              Qual categoria melhor descreve o objetivo do seu site? (por exemplo, loja virtual, serviços online, portfólio, blog)
-            </p>
+            <img src="./images/logoFoxxy.svg" alt="" />
+            <div className="question-back">
+              <p className="question-normal-label">
+                Qual categoria melhor descreve o objetivo do seu site? (por exemplo, loja virtual, serviços online, portfólio, blog)
+              </p>
+            </div>
           </div>
         </div>
 
         <div className="question01-selected">
           <div className="question-selected-container">
             <img src="./images/selected.svg" alt="" />
-            <p className="question-normal-label">
+            <p className="question-selected-label">
               Minha escolha: {localStorage.getItem('textoClicado')}
             </p>
           </div>
@@ -162,17 +164,19 @@ function Question06(props: Question06Props) {
 
         <div className="question01-label">
           <div className="question-label-container">
-            <img src="./images/logoQuestion.png" alt="" />
-            <p className="question-normal-label">
-              Personalize o seu site escolhendo os serviços que você vai oferecer (você pode mudar isso depois)
-            </p>
+            <img src="./images/logoFoxxy.svg" alt="" />
+            <div className="question-back">
+              <p className="question-normal-label">
+                Personalize o seu site escolhendo os serviços que você vai oferecer (você pode mudar isso depois)
+              </p>
+            </div>
           </div>
         </div>
 
         <div className="question01-selected">
           <div className="question-selected-container">
             <img src="./images/selected.svg" alt="" />
-            <p className="question-normal-label">
+            <p className="question-selected-label">
               Minhas escolhas: {localStorage.getItem('escolha02')}
             </p>
           </div>
@@ -180,17 +184,19 @@ function Question06(props: Question06Props) {
 
         <div className="question01-label">
           <div className="question-label-container">
-            <img src="./images/logoQuestion.png" alt="" />
-            <p className="question-normal-label">
-              Agora me diga qual vai ser o uso do seu site. Isso me ajudará a saber quais ferramentas e páginas você precisa
-            </p>
+            <img src="./images/logoFoxxy.svg" alt="" />
+            <div className="question-back">
+              <p className="question-normal-label">
+                Agora me diga qual vai ser o uso do seu site. Isso me ajudará a saber quais ferramentas e páginas você precisa
+              </p>
+            </div>
           </div>
         </div>
 
         <div className="question01-selected">
           <div className="question-selected-container">
             <img src="./images/selected.svg" alt="" />
-            <p className="question-normal-label">
+            <p className="question-selected-label">
               Minhas escolhas: {localStorage.getItem('escolha03')}
             </p>
           </div>
@@ -198,17 +204,19 @@ function Question06(props: Question06Props) {
 
         <div className="question01-label">
           <div className="question-label-container">
-            <img src="./images/logoQuestion.png" alt="" />
-            <p className="question-normal-label">
-              Informe a localização física de sua empresa (como o endereço de uma loja) ou a área que você atende (como região, cidade ou CEP)
-            </p>
+            <img src="./images/logoFoxxy.svg" alt="" />
+            <div className="question-back">
+              <p className="question-normal-label">
+                Informe a localização física de sua empresa (como o endereço de uma loja) ou a área que você atende (como região, cidade ou CEP)
+              </p>
+            </div>
           </div>
         </div>
 
         <div className="question01-selected">
           <div className="question-selected-container">
             <img src="./images/selected.svg" alt="" />
-            <p className="question-normal-label">
+            <p className="question-selected-label">
               Minhas escolhas: {localStorage.getItem('escolha04')}: {localStorage.getItem('Endereco')}
             </p>
           </div>
@@ -216,17 +224,19 @@ function Question06(props: Question06Props) {
 
         <div className="question01-label">
           <div className="question-label-container">
-            <img src="./images/logoQuestion.png" alt="" />
-            <p className="question-normal-label">
-              Então, como você quer que sua empresa seja chamada?
-            </p>
+            <img src="./images/logoFoxxy.svg" alt="" />
+            <div className="question-back">
+              <p className="question-normal-label">
+                Então, como você quer que sua empresa seja chamada?
+              </p>
+            </div>
           </div>
         </div>
 
         <div className="question01-selected">
           <div className="question-selected-container">
             <img src="./images/selected.svg" alt="" />
-            <p className="question-normal-label">
+            <p className="question-selected-label">
               Minhas escolha: {localStorage.getItem('nomeEmpresa')}
             </p>
           </div>
@@ -236,10 +246,12 @@ function Question06(props: Question06Props) {
           <div id="top-container" className="top-container">
             {showQuestion && (
               <div className="question-container">
-                <img src="./images/logoQuestion.png" alt="" />
-                <p className="question">
-                  Selecione para destacar 3 aspectos únicos do seu negócio. Vamos gerar mais conteúdo personalizado com base em sua seleção.
-                </p>
+                <img src="./images/logoFoxxy.svg" alt="" />
+                <div className="question-back">
+                  <p className="question">
+                    Selecione para destacar 3 aspectos únicos do seu negócio.
+                  </p>
+                </div>
               </div>
             )}
             {showLoading && !showButtons && (

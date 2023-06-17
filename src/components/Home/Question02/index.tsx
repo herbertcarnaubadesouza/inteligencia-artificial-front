@@ -74,18 +74,20 @@ function Question02(props: Question02Props) {
       <div className='real-top-container'>
         <div className="question01-label">
           <div className="question-label-container">
-            <img src="./images/logoQuestion.png" alt="" />
-            <p className="question-normal-label">
-              Qual categoria melhor descreve o objetivo do seu site? (por
-              exemplo, loja virtual, serviços online, portfólio, blog)
-            </p>
+            <img src="./images/logoFoxxy.svg" alt="" />
+            <div className='question-back'>
+              <p className="question-normal-label">
+                Qual categoria melhor descreve o objetivo do seu site? (por
+                exemplo, loja virtual, serviços online, portfólio, blog)
+              </p>
+            </div>
           </div>
         </div>
 
         <div className="question01-selected">
           <div className="question-selected-container">
             <img src="./images/selected.svg" alt="" />
-            <p className="question-normal-label">
+            <p className="question-selected-label">
               Minha escolha: {localStorage.getItem('textoClicado')}
             </p>
           </div>
@@ -95,10 +97,12 @@ function Question02(props: Question02Props) {
           <div id="top-container" className="top-container">
             {showQuestion && (
               <div className="question-container">
-                <img src="./images/logoQuestion.png" alt="" />
-                <p className="question">
-                  Personalize o seu site escolhendo os serviços que você vai oferecer (você pode mudar isso depois)
-                </p>
+                <img src="./images/logoFoxxy.svg" alt="" />
+                <div className="question-back">
+                  <p className="question">
+                    Personalize o seu site escolhendo os serviços que você vai oferecer (você pode mudar isso depois)
+                  </p>
+                </div>
               </div>
             )}
             {showLoading && !showButtons && (
@@ -167,10 +171,10 @@ function Question02(props: Question02Props) {
               src="./images/back.svg"
               alt=""
             />
-            <p className="button-back-text">Voltar</p>
+            <p className="button-back-text">VOLTAR</p>
           </div>
           <div className="button-continue" onClick={props.ocultarQuestion02}>
-            <p className="button-continue-text" >Continuar</p>
+            <p className="button-continue-text" >CONTINUAR</p>
           </div>
         </div>
       </div>

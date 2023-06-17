@@ -13,7 +13,7 @@ function Question03(props: Question03Props) {
   const { voltarQuestion03 } = props;
 
   useEffect(() => {
-    const topContainer = document.getElementById("top-container");
+    const topContainer = document.getElementById("atual");
     if (topContainer) {
       topContainer.scrollIntoView({ behavior: 'smooth' });
     }
@@ -73,18 +73,20 @@ function Question03(props: Question03Props) {
       <div className='real-top-container'>
         <div className="question01-label">
           <div className="question-label-container">
-            <img src="./images/logoQuestion.png" alt="" />
-            <p className="question-normal-label">
-              Qual categoria melhor descreve o objetivo do seu site? (por
-              exemplo, loja virtual, serviços online, portfólio, blog)
-            </p>
+            <img src="./images/logoFoxxy.svg" alt="" />
+            <div className="question-back">
+              <p className="question-normal-label">
+                Qual categoria melhor descreve o objetivo do seu site? (por
+                exemplo, loja virtual, serviços online, portfólio, blog)
+              </p>
+            </div>
           </div>
         </div>
 
         <div className="question01-selected">
           <div className="question-selected-container">
             <img src="./images/selected.svg" alt="" />
-            <p className="question-normal-label">
+            <p className="question-selected-label">
               Minha escolha: {localStorage.getItem('textoClicado')}
             </p>
           </div>
@@ -92,17 +94,19 @@ function Question03(props: Question03Props) {
 
         <div className="question01-label">
           <div className="question-label-container">
-            <img src="./images/logoQuestion.png" alt="" />
-            <p className="question-normal-label">
-              Personalize o seu site escolhendo os serviços que você vai oferecer (você pode mudar isso depois)
-            </p>
+            <img src="images/logoFoxxy.svg" alt="" />
+            <div className="question-back">
+              <p className="question-normal-label">
+                Personalize o seu site escolhendo os serviços que você vai oferecer (você pode mudar isso depois)
+              </p>
+            </div>
           </div>
         </div>
 
         <div className="question01-selected">
           <div className="question-selected-container">
             <img src="./images/selected.svg" alt="" />
-            <p className="question-normal-label">
+            <p className="question-selected-label">
               Minhas escolhas: {localStorage.getItem('escolha02')}
             </p>
           </div>
@@ -111,11 +115,13 @@ function Question03(props: Question03Props) {
         <div id="quention01">
           <div id="top-container" className="top-container">
             {showQuestion && (
-              <div className="question-container">
-                <img src="./images/logoQuestion.png" alt="" />
-                <p className="question">
-                  Agora me diga qual vai ser o uso do seu site. Isso me ajudará a saber quais ferramentas e páginas você precisa
-                </p>
+              <div id="atual" className="question-container">
+                <img src="images/logoFoxxy.svg" alt="" />
+                <div className="question-back">
+                  <p className="question">
+                    Agora me diga qual vai ser o uso do seu site. Isso me ajudará a saber quais ferramentas e páginas você precisa
+                  </p>
+                </div>
               </div>
             )}
             {showLoading && !showButtons && (
@@ -188,10 +194,10 @@ function Question03(props: Question03Props) {
               src="./images/back.svg"
               alt=""
             />
-            <p className="button-back-text">Voltar</p>
+            <p className="button-back-text">VOLTAR</p>
           </div>
           <div className="button-continue" onClick={props.ocultarQuestion03}>
-            <p className="button-continue-text">Continuar</p>
+            <p className="button-continue-text">CONTINUAR</p>
           </div>
         </div>
       </div>

@@ -155,10 +155,10 @@ function Question01(props: Question01Props) {
       <div className='real-top-container'>
         <div className="question01-label inactive">
           <div className="question-label-container">
-            <img src="./images/logoQuestion.png" alt="" />
+            <img src="./images/logoFoxxy.svg" alt="" />
             <p className="question-normal-label">
               Qual categoria melhor descreve o objetivo do seu site? (por
-              exemplo, loja virtual, serviços online, portfólio, blog)
+              exemplo, serviços online, portfólio, blog)
             </p>
           </div>
         </div>
@@ -177,16 +177,18 @@ function Question01(props: Question01Props) {
           <div className="top-container">
             {showQuestion && (
               <div className="question-container">
-                <img src="./images/logoQuestion.png" alt="" />
-                <p className="question">
-                  Qual categoria melhor descreve o objetivo do seu site? (por
-                  exemplo, loja virtual, serviços online, portfólio, blog)
-                </p>
+                <img src="./images/logoFoxxy.svg" alt="" />
+                <div className="question-back">
+                  <p className="question">
+                    Qual categoria melhor descreve o objetivo do seu site? (por
+                    exemplo, serviços online, portfólio, blog)
+                  </p>
+                </div>
               </div>
             )}
             {showLoading && !showButtons && (
               <div className="while-typing">
-                <p>Rei do Sites IA está digitando...</p>
+                <p>FOXXY AI está digitando...</p>
                 <BeatLoader speedMultiplier={0.6} size={12} color="#ccc" />
               </div>
             )}
@@ -280,13 +282,13 @@ function Question01(props: Question01Props) {
               src="./images/back.svg"
               alt=""
             />
-            <p className="button-back-text">{isButtonActive ? 'Voltar para todas as categorias' : 'Voltar'}</p>
+            <p className="button-back-text">{isButtonActive ? 'Voltar para todas as categorias' : 'VOLTAR'}</p>
           </div>
 
           <div className="right-nav-container">
             <p className="choice-selected">{textoClicado}</p>
             <div className="button-continue" onClick={props.ocultarQuestion}>
-              <p className="button-continue-text" >Continuar</p>
+              <p className="button-continue-text" >CONTINUAR</p>
             </div>
           </div>
         </div>

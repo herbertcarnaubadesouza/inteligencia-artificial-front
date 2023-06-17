@@ -1,13 +1,14 @@
 .real-top-container {
   overflow: auto;
   padding-right: 1rem;
+  height: 65.5vh;
   scrollbar-width: thin;
   scrollbar-color: #ffffff #E9E8ED;
 }
 
 
 .real-top-container::-webkit-scrollbar {
-  width: 12px;
+  width: 6px;
   padding-left: 1rem;
 }
 
@@ -52,7 +53,6 @@
   gap: 1rem;
   background-color: #ffffff3b;
   border-radius: 0.5rem;
-  padding-block: 1rem;
   padding-inline: 5px;
 }
 
@@ -61,9 +61,8 @@
   flex-direction: row;
   align-items: center;
   gap: 1rem;
-  background-color: #ffffff3b;
+  background-color: #ffffff00;
   border-radius: 0.5rem;
-  padding-block: 1rem;
   padding-inline: 5px;
 
   opacity: 0; // Inicialmente invisível
@@ -79,7 +78,7 @@
 
   P {
     font-style: normal;
-    color: rgba(35, 26, 80, 0.6509803921568628);
+    color: #fff;
     font-weight: 500;
     font-feature-settings: 'salt' on;
     font-size: 0.8rem;
@@ -92,66 +91,87 @@
 }
 
 .question-label {
-  color: #3f3767;
-  font-size: 20px;
+  color: #fff;
+  font-size: 18px;
   font-weight: 500;
   border-right: 0.15em solid #3f3767; // cursor
   white-space: nowrap; // evita quebras de linha
 }
 
 .question-normal-label {
-  color: #3f3767;
-  font-size: 20px;
+  color: #fff;
+  font-size: 18px;
   font-weight: 500;
   white-space: nowrap; // evita quebras de linha
 }
 
+
 .question {
-  color: #3f3767;
-  font-size: 20px;
-  font-weight: 500;
-  border-right: 0.15em solid #3f3767; // cursor
-  white-space: nowrap; // evita quebras de linha
-  overflow: hidden; // assegura que o conteúdo seja escondido até ser revelado
-  width: 0; // inicialmente o conteúdo é completamente escondido
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+  border-right: 0.15em solid #3f3767;
+  padding-left: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
 
   animation: blink 5s,
-    // cursor piscando
-    typing 6s steps(40, end) forwards 2s; // digitação começa após 1 segundo
+    typing 6s steps(40, end) forwards 2s;
+}
+
+.question-back {
+  background-color: #ffffff3b;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  width: 92%;
+  padding-right: 1.5rem;
 }
 
 .label {
-  color: #3f3767;
+  color: #fff;
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 300;
+  margin-top: -0.5rem;
 }
 
 .search-container {
   padding: 1.2rem;
-  border-radius: 2.5rem;
-  border: 2px solid #3f3767;
+  border-radius: 1.5rem;
+  background-color: #ffffff3b;
   align-items: center;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
   display: flex;
+  border: none;
 }
 
 .search-icon {
-  width: 18px;
-  height: 18px;
+  width: 26px;
+  height: 26px;
   margin-right: 0.7rem;
 }
 
 .search {
-  color: #a8a5ba;
+  color: #fff;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 300;
   border: none;
+  background-color: #ffffff00;
 }
 
 .choice-container-two {
   &.inactive {
     display: none;
   }
+}
+
+.choice-selected {
+  color: #fff;
+  font-weight: 500;
 }
 
 .choice-container-two {
@@ -198,19 +218,25 @@
   background-color: #ffffff3b;
   margin-top: 1.5rem;
   border-radius: 2rem;
-  border: 2px solid #231a50;
+  border: none;
   margin-right: 1rem;
+
+  &.clicked {
+    background-color: #F77F00;
+    border-color: #F77F00;
+  }
 }
 
 .choice:hover {
-  border: 2px solid #231a50;
+  background-color: #F77F00;
+  border-color: #F77F00;
   cursor: pointer;
 }
 
 .choice-text {
-  color: #3f3767;
+  color: #fff;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   padding-left: 1rem;
   padding-right: 1rem;
 }
@@ -226,38 +252,38 @@
 .button {
   width: 100%;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 1rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0px;
   padding-left: 2rem;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1rem;
   background-color: #ffffff54;
-  border-radius: 0.5rem;
+  border-radius: 1rem;
 }
 
 .button:hover {
-  background-color: #CDDEFF;
+  background-color: #F77F00;
   cursor: pointer;
 }
 
 .button-text {
-  color: #3f3767;
-  font-size: 18px;
-  font-weight: 700;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 .button-continue {
-  padding-left: 3rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-right: 3rem;
-  background-color: #e9e8ed;
-  border-radius: 3rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding-left: 3.5rem;
+  padding-right: 3.5rem;
+  background-color: #F77F00;
+  border-radius: 1rem;
 }
 
 .button-continue:hover {
-  background-color: #231a50;
+  background-color: #F77F00;
   cursor: pointer;
 
   .button-continue-text {
@@ -266,25 +292,25 @@
 }
 
 .button-continue-text {
-  color: #bdbaca;
+  color: #fff;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .button-back {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 1rem;
-  margin-top: -1.3rem;
+  gap: 0.3rem;
+  margin-top: 0.5rem;
 
   &.active {
     .button-back-icon {
-      background-color: #231a50;
+      background-color: #ffffff00;
     }
 
     .button-back-text {
-      color: #231a50;
+      color: #fff;
     }
   }
 }
@@ -293,16 +319,18 @@
   cursor: pointer;
 
   .button-back-icon {
-    background-color: #231a50;
+    background-color: #F77F00;
   }
 
   .button-back-text {
-    color: #231a50;
+    color: #fff;
   }
 }
 
 .button-back-icon {
-  background-color: #e9e8ed;
+  height: 2rem;
+  width: 2rem;
+  background-color: #e9e8ed00;
   padding: 0.7rem;
   border-radius: 2rem;
 }
@@ -325,7 +353,7 @@
   width: 100%;
 
   &::placeholder {
-    color: #918da8;
+    color: #fff;
     font-weight: 500;
     opacity: 0.9;
   }
@@ -453,7 +481,7 @@
 ul {
   list-style-type: none;
   display: flex;
-  color: #3f3767;
+  color: #fff;
   font-size: 16px;
   font-weight: 700;
   // justify-content: space-between;
@@ -478,5 +506,20 @@ li.active:after {
   left: 0;
   width: 100%;
   height: 2px;
-  background-color: #000;
+  background-color: #F77F00;
+}
+
+.linha {
+  border: none;
+  height: 1px;
+  background-color: #ffffff69;
+  margin-top: 3rem;
+  margin-bottom: 0.75rem;
+}
+
+.right-nav-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
 }

@@ -1,5 +1,5 @@
 .template-rightside-container {
-  background-color: #ffffff;
+  background-color: #ffffff3b;
   width: 25%;
   height: 96.5vh;
   padding-top: 2rem;
@@ -52,7 +52,7 @@
 
   P {
     font-style: normal;
-    color: rgba(35, 26, 80, 0.6509803921568628);
+    color: rgba(255, 255, 255, 0.651);
     font-weight: 500;
     font-feature-settings: 'salt' on;
     font-size: 0.8rem;
@@ -79,7 +79,7 @@
 }
 
 .label {
-  color: #3f3767;
+  color: #ffffff;
   font-size: 18px;
   font-weight: 500;
 }
@@ -668,18 +668,17 @@
   gap: 1rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  background-color: #e8f4ff;
-  border: 2px solid #e8f4ff;
+  background-color: #ffffff3b;
   border-radius: 0.5rem;
 
   &.clicked {
-    border: 2px solid #231a50;
+    background-color: #F77F00;
+
   }
 }
 
 .template-button:hover {
-  background-color: #fff;
-  border: 2px solid #231a50;
+  background-color: #F77F00;
   cursor: pointer;
 }
 
@@ -691,18 +690,16 @@
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   padding-left: 1rem;
-  background-color: #e8f4ff;
-  border: 2px solid #e8f4ff;
+  background-color: #ffffff3b;
   border-radius: 0.5rem;
 
   &.clicked {
-    border: 2px solid #231a50;
+    background-color: #F77F00;
   }
 }
 
 .font-button:hover {
-  background-color: #fff;
-  border: 2px solid #231a50;
+  background-color: #F77F00;
   cursor: pointer;
 }
 
@@ -715,9 +712,9 @@
 }
 
 .template-label {
-  color: #3f3767;
+  color: #ffffff;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 500;
   padding-top: 1.5rem;
   margin-bottom: -0.1rem;
   padding-left: 0.5rem;
@@ -730,7 +727,7 @@
 }
 
 .font-text {
-  color: #3f3767;
+  color: #ffffff;
   font-size: 14px;
   font-weight: 600;
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { BeatLoader } from 'react-spinners';
-import styles from '../../../styles/Rightside.module.scss';
+import './rightside.scss';
 
 import Question01 from '../Question01';
 import Question02 from '../Question02';
@@ -142,7 +142,8 @@ function RightSide() {
 
   return (
     <>
-      <div className={styles.FullContainer}>
+      <img src="./images/logoTop.png" className="logo"></img>
+      <div className="FullContainer">
         <LeftSide
           isQuestionVisible={isQuestionVisible}
           isQuestion02Visible={isQuestion02Visible}
@@ -152,7 +153,7 @@ function RightSide() {
           isQuestion06Visible={isQuestion06Visible}
           isQuestion07Visible={isQuestion07Visible}
         />
-        <div className={styles.RightSideContainer}>
+        <div className="RightSideContainer">
           {isQuestionVisible && (
             <Question01 ocultarQuestion={ocultarQuestion} />
           )}
