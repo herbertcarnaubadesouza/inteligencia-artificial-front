@@ -295,7 +295,7 @@ function Question07(props: Question07Props) {
                     <div className={buttonStates['Formulário de contato'] ? 'local-button clicked' : 'local-button'}
                       onClick={() => handleChoice('Formulário de contato')}>
                       <div>
-                        <img className="choice-local-icon" src="./images/loyalty.png" alt="" />
+                        <img className="choice-local-icon" src="./images/form.png" alt="" />
                         <p className="local-text">Formulário de contato</p>
                       </div>
                     </div>
@@ -303,7 +303,7 @@ function Question07(props: Question07Props) {
                     <div className={buttonStates['Endereço de email'] ? 'local-button clicked' : 'local-button'}
                       onClick={() => handleChoice('Endereço de email')}>
                       <div>
-                        <img className="choice-local-icon" src="./images/price.png" alt="" />
+                        <img className="choice-local-icon" src="./images/mail.png" alt="" />
                         <p className="local-text">Endereço de email</p>
                       </div>
                     </div>
@@ -311,7 +311,7 @@ function Question07(props: Question07Props) {
                     <div className={buttonStates['Telefone'] ? 'local-button clicked' : 'local-button'}
                       onClick={() => handleChoice('Telefone')}>
                       <div>
-                        <img className="choice-local-icon" src="./images/customer.png" alt="" />
+                        <img className="choice-local-icon" src="./images/phone.png" alt="" />
                         <p className="local-text">Telefone</p>
                       </div>
                     </div>

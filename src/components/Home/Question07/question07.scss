@@ -58,6 +58,7 @@
   background-color: #ffffff00;
   border-radius: 0.5rem;
   padding-inline: 5px;
+  margin-bottom: 1.5rem;
 
   opacity: 0; // Inicialmente invisível
   animation: fadeIn 2s forwards;
@@ -598,7 +599,7 @@ li.active:after {
   align-items: center;
   gap: 1rem;
   padding-left: 2rem;
-  padding-top: 0.5rem;
+  padding-top: 1.5rem;
   padding-bottom: 0.5rem;
   background-color: #ffffff3b;
   border-radius: 0.5rem;
