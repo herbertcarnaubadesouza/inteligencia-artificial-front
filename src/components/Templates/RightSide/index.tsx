@@ -18,101 +18,73 @@ function RightSide() {
   const [currentPaletteName, setCurrentPaletteName] = useState('');
   const [currentFontName, setCurrentFontName] = useState('');
 
-  const [clickedPalette, setClickedPalette] = useState(null);
-  const [clickedFont, setClickedFont] = useState(null);
-
-  const [clickedPaletteName, setClickedPaletteName] = useState('');
-  const [clickedFontName, setClickedFontName] = useState('');
-
-  const handlePaletteOneClick = () => {
-    leftSide.setCurrentPalette(PaletteOne);
-    setCurrentPaletteName('palette-one');
+  const handlePaletteClick = (palette: any) => {
+    leftSide.setCurrentPalette(palette);
+    setCurrentPaletteName(palette.name);
   };
 
-  const handlePaletteTwoClick = () => {
-    leftSide.setCurrentPalette(PaletteTwo);
-    setCurrentPaletteName('palette-two');
+  const handleFontClick = (font: any) => {
+    leftSide.setCurrentFont(font);
+    setCurrentFontName(font.name);
   };
-
-  const handlePaletteTreeClick = () => {
-    leftSide.setCurrentPalette(PaletteTree);
-    setCurrentPaletteName('palette-tree');
-  };
-
-  const handlePaletteFourClick = () => {
-    leftSide.setCurrentPalette(PaletteFour);
-    setCurrentPaletteName('palette-four');
-  };
-
-  const handleFontOneClick = () => {
-    leftSide.setCurrentFont(FontOne);
-    setCurrentFontName('font-one');
-  };
-
-  const handleFontTwoClick = () => {
-    leftSide.setCurrentFont(FontTwo);
-    setCurrentFontName('font-two');
-  };
-
-  const handleFontThreeClick = () => {
-    leftSide.setCurrentFont(FontThree);
-    setCurrentFontName('font-tree');
-  };
-
-  const handleFontFourClick = () => {
-    leftSide.setCurrentFont(FontFour);
-    setCurrentFontName('font-four');
-  };
-
-
 
   return (
     <>
       {leftSide.jsx}
       <div className="template-rightside-container">
         <div className="template-top-container">
-          <div>
+          <div className="template-buttons-container-h2">
+            <img src="./images/tinta.png" alt="" />
+            <h2 className="style-h2"> Estilização</h2>
+          </div>
+          <div className="container-rigth-versao">
+            <p className="template-label">Versão gerada</p>
             <div className="template-buttons-container">
               <div
-                className={`template-button ${leftSide.isVisible01 ? 'clicked' : ''
-                  } `}
+                className={`template-button-versao ${
+                  leftSide.isVisible01 ? 'clicked' : ''
+                }`}
                 onClick={leftSide.showTemplate01}
               >
-                <p className="button-text">Estilo 01</p>
+                <p className="button-text-versao">Versão 01</p>
               </div>
               <div
-                className={`template-button ${leftSide.isVisible02 ? 'clicked' : ''
-                  } `}
+                className={`template-button-versao ${
+                  leftSide.isVisible02 ? 'clicked' : ''
+                }`}
                 onClick={leftSide.showTemplate02}
               >
-                <p className="button-text">Estilo 02</p>
+                <p className="button-text-versao">Versão 02 </p>
               </div>
               <div
-                className={`template-button ${leftSide.isVisible03 ? 'clicked' : ''
-                  } `}
+                className={`template-button-versao ${
+                  leftSide.isVisible03 ? 'clicked' : ''
+                }`}
                 onClick={leftSide.showTemplate03}
               >
-                <p className="button-text">Estilo 03</p>
+                <p className="button-text-versao">Versão 03</p>
               </div>
             </div>
           </div>
 
-          <div>
-            <p className="template-label">PALETA DE CORES</p>
+          <div className="container-rigth-cores">
+            <p className="template-label">Paleta de cores</p>
             <div className="template-buttons-container">
               <div
                 id="palette-one"
-                className={`template-button ${currentPaletteName === 'palette-one' ? 'clicked' : ''
-                  }`}
-                onClick={handlePaletteOneClick}
+                className={`template-button-cores ${
+                  currentPaletteName === 'palette-one' ? 'clicked' : ''
+                }`}
+                onClick={() => handlePaletteClick(PaletteOne)}
               >
                 <img src="./images/palette.png" alt="" className="pallette" />
               </div>
               <div
                 id="palette-two"
-                className={`template-button ${currentPaletteName === 'palette-two' ? 'clicked' : ''
-                  }`}
-                onClick={handlePaletteTwoClick}
+                className={`template-button-cores ${
+                  currentPaletteName === 'palette-two' ? 'clicked' : ''
+                }`}
+                onClick={() => handlePaletteClick(PaletteTwo)}
               >
                 <img src="./images/palette2.png" alt="" className="pallette" />
               </div>
@@ -121,73 +93,87 @@ function RightSide() {
             <div className="template-buttons-container">
               <div
                 id="palette-tree"
-                className={`template-button ${currentPaletteName === 'palette-tree' ? 'clicked' : ''
-                  }`}
-                onClick={handlePaletteTreeClick}
+                className={`template-button-cores ${
+                  currentPaletteName === 'palette-tree' ? 'clicked' : ''
+                }`}
+                onClick={() => handlePaletteClick(PaletteTree)}
               >
                 <img src="./images/palette3.png" alt="" className="pallette" />
               </div>
               <div
                 id="palette-four"
-                className={`template-button ${currentPaletteName === 'palette-four' ? 'clicked' : ''
-                  }`}
-                onClick={handlePaletteFourClick}
+                className={`template-button-cores ${
+                  currentPaletteName === 'palette-four' ? 'clicked' : ''
+                }`}
+                onClick={() => handlePaletteClick(PaletteFour)}
               >
                 <img src="./images/palette4.png" alt="" className="pallette" />
               </div>
             </div>
           </div>
 
-          <div>
-            <p className="template-label">TIPOGRAFIA</p>
+          <div className="container-rigth-fonte">
+            <p className="template-label">Par de fontes</p>
             <div className="template-buttons-container">
               <div
-                className={`font-button ${currentFontName === 'font-one' ? 'clicked' : ''
-                  }`}
-                onClick={handleFontOneClick}
+                className={`font-button-fonte ${
+                  currentFontName === 'font-one' ? 'clicked' : ''
+                }`}
+                onClick={() => handleFontClick(FontOne)}
               >
-                <p className="font-text">Roboto</p>
+                <p className="font-text">
+                  Roboto <span className="text-menor">Poppins</span>
+                </p>
               </div>
               <div
-                className={`font-button ${currentFontName === 'font-two' ? 'clicked' : ''
-                  }`}
-                onClick={handleFontTwoClick}
+                className={`font-button-fonte ${
+                  currentFontName === 'font-two' ? 'clicked' : ''
+                }`}
+                onClick={() => handleFontClick(FontTwo)}
               >
-                <p className="font-text">Montserrat</p>
+                <p className="font-text">
+                  Montserrat
+                  <span className="text-menor">Poppins</span>
+                </p>
               </div>
             </div>
             <div className="template-buttons-container">
               <div
-                className={`font-button ${currentFontName === 'font-tree' ? 'clicked' : ''
-                  }`}
-                onClick={handleFontThreeClick}
+                className={`font-button-fonte ${
+                  currentFontName === 'font-three' ? 'clicked' : ''
+                }`}
+                onClick={() => handleFontClick(FontThree)}
               >
-                <p className="font-text">Source Serif</p>
+                <p className="font-text">
+                  Source Serif <span className="text-menor">Poppins</span>
+                </p>
               </div>
               <div
-                className={`font-button ${currentFontName === 'font-four' ? 'clicked' : ''
-                  }`}
-                onClick={handleFontFourClick}
+                className={`font-button-fonte ${
+                  currentFontName === 'font-four' ? 'clicked' : ''
+                }`}
+                onClick={() => handleFontClick(FontFour)}
               >
-                <p className="font-text">Sora</p>
+                <p className="font-text">
+                  Sora <span className="text-menor">Poppins</span>
+                </p>
               </div>
             </div>
           </div>
         </div>
 
         <div className="down-container">
-          <div className="linha"></div>
-          <div className="nav-container">
-            <div className="button-back">
+          <div className="nav-container-donw">
+            <div className="button-back-donw">
               <img
-                className="button-back-icon"
+                className="button-back-icon-donw"
                 src="./images/back.svg"
                 alt=""
               />
-              <p className="button-back-text">Voltar</p>
+              <p className="button-back-text-donw">Voltar</p>
             </div>
-            <div className="button-continue">
-              <p className="button-continue-text">Continuar</p>
+            <div className="button-continue-donw">
+              <p className="button-continue-text-donw">Continuar</p>
             </div>
           </div>
         </div>

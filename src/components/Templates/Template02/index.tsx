@@ -46,36 +46,58 @@ interface Template02Props {
 interface Template02 {
   imgUrl: string;
 }
+interface ApiResponse {
+  choices: {
+    message: {
+      content: string;
+    };
+  }[];
+}
 
 const apiKey = process.env.REACT_APP_API_KEY;
 
-
 function Template02({ isVisible02 }: Template02Props) {
+  const [response, setResponse] = useState<string | null>(null);
+  const [domesticBurglary, setDomesticBurglaryResponse] = useState<
+    string | null
+  >(null);
+  const [gunCrimesResponse, setGunCrimesResponse] = useState<string | null>(
+    null,
+  );
+  const [drugCrimesResponse, setDrugCrimesResponse] = useState<string | null>(
+    null,
+  );
+  const [propertyCrimesResponse, setPropertyCrimesResponse] = useState<
+    string | null
+  >(null);
+  const [bailHearingResponse, setBailHearingResponse] = useState<string | null>(
+    null,
+  );
+  const [harassmentCrimeResponse, setHarassmentCrimeResponse] = useState<
+    string | null
+  >(null);
+  const nome = 'Rei dos advogados';
+  const MAX_RETRY_COUNT = 80; // Número máximo de tentativas
+  const RETRY_DELAY = 6000; // Tempo de espera entre as tentativas em milissegundos
 
-   const [response, setResponse] = useState(null);
-  const [domesticBurglary, setDomesticBurglaryResponse] = useState(null);
-  const [gunCrimesResponse, setGunCrimesResponse] = useState(null);
-  const [drugCrimesResponse, setDrugCrimesResponse] = useState(null);
-  const [propertyCrimesResponse, setPropertyCrimesResponse] = useState(null);
-  const [bailHearingResponse, setBailHearingResponse] = useState(null);
-  const [harassmentCrimeResponse, setHarassmentCrimeResponse] = useState(null);
-  const [acordoCrimeResponse, setAcordoCrimeResponse] = useState(null);
-  let nome = 'Rei dos advogados';
+  const fetchData = async (
+    setter: React.Dispatch<React.SetStateAction<string | null>>,
+    localStorageKey: string,
+    content: string,
+    retryCount = 0,
+  ) => {
+    const storedData = localStorage.getItem(localStorageKey);
 
-
-
-// Text Empresa
-  useEffect(() => {
-    const getResponse = async () => {
+    if (!storedData) {
       try {
-        const result = await axios.post(
+        const result = await axios.post<ApiResponse>(
           'https://api.openai.com/v1/chat/completions',
           {
             model: 'gpt-3.5-turbo',
             messages: [
               {
                 role: 'user',
-                content: `Faça dois paragrafos sobre uma empresa de advocacia chamada Rei Advocacia , dizendo aos clientes como a empresa e boa e provando que fez a melhor escolha. `,
+                content,
               },
             ],
           },
@@ -87,410 +109,315 @@ function Template02({ isVisible02 }: Template02Props) {
           },
         );
 
-        setResponse(result.data.choices[0].message.content);
-        console.log(result.data.choices[0].message.content)
+        const responseData = result.data.choices[0].message.content;
+        setter(responseData);
+        localStorage.setItem(localStorageKey, responseData);
       } catch (error) {
         console.error(error);
-      }
-    };
 
-    setTimeout(getResponse, 5000); 
-  }, []);
-// Divorsio e separação
+        // Verificar se ainda há tentativas disponíveis
+        if (retryCount < MAX_RETRY_COUNT) {
+          setTimeout(
+            () => fetchData(setter, localStorageKey, content, retryCount + 1),
+            RETRY_DELAY,
+          );
+        } else {
+          console.error('Limite máximo de tentativas atingido');
+        }
+      }
+    } else {
+      setter(storedData);
+    }
+  };
+
+  const clearCache = () => {
+    localStorage.removeItem('response');
+    localStorage.removeItem('domesticBurglary');
+    localStorage.removeItem('gunCrimes');
+    localStorage.removeItem('drugCrimes');
+    localStorage.removeItem('propertyCrimes');
+    localStorage.removeItem('bailHearing');
+    localStorage.removeItem('harassmentCrime');
+  };
+
   useEffect(() => {
-    const getdomesticBurglary = async () => {
-      try {
-        const result = await axios.post(
-          'https://api.openai.com/v1/chat/completions',
-          {
-            model: 'gpt-3.5-turbo',
-            messages: [
-              {
-                role: 'user',
-                content: `Faça um pequeno texto de no maximo 2 linhas dizendo sobre como atua em casos de Divorsio e separação sendo um advogado`,
-              },
-            ],
-          },
-          {
-            headers: {
-              Authorization: `Bearer ${apiKey}`,
-              'Content-Type': 'application/json',
-            },
-          },
-        );
-
-        setDomesticBurglaryResponse(result.data.choices[0].message.content);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    setTimeout(getdomesticBurglary, 20000); 
+    const responseContent = `Faça dois parágrafos sobre uma empresa de advocacia chamada ${nome}`;
+    setTimeout(
+      () => fetchData(setResponse, 'response', responseContent),
+      15000,
+    );
   }, []);
-// Direitos dos avos
+
   useEffect(() => {
-    const getGunCrimesResponse = async () => {
-      try {
-        const result = await axios.post(
-          'https://api.openai.com/v1/chat/completions',
-          {
-            model: 'gpt-3.5-turbo',
-            messages: [
-              {
-                role: 'user',
-                content: `Faça um pequeno texto de no maximo 2 linhas dizendo sobre como atua em casos de Diretos dos avos sendo um advogado`,
-              },
-            ],
-          },
-          {
-            headers: {
-              Authorization: `Bearer ${apiKey}`,
-              'Content-Type': 'application/json',
-            },
-          },
-        );
-
-        setGunCrimesResponse(result.data.choices[0].message.content);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    setTimeout(getGunCrimesResponse, 40000)
+    const domesticBurglaryContent =
+      'Faça um pequeno texto de no máximo 2 linhas dizendo sobre como atua em Assalto Doméstico sendo um advogado';
+    setTimeout(
+      () =>
+        fetchData(
+          setDomesticBurglaryResponse,
+          'domesticBurglary',
+          domesticBurglaryContent,
+        ),
+      30000,
+    );
   }, []);
-// Custoria de criança
+
   useEffect(() => {
-    const getDrugCrimesResponse = async () => {
-      try {
-        const result = await axios.post(
-          'https://api.openai.com/v1/chat/completions',
-          {
-            model: 'gpt-3.5-turbo',
-            messages: [
-              {
-                role: 'user',
-                content: `Faça um pequeno texto de no maximo 2 linhas dizendo sobre como atua em casos de Custodia de crinça sendo um advogado`,
-              },
-            ],
-          },
-          {
-            headers: {
-              Authorization: `Bearer ${apiKey}`,
-              'Content-Type': 'application/json',
-            },
-          },
-        );
-
-        setDrugCrimesResponse(result.data.choices[0].message.content);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    setTimeout(getDrugCrimesResponse, 60000)
+    const gunCrimesContent =
+      'Faça um pequeno texto de no máximo 2 linhas dizendo sobre como atua em Crimes de armas sendo um advogado';
+    setTimeout(
+      () => fetchData(setGunCrimesResponse, 'gunCrimes', gunCrimesContent),
+      60000,
+    );
   }, []);
-// Violencia domestica
+
   useEffect(() => {
-    const getPropertyCrimesResponse = async () => {
-      try {
-        const result = await axios.post(
-          'https://api.openai.com/v1/chat/completions',
-          {
-            model: 'gpt-3.5-turbo',
-            messages: [
-              {
-                role: 'user',
-                content: `Faça um pequeno texto de no maximo 2 linhas dizendo sobre como atua em casos de Violencia domestica sendo um advogado`,
-              },
-            ],
-          },
-          {
-            headers: {
-              Authorization: `Bearer ${apiKey}`,
-              'Content-Type': 'application/json',
-            },
-          },
-        );
-
-        setPropertyCrimesResponse(result.data.choices[0].message.content);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    setTimeout(getPropertyCrimesResponse, 80000);
+    const drugCrimesContent =
+      'Faça um pequeno texto de no máximo 2 linhas dizendo sobre como atua em Crime de Drogas sendo um advogado';
+    setTimeout(
+      () => fetchData(setDrugCrimesResponse, 'drugCrimes', drugCrimesContent),
+      80000,
+    );
   }, []);
-// Casamento E uniao civil 
+
   useEffect(() => {
-    const getBailHearingResponse = async () => {
-      try {
-        const result = await axios.post(
-          'https://api.openai.com/v1/chat/completions',
-          {
-            model: 'gpt-3.5-turbo',
-            messages: [
-              {
-                role: 'user',
-                content: `Faça um pequeno texto de no maximo 2 linhas dizendo sobre como atua em casos de Casamento e Uniao Civil sendo um advogado`,
-              },
-            ],
-          },
-          {
-            headers: {
-              Authorization: `Bearer ${apiKey}`,
-              'Content-Type': 'application/json',
-            },
-          },
-        );
-
-        setBailHearingResponse(result.data.choices[0].message.content);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    setTimeout(getBailHearingResponse, 100000);
+    const propertyCrimesContent =
+      'Faça um pequeno texto de no máximo 2 linhas dizendo sobre como atua em Crimes de propriedade sendo um advogado';
+    setTimeout(
+      () =>
+        fetchData(
+          setPropertyCrimesResponse,
+          'propertyCrimes',
+          propertyCrimesContent,
+        ),
+      100000,
+    );
   }, []);
-// Adocao e barriga de aluguel
+
   useEffect(() => {
-    const getHarassmentCrimeResponse = async () => {
-      try {
-        const result = await axios.post(
-          'https://api.openai.com/v1/chat/completions',
-          {
-            model: 'gpt-3.5-turbo',
-            messages: [
-              {
-                role: 'user',
-                content: `Faça um pequeno texto de no maximo 2 linhas dizendo sobre como atua em casos de Adoção e barriga de aluguel sendo um advogado`,
-              },
-            ],
-          },
-          {
-            headers: {
-              Authorization: `Bearer ${apiKey}`,
-              'Content-Type': 'application/json',
-            },
-          },
-        );
-
-        setHarassmentCrimeResponse(result.data.choices[0].message.content);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    setTimeout(getHarassmentCrimeResponse, 120000);
+    const bailHearingContent =
+      'Faça um pequeno texto de no máximo 2 linhas dizendo sobre como atua em Audiência de fiança sendo um advogado';
+    setTimeout(
+      () =>
+        fetchData(setBailHearingResponse, 'bailHearing', bailHearingContent),
+      110000,
+    );
   }, []);
 
-  // Acordos de propiedades
   useEffect(() => {
-    const getAcordoCrimeResponse = async () => {
-      try {
-        const result = await axios.post(
-          'https://api.openai.com/v1/chat/completions',
-          {
-            model: 'gpt-3.5-turbo',
-            messages: [
-              {
-                role: 'user',
-                content: `Faça um pequeno texto de no maximo 2 linhas dizendo sobre como atua em casos de acordo de propiedades sendo um advogado`,
-              },
-            ],
-          },
-          {
-            headers: {
-              Authorization: `Bearer ${apiKey}`,
-              'Content-Type': 'application/json',
-            },
-          },
-        );
-
-        setAcordoCrimeResponse(result.data.choices[0].message.content);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    setTimeout(getAcordoCrimeResponse, 150000);
+    const harassmentCrimeContent =
+      'Faça um pequeno texto de no máximo 2 linhas dizendo sobre como atua em Crime de assédio sendo um advogado';
+    setTimeout(
+      () =>
+        fetchData(
+          setHarassmentCrimeResponse,
+          'harassmentCrime',
+          harassmentCrimeContent,
+        ),
+      120000,
+    );
   }, []);
 
+  useEffect(() => {
+    const storedResponse = localStorage.getItem('response');
+    const storedDomesticBurglary = localStorage.getItem('domesticBurglary');
+    const storedGunCrimes = localStorage.getItem('gunCrimes');
+    const storedDrugCrimes = localStorage.getItem('drugCrimes');
+    const storedPropertyCrimes = localStorage.getItem('propertyCrimes');
+    const storedBailHearing = localStorage.getItem('bailHearing');
+    const storedHarassmentCrime = localStorage.getItem('harassmentCrime');
 
- // BANNER
- const [banner, setBanner] = useState<Template02[]>([]);
- const [imageUrl, setImageUrl] = useState('');
- const [secondImageUrl, setSecondImageUrl] = useState('');
- const [thirdImageUrl, setThirdImageUrl] = useState('');
- const [bannerId, setBannerId] = useState('');
- const [secondBannerId, setSecondBannerId] = useState('');
- const [thirdBannerId, setThirdBannerId] = useState('');
+    if (storedResponse) setResponse(storedResponse);
+    if (storedDomesticBurglary)
+      setDomesticBurglaryResponse(storedDomesticBurglary);
+    if (storedGunCrimes) setGunCrimesResponse(storedGunCrimes);
+    if (storedDrugCrimes) setDrugCrimesResponse(storedDrugCrimes);
+    if (storedPropertyCrimes) setPropertyCrimesResponse(storedPropertyCrimes);
+    if (storedBailHearing) setBailHearingResponse(storedBailHearing);
+    if (storedHarassmentCrime)
+      setHarassmentCrimeResponse(storedHarassmentCrime);
 
- useEffect(() => {
-   const fetchData = async () => {
-     const advogadoDocRef = doc(db, 'sites', 'advogado');
-     const bannerCollectionRef = collection(advogadoDocRef, 'banner');
-     const bannerSnapshot = await getDocs(bannerCollectionRef);
+    window.addEventListener('beforeunload', clearCache);
+    return () => {
+      window.removeEventListener('beforeunload', clearCache);
+    };
+  }, []);
 
-     let bannerList = bannerSnapshot.docs.map((doc) => {
-       const data = doc.data();
+  // BANNER
+  const [banner, setBanner] = useState<Template02[]>([]);
+  const [imageUrl, setImageUrl] = useState('');
+  const [secondImageUrl, setSecondImageUrl] = useState('');
+  const [thirdImageUrl, setThirdImageUrl] = useState('');
+  const [bannerId, setBannerId] = useState('');
+  const [secondBannerId, setSecondBannerId] = useState('');
+  const [thirdBannerId, setThirdBannerId] = useState('');
 
-       const banner = {
-         id: doc.id,
-         imgUrl: data.imgUrl,
-       };
-       return banner;
-     });
+  useEffect(() => {
+    const fetchData = async () => {
+      const advogadoDocRef = doc(db, 'sites', 'advogado');
+      const bannerCollectionRef = collection(advogadoDocRef, 'banner');
+      const bannerSnapshot = await getDocs(bannerCollectionRef);
 
-     // BANNER TEMPLATE 01
-     const randomIndex = Math.floor(Math.random() * bannerList.length);
-     const randomBanner = bannerList[randomIndex];
-     setImageUrl(randomBanner.imgUrl);
-     setBannerId(randomBanner.id);
+      let bannerList = bannerSnapshot.docs.map((doc) => {
+        const data = doc.data();
 
-     bannerList = bannerList.filter((_, index) => index !== randomIndex);
+        const banner = {
+          id: doc.id,
+          imgUrl: data.imgUrl,
+        };
+        return banner;
+      });
 
-     // BANNER TEMPLATE 02
-     const secondRandomIndex = Math.floor(Math.random() * bannerList.length);
-     const secondRandomBanner = bannerList[secondRandomIndex];
-     setSecondImageUrl(secondRandomBanner.imgUrl);
-     setSecondBannerId(secondRandomBanner.id);
-     localStorage.setItem('bannerTemplate02', secondImageUrl);
+      // BANNER TEMPLATE 01
+      const randomIndex = Math.floor(Math.random() * bannerList.length);
+      const randomBanner = bannerList[randomIndex];
+      setImageUrl(randomBanner.imgUrl);
+      setBannerId(randomBanner.id);
 
-     bannerList = bannerList.filter((_, index) => index !== secondRandomIndex);
+      bannerList = bannerList.filter((_, index) => index !== randomIndex);
 
-     // BANNER TEMPLATE 03
-     const thirdRandomIndex = Math.floor(Math.random() * bannerList.length);
-     const thirdRandomBanner = bannerList[thirdRandomIndex];
-     setThirdImageUrl(thirdRandomBanner.imgUrl);
-     setThirdBannerId(thirdRandomBanner.id);
+      // BANNER TEMPLATE 02
+      const secondRandomIndex = Math.floor(Math.random() * bannerList.length);
+      const secondRandomBanner = bannerList[secondRandomIndex];
+      setSecondImageUrl(secondRandomBanner.imgUrl);
+      setSecondBannerId(secondRandomBanner.id);
+      localStorage.setItem('bannerTemplate02', secondImageUrl);
 
-     localStorage.setItem('bannerTemplate03', thirdImageUrl);
+      bannerList = bannerList.filter((_, index) => index !== secondRandomIndex);
 
-     setBanner(bannerList);
-   };
+      // BANNER TEMPLATE 03
+      const thirdRandomIndex = Math.floor(Math.random() * bannerList.length);
+      const thirdRandomBanner = bannerList[thirdRandomIndex];
+      setThirdImageUrl(thirdRandomBanner.imgUrl);
+      setThirdBannerId(thirdRandomBanner.id);
 
-   fetchData();
- }, []);
+      localStorage.setItem('bannerTemplate03', thirdImageUrl);
 
- // ABOUT
- const [about, setAbout] = useState<Template02[]>([]);
- const [imageUrlSegunda, setImageUrlSegunda] = useState('');
- const [secondImageUrlSegunda, setSecondImageUrlSegunda] = useState('');
- const [thirdImageUrlSegunda, setThirdImageUrlSegunda] = useState('');
- const [aboutId, setAboutId] = useState('');
- const [secondAboutId, setSecondAboutId] = useState('');
- const [thirdAboutId, setThirdAboutId] = useState('');
+      setBanner(bannerList);
+    };
 
- useEffect(() => {
-   const fetchData = async () => {
-     const advogadoDocRef = doc(db, 'sites', 'advogado');
-     const aboutCollectionRef = collection(advogadoDocRef, 'subtitulo');
-     const aboutSnapshot = await getDocs(aboutCollectionRef);
+    fetchData();
+  }, []);
 
-     let aboutList = aboutSnapshot.docs.map((doc) => {
-       const data = doc.data();
+  // ABOUT
+  const [about, setAbout] = useState<Template02[]>([]);
+  const [imageUrlSegunda, setImageUrlSegunda] = useState('');
+  const [secondImageUrlSegunda, setSecondImageUrlSegunda] = useState('');
+  const [thirdImageUrlSegunda, setThirdImageUrlSegunda] = useState('');
+  const [aboutId, setAboutId] = useState('');
+  const [secondAboutId, setSecondAboutId] = useState('');
+  const [thirdAboutId, setThirdAboutId] = useState('');
 
-       const about = {
-         id: doc.id,
-         imgUrl: data.imgUrl,
-       };
+  useEffect(() => {
+    const fetchData = async () => {
+      const advogadoDocRef = doc(db, 'sites', 'advogado');
+      const aboutCollectionRef = collection(advogadoDocRef, 'subtitulo');
+      const aboutSnapshot = await getDocs(aboutCollectionRef);
 
-       return about;
-     });
+      let aboutList = aboutSnapshot.docs.map((doc) => {
+        const data = doc.data();
 
-     // ABOUT TEMPLATE 01
-     const randomIndex = Math.floor(Math.random() * aboutList.length);
-     const randomAbout = aboutList[randomIndex];
-     setImageUrlSegunda(randomAbout.imgUrl);
-     setAboutId(randomAbout.id);
+        const about = {
+          id: doc.id,
+          imgUrl: data.imgUrl,
+        };
 
-     aboutList = aboutList.filter((_, index) => index !== randomIndex);
+        return about;
+      });
 
-     //ABOUT TEMPLATE 02
-     const secondRandomIndex = Math.floor(Math.random() * aboutList.length);
-     const secondRandomAbout = aboutList[secondRandomIndex];
-     setSecondImageUrlSegunda(secondRandomAbout.imgUrl);
-     setSecondAboutId(secondRandomAbout.id);
-     localStorage.setItem('aboutTemplate02', secondImageUrlSegunda);
+      // ABOUT TEMPLATE 01
+      const randomIndex = Math.floor(Math.random() * aboutList.length);
+      const randomAbout = aboutList[randomIndex];
+      setImageUrlSegunda(randomAbout.imgUrl);
+      setAboutId(randomAbout.id);
 
-     aboutList = aboutList.filter((_, index) => index !== secondRandomIndex);
+      aboutList = aboutList.filter((_, index) => index !== randomIndex);
 
-     // ABOUT TEMPLATE 03
-     const thirdRandomIndex = Math.floor(Math.random() * aboutList.length);
-     const thirdRandomAbout = aboutList[thirdRandomIndex];
-     setThirdImageUrlSegunda(thirdRandomAbout.imgUrl);
-     setThirdAboutId(thirdRandomAbout.id);
+      //ABOUT TEMPLATE 02
+      const secondRandomIndex = Math.floor(Math.random() * aboutList.length);
+      const secondRandomAbout = aboutList[secondRandomIndex];
+      setSecondImageUrlSegunda(secondRandomAbout.imgUrl);
+      setSecondAboutId(secondRandomAbout.id);
+      localStorage.setItem('aboutTemplate02', secondImageUrlSegunda);
 
-     localStorage.setItem('aboutTemplate03', thirdImageUrlSegunda);
+      aboutList = aboutList.filter((_, index) => index !== secondRandomIndex);
 
-     setAbout(aboutList);
-   };
+      // ABOUT TEMPLATE 03
+      const thirdRandomIndex = Math.floor(Math.random() * aboutList.length);
+      const thirdRandomAbout = aboutList[thirdRandomIndex];
+      setThirdImageUrlSegunda(thirdRandomAbout.imgUrl);
+      setThirdAboutId(thirdRandomAbout.id);
 
-   fetchData();
- }, []);
+      localStorage.setItem('aboutTemplate03', thirdImageUrlSegunda);
 
- // PARALLAX
- const [parallax, setParallax] = useState<Template02[]>([]);
- const [imageUrlTerceira, setImageUrlTerceira] = useState('');
- const [secondImageUrlTerceira, setSecondImageUrlTerceira] = useState('');
- const [thirdImageUrlTerceira, setThirdImageUrlTerceira] = useState('');
- const [parallaxId, setParallaxId] = useState('');
- const [secondParallaxId, setSecondParallaxId] = useState('');
- const [thirdParallaxId, setThirdParallaxId] = useState('');
+      setAbout(aboutList);
+    };
 
- useEffect(() => {
-   const fetchData = async () => {
-     const advogadoDocRef = doc(db, 'sites', 'advogado');
-     const parallaxCollectionRef = collection(advogadoDocRef, 'bannerparalax');
-     const parallaxSnapshot = await getDocs(parallaxCollectionRef);
+    fetchData();
+  }, []);
 
-     let parallaxList = parallaxSnapshot.docs.map((doc) => {
-       const data = doc.data();
+  // PARALLAX
+  const [parallax, setParallax] = useState<Template02[]>([]);
+  const [imageUrlTerceira, setImageUrlTerceira] = useState('');
+  const [secondImageUrlTerceira, setSecondImageUrlTerceira] = useState('');
+  const [thirdImageUrlTerceira, setThirdImageUrlTerceira] = useState('');
+  const [parallaxId, setParallaxId] = useState('');
+  const [secondParallaxId, setSecondParallaxId] = useState('');
+  const [thirdParallaxId, setThirdParallaxId] = useState('');
 
-       const parallax = {
-         id: doc.id,
-         imgUrl: data.imgUrl,
-       };
+  useEffect(() => {
+    const fetchData = async () => {
+      const advogadoDocRef = doc(db, 'sites', 'advogado');
+      const parallaxCollectionRef = collection(advogadoDocRef, 'bannerparalax');
+      const parallaxSnapshot = await getDocs(parallaxCollectionRef);
 
-       return parallax;
-     });
+      let parallaxList = parallaxSnapshot.docs.map((doc) => {
+        const data = doc.data();
 
-     // ABOUT TEMPLATE 01
-     const randomIndex = Math.floor(Math.random() * parallaxList.length);
-     const randomParallax = parallaxList[randomIndex];
-     setImageUrlTerceira(randomParallax.imgUrl);
-     setParallaxId(randomParallax.id);
+        const parallax = {
+          id: doc.id,
+          imgUrl: data.imgUrl,
+        };
 
-     parallaxList = parallaxList.filter((_, index) => index !== randomIndex);
+        return parallax;
+      });
 
-     //ABOUT TEMPLATE 02
-     const secondRandomIndex = Math.floor(Math.random() * parallaxList.length);
-     const secondRandomParallax = parallaxList[secondRandomIndex];
-     setSecondImageUrlTerceira(secondRandomParallax.imgUrl);
-     setSecondParallaxId(secondRandomParallax.id);
-     localStorage.setItem('parallaxTemplate02', secondImageUrlTerceira);
+      // ABOUT TEMPLATE 01
+      const randomIndex = Math.floor(Math.random() * parallaxList.length);
+      const randomParallax = parallaxList[randomIndex];
+      setImageUrlTerceira(randomParallax.imgUrl);
+      setParallaxId(randomParallax.id);
 
-     parallaxList = parallaxList.filter(
-       (_, index) => index !== secondRandomIndex,
-     );
+      parallaxList = parallaxList.filter((_, index) => index !== randomIndex);
 
-     // ABOUT TEMPLATE 03
-     const thirdRandomIndex = Math.floor(Math.random() * parallaxList.length);
-     const thirdRandomParallax = parallaxList[thirdRandomIndex];
-     setThirdImageUrlTerceira(thirdRandomParallax.imgUrl);
-     setThirdParallaxId(thirdRandomParallax.id);
+      //ABOUT TEMPLATE 02
+      const secondRandomIndex = Math.floor(Math.random() * parallaxList.length);
+      const secondRandomParallax = parallaxList[secondRandomIndex];
+      setSecondImageUrlTerceira(secondRandomParallax.imgUrl);
+      setSecondParallaxId(secondRandomParallax.id);
+      localStorage.setItem('parallaxTemplate02', secondImageUrlTerceira);
 
-     localStorage.setItem('parallaxTemplate03', thirdImageUrlTerceira);
+      parallaxList = parallaxList.filter(
+        (_, index) => index !== secondRandomIndex,
+      );
 
-     setParallax(parallaxList);
-   };
+      // ABOUT TEMPLATE 03
+      const thirdRandomIndex = Math.floor(Math.random() * parallaxList.length);
+      const thirdRandomParallax = parallaxList[thirdRandomIndex];
+      setThirdImageUrlTerceira(thirdRandomParallax.imgUrl);
+      setThirdParallaxId(thirdRandomParallax.id);
 
-   fetchData();
- }, []);
+      localStorage.setItem('parallaxTemplate03', thirdImageUrlTerceira);
 
+      setParallax(parallaxList);
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <Container>
-      <HeaderBlock  bgImage={imageUrl} >
+      <HeaderBlock bgImage={imageUrl}>
         <div className="container-block-header">
           <LineHeader></LineHeader>
           <span>Comprometidos em ajudar nossos clientes a ter sucesso</span>
@@ -524,9 +451,7 @@ function Template02({ isVisible02 }: Template02Props) {
             <span>Comprometidos em ajudar nossos clientes a ter sucesso</span>
           </div>
           <h2>Você veio ao lugar certo</h2>
-          <p>
-            {response}
-          </p>
+          <p>{response}</p>
           <div className="bottom-about-section">
             <div className="block-bottom">
               <LineAboutSection />
@@ -543,11 +468,13 @@ function Template02({ isVisible02 }: Template02Props) {
           </div>
         </FirstBlockAbout>
         <SecondBlockAbout>
-          <img src={
-                imageUrlSegunda
-                  ? imageUrlSegunda
-                  : 'https://cdn.discordapp.com/attachments/1116206739373691010/1116758018403614750/ThomasiWilson1_In_a_bustling_metropolis_where_the_pillars_of_la_56479b76-2b1a-45f8-92e6-e7298d120c8c.png'
-              }></img>
+          <img
+            src={
+              imageUrlSegunda
+                ? imageUrlSegunda
+                : 'https://cdn.discordapp.com/attachments/1116206739373691010/1116758018403614750/ThomasiWilson1_In_a_bustling_metropolis_where_the_pillars_of_la_56479b76-2b1a-45f8-92e6-e7298d120c8c.png'
+            }
+          ></img>
         </SecondBlockAbout>
       </AboutSection>
       <ServicesSection>
@@ -558,53 +485,39 @@ function Template02({ isVisible02 }: Template02Props) {
               <div className="content-block-atuacao">
                 <LinkSimpleBreak size={32} weight="bold" />
                 <h3>Divórcio e Separação</h3>
-                <p>
-                  {domesticBurglary}
-                </p>
+                <p>{domesticBurglary}</p>
               </div>
               <div className="content-block-atuacao">
                 <NotePencil size={32} weight="bold" />
                 <h3>Direitos dos avós</h3>
-                <p>
-                {gunCrimesResponse}
-                </p>
+                <p>{gunCrimesResponse}</p>
               </div>
               <div className="content-block-atuacao">
                 <Handshake size={32} weight="bold" />
                 <h3>Custódia de criança</h3>
-                <p>
-                  {drugCrimesResponse}
-                </p>
+                <p>{drugCrimesResponse}</p>
               </div>
               <div className="content-block-atuacao">
                 <Baby size={32} weight="bold" />
                 <h3>Domestic Violence​​</h3>
-                <p>
-                  {propertyCrimesResponse}
-                </p>
+                <p>{propertyCrimesResponse}</p>
               </div>
             </Row>
             <Row>
               <div className="content-block-atuacao">
                 <Heart size={32} weight="bold" />
                 <h3>Casamento/Uniões Civis​</h3>
-                <p>
-                {bailHearingResponse}
-                </p>
+                <p>{bailHearingResponse}</p>
               </div>
               <div className="content-block-atuacao">
                 <User size={32} weight="bold" />
                 <h3>Adoção e barriga de aluguel​</h3>
-                <p>
-                  {harassmentCrimeResponse}
-                </p>
+                <p>{harassmentCrimeResponse}</p>
               </div>
               <div className="content-block-atuacao">
                 <Scroll size={32} weight="bold" />
                 <h3>Acordos de propriedade​​​</h3>
-                <p>
-                  {acordoCrimeResponse}
-                </p>
+                <p>{harassmentCrimeResponse}</p>
               </div>
               <div className="content-block-atuacao">
                 <div className="last-block-atuacao">

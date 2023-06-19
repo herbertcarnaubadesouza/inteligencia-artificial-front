@@ -19,6 +19,8 @@ interface ThemeProps {
 
 const Container = styled.div`
   width: 100%;
+
+  
   display: flex; 
   flex-direction: column;
   justify-content: center;
@@ -403,6 +405,8 @@ const Contact = styled.div`
 `;
 
 const Footer = styled.div`
+ 
+
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -417,8 +421,10 @@ const Footer = styled.div`
 `;
 
 const FooterContent = styled.div`
+
   display: flex;
   flex-direction: column;
+  bottom:0;
 
   h2 {
     font-size: 20px;
@@ -447,6 +453,7 @@ const FooterRight = styled.div`
   display: flex;
   flex-direction: row;
   gap: 10rem;
+ 
 `;
 
 export {

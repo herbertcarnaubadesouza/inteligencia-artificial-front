@@ -20,7 +20,7 @@ import {
   RigthAwardBlock,
   HowLocationSection,
   HowHelpSection,
-  Footer
+  Footer,
 } from './styles';
 import {
   BagSimple,
@@ -41,10 +41,13 @@ interface Template03Props {
   isVisible03: boolean;
 }
 
-
-
-
-
+interface ApiResponse {
+  choices: {
+    message: {
+      content: string;
+    };
+  }[];
+}
 
 interface Template03 {
   imgUrl: string;
@@ -52,362 +55,192 @@ interface Template03 {
 
 const apiKey = process.env.REACT_APP_API_KEY;
 
-
 function Template03({ isVisible03 }: Template03Props) {
+  const [response, setResponse] = useState<string | null>(null);
+  const [domesticBurglary, setDomesticBurglaryResponse] = useState<
+    string | null
+  >(null);
+  const [gunCrimesResponse, setGunCrimesResponse] = useState<string | null>(
+    null,
+  );
+  const [drugCrimesResponse, setDrugCrimesResponse] = useState<string | null>(
+    null,
+  );
+  const [propertyCrimesResponse, setPropertyCrimesResponse] = useState<
+    string | null
+  >(null);
+  const [bailHearingResponse, setBailHearingResponse] = useState<string | null>(
+    null,
+  );
+  const [harassmentCrimeResponse, setHarassmentCrimeResponse] = useState<
+    string | null
+  >(null);
+  const nome = 'Rei dos advogados';
+  const MAX_RETRY_COUNT = 90; // Número máximo de tentativas
+  const RETRY_DELAY = 8000; // Tempo de espera entre as tentativas em milissegundos
 
-  const [response, setResponse] = useState(null);
-  const [domesticBurglary, setDomesticBurglaryResponse] = useState(null);
-  const [gunCrimesResponse, setGunCrimesResponse] = useState(null);
-  const [drugCrimesResponse, setDrugCrimesResponse] = useState(null);
-  const [propertyCrimesResponse, setPropertyCrimesResponse] = useState(null);
-  const [bailHearingResponse, setBailHearingResponse] = useState(null);
-  const [harassmentCrimeResponse, setHarassmentCrimeResponse] = useState(null);
-  const [acordoCrimeResponse, setAcordoCrimeResponse] = useState(null);
-  const [patrimonioCrimeResponse, setPatrimonioCrimeResponse] = useState(null);
-  let nome = 'Rei dos advogados';
+  const fetchData = async (
+    setter: React.Dispatch<React.SetStateAction<string | null>>,
+    localStorageKey: string,
+    content: string,
+    retryCount = 0,
+  ) => {
+    const storedData = localStorage.getItem(localStorageKey);
 
-
-
-
-
-
-// Text Empresa
-useEffect(() => {
-  const getResponse = async () => {
-    try {
-      const result = await axios.post(
-        'https://api.openai.com/v1/chat/completions',
-        {
-          model: 'gpt-3.5-turbo',
-          messages: [
-            {
-              role: 'user',
-              content: `Faça dois paragrafos sobre uma empresa de advocacia chamada Rei Advocacia , dizendo aos clientes como a empresa e boa e provando que fez a melhor escolha. `,
-            },
-          ],
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${apiKey}`,
-            'Content-Type': 'application/json',
+    if (!storedData) {
+      try {
+        const result = await axios.post<ApiResponse>(
+          'https://api.openai.com/v1/chat/completions',
+          {
+            model: 'gpt-3.5-turbo',
+            messages: [
+              {
+                role: 'user',
+                content,
+              },
+            ],
           },
-        },
-      );
-
-      setResponse(result.data.choices[0].message.content);
-      console.log(result.data.choices[0].message.content)
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  setTimeout(getResponse, 5000); 
-}, []);
-// Divorsio e separação
-useEffect(() => {
-  const getdomesticBurglary = async () => {
-    try {
-      const result = await axios.post(
-        'https://api.openai.com/v1/chat/completions',
-        {
-          model: 'gpt-3.5-turbo',
-          messages: [
-            {
-              role: 'user',
-              content: `Faça um pequeno texto de no maximo 2 linhas dizendo sobre como atua em casos de Separação e Divórcio
-              sendo um advogado`,
-            },
-          ],
-        },
-        {
-          headers: {
+          {
+            headers: {
               Authorization: `Bearer ${apiKey}`,
-            'Content-Type': 'application/json',
-          },
-        },
-      );
-
-      setDomesticBurglaryResponse(result.data.choices[0].message.content);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  setTimeout(getdomesticBurglary, 15000); 
-}, []);
-// Custódia da criança
-useEffect(() => {
-  const getGunCrimesResponse = async () => {
-    try {
-      const result = await axios.post(
-        'https://api.openai.com/v1/chat/completions',
-        {
-          model: 'gpt-3.5-turbo',
-          messages: [
-            {
-              role: 'user',
-              content: `Faça um pequeno texto de no maximo 2 linhas dizendo sobre como atua em casos de Custódia da criança sendo um advogado`,
+              'Content-Type': 'application/json',
             },
-          ],
-        },
-        {
-          headers: {
-              Authorization: `Bearer ${apiKey}`,
-            'Content-Type': 'application/json',
           },
-        },
-      );
+        );
 
-      setGunCrimesResponse(result.data.choices[0].message.content);
-    } catch (error) {
-      console.error(error);
+        const responseData = result.data.choices[0].message.content;
+        setter(responseData);
+        localStorage.setItem(localStorageKey, responseData);
+      } catch (error) {
+        console.error(error);
+
+        // Verificar se ainda há tentativas disponíveis
+        if (retryCount < MAX_RETRY_COUNT) {
+          setTimeout(
+            () => fetchData(setter, localStorageKey, content, retryCount + 1),
+            RETRY_DELAY,
+          );
+        } else {
+          console.error('Limite máximo de tentativas atingido');
+        }
+      }
+    } else {
+      setter(storedData);
     }
   };
 
-  setTimeout(getGunCrimesResponse, 40000)
-}, []);
-// Pensão alimentícia
-useEffect(() => {
-  const getDrugCrimesResponse = async () => {
-    try {
-      const result = await axios.post(
-        'https://api.openai.com/v1/chat/completions',
-        {
-          model: 'gpt-3.5-turbo',
-          messages: [
-            {
-              role: 'user',
-              content: `Faça um pequeno texto de no maximo 2 linhas dizendo sobre como atua em casos de Pensão alimentícia sendo um advogado`,
-            },
-          ],
-        },
-        {
-          headers: {
-              Authorization: `Bearer ${apiKey}`,
-            'Content-Type': 'application/json',
-          },
-        },
-      );
-
-      setDrugCrimesResponse(result.data.choices[0].message.content);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  setTimeout(getDrugCrimesResponse, 60000)
-}, []);
-// Apoio do cônjuge
-useEffect(() => {
-  const getPropertyCrimesResponse = async () => {
-    try {
-      const result = await axios.post(
-        'https://api.openai.com/v1/chat/completions',
-        {
-          model: 'gpt-3.5-turbo',
-          messages: [
-            {
-              role: 'user',
-              content: `Faça um pequeno texto de no maximo 2 linhas dizendo sobre como atua em casos deApoio do cônjuge sendo um advogado`,
-            },
-          ],
-        },
-        {
-          headers: {
-              Authorization: `Bearer ${apiKey}`,
-            'Content-Type': 'application/json',
-          },
-        },
-      );
-
-      setPropertyCrimesResponse(result.data.choices[0].message.content);
-    } catch (error) {
-      console.error(error);
-    }
+  const clearCache = () => {
+    localStorage.removeItem('response');
+    localStorage.removeItem('domesticBurglary');
+    localStorage.removeItem('gunCrimes');
+    localStorage.removeItem('drugCrimes');
+    localStorage.removeItem('propertyCrimes');
+    localStorage.removeItem('bailHearing');
+    localStorage.removeItem('harassmentCrime');
   };
 
-  setTimeout(getPropertyCrimesResponse, 80000);
-}, []);
-// Assuntos Internacionais
-useEffect(() => {
-  const getBailHearingResponse = async () => {
-    try {
-      const result = await axios.post(
-        'https://api.openai.com/v1/chat/completions',
-        {
-          model: 'gpt-3.5-turbo',
-          messages: [
-            {
-              role: 'user',
-              content: `Faça um pequeno texto de no maximo 2 linhas dizendo sobre como atua em casos de Assuntos Internacionais sendo um advogado`,
-            },
-          ],
-        },
-        {
-          headers: {
-              Authorization: `Bearer ${apiKey}`,
-            'Content-Type': 'application/json',
-          },
-        },
-      );
+  useEffect(() => {
+    const responseContent = `Faça dois parágrafos sobre uma empresa de advocacia chamada ${nome}`;
+    setTimeout(
+      () => fetchData(setResponse, 'response', responseContent),
+      30000,
+    );
+  }, []);
 
-      setBailHearingResponse(result.data.choices[0].message.content);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  useEffect(() => {
+    const domesticBurglaryContent =
+      'Faça um pequeno texto de no máximo 2 linhas dizendo sobre como atua em Assalto Doméstico sendo um advogado';
+    setTimeout(
+      () =>
+        fetchData(
+          setDomesticBurglaryResponse,
+          'domesticBurglary',
+          domesticBurglaryContent,
+        ),
+      50000,
+    );
+  }, []);
 
-  setTimeout(getBailHearingResponse, 100000);
-}, []);
-// Apelações de direito de família
-useEffect(() => {
-  const getHarassmentCrimeResponse = async () => {
-    try {
-      const result = await axios.post(
-        'https://api.openai.com/v1/chat/completions',
-        {
-          model: 'gpt-3.5-turbo',
-          messages: [
-            {
-              role: 'user',
-              content: `Faça um pequeno texto de no maximo 2 linhas dizendo sobre como atua em casos de Apelações de direito de família  sendo um advogado`,
-            },
-          ],
-        },
-        {
-          headers: {
-              Authorization: `Bearer ${apiKey}`,
-            'Content-Type': 'application/json',
-          },
-        },
-      );
+  useEffect(() => {
+    const gunCrimesContent =
+      'Faça um pequeno texto de no máximo 2 linhas dizendo sobre como atua em Crimes de armas sendo um advogado';
+    setTimeout(
+      () => fetchData(setGunCrimesResponse, 'gunCrimes', gunCrimesContent),
+      90000,
+    );
+  }, []);
 
-      setHarassmentCrimeResponse(result.data.choices[0].message.content);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  useEffect(() => {
+    const drugCrimesContent =
+      'Faça um pequeno texto de no máximo 2 linhas dizendo sobre como atua em Crime de Drogas sendo um advogado';
+    setTimeout(
+      () => fetchData(setDrugCrimesResponse, 'drugCrimes', drugCrimesContent),
+      130000,
+    );
+  }, []);
 
-  setTimeout(getHarassmentCrimeResponse, 120000);
-}, []);
+  useEffect(() => {
+    const propertyCrimesContent =
+      'Faça um pequeno texto de no máximo 2 linhas dizendo sobre como atua em Crimes de propriedade sendo um advogado';
+    setTimeout(
+      () =>
+        fetchData(
+          setPropertyCrimesResponse,
+          'propertyCrimes',
+          propertyCrimesContent,
+        ),
+      150000,
+    );
+  }, []);
 
-// Proteção de patrimônio
+  useEffect(() => {
+    const bailHearingContent =
+      'Faça um pequeno texto de no máximo 2 linhas dizendo sobre como atua em Audiência de fiança sendo um advogado';
+    setTimeout(
+      () =>
+        fetchData(setBailHearingResponse, 'bailHearing', bailHearingContent),
+      170000,
+    );
+  }, []);
 
-useEffect(() => {
-  const getAcordoCrimeResponse = async () => {
-    try {
-      const result = await axios.post(
-        'https://api.openai.com/v1/chat/completions',
-        {
-          model: 'gpt-3.5-turbo',
-          messages: [
-            {
-              role: 'user',
-              content: `Faça um pequeno texto de no maximo 2 linhas dizendo sobre como atua em casos de Proteção de patrimônio
-              sendo um advogado`,
-            },
-          ],
-        },
-        {
-          headers: {
-              Authorization: `Bearer ${apiKey}`,
-            'Content-Type': 'application/json',
-          },
-        },
-      );
+  useEffect(() => {
+    const harassmentCrimeContent =
+      'Faça um pequeno texto de no máximo 2 linhas dizendo sobre como atua em Crime de assédio sendo um advogado';
+    setTimeout(
+      () =>
+        fetchData(
+          setHarassmentCrimeResponse,
+          'harassmentCrime',
+          harassmentCrimeContent,
+        ),
+      180000,
+    );
+  }, []);
 
-      setAcordoCrimeResponse(result.data.choices[0].message.content);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  useEffect(() => {
+    const storedResponse = localStorage.getItem('response');
+    const storedDomesticBurglary = localStorage.getItem('domesticBurglary');
+    const storedGunCrimes = localStorage.getItem('gunCrimes');
+    const storedDrugCrimes = localStorage.getItem('drugCrimes');
+    const storedPropertyCrimes = localStorage.getItem('propertyCrimes');
+    const storedBailHearing = localStorage.getItem('bailHearing');
+    const storedHarassmentCrime = localStorage.getItem('harassmentCrime');
 
-  setTimeout(getAcordoCrimeResponse, 150000);
-}, []);
+    if (storedResponse) setResponse(storedResponse);
+    if (storedDomesticBurglary)
+      setDomesticBurglaryResponse(storedDomesticBurglary);
+    if (storedGunCrimes) setGunCrimesResponse(storedGunCrimes);
+    if (storedDrugCrimes) setDrugCrimesResponse(storedDrugCrimes);
+    if (storedPropertyCrimes) setPropertyCrimesResponse(storedPropertyCrimes);
+    if (storedBailHearing) setBailHearingResponse(storedBailHearing);
+    if (storedHarassmentCrime)
+      setHarassmentCrimeResponse(storedHarassmentCrime);
 
-
-
-//Serviços de alto patrimônio líquido
-
-
-useEffect(() => {
-  const getPatrimonioCrimeResponse = async () => {
-    try {
-      const result = await axios.post(
-        'https://api.openai.com/v1/chat/completions',
-        {
-          model: 'gpt-3.5-turbo',
-          messages: [
-            {
-              role: 'user',
-              content: `Faça um pequeno texto de no maximo 2 linhas dizendo sobre como atua em casos de Serviços de alto patrimônio líquido
-
-              sendo um advogado`,
-            },
-          ],
-        },
-        {
-          headers: {
-              Authorization: `Bearer ${apiKey}`,
-            'Content-Type': 'application/json',
-          },
-        },
-      );
-
-      setPatrimonioCrimeResponse(result.data.choices[0].message.content);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  setTimeout(getPatrimonioCrimeResponse, 190000);
-}, []);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    window.addEventListener('beforeunload', clearCache);
+    return () => {
+      window.removeEventListener('beforeunload', clearCache);
+    };
+  }, []);
 
   // BANNER
   const [banner, setBanner] = useState<Template03[]>([]);
@@ -581,19 +414,18 @@ useEffect(() => {
     fetchData();
   }, []);
 
-
   return (
     <Container>
-      <HeaderBlock  bgImage={imageUrl}>
+      <HeaderBlock bgImage={imageUrl}>
         <span>1º Escritório De Advocacia Eleito Pelos Pares</span>
         <h1>
           Advogados de família de primeira classe e advogados de divórcio em
           Vancouver
         </h1>
         <p>
-        Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+          Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
           posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel.
-         Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+          Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
           posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel.
           Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
           posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel.
@@ -609,9 +441,7 @@ useEffect(() => {
               <h3>Premiado Escritório de Advocacia do Ano</h3>
             </div>
           </div>
-          <p>
-          {response}
-          </p>
+          <p>{response}</p>
           <div className="footer-div-block">
             <div className="footer-div-block-content">
               <h3>Premiado Escritório de Advocacia do Ano</h3>
@@ -631,11 +461,13 @@ useEffect(() => {
           <button>fale conosco</button>
         </LeftSideBlock>
         <RightSideBlock>
-          <img  src={
-                imageUrlSegunda
-                  ? imageUrlSegunda
-                  : 'https://cdn.discordapp.com/attachments/1116206739373691010/1116758018403614750/ThomasiWilson1_In_a_bustling_metropolis_where_the_pillars_of_la_56479b76-2b1a-45f8-92e6-e7298d120c8c.png'
-              }></img>
+          <img
+            src={
+              imageUrlSegunda
+                ? imageUrlSegunda
+                : 'https://cdn.discordapp.com/attachments/1116206739373691010/1116758018403614750/ThomasiWilson1_In_a_bustling_metropolis_where_the_pillars_of_la_56479b76-2b1a-45f8-92e6-e7298d120c8c.png'
+            }
+          ></img>
         </RightSideBlock>
       </AboutSection>
       <IconSection>
@@ -746,70 +578,57 @@ useEffect(() => {
             Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
             posuere cubilia Curae; Donec velit neque.
           </p>
-          <img  src={
-                thirdImageUrlTerceira
-                  ? thirdImageUrlTerceira
-                  : 'https://cdn.discordapp.com/attachments/1116206739373691010/1116758018403614750/ThomasiWilson1_In_a_bustling_metropolis_where_the_pillars_of_la_56479b76-2b1a-45f8-92e6-e7298d120c8c.png'
-              } alt="" />
+          <img
+            src={
+              thirdImageUrlTerceira
+                ? thirdImageUrlTerceira
+                : 'https://cdn.discordapp.com/attachments/1116206739373691010/1116758018403614750/ThomasiWilson1_In_a_bustling_metropolis_where_the_pillars_of_la_56479b76-2b1a-45f8-92e6-e7298d120c8c.png'
+            }
+            alt=""
+          />
         </LeftAwardBlock>
 
         <RigthAwardBlock>
           <div className="Areas-block">
             <h3>Separação e Divórcio</h3>
-            <p>
-              {domesticBurglary }
-            </p>
+            <p>{domesticBurglary}</p>
           </div>
 
           <div className="Areas-block">
             <h3>Custódia da criança</h3>
-            <p>
-              {gunCrimesResponse}
-            </p>
+            <p>{gunCrimesResponse}</p>
           </div>
 
           <div className="Areas-block">
             <h3>Pensão alimentícia</h3>
-            <p>
-             {drugCrimesResponse}
-            </p>
+            <p>{drugCrimesResponse}</p>
           </div>
 
           <div className="Areas-block">
             <h3>Apoio do cônjuge</h3>
-            <p>
-              {propertyCrimesResponse}
-            </p>
+            <p>{propertyCrimesResponse}</p>
           </div>
         </RigthAwardBlock>
 
         <RigthAwardBlock>
           <div className="Areas-block">
             <h3>Assuntos Internacionais</h3>
-            <p>
-             {bailHearingResponse}
-            </p>
+            <p>{bailHearingResponse}</p>
           </div>
 
           <div className="Areas-block">
             <h3>Apelações de direito de família</h3>
-            <p>
-            {harassmentCrimeResponse}
-            </p>
+            <p>{harassmentCrimeResponse}</p>
           </div>
 
           <div className="Areas-block">
             <h3>Proteção de patrimônio</h3>
-            <p>
-              {acordoCrimeResponse}
-            </p>
+            <p>{harassmentCrimeResponse}</p>
           </div>
 
           <div className="Areas-block">
             <h3>Serviços de alto patrimônio líquido</h3>
-            <p>
-             {patrimonioCrimeResponse}
-            </p>
+            <p>{harassmentCrimeResponse}</p>
           </div>
         </RigthAwardBlock>
       </PraticaceSection>
@@ -939,7 +758,7 @@ useEffect(() => {
               tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
             </p>
 
-            <button className='btn'>AGENDE UMA CONSULTA</button>
+            <button className="btn">AGENDE UMA CONSULTA</button>
           </div>
         </div>
       </HowHelpSection>

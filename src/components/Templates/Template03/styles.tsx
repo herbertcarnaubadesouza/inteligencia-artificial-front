@@ -76,7 +76,7 @@ export const HeaderBlock = styled.section<{ bgImage?: string }>`
   justify-content: center;
   flex-direction: column;
   position: relative;
-  background-image: url(${(props) =>  props.bgImage? props.bgImage : 'https://cdn.discordapp.com/attachments/1116206739373691010/1116573743058268180/ThomasiWilson1_A_successful_law_firms_executive_office_with_flo_acf05fba-84f6-4416-bf37-b27f5d02a190.png'});
+  background-image: url(${(props) =>props.bgImage? props.bgImage : 'https://cdn.discordapp.com/attachments/1116206739373691010/1116573743058268180/ThomasiWilson1_A_successful_law_firms_executive_office_with_flo_acf05fba-84f6-4416-bf37-b27f5d02a190.png'});
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -175,7 +175,6 @@ export const LeftSideBlock = styled.div`
       flex-direction: column;
       gap: 1rem;
       width: 40%;
-     
 
       p {
         width: 100%;
@@ -649,58 +648,55 @@ export const HowLocationSection = styled.div`
 `;
 
 export const HowHelpSection = styled.div<{ bgImage?: string }>`
-width:100%;
-height:500px;
-display: flex;
-    align-items: center;
-    justify-content:center;
+  width: 100%;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url(${(props) =>  props.bgImage? props.bgImage : 'https://cdn.discordapp.com/attachments/1116206739373691010/1116573743058268180/ThomasiWilson1_A_successful_law_firms_executive_office_with_flo_acf05fba-84f6-4416-bf37-b27f5d02a190.png'});
-.container-help{
-  height:70%;
-width:80%;
-margin: 0 auto;
+  background-image: url(${(props) =>props.bgImage ? props.bgImage : 'https://cdn.discordapp.com/attachments/1116206739373691010/1116573743058268180/ThomasiWilson1_A_successful_law_firms_executive_office_with_flo_acf05fba-84f6-4416-bf37-b27f5d02a190.png'});
+  .container-help {
+    height: 70%;
+    width: 80%;
+    margin: 0 auto;
 
-  display: flex;
+    display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction:column;
-    
-}
+    flex-direction: column;
+  }
 
-
-.container-inf{
-  display: flex;
+  .container-inf {
+    display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction:column;
-  height:80%;
-width:100%;
+    flex-direction: column;
+    height: 80%;
+    width: 100%;
 
-
-h1 {
-  text-align:center;
-  margin: 0 auto;
-  width:90%;
-  font-size:45;
-  font-weight:400;
-  margin-bottom:40px;
-}
-p{
-  text-align:center;
-  margin: 0 auto;
-  width:70%;
-  font-size:22px;
-  margin-bottom:60px;
-}
-.btn {
+    h1 {
+      text-align: center;
+      margin: 0 auto;
+      width: 90%;
+      font-size: 45;
+      font-weight: 400;
+      margin-bottom: 40px;
+    }
+    p {
+      text-align: center;
+      margin: 0 auto;
+      width: 70%;
+      font-size: 22px;
+      margin-bottom: 60px;
+    }
+    .btn {
       width: 300px;
       height: 50px;
       border: none;
       font-size: 20px;
-      font-weight:400;
+      font-weight: 400;
       border-radius: 10px;
       background-color: ${(props: ThemeProps) => props.theme.fontTitleColor};
       color: #fff;
@@ -711,10 +707,8 @@ p{
         background-color: #f9c349;
       }
     }
-  
-}
+  }
 `;
-
 
 export const Footer = styled.div`
   width: 100%;
