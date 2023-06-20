@@ -28,6 +28,8 @@ import { collection, db, getDoc, doc } from '../../../firebase';
 import { getDocs } from 'firebase/firestore';
 import { deleteDoc } from 'firebase/firestore';
 
+import Loading from '../Loading/Loading';
+
 interface Template01Props {
   isVisible01: boolean;
 }
@@ -62,6 +64,9 @@ function Template01({ isVisible01 }: Template01Props) {
   const [sloganFooter, setSloganFooter] = useState<string | null>(null);
   const [textoFooter, setTextoFooter] = useState<string | null>(null);
   const [footer, setFooter] = useState<string | null>(null);
+
+  const [loading, setLoading] = useState(true);
+
 
   const fetchData = async (
     setter: React.Dispatch<React.SetStateAction<string | null>>,
@@ -137,89 +142,102 @@ function Template01({ isVisible01 }: Template01Props) {
       fetchData(setPrimeitoTitle, 'primeitoTitle', 'Digite o título sobre o tema da empresa "Advogados de Defesa Criminal"');
     }, 15000);
   }, []);
-  
+
   useEffect(() => {
     setTimeout(() => {
       fetchData(setSloganTitle, 'sloganTitle', 'Digite o slogan da empresa de Advogados de Defesa Criminal');
     }, 30000);
   }, []);
-  
+
   useEffect(() => {
     setTimeout(() => {
       fetchData(setSobreEmpresa, 'sobreEmpresa', 'Digite um texto sobre a empresa de Advogados de Defesa Criminal (máximo de 5 linhas)');
     }, 45000);
   }, []);
-  
+
   useEffect(() => {
     setTimeout(() => {
       fetchData(setSloganParallax, 'sloganParallax', 'Digite um slogan para o parallax do site da empresa de Advogados de Defesa Criminal');
     }, 60000);
   }, []);
-  
+
   useEffect(() => {
     setTimeout(() => {
       fetchData(setTitleParallax, 'titleParallax', 'Digite o título para o parallax do site da empresa de Advogados de Defesa Criminal');
     }, 75000);
   }, []);
-  
+
   useEffect(() => {
     setTimeout(() => {
       fetchData(setAreasAtuacao, 'areasAtuacao', 'Digite um resumo das áreas de atuação da empresa de Advogados de Defesa Criminal (máximo de 2 linhas)');
     }, 90000);
   }, []);
-  
+
   useEffect(() => {
     setTimeout(() => {
       fetchData(setAssaltoDomestico, 'assaltoDomestico', 'Faça um pequeno texto de no máximo 4 linhas sobre a atuação da empresa em Assalto Doméstico');
     }, 105000);
   }, []);
-  
+
   useEffect(() => {
     setTimeout(() => {
       fetchData(setCrimesArmas, 'crimesArmas', 'Faça um pequeno texto de no máximo 4 linhas sobre a atuação da empresa em Crimes com Armas');
     }, 120000);
   }, []);
-  
+
   useEffect(() => {
     setTimeout(() => {
       fetchData(setCrimesDrogas, 'crimesDrogas', 'Faça um pequeno texto de no máximo 4 linhas sobre a atuação da empresa em Crimes com Drogas');
     }, 135000);
   }, []);
-  
+
   useEffect(() => {
     setTimeout(() => {
       fetchData(setCrimesPropriedade, 'crimesPropriedade', 'Faça um pequeno texto de no máximo 4 linhas sobre a atuação da empresa em Crimes de Propriedade');
     }, 150000);
   }, []);
-  
+
   useEffect(() => {
     setTimeout(() => {
       fetchData(setAudienciaFianca, 'audienciaFianca', 'Faça um pequeno texto de no máximo 4 linhas sobre a atuação da empresa em Audiência de Fiança');
     }, 165000);
   }, []);
-  
+
   useEffect(() => {
     setTimeout(() => {
       fetchData(setCrimeAssedio, 'crimeAssedio', 'Faça um pequeno texto de no máximo 4 linhas sobre a atuação da empresa em Crime de Assédio');
     }, 180000);
   }, []);
-  
+
   useEffect(() => {
     setTimeout(() => {
       fetchData(setSloganFooter, 'sloganFooter', 'Digite um slogan para o rodapé do site da empresa de Advogados de Defesa Criminal');
     }, 195000);
   }, []);
-  
+
   useEffect(() => {
     setTimeout(() => {
       fetchData(setTextoFooter, 'textoFooter', 'Digite um texto para o rodapé do site da empresa de Advogados de Defesa Criminal');
     }, 210000);
   }, []);
-  
+
   useEffect(() => {
     setTimeout(() => {
       fetchData(setFooter, 'footer', 'Digite o conteúdo para o rodapé do site da empresa de Advogados de Defesa Criminal');
     }, 225000);
+  }, []);
+
+  // LOADING
+  useEffect(() => {
+    setLoading(true);
+
+    const timeoutId = setTimeout(() => {
+      setLoading(false);
+    }, 35000);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
   }, []);
 
 
@@ -288,7 +306,7 @@ function Template01({ isVisible01 }: Template01Props) {
 
 
 
-  
+
   // ABOUT
   const [about, setAbout] = useState<Template01[]>([]);
   const [imageUrlSegunda, setImageUrlSegunda] = useState('');
@@ -404,10 +422,11 @@ function Template01({ isVisible01 }: Template01Props) {
 
     fetchData();
   }, []);
- 
+
 
   return (
     <Container>
+      {loading ? <Loading /> : null}
       <HeaderFooter bgImage={imageUrl} as="header">
         <h1>{primeitoTitle}</h1>
         <Line></Line>
@@ -421,14 +440,14 @@ function Template01({ isVisible01 }: Template01Props) {
         <section className="about">
           <Info>
             <div className='about-section'>
-            <LogoTemplate
-              src={
-                imageUrlSegunda
-                  ? imageUrlSegunda
-                  : 'https://cdn.discordapp.com/attachments/1116206739373691010/1116758018403614750/ThomasiWilson1_In_a_bustling_metropolis_where_the_pillars_of_la_56479b76-2b1a-45f8-92e6-e7298d120c8c.png'
-              }
-              alt="carregando"
-            />
+              <LogoTemplate
+                src={
+                  imageUrlSegunda
+                    ? imageUrlSegunda
+                    : 'https://cdn.discordapp.com/attachments/1116206739373691010/1116758018403614750/ThomasiWilson1_In_a_bustling_metropolis_where_the_pillars_of_la_56479b76-2b1a-45f8-92e6-e7298d120c8c.png'
+                }
+                alt="carregando"
+              />
             </div>
             <div className='about-section'>
               <h2>Sobre Nós</h2>
@@ -504,7 +523,7 @@ function Template01({ isVisible01 }: Template01Props) {
           <LineParallax></LineParallax>
           <h2>Fale com nossos advogados de defesa criminal hoje!</h2>
           <h3>
-           {textoFooter}
+            {textoFooter}
           </h3>
           <Contact>
             <a>
@@ -517,7 +536,7 @@ function Template01({ isVisible01 }: Template01Props) {
       <Footer>
         <FooterContent>
           <h3>
-           {footer}
+            {footer}
           </h3>
         </FooterContent>
         <FooterRight>
