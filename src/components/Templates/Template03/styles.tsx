@@ -25,6 +25,7 @@ export const Container = styled.div`
   font-family: ${(props: ThemeProps) => props.theme.font.fontFamily};
   background-color: ${(props: ThemeProps) => props.theme.containerBgColor};
 
+
   h1 {
     color: #fff;
     font-family: ${(props: ThemeProps) => props.theme.font.fontFamily};
@@ -84,7 +85,9 @@ export const HeaderBlock = styled.section<{ bgImage?: string }>`
   padding-bottom: 7rem;
   padding-inline: 6rem;
   gap: 2.5rem;
-
+  margin: 0 auto;
+  width:95%
+;
   &::before {
     content: '';
     position: absolute;
