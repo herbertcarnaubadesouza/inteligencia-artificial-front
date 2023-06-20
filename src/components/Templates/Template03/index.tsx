@@ -100,8 +100,9 @@ const fetchData = async (
         },
         {
           headers: {
+            Authorization: `Bearer ${apiKey}`,
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer YOUR_API_KEY', // Substitua YOUR_API_KEY pela sua chave de API
+           
           },
         },
       );
