@@ -128,7 +128,7 @@ const Navigation = styled.div`
 `;
 
 const AboutSection = styled.section`
-width:50%;
+width:70%;
 margin-top:0 auto;
   justify-content:space-around;
   display: flex;
@@ -138,11 +138,16 @@ margin-top:0 auto;
   padding-right: 12rem;
   padding-top: 3.5rem;
   height:700px;
- 
+
+  .about{
+    width:80%;
   
+  }
 
   
 `;
+
+
 
 const Parallax = styled.div<{ bgImage?: string }>`
   padding-block: 10rem;
@@ -264,11 +269,12 @@ const ParallaxContent = styled.div`
 
 const LogoTemplate = styled.img`
   width: 420px;
-    height: 485px;
+    height: 585px;
   margin-top: -7rem;
   margin-right: 3rem;
   z-index: 999;
   object-fit: cover;
+
 
   @media only screen and (max-width: 1540px) {
     width: 420px;
@@ -304,7 +310,9 @@ const LineParallax = styled.div`
 `;
 
 const Info = styled.div`
+
   display: flex;
+
 `;
 
 const PracticeArea = styled.div`

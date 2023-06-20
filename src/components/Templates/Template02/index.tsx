@@ -57,191 +57,304 @@ interface ApiResponse {
 const apiKey = process.env.REACT_APP_API_KEY;
 
 function Template02({ isVisible02 }: Template02Props) {
-  const [response, setResponse] = useState<string | null>(null);
-  const [domesticBurglary, setDomesticBurglaryResponse] = useState<
-    string | null
-  >(null);
-  const [gunCrimesResponse, setGunCrimesResponse] = useState<string | null>(
-    null,
-  );
-  const [drugCrimesResponse, setDrugCrimesResponse] = useState<string | null>(
-    null,
-  );
-  const [propertyCrimesResponse, setPropertyCrimesResponse] = useState<
-    string | null
-  >(null);
-  const [bailHearingResponse, setBailHearingResponse] = useState<string | null>(
-    null,
-  );
-  const [harassmentCrimeResponse, setHarassmentCrimeResponse] = useState<
-    string | null
-  >(null);
-  const nome = 'Rei dos advogados';
-  const MAX_RETRY_COUNT = 80; // Número máximo de tentativas
-  const RETRY_DELAY = 6000; // Tempo de espera entre as tentativas em milissegundos
+const [primeitoTitle, setPrimeitoTitle] = useState<string | null>(null);
+const [sloganTitle, setSloganTitle] = useState<string | null>(null);
+const [sobreEmpresa, setSobreEmpresa] = useState<string | null>(null);
+const [slogan5anos, setSlogan5anos] = useState<string | null>(null);
+const [sloganSucesso, setSloganSucesso] = useState<string | null>(null);
+const [areasAtuacao, setAreasAtuacao] = useState<string | null>(null);
+const [sloganExperiencia, setSloganExperiencia] = useState<string | null>(null);
+const [sloganMotivo, setSloganMotivo] = useState<string | null>(null);
+const [divorcioSeparacao, setDivorcioSeparacao] = useState<string | null>(null);
+const [direitosAvos, setDireitosAvos] = useState<string | null>(null);
+const [custodiaCriancas, setCustodiaCriancas] = useState<string | null>(null);
+const [casamentoUnioesCivis, setCasamentoUnioesCivis] = useState<string | null>(null);
+const [adocaoBarrigaAluguel, setAdocaoBarrigaAluguel] = useState<string | null>(null);
+const [acordosPropriedade, setAcordosPropriedade] = useState<string | null>(null);
+const [sloganCaracteristicasTitle1, setSloganCaracteristicasTitle1] = useState<string | null>(null);
+const [sloganCaracteristicas1, setSloganCaracteristicas1] = useState<string | null>(null);
+const [sloganCaracteristicasTitle2, setSloganCaracteristicasTitle2] = useState<string | null>(null);
+const [sloganCaracteristicas2, setSloganCaracteristicas2] = useState<string | null>(null);
+const [sloganCaracteristicasTitle3, setSloganCaracteristicasTitle3] = useState<string | null>(null);
+const [sloganCaracteristicas3, setSloganCaracteristicas3] = useState<string | null>(null);
 
-  const fetchData = async (
-    setter: React.Dispatch<React.SetStateAction<string | null>>,
-    localStorageKey: string,
-    content: string,
-    retryCount = 0,
-  ) => {
-    const storedData = localStorage.getItem(localStorageKey);
+const fetchData = async (
+  setter: React.Dispatch<React.SetStateAction<string | null>>,
+  localStorageKey: string,
+  content: string,
+  retryCount = 0,
+) => {
+  const storedData = localStorage.getItem(localStorageKey);
 
-    if (!storedData) {
-      try {
-        const result = await axios.post<ApiResponse>(
-          'https://api.openai.com/v1/chat/completions',
-          {
-            model: 'gpt-3.5-turbo',
-            messages: [
-              {
-                role: 'user',
-                content,
-              },
-            ],
-          },
-          {
-            headers: {
-              Authorization: `Bearer ${apiKey}`,
-              'Content-Type': 'application/json',
+  if (storedData === undefined || storedData === null) {
+    try {
+      const result = await axios.post(
+        'https://api.openai.com/v1/chat/completions',
+        {
+          model: 'gpt-3.5-turbo',
+          messages: [
+            {
+              role: 'user',
+              content,
             },
+          ],
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${apiKey}`,
+            'Content-Type': 'application/json',
           },
+        },
+      );
+
+      const responseData = result.data.choices[0].message.content;
+      setter(responseData);
+      localStorage.setItem(localStorageKey, responseData);
+    } catch (error) {
+      console.error(error);
+      console.log(apiKey);
+
+      // Verificar se ainda há tentativas disponíveis
+      if (retryCount < 5) {
+        setTimeout(
+          () =>
+            fetchData(setter, localStorageKey, content, retryCount + 1),
+          5000,
         );
-
-        const responseData = result.data.choices[0].message.content;
-        setter(responseData);
-        localStorage.setItem(localStorageKey, responseData);
-      } catch (error) {
-        console.error(error);
-
-        // Verificar se ainda há tentativas disponíveis
-        if (retryCount < MAX_RETRY_COUNT) {
-          setTimeout(
-            () => fetchData(setter, localStorageKey, content, retryCount + 1),
-            RETRY_DELAY,
-          );
-        } else {
-          console.error('Limite máximo de tentativas atingido');
-        }
+      } else {
+        console.error('Limite máximo de tentativas atingido');
       }
-    } else {
-      setter(storedData);
     }
+  } else {
+    setter(storedData);
+  }
+};
+
+const clearCache = () => {
+  localStorage.removeItem('primeitoTitle');
+  localStorage.removeItem('sloganTitle');
+  localStorage.removeItem('sobreEmpresa');
+  localStorage.removeItem('slogan5anos');
+  localStorage.removeItem('sloganSucesso');
+  localStorage.removeItem('areasAtuacao');
+  localStorage.removeItem('sloganExperiencia');
+  localStorage.removeItem('sloganMotivo');
+  localStorage.removeItem('sloganCaracteristicasTitle1');
+  localStorage.removeItem('sloganCaracteristicas1');
+  localStorage.removeItem('sloganCaracteristicasTitle2');
+  localStorage.removeItem('sloganCaracteristicas2');
+  localStorage.removeItem('sloganCaracteristicasTitle3');
+  localStorage.removeItem('sloganCaracteristicas3');
+};
+useEffect(() => {
+  setTimeout(() => {
+    clearCache();
+    fetchData(
+      setPrimeitoTitle,
+      'primeitoTitle',
+      'Digite o título sobre o tema da empresa "Advogados de Defesa Criminal"',
+    );
+  }, 5000);
+}, []);
+
+useEffect(() => {
+  setTimeout(() => {
+    fetchData(
+      setSloganTitle,
+      'sloganTitle',
+      'Digite o slogan da empresa de Advogados de Defesa Criminal',
+    );
+  }, 13000);
+}, []);
+
+useEffect(() => {
+  setTimeout(() => {
+    fetchData(
+      setSobreEmpresa,
+      'sobreEmpresa',
+      'Digite um texto sobre a empresa de Advogados de Defesa Criminal (máximo de 5 linhas)',
+    );
+  }, 26000);
+}, []);
+
+useEffect(() => {
+  setTimeout(() => {
+    fetchData(
+      setSlogan5anos,
+      'slogan5anos',
+      'Digite um texto de no máximo 2 linhas sobre a empresa ter 5 anos de experiência',
+    );
+  }, 39000);
+}, []);
+
+useEffect(() => {
+  setTimeout(() => {
+    fetchData(
+      setSloganSucesso,
+      'sloganSucesso',
+      'Digite um texto de no máximo 2 linhas sobre a empresa definindo o sucesso',
+    );
+  }, 52000);
+}, []);
+
+useEffect(() => {
+  setTimeout(() => {
+    fetchData(
+      setAreasAtuacao,
+      'areasAtuacao',
+      'Digite um resumo das áreas de atuação da empresa de Advogados de Defesa Criminal (máximo de 4 linhas)',
+    );
+  }, 65000);
+}, []);
+
+useEffect(() => {
+  setTimeout(() => {
+    fetchData(
+      setSloganExperiencia,
+      'sloganExperiencia',
+      'Digite um texto de no máximo 1 linha sobre a empresa ser uma advogada de direito de família profissional e experiente',
+    );
+  }, 78000);
+}, []);
+
+useEffect(() => {
+  setTimeout(() => {
+    fetchData(
+      setSloganMotivo,
+      'sloganMotivo',
+      'Digite um texto de no máximo 2 linhas sobre por que escolher a empresa',
+    );
+  }, 91000);
+}, []);
+
+useEffect(() => {
+  setTimeout(() => {
+    fetchData(
+      setSloganCaracteristicasTitle1,
+      'sloganCaracteristicasTitle1',
+      'Digite o título da primeira característica da empresa',
+    );
+  }, 104000);
+}, []);
+
+useEffect(() => {
+  setTimeout(() => {
+    fetchData(
+      setSloganCaracteristicas1,
+      'sloganCaracteristicas1',
+      'Digite um texto de no máximo 2 linhas explicando a primeira característica da empresa',
+    );
+  }, 117000);
+}, []);
+
+useEffect(() => {
+  setTimeout(() => {
+    fetchData(
+      setSloganCaracteristicasTitle2,
+      'sloganCaracteristicasTitle2',
+      'Digite o título da segunda característica da empresa',
+    );
+  }, 130000);
+}, []);
+
+useEffect(() => {
+  setTimeout(() => {
+    fetchData(
+      setSloganCaracteristicas2,
+      'sloganCaracteristicas2',
+      'Digite um texto de no máximo 2 linhas explicando a segunda característica da empresa',
+    );
+  }, 143000);
+}, []);
+
+useEffect(() => {
+  setTimeout(() => {
+    fetchData(
+      setSloganCaracteristicasTitle3,
+      'sloganCaracteristicasTitle3',
+      'Digite o título da terceira característica da empresa',
+    );
+  }, 156000);
+}, []);
+
+useEffect(() => {
+  setTimeout(() => {
+    fetchData(
+      setSloganCaracteristicas3,
+      'sloganCaracteristicas3',
+      'Digite um texto de no máximo 2 linhas explicando a terceira característica da empresa',
+    );
+  }, 169000);
+}, []);
+
+useEffect(() => {
+  setTimeout(() => {
+    fetchData(
+      setDivorcioSeparacao,
+      'divorcioSeparacao',
+      'Digite um resumo sobre Divórcio e Separação (máximo de 4 linhas)',
+    );
+  }, 182000);
+}, []);
+
+useEffect(() => {
+  setTimeout(() => {
+    fetchData(
+      setDireitosAvos,
+      'direitosAvos',
+      'Digite um resumo sobre Direitos dos Avós (máximo de 4 linhas)',
+    );
+  }, 195000);
+}, []);
+
+useEffect(() => {
+  setTimeout(() => {
+    fetchData(
+      setCustodiaCriancas,
+      'custodiaCriancas',
+      'Digite um resumo sobre Custódia de Criança (máximo de 4 linhas)',
+    );
+  }, 208000);
+}, []);
+
+useEffect(() => {
+  setTimeout(() => {
+    fetchData(
+      setCasamentoUnioesCivis,
+      'casamentoUnioesCivis',
+      'Digite um resumo sobre Casamento/Uniões Civis (máximo de 4 linhas)',
+    );
+  }, 221000);
+}, []);
+
+useEffect(() => {
+  setTimeout(() => {
+    fetchData(
+      setAdocaoBarrigaAluguel,
+      'adocaoBarrigaAluguel',
+      'Digite um resumo sobre Adoção e Barriga de Aluguel (máximo de 4 linhas)',
+    );
+  }, 234000);
+}, []);
+
+useEffect(() => {
+  setTimeout(() => {
+    fetchData(
+      setAcordosPropriedade,
+      'acordosPropriedade',
+      'Digite um resumo sobre Acordos de Propriedade (máximo de 4 linhas)',
+    );
+  }, 247000);
+}, []);
+
+
+useEffect(() => {
+  window.addEventListener('beforeunload', clearCache);
+  return () => {
+    window.removeEventListener('beforeunload', clearCache);
   };
+}, []);
 
-  const clearCache = () => {
-    localStorage.removeItem('response');
-    localStorage.removeItem('domesticBurglary');
-    localStorage.removeItem('gunCrimes');
-    localStorage.removeItem('drugCrimes');
-    localStorage.removeItem('propertyCrimes');
-    localStorage.removeItem('bailHearing');
-    localStorage.removeItem('harassmentCrime');
-  };
-
-  useEffect(() => {
-    const responseContent = `Faça dois parágrafos sobre uma empresa de advocacia chamada ${nome}`;
-    setTimeout(
-      () => fetchData(setResponse, 'response', responseContent),
-      15000,
-    );
-  }, []);
-
-  useEffect(() => {
-    const domesticBurglaryContent =
-      'Faça um pequeno texto de no máximo 2 linhas dizendo sobre como atua em Assalto Doméstico sendo um advogado';
-    setTimeout(
-      () =>
-        fetchData(
-          setDomesticBurglaryResponse,
-          'domesticBurglary',
-          domesticBurglaryContent,
-        ),
-      30000,
-    );
-  }, []);
-
-  useEffect(() => {
-    const gunCrimesContent =
-      'Faça um pequeno texto de no máximo 2 linhas dizendo sobre como atua em Crimes de armas sendo um advogado';
-    setTimeout(
-      () => fetchData(setGunCrimesResponse, 'gunCrimes', gunCrimesContent),
-      60000,
-    );
-  }, []);
-
-  useEffect(() => {
-    const drugCrimesContent =
-      'Faça um pequeno texto de no máximo 2 linhas dizendo sobre como atua em Crime de Drogas sendo um advogado';
-    setTimeout(
-      () => fetchData(setDrugCrimesResponse, 'drugCrimes', drugCrimesContent),
-      80000,
-    );
-  }, []);
-
-  useEffect(() => {
-    const propertyCrimesContent =
-      'Faça um pequeno texto de no máximo 2 linhas dizendo sobre como atua em Crimes de propriedade sendo um advogado';
-    setTimeout(
-      () =>
-        fetchData(
-          setPropertyCrimesResponse,
-          'propertyCrimes',
-          propertyCrimesContent,
-        ),
-      100000,
-    );
-  }, []);
-
-  useEffect(() => {
-    const bailHearingContent =
-      'Faça um pequeno texto de no máximo 2 linhas dizendo sobre como atua em Audiência de fiança sendo um advogado';
-    setTimeout(
-      () =>
-        fetchData(setBailHearingResponse, 'bailHearing', bailHearingContent),
-      110000,
-    );
-  }, []);
-
-  useEffect(() => {
-    const harassmentCrimeContent =
-      'Faça um pequeno texto de no máximo 2 linhas dizendo sobre como atua em Crime de assédio sendo um advogado';
-    setTimeout(
-      () =>
-        fetchData(
-          setHarassmentCrimeResponse,
-          'harassmentCrime',
-          harassmentCrimeContent,
-        ),
-      120000,
-    );
-  }, []);
-
-  useEffect(() => {
-    const storedResponse = localStorage.getItem('response');
-    const storedDomesticBurglary = localStorage.getItem('domesticBurglary');
-    const storedGunCrimes = localStorage.getItem('gunCrimes');
-    const storedDrugCrimes = localStorage.getItem('drugCrimes');
-    const storedPropertyCrimes = localStorage.getItem('propertyCrimes');
-    const storedBailHearing = localStorage.getItem('bailHearing');
-    const storedHarassmentCrime = localStorage.getItem('harassmentCrime');
-
-    if (storedResponse) setResponse(storedResponse);
-    if (storedDomesticBurglary)
-      setDomesticBurglaryResponse(storedDomesticBurglary);
-    if (storedGunCrimes) setGunCrimesResponse(storedGunCrimes);
-    if (storedDrugCrimes) setDrugCrimesResponse(storedDrugCrimes);
-    if (storedPropertyCrimes) setPropertyCrimesResponse(storedPropertyCrimes);
-    if (storedBailHearing) setBailHearingResponse(storedBailHearing);
-    if (storedHarassmentCrime)
-      setHarassmentCrimeResponse(storedHarassmentCrime);
-
-    window.addEventListener('beforeunload', clearCache);
-    return () => {
-      window.removeEventListener('beforeunload', clearCache);
-    };
-  }, []);
 
   // BANNER
   const [banner, setBanner] = useState<Template02[]>([]);
@@ -420,11 +533,10 @@ function Template02({ isVisible02 }: Template02Props) {
       <HeaderBlock bgImage={imageUrl}>
         <div className="container-block-header">
           <LineHeader></LineHeader>
-          <span>Comprometidos em ajudar nossos clientes a ter sucesso</span>
+          <span>{primeitoTitle}</span>
         </div>
         <h1>
-          Você precisa de um escritório de advocacia confiável que ajude a lidar
-          com seus assuntos familiares
+       {sloganTitle}
         </h1>
         <LineHeaderBottom></LineHeaderBottom>
         <div className="container-header-footer-block">
@@ -448,22 +560,22 @@ function Template02({ isVisible02 }: Template02Props) {
         <FirstBlockAbout>
           <div className="container-block-about">
             <LineAbout></LineAbout>
-            <span>Comprometidos em ajudar nossos clientes a ter sucesso</span>
+            <span>{sloganTitle}</span>
           </div>
           <h2>Você veio ao lugar certo</h2>
-          <p>{response}</p>
+          <p>{sobreEmpresa}</p>
           <div className="bottom-about-section">
             <div className="block-bottom">
               <LineAboutSection />
               <Scales size={32} weight="fill" />
               <h3>5 Anos de Experiência</h3>
-              <p>Já estamos a 5 anos no mercado ganhando casos.</p>
+              <p>{slogan5anos}</p>
             </div>
             <div className="block-bottom">
               <LineAboutSection />
               <FlagCheckered size={32} weight="fill" />
               <h3>Definindo o sucesso</h3>
-              <p>Te levamos ao topo.</p>
+              <p>{sloganSucesso}</p>
             </div>
           </div>
         </FirstBlockAbout>
@@ -485,39 +597,39 @@ function Template02({ isVisible02 }: Template02Props) {
               <div className="content-block-atuacao">
                 <LinkSimpleBreak size={32} weight="bold" />
                 <h3>Divórcio e Separação</h3>
-                <p>{domesticBurglary}</p>
+                <p>{divorcioSeparacao}</p>
               </div>
               <div className="content-block-atuacao">
                 <NotePencil size={32} weight="bold" />
                 <h3>Direitos dos avós</h3>
-                <p>{gunCrimesResponse}</p>
+                <p>{direitosAvos}</p>
               </div>
               <div className="content-block-atuacao">
                 <Handshake size={32} weight="bold" />
                 <h3>Custódia de criança</h3>
-                <p>{drugCrimesResponse}</p>
+                <p>{custodiaCriancas}</p>
               </div>
               <div className="content-block-atuacao">
                 <Baby size={32} weight="bold" />
                 <h3>Domestic Violence​​</h3>
-                <p>{propertyCrimesResponse}</p>
+                <p>{casamentoUnioesCivis}</p>
               </div>
             </Row>
             <Row>
               <div className="content-block-atuacao">
                 <Heart size={32} weight="bold" />
                 <h3>Casamento/Uniões Civis​</h3>
-                <p>{bailHearingResponse}</p>
+                <p>{adocaoBarrigaAluguel}</p>
               </div>
               <div className="content-block-atuacao">
                 <User size={32} weight="bold" />
                 <h3>Adoção e barriga de aluguel​</h3>
-                <p>{harassmentCrimeResponse}</p>
+                <p>{acordosPropriedade}</p>
               </div>
               <div className="content-block-atuacao">
                 <Scroll size={32} weight="bold" />
                 <h3>Acordos de propriedade​​​</h3>
-                <p>{harassmentCrimeResponse}</p>
+                <p>{acordosPropriedade}</p>
               </div>
               <div className="content-block-atuacao">
                 <div className="last-block-atuacao">
@@ -535,38 +647,34 @@ function Template02({ isVisible02 }: Template02Props) {
             <div className="container-block-header">
               <LineHeader></LineHeader>
               <span>
-                Advogada de direito de família profissional e experiente
-              </span>
+             {sloganExperiencia}  </span>
             </div>
-            <h2>Por que escolher nossa empresa</h2>
+            <h2>{sloganMotivo}</h2>
             <div className="block-whyus">
               <div className="wrap-block-whyus">
                 <h5>01</h5>
                 <div className="block-whyus-p">
-                  <h4>Excelente Histórico</h4>
+                  <h4>{sloganCaracteristicasTitle1}</h4>
                   <p>
-                    This is a short description elaborating the reason that you
-                    have mentioned above. Tell them why you are good!
+                    {sloganCaracteristicas1}
                   </p>
                 </div>
               </div>
               <div className="wrap-block-whyus">
                 <h5>02</h5>
                 <div className="block-whyus-p">
-                  <h4>Excelente Histórico</h4>
+                  <h4>{sloganCaracteristicasTitle2}</h4>
                   <p>
-                    This is a short description elaborating the reason that you
-                    have mentioned above. Tell them why you are good!
+                    {sloganCaracteristicas2}
                   </p>
                 </div>
               </div>
               <div className="wrap-block-whyus">
                 <h5>03</h5>
                 <div className="block-whyus-p">
-                  <h4>Excelente Histórico</h4>
+                  <h4>{sloganCaracteristicasTitle3}</h4>
                   <p>
-                    This is a short description elaborating the reason that you
-                    have mentioned above. Tell them why you are good!
+                    {sloganCaracteristicas3}
                   </p>
                 </div>
               </div>
@@ -576,21 +684,21 @@ function Template02({ isVisible02 }: Template02Props) {
             <div className="rows-block">
               <div className="row-div-block">
                 <h2>2000+</h2>
-                <span>Client Consutations</span>
+                <span>Clientes satisfeitos</span>
               </div>
               <div className="row-div-block">
                 <h2>93%</h2>
-                <span>Successful Cases</span>
+                <span>Casos de Sucesso</span>
               </div>
             </div>
             <div className="rows-block">
               <div className="row-div-block">
                 <h2>40+</h2>
-                <span>Professional Attorneys</span>
+                <span>Profissionais</span>
               </div>
               <div className="row-div-block">
                 <h2>20mlns</h2>
-                <span>Recovered Cost</span>
+                <span>Recovered</span>
               </div>
             </div>
           </RightSideWhyUs>

@@ -47,28 +47,21 @@ interface ApiResponse {
 const apiKey = process.env.REACT_APP_API_KEY;
 
 function Template01({ isVisible01 }: Template01Props) {
-  const [response, setResponse] = useState<string | null>(null);
-  const [domesticBurglary, setDomesticBurglaryResponse] = useState<
-    string | null
-  >(null);
-  const [gunCrimesResponse, setGunCrimesResponse] = useState<string | null>(
-    null,
-  );
-  const [drugCrimesResponse, setDrugCrimesResponse] = useState<string | null>(
-    null,
-  );
-  const [propertyCrimesResponse, setPropertyCrimesResponse] = useState<
-    string | null
-  >(null);
-  const [bailHearingResponse, setBailHearingResponse] = useState<string | null>(
-    null,
-  );
-  const [harassmentCrimeResponse, setHarassmentCrimeResponse] = useState<
-    string | null
-  >(null);
-  const nome = 'Rei dos advogados';
-  const MAX_RETRY_COUNT = 70; // Número máximo de tentativas
-  const RETRY_DELAY = 4000; // Tempo de espera entre as tentativas em milissegundos
+  const [primeitoTitle, setPrimeitoTitle] = useState<string | null>(null);
+  const [sloganTitle, setSloganTitle] = useState<string | null>(null);
+  const [sobreEmpresa, setSobreEmpresa] = useState<string | null>(null);
+  const [sloganParallax, setSloganParallax] = useState<string | null>(null);
+  const [titleParallax, setTitleParallax] = useState<string | null>(null);
+  const [areasAtuacao, setAreasAtuacao] = useState<string | null>(null);
+  const [assaltoDomestico, setAssaltoDomestico] = useState<string | null>(null);
+  const [crimesArmas, setCrimesArmas] = useState<string | null>(null);
+  const [crimesDrogas, setCrimesDrogas] = useState<string | null>(null);
+  const [crimesPropriedade, setCrimesPropriedade] = useState<string | null>(null);
+  const [audienciaFianca, setAudienciaFianca] = useState<string | null>(null);
+  const [crimeAssedio, setCrimeAssedio] = useState<string | null>(null);
+  const [sloganFooter, setSloganFooter] = useState<string | null>(null);
+  const [textoFooter, setTextoFooter] = useState<string | null>(null);
+  const [footer, setFooter] = useState<string | null>(null);
 
   const fetchData = async (
     setter: React.Dispatch<React.SetStateAction<string | null>>,
@@ -78,9 +71,9 @@ function Template01({ isVisible01 }: Template01Props) {
   ) => {
     const storedData = localStorage.getItem(localStorageKey);
 
-    if (!storedData) {
+    if (storedData === undefined || storedData === null) {
       try {
-        const result = await axios.post<ApiResponse>(
+        const result = await axios.post(
           'https://api.openai.com/v1/chat/completions',
           {
             model: 'gpt-3.5-turbo',
@@ -104,13 +97,13 @@ function Template01({ isVisible01 }: Template01Props) {
         localStorage.setItem(localStorageKey, responseData);
       } catch (error) {
         console.error(error);
-        console.log(apiKey);
+        console.log(apiKey)
 
         // Verificar se ainda há tentativas disponíveis
-        if (retryCount < MAX_RETRY_COUNT) {
+        if (retryCount < 5) {
           setTimeout(
             () => fetchData(setter, localStorageKey, content, retryCount + 1),
-            RETRY_DELAY,
+            5000,
           );
         } else {
           console.error('Limite máximo de tentativas atingido');
@@ -122,112 +115,115 @@ function Template01({ isVisible01 }: Template01Props) {
   };
 
   const clearCache = () => {
-    localStorage.removeItem('response');
-    localStorage.removeItem('domesticBurglary');
-    localStorage.removeItem('gunCrimes');
-    localStorage.removeItem('drugCrimes');
-    localStorage.removeItem('propertyCrimes');
-    localStorage.removeItem('bailHearing');
-    localStorage.removeItem('harassmentCrime');
+    localStorage.removeItem('primeitoTitle');
+    localStorage.removeItem('sloganTitle');
+    localStorage.removeItem('sobreEmpresa');
+    localStorage.removeItem('sloganParallax');
+    localStorage.removeItem('titleParallax');
+    localStorage.removeItem('areasAtuacao');
+    localStorage.removeItem('assaltoDomestico');
+    localStorage.removeItem('crimesArmas');
+    localStorage.removeItem('crimesDrogas');
+    localStorage.removeItem('crimesPropriedade');
+    localStorage.removeItem('audienciaFianca');
+    localStorage.removeItem('crimeAssedio');
+    localStorage.removeItem('sloganFooter');
+    localStorage.removeItem('textoFooter');
+    localStorage.removeItem('footer');
   };
-
   useEffect(() => {
-    const responseContent = `Faça dois parágrafos sobre uma empresa de advocacia chamada ${nome}`;
-    setTimeout(
-      () => fetchData(setResponse, 'response', responseContent),
-      10000,
-    );
+    setTimeout(() => {
+      clearCache();
+      fetchData(setPrimeitoTitle, 'primeitoTitle', 'Digite o título sobre o tema da empresa "Advogados de Defesa Criminal"');
+    }, 15000);
+  }, []);
+  
+  useEffect(() => {
+    setTimeout(() => {
+      fetchData(setSloganTitle, 'sloganTitle', 'Digite o slogan da empresa de Advogados de Defesa Criminal');
+    }, 30000);
+  }, []);
+  
+  useEffect(() => {
+    setTimeout(() => {
+      fetchData(setSobreEmpresa, 'sobreEmpresa', 'Digite um texto sobre a empresa de Advogados de Defesa Criminal (máximo de 5 linhas)');
+    }, 45000);
+  }, []);
+  
+  useEffect(() => {
+    setTimeout(() => {
+      fetchData(setSloganParallax, 'sloganParallax', 'Digite um slogan para o parallax do site da empresa de Advogados de Defesa Criminal');
+    }, 60000);
+  }, []);
+  
+  useEffect(() => {
+    setTimeout(() => {
+      fetchData(setTitleParallax, 'titleParallax', 'Digite o título para o parallax do site da empresa de Advogados de Defesa Criminal');
+    }, 75000);
+  }, []);
+  
+  useEffect(() => {
+    setTimeout(() => {
+      fetchData(setAreasAtuacao, 'areasAtuacao', 'Digite um resumo das áreas de atuação da empresa de Advogados de Defesa Criminal (máximo de 2 linhas)');
+    }, 90000);
+  }, []);
+  
+  useEffect(() => {
+    setTimeout(() => {
+      fetchData(setAssaltoDomestico, 'assaltoDomestico', 'Faça um pequeno texto de no máximo 4 linhas sobre a atuação da empresa em Assalto Doméstico');
+    }, 105000);
+  }, []);
+  
+  useEffect(() => {
+    setTimeout(() => {
+      fetchData(setCrimesArmas, 'crimesArmas', 'Faça um pequeno texto de no máximo 4 linhas sobre a atuação da empresa em Crimes com Armas');
+    }, 120000);
+  }, []);
+  
+  useEffect(() => {
+    setTimeout(() => {
+      fetchData(setCrimesDrogas, 'crimesDrogas', 'Faça um pequeno texto de no máximo 4 linhas sobre a atuação da empresa em Crimes com Drogas');
+    }, 135000);
+  }, []);
+  
+  useEffect(() => {
+    setTimeout(() => {
+      fetchData(setCrimesPropriedade, 'crimesPropriedade', 'Faça um pequeno texto de no máximo 4 linhas sobre a atuação da empresa em Crimes de Propriedade');
+    }, 150000);
+  }, []);
+  
+  useEffect(() => {
+    setTimeout(() => {
+      fetchData(setAudienciaFianca, 'audienciaFianca', 'Faça um pequeno texto de no máximo 4 linhas sobre a atuação da empresa em Audiência de Fiança');
+    }, 165000);
+  }, []);
+  
+  useEffect(() => {
+    setTimeout(() => {
+      fetchData(setCrimeAssedio, 'crimeAssedio', 'Faça um pequeno texto de no máximo 4 linhas sobre a atuação da empresa em Crime de Assédio');
+    }, 180000);
+  }, []);
+  
+  useEffect(() => {
+    setTimeout(() => {
+      fetchData(setSloganFooter, 'sloganFooter', 'Digite um slogan para o rodapé do site da empresa de Advogados de Defesa Criminal');
+    }, 195000);
+  }, []);
+  
+  useEffect(() => {
+    setTimeout(() => {
+      fetchData(setTextoFooter, 'textoFooter', 'Digite um texto para o rodapé do site da empresa de Advogados de Defesa Criminal');
+    }, 210000);
+  }, []);
+  
+  useEffect(() => {
+    setTimeout(() => {
+      fetchData(setFooter, 'footer', 'Digite o conteúdo para o rodapé do site da empresa de Advogados de Defesa Criminal');
+    }, 225000);
   }, []);
 
-  useEffect(() => {
-    const domesticBurglaryContent =
-      'Faça um pequeno texto de no máximo 2 linhas dizendo sobre como atua em Assalto Doméstico sendo um advogado';
-    setTimeout(
-      () =>
-        fetchData(
-          setDomesticBurglaryResponse,
-          'domesticBurglary',
-          domesticBurglaryContent,
-        ),
-      20000,
-    );
-  }, []);
 
   useEffect(() => {
-    const gunCrimesContent =
-      'Faça um pequeno texto de no máximo 2 linhas dizendo sobre como atua em Crimes de armas sendo um advogado';
-    setTimeout(
-      () => fetchData(setGunCrimesResponse, 'gunCrimes', gunCrimesContent),
-      30000,
-    );
-  }, []);
-
-  useEffect(() => {
-    const drugCrimesContent =
-      'Faça um pequeno texto de no máximo 2 linhas dizendo sobre como atua em Crime de Drogas sendo um advogado';
-    setTimeout(
-      () => fetchData(setDrugCrimesResponse, 'drugCrimes', drugCrimesContent),
-      40000,
-    );
-  }, []);
-
-  useEffect(() => {
-    const propertyCrimesContent =
-      'Faça um pequeno texto de no máximo 2 linhas dizendo sobre como atua em Crimes de propriedade sendo um advogado';
-    setTimeout(
-      () =>
-        fetchData(
-          setPropertyCrimesResponse,
-          'propertyCrimes',
-          propertyCrimesContent,
-        ),
-      50000,
-    );
-  }, []);
-
-  useEffect(() => {
-    const bailHearingContent =
-      'Faça um pequeno texto de no máximo 2 linhas dizendo sobre como atua em Audiência de fiança sendo um advogado';
-    setTimeout(
-      () =>
-        fetchData(setBailHearingResponse, 'bailHearing', bailHearingContent),
-      60000,
-    );
-  }, []);
-
-  useEffect(() => {
-    const harassmentCrimeContent =
-      'Faça um pequeno texto de no máximo 2 linhas dizendo sobre como atua em Crime de assédio sendo um advogado';
-    setTimeout(
-      () =>
-        fetchData(
-          setHarassmentCrimeResponse,
-          'harassmentCrime',
-          harassmentCrimeContent,
-        ),
-      70000,
-    );
-  }, []);
-
-  useEffect(() => {
-    const storedResponse = localStorage.getItem('response');
-    const storedDomesticBurglary = localStorage.getItem('domesticBurglary');
-    const storedGunCrimes = localStorage.getItem('gunCrimes');
-    const storedDrugCrimes = localStorage.getItem('drugCrimes');
-    const storedPropertyCrimes = localStorage.getItem('propertyCrimes');
-    const storedBailHearing = localStorage.getItem('bailHearing');
-    const storedHarassmentCrime = localStorage.getItem('harassmentCrime');
-
-    if (storedResponse) setResponse(storedResponse);
-    if (storedDomesticBurglary)
-      setDomesticBurglaryResponse(storedDomesticBurglary);
-    if (storedGunCrimes) setGunCrimesResponse(storedGunCrimes);
-    if (storedDrugCrimes) setDrugCrimesResponse(storedDrugCrimes);
-    if (storedPropertyCrimes) setPropertyCrimesResponse(storedPropertyCrimes);
-    if (storedBailHearing) setBailHearingResponse(storedBailHearing);
-    if (storedHarassmentCrime)
-      setHarassmentCrimeResponse(storedHarassmentCrime);
-
     window.addEventListener('beforeunload', clearCache);
     return () => {
       window.removeEventListener('beforeunload', clearCache);
@@ -290,6 +286,9 @@ function Template01({ isVisible01 }: Template01Props) {
     fetchData();
   }, []);
 
+
+
+  
   // ABOUT
   const [about, setAbout] = useState<Template01[]>([]);
   const [imageUrlSegunda, setImageUrlSegunda] = useState('');
@@ -405,15 +404,15 @@ function Template01({ isVisible01 }: Template01Props) {
 
     fetchData();
   }, []);
+ 
 
   return (
     <Container>
       <HeaderFooter bgImage={imageUrl} as="header">
-        <h1>Advogados de Defesa Criminal</h1>
+        <h1>{primeitoTitle}</h1>
         <Line></Line>
         <h2>
-          Escritório de advogados criminais com mais de 50 anos de experiência
-          entre nossos sócios
+          {sloganTitle}
         </h2>
         <button>Fale conosco agora</button>
       </HeaderFooter>
@@ -421,6 +420,7 @@ function Template01({ isVisible01 }: Template01Props) {
       <AboutSection>
         <section className="about">
           <Info>
+            <div className='about-section'>
             <LogoTemplate
               src={
                 imageUrlSegunda
@@ -429,18 +429,19 @@ function Template01({ isVisible01 }: Template01Props) {
               }
               alt="carregando"
             />
-            <div>
+            </div>
+            <div className='about-section'>
               <h2>Sobre Nós</h2>
-              <p>{response}</p>
+              <p>{sobreEmpresa}</p>
             </div>
           </Info>
         </section>
       </AboutSection>
       <Parallax bgImage={thirdImageUrlTerceira}>
         <ParallaxContent>
-          <h4>EXPERIÊNCIA É IMPORTANTE</h4>
+          <h4>{sloganParallax}</h4>
           <LineParallax></LineParallax>
-          <h2>Lutamos para que suas acusações sejam retiradas.</h2>
+          <h2>{titleParallax}</h2>
           <a>
             <Play size={32} weight="fill" />
           </a>
@@ -449,8 +450,7 @@ function Template01({ isVisible01 }: Template01Props) {
       <PracticeArea>
         <h1>Áreas de atuação</h1>
         <h4>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          {areasAtuacao}
         </h4>
         <button>Ver todas as áreas</button>
         <PracticeAreaContentAll>
@@ -459,19 +459,19 @@ function Template01({ isVisible01 }: Template01Props) {
               <h3>01</h3>
               <h2>Assalto doméstico</h2>
               <LineSmall></LineSmall>
-              <p>{domesticBurglary}</p>
+              <p>{assaltoDomestico}</p>
             </PracticeContent>
             <PracticeContent>
               <h3>02</h3>
               <h2>Crimes de armas</h2>
               <LineSmall></LineSmall>
-              <p>{gunCrimesResponse}</p>
+              <p>{crimesArmas}</p>
             </PracticeContent>
             <PracticeContent>
               <h3>03</h3>
               <h2>Crimes de drogas</h2>
               <LineSmall></LineSmall>
-              <p>{drugCrimesResponse}</p>
+              <p>{crimesDrogas}</p>
             </PracticeContent>
           </PracticeAreaContent>
         </PracticeAreaContentAll>
@@ -481,31 +481,30 @@ function Template01({ isVisible01 }: Template01Props) {
               <h3>04</h3>
               <h2>Crimes de propriedade</h2>
               <LineSmall></LineSmall>
-              <p>{propertyCrimesResponse}</p>
+              <p>{crimesPropriedade}</p>
             </PracticeContent>
             <PracticeContent>
               <h3>05</h3>
               <h2>Audiencia de fiança</h2>
               <LineSmall></LineSmall>
-              <p>{bailHearingResponse}</p>
+              <p>{audienciaFianca}</p>
             </PracticeContent>
             <PracticeContent>
               <h3>06</h3>
               <h2>Crime de assédio</h2>
               <LineSmall></LineSmall>
-              <p>{harassmentCrimeResponse}</p>
+              <p>{crimeAssedio}</p>
             </PracticeContent>
           </PracticeAreaContent>
         </PracticeAreaContentAll>
       </PracticeArea>
       <ParallaxContact bgImage={imageUrlTerceira}>
         <ParallaxContent>
-          <h4>NÃO ESPERE MAIS</h4>
+          <h4>{sloganFooter}</h4>
           <LineParallax></LineParallax>
           <h2>Fale com nossos advogados de defesa criminal hoje!</h2>
           <h3>
-            Entre em contato com um advogado de defesa criminal experiente para
-            lutar pelo seu caso.
+           {textoFooter}
           </h3>
           <Contact>
             <a>
@@ -518,8 +517,7 @@ function Template01({ isVisible01 }: Template01Props) {
       <Footer>
         <FooterContent>
           <h3>
-            Somos um escritório de advocacia de defesa criminal de serviço
-            completo com escritórios em todo o Canadá e Lorem Ipsum.
+           {footer}
           </h3>
         </FooterContent>
         <FooterRight>

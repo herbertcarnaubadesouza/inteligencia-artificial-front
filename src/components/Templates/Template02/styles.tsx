@@ -177,6 +177,7 @@ export const LineAboutSection = styled.div`
   z-index: 999;
   margin-top: 1.5rem;
   margin-bottom: 10px;
+ 
 `;
 
 export const AboutSection = styled.section`
@@ -185,11 +186,15 @@ export const AboutSection = styled.section`
   justify-content: space-between;
   padding-inline: 6rem;
   padding-block: 5rem;
-
+ 
+  width:60%;
+  margin:0 auto;
   .container-block-about {
+   
     display: flex;
     align-items: baseline;
     position: relative;
+   
   }
 `;
 export const LineAbout = styled.div`
@@ -201,10 +206,12 @@ export const LineAbout = styled.div`
   position: absolute;
   left: -60px;
   bottom: 8px;
+  
 `;
 
 export const FirstBlockAbout = styled.div`
-  width: 50%;
+  width: 30%;
+ 
 
   .bottom-about-section {
     display: flex;
@@ -316,12 +323,17 @@ export const WhyUs = styled.section<{ bgImage?: string }>`
   background-position: center;
   background-size: cover;
 
+
   .full-content-whyus {
+    margin:0 auto;
+    width:100%;
     padding-block: 10rem;
     margin-inline: 6rem;
     display: flex;
     align-items: center;
     gap: 5rem;
+   
+    justify-content:space-around;
   }
 
   &::before {
@@ -344,6 +356,7 @@ export const WhyUs = styled.section<{ bgImage?: string }>`
     position: relative;
     gap: 40px;
     margin-top: 30px;
+ 
 
     .wrap-block-whyus {
       display: flex;
