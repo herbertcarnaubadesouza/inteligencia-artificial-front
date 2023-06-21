@@ -49,7 +49,7 @@ const HeaderFooter = styled.div<{ bgImage?: string }>`
   width: 100%;
   max-width: 100%;
   position: relative;
-  background-image: url(${(props) =>  props.bgImage? props.bgImage : 'https://cdn.discordapp.com/attachments/1116206739373691010/1116573743058268180/ThomasiWilson1_A_successful_law_firms_executive_office_with_flo_acf05fba-84f6-4416-bf37-b27f5d02a190.png'});
+  background-image: url(${(props) => props.bgImage ? props.bgImage : 'https://cdn.discordapp.com/attachments/1116206739373691010/1116573743058268180/ThomasiWilson1_A_successful_law_firms_executive_office_with_flo_acf05fba-84f6-4416-bf37-b27f5d02a190.png'});
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -76,7 +76,7 @@ const HeaderFooter = styled.div<{ bgImage?: string }>`
     height: 100%;
     opacity: 50%;
     background-color: ${(props: ThemeProps) =>
-      mix(0.6, '#000', props.theme.headerFooterBgColor)};
+    mix(0.6, '#000', props.theme.headerFooterBgColor)};
   }
 
   h1 {
@@ -91,7 +91,7 @@ const HeaderFooter = styled.div<{ bgImage?: string }>`
   h2 {
     
     text-align: center;
-    width: 100%;
+    min-width: 35rem;
     color: ${(props: ThemeProps) => props.theme.headerFooterTextColor};
     font-family: ${(props: ThemeProps) => props.theme.font.fontFamily};
     z-index: 999;
@@ -158,7 +158,7 @@ const Parallax = styled.div<{ bgImage?: string }>`
   display: flex;
   align-items: center;
   justify-content: center;
- background-image: url(${(props) =>  props.bgImage? props.bgImage : 'https://cdn.discordapp.com/attachments/1116206739373691010/1116573743058268180/ThomasiWilson1_A_successful_law_firms_executive_office_with_flo_acf05fba-84f6-4416-bf37-b27f5d02a190.png'});
+ background-image: url(${(props) => props.bgImage ? props.bgImage : 'https://cdn.discordapp.com/attachments/1116206739373691010/1116573743058268180/ThomasiWilson1_A_successful_law_firms_executive_office_with_flo_acf05fba-84f6-4416-bf37-b27f5d02a190.png'});
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -195,12 +195,12 @@ const Parallax = styled.div<{ bgImage?: string }>`
   }
 `;
 
-const ParallaxContact =styled.div<{ bgImage?: string }>`
+const ParallaxContact = styled.div<{ bgImage?: string }>`
   padding-block: 10rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url(${(props) =>  props.bgImage? props.bgImage : 'https://cdn.discordapp.com/attachments/1116206739373691010/1116573743058268180/ThomasiWilson1_A_successful_law_firms_executive_office_with_flo_acf05fba-84f6-4416-bf37-b27f5d02a190.png'});
+  background-image: url(${(props) => props.bgImage ? props.bgImage : 'https://cdn.discordapp.com/attachments/1116206739373691010/1116573743058268180/ThomasiWilson1_A_successful_law_firms_executive_office_with_flo_acf05fba-84f6-4416-bf37-b27f5d02a190.png'});
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
