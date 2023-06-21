@@ -28,8 +28,6 @@ import { collection, db, getDoc, doc } from '../../../firebase';
 import { getDocs } from 'firebase/firestore';
 import { deleteDoc } from 'firebase/firestore';
 
-import Loading from '../Loading/Loading';
-
 interface Template01Props {
   isVisible01: boolean;
 }
@@ -64,10 +62,10 @@ function Template01({ isVisible01 }: Template01Props) {
   const [sloganFooter, setSloganFooter] = useState<string | null>(null);
   const [textoFooter, setTextoFooter] = useState<string | null>(null);
   const [footer, setFooter] = useState<string | null>(null);
-
-  const [loading, setLoading] = useState(true);
-
-
+  const nomeEmpresa = "Lux Amount Advocacia"
+  const MAX_RETRY_COUNT = 50; // Número máximo de tentativas
+  const RETRY_DELAY = 6000; // Tempo de espera entre as tentativas em milissegundos
+  
   const fetchData = async (
     setter: React.Dispatch<React.SetStateAction<string | null>>,
     localStorageKey: string,
@@ -75,8 +73,8 @@ function Template01({ isVisible01 }: Template01Props) {
     retryCount = 0,
   ) => {
     const storedData = localStorage.getItem(localStorageKey);
-
-    if (storedData === undefined || storedData === null) {
+  
+    if (!storedData) {
       try {
         const result = await axios.post(
           'https://api.openai.com/v1/chat/completions',
@@ -96,19 +94,18 @@ function Template01({ isVisible01 }: Template01Props) {
             },
           },
         );
-
+  
         const responseData = result.data.choices[0].message.content;
         setter(responseData);
         localStorage.setItem(localStorageKey, responseData);
       } catch (error) {
         console.error(error);
-        console.log(apiKey)
-
+  
         // Verificar se ainda há tentativas disponíveis
-        if (retryCount < 5) {
+        if (retryCount < MAX_RETRY_COUNT) {
           setTimeout(
             () => fetchData(setter, localStorageKey, content, retryCount + 1),
-            5000,
+            RETRY_DELAY,
           );
         } else {
           console.error('Limite máximo de tentativas atingido');
@@ -118,7 +115,7 @@ function Template01({ isVisible01 }: Template01Props) {
       setter(storedData);
     }
   };
-
+  
   const clearCache = () => {
     localStorage.removeItem('primeitoTitle');
     localStorage.removeItem('sloganTitle');
@@ -136,117 +133,171 @@ function Template01({ isVisible01 }: Template01Props) {
     localStorage.removeItem('textoFooter');
     localStorage.removeItem('footer');
   };
+  
+ 
   useEffect(() => {
-    setTimeout(() => {
-      clearCache();
-      fetchData(setPrimeitoTitle, 'primeitoTitle', 'Digite o título sobre o tema da empresa "Advogados de Defesa Criminal"');
-    }, 15000);
+    const sloganTitleContent = `Crie um slogan de até 1 linha para a empresa de advocacia chamada ${nomeEmpresa}. Não use aspas nos textos.`;
+    setTimeout(
+      () => fetchData(setSloganTitle, 'sloganTitle', sloganTitleContent),
+      10000
+    );
   }, []);
-
+  
   useEffect(() => {
-    setTimeout(() => {
-      fetchData(setSloganTitle, 'sloganTitle', 'Digite o slogan da empresa de Advogados de Defesa Criminal');
-    }, 30000);
+    const sobreEmpresaContent = `Crie um texto de 5 a 6 linhas sobre a firma de advocacia chamada ${nomeEmpresa}. Não use aspas nos textos.`;
+    setTimeout(
+      () => fetchData(setSobreEmpresa, 'sobreEmpresa', sobreEmpresaContent),
+      15000
+    );
   }, []);
-
+  
   useEffect(() => {
-    setTimeout(() => {
-      fetchData(setSobreEmpresa, 'sobreEmpresa', 'Digite um texto sobre a empresa de Advogados de Defesa Criminal (máximo de 5 linhas)');
-    }, 45000);
+    const sloganParallaxContent = `Crie um novo slogan de até 2 linhas com foco em atrair clientes para a firma de advocacia. Não use aspas nos textos.`;
+    setTimeout(
+      () => fetchData(setSloganParallax, 'sloganParallax', sloganParallaxContent),
+      20000
+    );
   }, []);
-
+  
   useEffect(() => {
-    setTimeout(() => {
-      fetchData(setSloganParallax, 'sloganParallax', 'Digite um slogan para o parallax do site da empresa de Advogados de Defesa Criminal');
-    }, 60000);
+    const titleParallaxContent = `Crie um subtítulo de até 1 linha para uma seção com foco em atrair clientes para a firma de advocacia chamada ${nomeEmpresa}. Não use aspas nos textos.`;
+    setTimeout(
+      () => fetchData(setTitleParallax, 'titleParallax', titleParallaxContent),
+      25000
+    );
   }, []);
-
+  
   useEffect(() => {
-    setTimeout(() => {
-      fetchData(setTitleParallax, 'titleParallax', 'Digite o título para o parallax do site da empresa de Advogados de Defesa Criminal');
-    }, 75000);
+    const areasAtuacaoContent = `Crie um texto de até 2 linhas explicando que a firma de advocacia atua em todos os casos. Não use aspas nos textos.`;
+    setTimeout(
+      () => fetchData(setAreasAtuacao, 'areasAtuacao', areasAtuacaoContent),
+      30000
+    );
   }, []);
-
+  
   useEffect(() => {
-    setTimeout(() => {
-      fetchData(setAreasAtuacao, 'areasAtuacao', 'Digite um resumo das áreas de atuação da empresa de Advogados de Defesa Criminal (máximo de 2 linhas)');
-    }, 90000);
+    const assaltoDomesticoContent = `Crie um texto de 2 linhas sobre o tema "Assalto Doméstico" e como a firma de advocacia trabalha nesses casos. Não use aspas nos textos.`;
+    setTimeout(
+      () => fetchData(setAssaltoDomestico, 'assaltoDomestico', assaltoDomesticoContent),
+      35000
+    );
   }, []);
-
+  
   useEffect(() => {
-    setTimeout(() => {
-      fetchData(setAssaltoDomestico, 'assaltoDomestico', 'Faça um pequeno texto de no máximo 4 linhas sobre a atuação da empresa em Assalto Doméstico');
-    }, 105000);
+    const crimesArmasContent = `Crie um texto de 2 linhas sobre o tema "Crimes de Armas" e como a firma de advocacia trabalha nesses casos. Não use aspas nos textos.`;
+    setTimeout(
+      () => fetchData(setCrimesArmas, 'crimesArmas', crimesArmasContent),
+      40000
+    );
   }, []);
-
+  
   useEffect(() => {
-    setTimeout(() => {
-      fetchData(setCrimesArmas, 'crimesArmas', 'Faça um pequeno texto de no máximo 4 linhas sobre a atuação da empresa em Crimes com Armas');
-    }, 120000);
+    const crimesDrogasContent = `Crie um texto de 2 linhas sobre o tema "Crimes de Drogas" e como a firma de advocacia trabalha nesses casos. Não use aspas nos textos.`;
+    setTimeout(
+      () => fetchData(setCrimesDrogas, 'crimesDrogas', crimesDrogasContent),
+      45000
+    );
   }, []);
-
+  
   useEffect(() => {
-    setTimeout(() => {
-      fetchData(setCrimesDrogas, 'crimesDrogas', 'Faça um pequeno texto de no máximo 4 linhas sobre a atuação da empresa em Crimes com Drogas');
-    }, 135000);
+    const crimesPropriedadeContent = `Crie um texto de 2 linhas sobre o tema "Crimes de Propriedade" e como a firma de advocacia trabalha nesses casos. Não use aspas nos textos.`;
+    setTimeout(
+      () => fetchData(setCrimesPropriedade, 'crimesPropriedade', crimesPropriedadeContent),
+      50000
+    );
   }, []);
-
+  
   useEffect(() => {
-    setTimeout(() => {
-      fetchData(setCrimesPropriedade, 'crimesPropriedade', 'Faça um pequeno texto de no máximo 4 linhas sobre a atuação da empresa em Crimes de Propriedade');
-    }, 150000);
+    const audienciaFiancaContent = `Crie um texto de 2 linhas sobre o tema "Audiência de Fiança" e como a firma de advocacia trabalha nesses casos. Não use aspas nos textos.`;
+    setTimeout(
+      () => fetchData(setAudienciaFianca, 'audienciaFianca', audienciaFiancaContent),
+      55000
+    );
   }, []);
-
+  
   useEffect(() => {
-    setTimeout(() => {
-      fetchData(setAudienciaFianca, 'audienciaFianca', 'Faça um pequeno texto de no máximo 4 linhas sobre a atuação da empresa em Audiência de Fiança');
-    }, 165000);
+    const crimeAssedioContent = `Crie um texto de 2 linhas sobre o tema "Crime de Assédio" e como a firma de advocacia trabalha nesses casos. Não use aspas nos textos.`;
+    setTimeout(
+      () => fetchData(setCrimeAssedio, 'crimeAssedio', crimeAssedioContent),
+      60000
+    );
   }, []);
-
+  
   useEffect(() => {
-    setTimeout(() => {
-      fetchData(setCrimeAssedio, 'crimeAssedio', 'Faça um pequeno texto de no máximo 4 linhas sobre a atuação da empresa em Crime de Assédio');
-    }, 180000);
+    const sloganFooterContent = `Crie um slogan de até 1 linha transmitindo a mensagem "ESTAMOS AQUI PARA AJUDAR VOCÊ A ALCANÇAR SEUS OBJETIVOS" para a firma de advocacia. Não use aspas nos textos.`;
+    setTimeout(
+      () => fetchData(setSloganFooter, 'sloganFooter', sloganFooterContent),
+      65000
+    );
   }, []);
-
+  
   useEffect(() => {
-    setTimeout(() => {
-      fetchData(setSloganFooter, 'sloganFooter', 'Digite um slogan para o rodapé do site da empresa de Advogados de Defesa Criminal');
-    }, 195000);
+    const textoFooterContent = `Crie um texto de 3 linhas com o título "Fale com nossos advogados de defesa criminal hoje" transmitindo a mensagem "ESTAMOS AQUI PARA AJUDAR VOCÊ A ALCANÇAR SEUS OBJETIVOS" para a firma de advocacia. Não use aspas nos textos.`;
+    setTimeout(
+      () => fetchData(setTextoFooter, 'textoFooter', textoFooterContent),
+      70000
+    );
   }, []);
-
+  
   useEffect(() => {
-    setTimeout(() => {
-      fetchData(setTextoFooter, 'textoFooter', 'Digite um texto para o rodapé do site da empresa de Advogados de Defesa Criminal');
-    }, 210000);
+    const footerContent = `Crie um texto de até 3 linhas para ser colocado no rodapé de um site de uma firma de advocacia. Não use aspas nos textos.`;
+    setTimeout(
+      () => fetchData(setFooter, 'footer', footerContent),
+      75000
+    );
   }, []);
-
+  
+ 
+  
   useEffect(() => {
-    setTimeout(() => {
-      fetchData(setFooter, 'footer', 'Digite o conteúdo para o rodapé do site da empresa de Advogados de Defesa Criminal');
-    }, 225000);
-  }, []);
-
-  // LOADING
-  useEffect(() => {
-    setLoading(true);
-
-    const timeoutId = setTimeout(() => {
-      setLoading(false);
-    }, 35000);
-
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  }, []);
-
-
-  useEffect(() => {
+    const storedPrimeitoTitle = localStorage.getItem('primeitoTitle');
+    const storedSloganTitle = localStorage.getItem('sloganTitle');
+    const storedSobreEmpresa = localStorage.getItem('sobreEmpresa');
+    const storedSloganParallax = localStorage.getItem('sloganParallax');
+    const storedTitleParallax = localStorage.getItem('titleParallax');
+    const storedAreasAtuacao = localStorage.getItem('areasAtuacao');
+    const storedAssaltoDomestico = localStorage.getItem('assaltoDomestico');
+    const storedCrimesArmas = localStorage.getItem('crimesArmas');
+    const storedCrimesDrogas = localStorage.getItem('crimesDrogas');
+    const storedCrimesPropriedade = localStorage.getItem('crimesPropriedade');
+    const storedAudienciaFianca = localStorage.getItem('audienciaFianca');
+    const storedCrimeAssedio = localStorage.getItem('crimeAssedio');
+    const storedSloganFooter = localStorage.getItem('sloganFooter');
+    const storedTextoFooter = localStorage.getItem('textoFooter');
+    const storedFooter = localStorage.getItem('footer');
+  
+    if (storedPrimeitoTitle) setPrimeitoTitle(storedPrimeitoTitle);
+    if (storedSloganTitle) setSloganTitle(storedSloganTitle);
+    if (storedSobreEmpresa) setSobreEmpresa(storedSobreEmpresa);
+    if (storedSloganParallax) setSloganParallax(storedSloganParallax);
+    if (storedTitleParallax) setTitleParallax(storedTitleParallax);
+    if (storedAreasAtuacao) setAreasAtuacao(storedAreasAtuacao);
+    if (storedAssaltoDomestico) setAssaltoDomestico(storedAssaltoDomestico);
+    if (storedCrimesArmas) setCrimesArmas(storedCrimesArmas);
+    if (storedCrimesDrogas) setCrimesDrogas(storedCrimesDrogas);
+    if (storedCrimesPropriedade) setCrimesPropriedade(storedCrimesPropriedade);
+    if (storedAudienciaFianca) setAudienciaFianca(storedAudienciaFianca);
+    if (storedCrimeAssedio) setCrimeAssedio(storedCrimeAssedio);
+    if (storedSloganFooter) setSloganFooter(storedSloganFooter);
+    if (storedTextoFooter) setTextoFooter(storedTextoFooter);
+    if (storedFooter) setFooter(storedFooter);
+  
     window.addEventListener('beforeunload', clearCache);
     return () => {
       window.removeEventListener('beforeunload', clearCache);
     };
   }, []);
+  
+
+
+
+
+
+
+ 
+
+
+ 
 
   // BANNER
   const [banner, setBanner] = useState<Template01[]>([]);
@@ -306,7 +357,7 @@ function Template01({ isVisible01 }: Template01Props) {
 
 
 
-
+  
   // ABOUT
   const [about, setAbout] = useState<Template01[]>([]);
   const [imageUrlSegunda, setImageUrlSegunda] = useState('');
@@ -422,13 +473,13 @@ function Template01({ isVisible01 }: Template01Props) {
 
     fetchData();
   }, []);
-
+ 
 
   return (
     <Container>
-      {loading ? <Loading /> : null}
+     
       <HeaderFooter bgImage={imageUrl} as="header">
-        <h1>{primeitoTitle}</h1>
+        <h1>{nomeEmpresa}</h1>
         <Line></Line>
         <h2>
           {sloganTitle}
@@ -440,14 +491,14 @@ function Template01({ isVisible01 }: Template01Props) {
         <section className="about">
           <Info>
             <div className='about-section'>
-              <LogoTemplate
-                src={
-                  imageUrlSegunda
-                    ? imageUrlSegunda
-                    : 'https://cdn.discordapp.com/attachments/1116206739373691010/1116758018403614750/ThomasiWilson1_In_a_bustling_metropolis_where_the_pillars_of_la_56479b76-2b1a-45f8-92e6-e7298d120c8c.png'
-                }
-                alt="carregando"
-              />
+            <LogoTemplate
+              src={
+                imageUrlSegunda
+                  ? imageUrlSegunda
+                  : 'https://cdn.discordapp.com/attachments/1116206739373691010/1116758018403614750/ThomasiWilson1_In_a_bustling_metropolis_where_the_pillars_of_la_56479b76-2b1a-45f8-92e6-e7298d120c8c.png'
+              }
+              alt="carregando"
+            />
             </div>
             <div className='about-section'>
               <h2>Sobre Nós</h2>
@@ -523,7 +574,7 @@ function Template01({ isVisible01 }: Template01Props) {
           <LineParallax></LineParallax>
           <h2>Fale com nossos advogados de defesa criminal hoje!</h2>
           <h3>
-            {textoFooter}
+           {textoFooter}
           </h3>
           <Contact>
             <a>
@@ -536,23 +587,22 @@ function Template01({ isVisible01 }: Template01Props) {
       <Footer>
         <FooterContent>
           <h3>
-            {footer}
+           {footer}
           </h3>
         </FooterContent>
         <FooterRight>
           <FooterContent>
             <h2>Fale conosco</h2>
-            <h4>Lorem ipsum contact</h4>
-            <h4>Lorem ipsum contact</h4>
-            <h4>Lorem ipsum contact</h4>
-            <h4>Lorem ipsum contact</h4>
+            <h4>Nos siga no Instagram</h4>
+            <h4></h4>
+            <h4></h4>
+            <h4></h4>
           </FooterContent>
           <FooterContent>
             <h2>Nossos links</h2>
-            <h4>Lorem ipsum contact</h4>
-            <h4>Lorem ipsum contact</h4>
-            <h4>Lorem ipsum contact</h4>
-            <h4>Lorem ipsum contact</h4>
+            <h4>Home </h4>
+            <h4>About</h4>
+           
           </FooterContent>
         </FooterRight>
       </Footer>

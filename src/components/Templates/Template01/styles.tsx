@@ -80,22 +80,25 @@ const HeaderFooter = styled.div<{ bgImage?: string }>`
   }
 
   h1 {
+   
     text-align: center;
-    width: 50%;
+    width: 700px;
     font-size: 48px;
     color: ${(props: ThemeProps) => props.theme.headerFooterTextColor};
     z-index: 999;
   }
 
   h2 {
+    
     text-align: center;
-    width: 50%;
+    width: 100%;
     color: ${(props: ThemeProps) => props.theme.headerFooterTextColor};
     font-family: ${(props: ThemeProps) => props.theme.font.fontFamily};
     z-index: 999;
   }
 
   button {
+    width: 300px;
     background-color: ${(props: ThemeProps) => props.theme.fontTitleColor};
     font-family: ${(props: ThemeProps) => props.theme.font.fontFamily};
     font-size: 20px;
@@ -109,6 +112,7 @@ const HeaderFooter = styled.div<{ bgImage?: string }>`
     cursor: pointer;
     z-index: 999;
     border: none;
+   
   }
 `;
 
@@ -128,7 +132,7 @@ const Navigation = styled.div`
 `;
 
 const AboutSection = styled.section`
-width:70%;
+width:80%;
 margin-top:0 auto;
   justify-content:space-around;
   display: flex;
@@ -327,6 +331,7 @@ const PracticeArea = styled.div`
   width: 100%;
 
   h1 {
+    
     color: ${(props: ThemeProps) => props.theme.fontTitleColor};
   }
 
@@ -337,9 +342,11 @@ const PracticeArea = styled.div`
   }
 
   h4 {
+   
     text-align: center;
     width: 70%;
     color: ${(props: ThemeProps) => props.theme.fontTitleColor};
+    font-size:px;
   }
 
   button {
@@ -368,6 +375,7 @@ const PracticeAreaContentAll = styled.div`
   padding-right: 12rem;
   gap: 5rem;
   width:100%;
+  margin-top:70px;
 
   
 `;
@@ -378,7 +386,7 @@ const PracticeAreaContent = styled.div`
   align-items: center;
   justify-content: center;
   padding-bottom: 1.5rem;
-  width:70%;
+  width:85%;
   margin: 0 auto;
 
 
@@ -392,7 +400,9 @@ const PracticeContent = styled.div`
   padding-left: 2rem;
   padding-right: 2rem;
  text-align:start;
-  width:30%;
+  width:33%;
+  height:310px;
+
 
 `;
 

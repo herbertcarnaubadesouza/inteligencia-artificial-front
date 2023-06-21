@@ -1,6 +1,5 @@
 // index.tsx
 
-import FlagCheckered from '@phosphor-icons/react/dist/icons/FlagCheckered';
 import {
   AboutSection,
   AwardsRow1,
@@ -56,304 +55,271 @@ interface Template03 {
 const apiKey = process.env.REACT_APP_API_KEY;
 
 function Template03({ isVisible03 }: Template03Props) {
+
   const [primeitoTitle, setPrimeitoTitle] = useState<string | null>(null);
-const [sloganTitle, setSloganTitle] = useState<string | null>(null);
-const [sobreEmpresa, setSobreEmpresa] = useState<string | null>(null);
-const [slogan5anos, setSlogan5anos] = useState<string | null>(null);
-const [sloganSucesso, setSloganSucesso] = useState<string | null>(null);
-const [areasAtuacao, setAreasAtuacao] = useState<string | null>(null);
-const [sloganExperiencia, setSloganExperiencia] = useState<string | null>(null);
-const [sloganMotivo, setSloganMotivo] = useState<string | null>(null);
-const [divorcioSeparacao, setDivorcioSeparacao] = useState<string | null>(null);
-const [direitosAvos, setDireitosAvos] = useState<string | null>(null);
-const [custodiaCriancas, setCustodiaCriancas] = useState<string | null>(null);
-const [casamentoUnioesCivis, setCasamentoUnioesCivis] = useState<string | null>(null);
-const [adocaoBarrigaAluguel, setAdocaoBarrigaAluguel] = useState<string | null>(null);
-const [acordosPropriedade, setAcordosPropriedade] = useState<string | null>(null);
-const [sloganCaracteristicasTitle1, setSloganCaracteristicasTitle1] = useState<string | null>(null);
-const [sloganCaracteristicas1, setSloganCaracteristicas1] = useState<string | null>(null);
-const [sloganCaracteristicasTitle2, setSloganCaracteristicasTitle2] = useState<string | null>(null);
-const [sloganCaracteristicas2, setSloganCaracteristicas2] = useState<string | null>(null);
-const [sloganCaracteristicasTitle3, setSloganCaracteristicasTitle3] = useState<string | null>(null);
-const [sloganCaracteristicas3, setSloganCaracteristicas3] = useState<string | null>(null);
-
-const fetchData = async (
-  setter: React.Dispatch<React.SetStateAction<string | null>>,
-  localStorageKey: string,
-  content: string,
-  retryCount = 0,
-) => {
-  const storedData = localStorage.getItem(localStorageKey);
-
-  if (storedData === undefined || storedData === null) {
-    try {
-      const result = await axios.post(
-        'https://api.openai.com/v1/engines/davinci-codex/completions',
-        {
-          prompt: content,
-          max_tokens: 100,
-          temperature: 0.7,
-          n: 1,
-          stop: '\n',
-          frequency_penalty: 0,
-          presence_penalty: 0,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${apiKey}`,
-            'Content-Type': 'application/json',
-           
+  const [sloganTitle, setSloganTitle] = useState<string | null>(null);
+  const [sobreEmpresa, setSobreEmpresa] = useState<string | null>(null);
+  const [sloganParallax, setSloganParallax] = useState<string | null>(null);
+  const [titleParallax, setTitleParallax] = useState<string | null>(null);
+  const [areasAtuacao, setAreasAtuacao] = useState<string | null>(null);
+  const [assaltoDomestico, setAssaltoDomestico] = useState<string | null>(null);
+  const [crimesArmas, setCrimesArmas] = useState<string | null>(null);
+  const [crimesDrogas, setCrimesDrogas] = useState<string | null>(null);
+  const [crimesPropriedade, setCrimesPropriedade] = useState<string | null>(null);
+  const [audienciaFianca, setAudienciaFianca] = useState<string | null>(null);
+  const [crimeAssedio, setCrimeAssedio] = useState<string | null>(null);
+  const [sloganFooter, setSloganFooter] = useState<string | null>(null);
+  const [textoFooter, setTextoFooter] = useState<string | null>(null);
+  const [footer, setFooter] = useState<string | null>(null);
+  const nomeEmpresa = "Excalibur Law Firm"
+  const MAX_RETRY_COUNT = 50; // Número máximo de tentativas
+  const RETRY_DELAY = 6000; // Tempo de espera entre as tentativas em milissegundos
+  
+  const fetchData = async (
+    setter: React.Dispatch<React.SetStateAction<string | null>>,
+    localStorageKey: string,
+    content: string,
+    retryCount = 0,
+  ) => {
+    const storedData = localStorage.getItem(localStorageKey);
+  
+    if (!storedData) {
+      try {
+        const result = await axios.post(
+          'https://api.openai.com/v1/chat/completions',
+          {
+            model: 'gpt-3.5-turbo',
+            messages: [
+              {
+                role: 'user',
+                content,
+              },
+            ],
           },
-        },
-      );
-
-      const responseData = result.data.choices[0].text.trim();
-      setter(responseData);
-      localStorage.setItem(localStorageKey, responseData);
-    } catch (error) {
-      console.error(error);
-      console.log(apiKey);
-
-      // Verificar se ainda há tentativas disponíveis
-      if (retryCount < 5) {
-        setTimeout(
-          () =>
-            fetchData(setter, localStorageKey, content, retryCount + 1),
-          5000,
+          {
+            headers: {
+              Authorization: `Bearer ${apiKey}`,
+              'Content-Type': 'application/json',
+            },
+          },
         );
-      } else {
-        console.error('Limite máximo de tentativas atingido');
+  
+        const responseData = result.data.choices[0].message.content;
+        setter(responseData);
+        localStorage.setItem(localStorageKey, responseData);
+      } catch (error) {
+        console.error(error);
+  
+        // Verificar se ainda há tentativas disponíveis
+        if (retryCount < MAX_RETRY_COUNT) {
+          setTimeout(
+            () => fetchData(setter, localStorageKey, content, retryCount + 1),
+            RETRY_DELAY,
+          );
+        } else {
+          console.error('Limite máximo de tentativas atingido');
+        }
       }
+    } else {
+      setter(storedData);
     }
-  } else {
-    setter(storedData);
-  }
-};
-
-const clearCache = () => {
-  localStorage.removeItem('primeitoTitle');
-  localStorage.removeItem('sloganTitle');
-  localStorage.removeItem('sobreEmpresa');
-  localStorage.removeItem('slogan5anos');
-  localStorage.removeItem('sloganSucesso');
-  localStorage.removeItem('areasAtuacao');
-  localStorage.removeItem('sloganExperiencia');
-  localStorage.removeItem('sloganMotivo');
-  localStorage.removeItem('sloganCaracteristicasTitle1');
-  localStorage.removeItem('sloganCaracteristicas1');
-  localStorage.removeItem('sloganCaracteristicasTitle2');
-  localStorage.removeItem('sloganCaracteristicas2');
-  localStorage.removeItem('sloganCaracteristicasTitle3');
-  localStorage.removeItem('sloganCaracteristicas3');
-};
-
-useEffect(() => {
-  setTimeout(() => {
-    clearCache();
-    fetchData(
-      setPrimeitoTitle,
-      'primeitoTitle',
-      'Digite o título sobre o tema da empresa "Advogados de Defesa Criminal"',
-    );
-  }, 5000);
-}, []);
-
-useEffect(() => {
-  setTimeout(() => {
-    fetchData(
-      setSloganTitle,
-      'sloganTitle',
-      'Digite o slogan da empresa de Advogados de Defesa Criminal',
-    );
-  }, 13000);
-}, []);
-
-useEffect(() => {
-  setTimeout(() => {
-    fetchData(
-      setSobreEmpresa,
-      'sobreEmpresa',
-      'Digite um texto sobre a empresa de Advogados de Defesa Criminal (máximo de 5 linhas)',
-    );
-  }, 26000);
-}, []);
-
-useEffect(() => {
-  setTimeout(() => {
-    fetchData(
-      setSlogan5anos,
-      'slogan5anos',
-      'Digite um texto de no máximo 2 linhas sobre a empresa ter 5 anos de experiência',
-    );
-  }, 39000);
-}, []);
-
-useEffect(() => {
-  setTimeout(() => {
-    fetchData(
-      setSloganSucesso,
-      'sloganSucesso',
-      'Digite um texto de no máximo 2 linhas sobre a empresa definindo o sucesso',
-    );
-  }, 52000);
-}, []);
-
-useEffect(() => {
-  setTimeout(() => {
-    fetchData(
-      setAreasAtuacao,
-      'areasAtuacao',
-      'Digite um resumo das áreas de atuação da empresa de Advogados de Defesa Criminal (máximo de 4 linhas)',
-    );
-  }, 65000);
-}, []);
-
-useEffect(() => {
-  setTimeout(() => {
-    fetchData(
-      setSloganExperiencia,
-      'sloganExperiencia',
-      'Digite um texto de no máximo 1 linha sobre a empresa ser uma advogada de direito de família profissional e experiente',
-    );
-  }, 78000);
-}, []);
-
-useEffect(() => {
-  setTimeout(() => {
-    fetchData(
-      setSloganMotivo,
-      'sloganMotivo',
-      'Digite um texto de no máximo 2 linhas sobre por que escolher a empresa',
-    );
-  }, 91000);
-}, []);
-
-useEffect(() => {
-  setTimeout(() => {
-    fetchData(
-      setSloganCaracteristicasTitle1,
-      'sloganCaracteristicasTitle1',
-      'Digite o título da primeira característica da empresa',
-    );
-  }, 104000);
-}, []);
-
-useEffect(() => {
-  setTimeout(() => {
-    fetchData(
-      setSloganCaracteristicas1,
-      'sloganCaracteristicas1',
-      'Digite um texto de no máximo 2 linhas explicando a primeira característica da empresa',
-    );
-  }, 117000);
-}, []);
-
-useEffect(() => {
-  setTimeout(() => {
-    fetchData(
-      setSloganCaracteristicasTitle2,
-      'sloganCaracteristicasTitle2',
-      'Digite o título da segunda característica da empresa',
-    );
-  }, 130000);
-}, []);
-
-useEffect(() => {
-  setTimeout(() => {
-    fetchData(
-      setSloganCaracteristicas2,
-      'sloganCaracteristicas2',
-      'Digite um texto de no máximo 2 linhas explicando a segunda característica da empresa',
-    );
-  }, 143000);
-}, []);
-
-useEffect(() => {
-  setTimeout(() => {
-    fetchData(
-      setSloganCaracteristicasTitle3,
-      'sloganCaracteristicasTitle3',
-      'Digite o título da terceira característica da empresa',
-    );
-  }, 156000);
-}, []);
-
-useEffect(() => {
-  setTimeout(() => {
-    fetchData(
-      setSloganCaracteristicas3,
-      'sloganCaracteristicas3',
-      'Digite um texto de no máximo 2 linhas explicando a terceira característica da empresa',
-    );
-  }, 169000);
-}, []);
-
-useEffect(() => {
-  setTimeout(() => {
-    fetchData(
-      setDivorcioSeparacao,
-      'divorcioSeparacao',
-      'Digite um resumo sobre Divórcio e Separação (máximo de 4 linhas)',
-    );
-  }, 182000);
-}, []);
-
-useEffect(() => {
-  setTimeout(() => {
-    fetchData(
-      setDireitosAvos,
-      'direitosAvos',
-      'Digite um resumo sobre Direitos dos Avós (máximo de 4 linhas)',
-    );
-  }, 195000);
-}, []);
-
-useEffect(() => {
-  setTimeout(() => {
-    fetchData(
-      setCustodiaCriancas,
-      'custodiaCriancas',
-      'Digite um resumo sobre Custódia de Criança (máximo de 4 linhas)',
-    );
-  }, 208000);
-}, []);
-
-useEffect(() => {
-  setTimeout(() => {
-    fetchData(
-      setCasamentoUnioesCivis,
-      'casamentoUnioesCivis',
-      'Digite um resumo sobre Casamento/Uniões Civis (máximo de 4 linhas)',
-    );
-  }, 221000);
-}, []);
-
-useEffect(() => {
-  setTimeout(() => {
-    fetchData(
-      setAdocaoBarrigaAluguel,
-      'adocaoBarrigaAluguel',
-      'Digite um resumo sobre Adoção e Barriga de Aluguel (máximo de 4 linhas)',
-    );
-  }, 234000);
-}, []);
-
-useEffect(() => {
-  setTimeout(() => {
-    fetchData(
-      setAcordosPropriedade,
-      'acordosPropriedade',
-      'Digite um resumo sobre Acordos de Propriedade (máximo de 4 linhas)',
-    );
-  }, 247000);
-}, []);
-
-useEffect(() => {
-  window.addEventListener('beforeunload', clearCache);
-  return () => {
-    window.removeEventListener('beforeunload', clearCache);
   };
-}, []);
+  
+  const clearCache = () => {
+    localStorage.removeItem('primeitoTitle');
+    localStorage.removeItem('sloganTitle');
+    localStorage.removeItem('sobreEmpresa');
+    localStorage.removeItem('sloganParallax');
+    localStorage.removeItem('titleParallax');
+    localStorage.removeItem('areasAtuacao');
+    localStorage.removeItem('assaltoDomestico');
+    localStorage.removeItem('crimesArmas');
+    localStorage.removeItem('crimesDrogas');
+    localStorage.removeItem('crimesPropriedade');
+    localStorage.removeItem('audienciaFianca');
+    localStorage.removeItem('crimeAssedio');
+    localStorage.removeItem('sloganFooter');
+    localStorage.removeItem('textoFooter');
+    localStorage.removeItem('footer');
+  };
+  
+ 
+  
+  useEffect(() => {
+    const sloganTitleContent = `Crie um slogan para a empresa de advocacia chamada ${nomeEmpresa} no máximo de 1 linha e não use aspas no texto.`;
+    setTimeout(
+      () => fetchData(setSloganTitle, 'sloganTitle', sloganTitleContent),
+      10000,
+    );
+  }, []);
+  
+  useEffect(() => {
+    const sobreEmpresaContent = `Crie um texto sobre a firma de advocacia chamada ${nomeEmpresa} contendo no mínimo de 5 linhas e no máximo de 6 linhas e não use aspas no texto.`;
+    setTimeout(
+      () => fetchData(setSobreEmpresa, 'sobreEmpresa', sobreEmpresaContent),
+      15000,
+    );
+  }, []);
+  
+  useEffect(() => {
+    const sloganParallaxContent = `Crie um novo slogan com foco em atrair clientes para a firma de advocacia, no máximo de 2 linhas e não use aspas no texto.`;
+    setTimeout(
+      () => fetchData(setSloganParallax, 'sloganParallax', sloganParallaxContent),
+      20000,
+    );
+  }, []);
+  
+  
+  
+
+  
+  useEffect(() => {
+    const assaltoDomesticoContent = `Crie um texto para o tema "Divórcio e Separação", no qual a firma de advocacia trabalha em seus casos, com no mínimo 3 linhas e no máximo 4 linhas de texto e não use aspas.`;
+    setTimeout(
+      () =>
+        fetchData(setAssaltoDomestico, 'assaltoDomestico', assaltoDomesticoContent),
+      35000,
+    );
+  }, []);
+  
+  useEffect(() => {
+    const crimesArmasContent = `Crie um texto para o tema "Direitos dos avós", no qual a firma de advocacia trabalha em seus casos, com no mínimo 3 linhas e no máximo 4 linhas de texto e não use aspas.`;
+    setTimeout(
+      () => fetchData(setCrimesArmas, 'crimesArmas', crimesArmasContent),
+      40000,
+    );
+  }, []);
+  
+  useEffect(() => {
+    const crimesDrogasContent = `Crie um texto para o tema "Custódia de criança", no qual a firma de advocacia trabalha em seus casos, com no mínimo 3 linhas e no máximo 4 linhas de texto e não use aspas.`;
+    setTimeout(
+      () => fetchData(setCrimesDrogas, 'crimesDrogas', crimesDrogasContent),
+      45000,
+    );
+  }, []);
+  
+  useEffect(() => {
+    const crimesPropriedadeContent = `Crie um texto para o tema "Casamento/Uniões Civis", no qual a firma de advocacia trabalha em seus casos, com no mínimo 3 linhas e no máximo 4 linhas de texto e não use aspas.`;
+    setTimeout(
+      () => fetchData(setCrimesPropriedade, 'crimesPropriedade', crimesPropriedadeContent),
+      50000,
+    );
+  }, []);
+  
+  useEffect(() => {
+    const audienciaFiancaContent = `Crie um texto para o tema "Adoção e barriga de aluguel", no qual a firma de advocacia trabalha em seus casos, com no mínimo 3 linhas e no máximo 4 linhas de texto e não use aspas.`;
+    setTimeout(
+      () => fetchData(setAudienciaFianca, 'audienciaFianca', audienciaFiancaContent),
+      55000,
+    );
+  }, []);
+  
+  useEffect(() => {
+    const crimeAssedioContent = `Crie um texto para o tema "Acordos de propriedade", no qual a firma de advocacia trabalha em seus casos, com no mínimo 3 linhas e no máximo 4 linhas de texto e não use aspas.`;
+    setTimeout(
+      () => fetchData(setCrimeAssedio, 'crimeAssedio', crimeAssedioContent),
+      60000,
+    );
+  }, []);
+  
+  useEffect(() => {
+    const sloganFooterContent = `Crie um slogan dizendo ao cliente que ESTAMOS AQUI PARA AJUDAR VOCÊ A ALCANÇAR SEUS OBJETIVOS para a firma de advocacia, com no máximo 1 linha e não use aspas no texto.`;
+    setTimeout(
+      () => fetchData(setSloganFooter, 'sloganFooter', sloganFooterContent),
+      65000,
+    );
+  }, []);
+  
+  useEffect(() => {
+    const textoFooterContent = `Crie um texto dizendo ao cliente que ESTAMOS AQUI PARA AJUDAR VOCÊ A ALCANÇAR SEUS OBJETIVOS, com o título "Fale com nossos advogados de defesa criminal hoje", para a firma de advocacia, com no máximo 3 linhas e não use aspas no texto.`;
+    setTimeout(
+      () => fetchData(setTextoFooter, 'textoFooter', textoFooterContent),
+      70000,
+    );
+  }, []);
+  
+  useEffect(() => {
+    const footerContent = `Crie um texto para ser colocado no rodapé de um site de uma firma de advocacia, com no máximo 3 linhas e não use aspas no texto.`;
+    setTimeout(
+      () => fetchData(setFooter, 'footer', footerContent),
+      75000,
+    );
+  }, []);
+ // Como trabalhoamos 
+  useEffect(() => {
+    const titleParallaxContent = `Crie um texto com o tema Abordagem Personalizada para uma firma de advocacia , no máximo de 2 linha e não use aspas no texto.`;
+    setTimeout(
+      () => fetchData(setTitleParallax, 'titleParallax', titleParallaxContent),
+      25000,
+    );
+  }, []);
+
+ // Como trabalhoamos  2 
+  useEffect(() => {
+    const areasAtuacaoContent =`Crie um texto com o tema Excelência em Serviços para uma firma de advocacia , no máximo de 2 linha e não use aspas no texto.`;
+    setTimeout(
+      () => fetchData(setAreasAtuacao, 'areasAtuacao', areasAtuacaoContent),
+      30000,
+    );
+  }, []);
+
+
+   // Como trabalhoamos  3
+  useEffect(() => {
+    const areasAtuacaoContent =`Crie um texto com o tema Excelência em Serviços  para uma firma de advocacia , no máximo de 2 linha e não use aspas no texto.`;
+    setTimeout(
+      () => fetchData(setPrimeitoTitle, 'primeitoTitle', areasAtuacaoContent),
+      30000,
+    );
+  }, []);
+  
+  useEffect(() => {
+    const storedPrimeitoTitle = localStorage.getItem('primeitoTitle');
+    const storedSloganTitle = localStorage.getItem('sloganTitle');
+    const storedSobreEmpresa = localStorage.getItem('sobreEmpresa');
+    const storedSloganParallax = localStorage.getItem('sloganParallax');
+    const storedTitleParallax = localStorage.getItem('titleParallax');
+    const storedAreasAtuacao = localStorage.getItem('areasAtuacao');
+    const storedAssaltoDomestico = localStorage.getItem('assaltoDomestico');
+    const storedCrimesArmas = localStorage.getItem('crimesArmas');
+    const storedCrimesDrogas = localStorage.getItem('crimesDrogas');
+    const storedCrimesPropriedade = localStorage.getItem('crimesPropriedade');
+    const storedAudienciaFianca = localStorage.getItem('audienciaFianca');
+    const storedCrimeAssedio = localStorage.getItem('crimeAssedio');
+    const storedSloganFooter = localStorage.getItem('sloganFooter');
+    const storedTextoFooter = localStorage.getItem('textoFooter');
+    const storedFooter = localStorage.getItem('footer');
+  
+    if (storedPrimeitoTitle) setPrimeitoTitle(storedPrimeitoTitle);
+    if (storedSloganTitle) setSloganTitle(storedSloganTitle);
+    if (storedSobreEmpresa) setSobreEmpresa(storedSobreEmpresa);
+    if (storedSloganParallax) setSloganParallax(storedSloganParallax);
+    if (storedTitleParallax) setTitleParallax(storedTitleParallax);
+    if (storedAreasAtuacao) setAreasAtuacao(storedAreasAtuacao);
+    if (storedAssaltoDomestico) setAssaltoDomestico(storedAssaltoDomestico);
+    if (storedCrimesArmas) setCrimesArmas(storedCrimesArmas);
+    if (storedCrimesDrogas) setCrimesDrogas(storedCrimesDrogas);
+    if (storedCrimesPropriedade) setCrimesPropriedade(storedCrimesPropriedade);
+    if (storedAudienciaFianca) setAudienciaFianca(storedAudienciaFianca);
+    if (storedCrimeAssedio) setCrimeAssedio(storedCrimeAssedio);
+    if (storedSloganFooter) setSloganFooter(storedSloganFooter);
+    if (storedTextoFooter) setTextoFooter(storedTextoFooter);
+    if (storedFooter) setFooter(storedFooter);
+  
+    window.addEventListener('beforeunload', clearCache);
+    return () => {
+      window.removeEventListener('beforeunload', clearCache);
+    };
+  }, []);
+
+
+
+
+
+
+
+
+
 
   // BANNER
   const [banner, setBanner] = useState<Template03[]>([]);
@@ -530,9 +496,9 @@ useEffect(() => {
   return (
     <Container>
       <HeaderBlock bgImage={imageUrl}>
-        <span>1º Escritório De Advocacia Eleito Pelos Pares</span>
+        <span></span>
         <h1>
-         {primeitoTitle}
+         {nomeEmpresa}
         </h1>
         <p>
           {sloganTitle}
@@ -545,26 +511,11 @@ useEffect(() => {
             <LineAboutSection></LineAboutSection>
             <div className="title-about-section-block">
               <h2>Sobre nós</h2>
-              <h3>Premiado Escritório de Advocacia do Ano</h3>
+              <h3>{sobreEmpresa}</h3>
             </div>
           </div>
-          <p>{primeitoTitle}</p>
-          <div className="footer-div-block">
-            <div className="footer-div-block-content">
-              <h3>Premiado Escritório de Advocacia do Ano</h3>
-              <p>
-                Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-                posuere cubilia Curae; Donec velit neque.
-              </p>
-            </div>
-            <div className="footer-div-block-content">
-              <h3>Premiado Escritório de Advocacia do Ano</h3>
-              <p>
-                Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-                posuere cubilia Curae; Donec velit neque.
-              </p>
-            </div>
-          </div>
+          <p>{sloganParallax}</p>
+        
           <button>fale conosco</button>
         </LeftSideBlock>
         <RightSideBlock>
@@ -604,86 +555,14 @@ useEffect(() => {
           </div>
         </div>
       </IconSection>
-      <AwardsSection>
-        <LineAwardsSection></LineAwardsSection>
-        <HeaderAwards>
-          <div className="header-awards">
-            <h2>Prêmios e reconhecimentos</h2>
-            <p>
-              Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-              posuere cubilia Curae; Donec velit neque.
-            </p>
-          </div>
-        </HeaderAwards>
-
-        <AwardsRow1>
-          <div className="awards-block">
-            <img src="./images/template03/award5.png" alt="" />
-            <h3>Prêmio de Melhor Escritório de Advocacia</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-              tellus, luctus nec ullamcorper mattis.
-            </p>
-          </div>
-
-          <div className="awards-block">
-            <img src="./images/template03/award5.png" alt="" />
-            <h3>Prêmio de Melhor Escritório de Advocacia</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-              tellus, luctus nec ullamcorper mattis.
-            </p>
-          </div>
-
-          <div className="awards-block">
-            <img src="./images/template03/award5.png" alt="" />
-            <h3>Prêmio de Melhor Escritório de Advocacia</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-              tellus, luctus nec ullamcorper mattis.
-            </p>
-          </div>
-        </AwardsRow1>
-
-        <AwardsRow1>
-          <div className="awards-block">
-            <img src="./images/template03/award5.png" alt="" />
-            <h3>Prêmio de Melhor Escritório de Advocacia</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-              tellus, luctus nec ullamcorper mattis.
-            </p>
-          </div>
-
-          <div className="awards-block">
-            <img src="./images/template03/award5.png" alt="" />
-            <h3>Prêmio de Melhor Escritório de Advocacia</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-              tellus, luctus nec ullamcorper mattis.
-            </p>
-          </div>
-
-          <div className="awards-block">
-            <img src="./images/template03/award5.png" alt="" />
-            <h3>Prêmio de Melhor Escritório de Advocacia</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-              tellus, luctus nec ullamcorper mattis.
-            </p>
-          </div>
-        </AwardsRow1>
-
-        <div className="awards-row2"></div>
-      </AwardsSection>
+     
 
       <PraticaceSection>
         <LeftAwardBlock>
           <LineAwardsSection></LineAwardsSection>
           <h2>Nossas Áreas de Atuação</h2>
           <p>
-            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-            posuere cubilia Curae; Donec velit neque.
+           
           </p>
           <img
             src={
@@ -698,44 +577,44 @@ useEffect(() => {
         <RigthAwardBlock>
           <div className="Areas-block">
             <h3>Separação e Divórcio</h3>
-            <p>{primeitoTitle}</p>
+            <p>{assaltoDomestico}</p>
           </div>
 
           <div className="Areas-block">
             <h3>Custódia da criança</h3>
-            <p>{primeitoTitle}</p>
+            <p>{crimesArmas}</p>
           </div>
 
           <div className="Areas-block">
             <h3>Pensão alimentícia</h3>
-            <p>{primeitoTitle}</p>
+            <p>{crimesDrogas}</p>
           </div>
 
           <div className="Areas-block">
             <h3>Apoio do cônjuge</h3>
-            <p>{primeitoTitle}</p>
+            <p>{crimesPropriedade}</p>
           </div>
         </RigthAwardBlock>
 
         <RigthAwardBlock>
           <div className="Areas-block">
             <h3>Assuntos Internacionais</h3>
-            <p>{primeitoTitle}</p>
+            <p>{audienciaFianca}</p>
           </div>
 
           <div className="Areas-block">
             <h3>Apelações de direito de família</h3>
-            <p>{primeitoTitle}</p>
+            <p>{crimeAssedio}</p>
           </div>
 
           <div className="Areas-block">
             <h3>Proteção de patrimônio</h3>
-            <p>{primeitoTitle}</p>
+            <p>{crimesArmas}</p>
           </div>
 
           <div className="Areas-block">
             <h3>Serviços de alto patrimônio líquido</h3>
-            <p>{primeitoTitle}</p>
+            <p>{assaltoDomestico}</p>
           </div>
         </RigthAwardBlock>
       </PraticaceSection>
@@ -747,8 +626,7 @@ useEffect(() => {
             <div className="containe-title">
               <h2>Como trabalhamos </h2>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+               {textoFooter}
               </p>
             </div>
           </div>
@@ -756,26 +634,23 @@ useEffect(() => {
             <div className="container-works-pai">
               <div className="container-works">
                 <h1>01</h1>
-                <h2>Consulta sobre</h2>
+                <h2>Abordagem Personalizada </h2>
                 <p>
-                  Vestibulum ante ipsum primis in faucibus orci luctus et
-                  ultrices posuere cubilia Curae; Donec velit neque.
+                 {sloganFooter}
                 </p>
               </div>
               <div className="container-works">
                 <h1>02</h1>
-                <h2>Tome uma atitude</h2>
+                <h2>Excelência em Serviços</h2>
                 <p>
-                  Vestibulum ante ipsum primis in faucibus orci luctus et
-                  ultrices posuere cubilia Curae; Donec velit neque.
+                 {sloganFooter}
                 </p>
               </div>
               <div className="container-works">
                 <h1>03</h1>
-                <h2>Criar estratégias</h2>
+                <h2>Comunicação Transparente</h2>
                 <p>
-                  Vestibulum ante ipsum primis in faucibus orci luctus et
-                  ultrices posuere cubilia Curae; Donec velit neque.
+               {sloganFooter}
                 </p>
               </div>
             </div>
@@ -790,9 +665,7 @@ useEffect(() => {
           <div className="container-title">
             <h1> Locais de escritórios</h1>
             <p>
-              {' '}
-              Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-              posuere cubilia Curae; Donec velit neque.
+             
             </p>
           </div>
           <div className="container-modalLocation">
@@ -861,9 +734,7 @@ useEffect(() => {
           <div className="container-inf">
             <h1>Ajudamos a resolver seus problemas legais</h1>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-              tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
-            </p>
+{footer}            </p>
 
             <button className="btn">AGENDE UMA CONSULTA</button>
           </div>

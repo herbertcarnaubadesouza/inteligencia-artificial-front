@@ -1,6 +1,7 @@
 import { mix } from 'polished';
 import styled from 'styled-components';
 
+
 interface FontProps {
   fontFamily: string;
 }
@@ -16,6 +17,7 @@ interface ThemeProps {
     font: FontProps;
   };
 }
+
 
 export const Container = styled.div`
   display: flex;
@@ -86,7 +88,7 @@ export const HeaderBlock = styled.section<{ bgImage?: string }>`
   padding-inline: 6rem;
   gap: 2.5rem;
   margin: 0 auto;
-  width:95%
+  width:100%
 ;
   &::before {
     content: '';
@@ -135,11 +137,16 @@ export const AboutSection = styled.section`
   padding-block: 100px;
   padding-left: 6rem;
   padding-right: 8.2rem;
+
+  width: 85%;
+  margin: 0 auto;
 `;
 export const LeftSideBlock = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3.5rem;
+  width: 70%;
+
 
   .title-about-section-block {
     h2,
@@ -306,14 +313,18 @@ export const HeaderAwards = styled.section`
 `;
 
 export const AwardsRow1 = styled.section`
+width:100%;
   margin-top: 30px;
   display: flex;
   flex-direction: row;
   gap: 1rem;
   justify-content: center;
+  
 
   .awards-block {
-    display: flex;
+    height:250px;
+    width:33%;
+    display: flex;  
     flex-direction: column;
     margin-right: 20px;
     background-color: ${(props: ThemeProps) =>
@@ -322,7 +333,7 @@ export const AwardsRow1 = styled.section`
     gap: 1rem;
     padding: 20px;
     box-shadow: 0 25px 80px -10px rgba(23.469701086956523, 24.000447704985824, 25.5, 0.15);
-
+  
     img {
       width: 60px;
       height: auto;
@@ -372,6 +383,10 @@ export const PraticaceSection = styled.div`
   padding-block: 100px;
   padding-left: 6rem;
   padding-right: 8.2rem;
+  width: 85%;
+  margin: 0 auto;
+ 
+ 
 `;
 
 export const LeftAwardBlock = styled.div`
@@ -380,10 +395,11 @@ export const LeftAwardBlock = styled.div`
   width: 70%;
   gap: 0.5rem;
 
+
   img {
     margin-top: 30px;
     width: 507px;
-    height: 650px;
+    height: 750px;
     object-fit: cover;
     box-shadow: 40px 40px 0 0
       ${(props: ThemeProps) =>
@@ -401,13 +417,28 @@ export const LeftAwardBlock = styled.div`
 export const RigthAwardBlock = styled.div`
   display: flex;
   flex-direction: column;
-  width: 30%;
-  gap: 2.5rem;
+
+  width: 50%;
+  height:730px;
+  margin: 0 auto;
+  gap: 10px;
+ 
+  
+ 
+  
+
+
 
   .Areas-block {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    width:100%;
+    height:200px;
+  
+   
+    
+
 
     h2 {
       font-weight: 500;
@@ -448,16 +479,21 @@ export const HowWorksHeaderSection = styled.div`
   width: 100%;
   height: 60%;
   gap: 10px;
+  margin-top: 50px;
+
 
   .Header-How-Work {
     margin: 0 auto;
     height: 50%;
     width: 90%;
+    margin-bottom: 50px;
+  ;
   }
   .containe-title {
     width: 100%;
     height: 200px;
     margin-top: 60px;
+   
 
     h2 {
       text-align: center;
@@ -482,9 +518,12 @@ export const HowWorksHeaderSection = styled.div`
     display: flex;
     align-items: center;
     gap: 15px;
+   
+    margin-bottom: 30px;
 
     .container-works {
-      width: 33%;
+      margin:0 auto;
+      width: 32%;
       height: 270px;
       background-color: ${(props: ThemeProps) =>
         mix(0.95, '#eeeeee', props.theme.headerFooterBgColor)};

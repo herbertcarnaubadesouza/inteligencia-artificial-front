@@ -33,8 +33,9 @@ export const Container = styled.div`
     font-weight: 600;
     text-align: left;
     margin-bottom: 10rem;
-    margin-top: 10px;
-    margin-right: 35%;
+    margin-top: 50px;
+    margin-left: 5%;
+    width:100%;
   }
   h2 {
     color: ${(props: ThemeProps) =>
@@ -97,7 +98,7 @@ export const HeaderBlock = styled.div<{ bgImage?: string }>`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  width: 95%;
+  width: 100%;
   position: relative;
 
   &::before {
@@ -171,12 +172,13 @@ export const LineHeaderBottom = styled.div`
 `;
 export const LineAboutSection = styled.div`
   height: 1px;
-  width: 85%;
+  width: 75%;
   background-color: #a7a7a73e;
   border: none;
   z-index: 999;
   margin-top: 1.5rem;
   margin-bottom: 10px;
+ 
  
 `;
 
@@ -186,8 +188,8 @@ export const AboutSection = styled.section`
   justify-content: space-between;
   padding-inline: 6rem;
   padding-block: 5rem;
- 
-  width:60%;
+
+  width:90%;
   margin:0 auto;
   .container-block-about {
    
@@ -210,7 +212,7 @@ export const LineAbout = styled.div`
 `;
 
 export const FirstBlockAbout = styled.div`
-  width: 30%;
+  width: 55%;
  
 
   .bottom-about-section {
@@ -276,6 +278,10 @@ export const ServicesSection = styled.section`
 export const Row = styled.div`
   display: flex;
   align-items: center;
+  width: 85%;
+    height: auto;
+    margin:0 auto;
+
 
   .content-block-atuacao {
     border: 1px solid #e1e1e186;
@@ -284,8 +290,9 @@ export const Row = styled.div`
     gap: 11px;
     justify-content: center;
     padding-inline: 30px;
-    width: 248px;
-    height: 222px;
+    width: 34%;
+    height: 220px;
+   
 
     .last-block-atuacao {
       display: flex;
