@@ -20,7 +20,7 @@ interface ThemeProps {
 const Container = styled.div`
   width: 100%;
 
-  
+
   display: flex; 
   flex-direction: column;
   justify-content: center;
@@ -132,16 +132,15 @@ const Navigation = styled.div`
 `;
 
 const AboutSection = styled.section`
-width:80%;
+width:100%;
 margin-top:0 auto;
   justify-content:space-around;
   display: flex;
   align-items:center;
   flex-direction: row;
-  padding-left: 12rem;
-  padding-right: 12rem;
-  padding-top: 3.5rem;
-  height:700px;
+
+  height:750px;
+
 
   .about{
     width:80%;
@@ -250,6 +249,12 @@ const ParallaxContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  
+
+  h2{
+    font-size:22px;
+    margin-bottom: 40px;
+  }
 
   a {
     background-color: #fff;
@@ -273,9 +278,8 @@ const ParallaxContent = styled.div`
 
 const LogoTemplate = styled.img`
   width: 420px;
-    height: 585px;
-  margin-top: -7rem;
-  margin-right: 3rem;
+    height: 485px;
+  margin-right: 5rem;
   z-index: 999;
   object-fit: cover;
 
@@ -359,7 +363,7 @@ const PracticeArea = styled.div`
     padding-left: 3rem;
     padding-right: 3rem;
     border-radius: 2rem;
-    margin-top: 1rem;
+    margin-top: 5rem;
     margin-bottom: 3rem;
     cursor: pointer;
     z-index: 999;
@@ -371,12 +375,13 @@ const PracticeAreaContentAll = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-left: 12rem;
-  padding-right: 12rem;
+
   gap: 5rem;
   width:100%;
   margin-top:70px;
+  
 
+  
   
 `;
 
@@ -385,9 +390,13 @@ const PracticeAreaContent = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding-bottom: 1.5rem;
-  width:85%;
   margin: 0 auto;
+  width:90%;
+  
+   
+ 
+
+  
 
 
  
@@ -401,7 +410,10 @@ const PracticeContent = styled.div`
   padding-right: 2rem;
  text-align:start;
   width:33%;
-  height:310px;
+  height:350px;
+ 
+
+  
 
 
 `;
@@ -422,19 +434,24 @@ const Contact = styled.div`
   }
 `;
 
-const Footer = styled.div`
- 
+ const Footer = styled.div`
+  width: 100%;
 
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding-left: 8rem;
-  padding-right: 8rem;
-  padding-top: 3rem;
-  padding-bottom: 5rem;
+  .content-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 6rem;
+    padding-block: 20px;
+    background-color: ${(props: ThemeProps) =>
+      mix(0.9, '#000', props.theme.headerFooterBgColor)};
 
-  @media only screen and (max-width: 1540px) {
-    padding-inline: 4rem;
+    p {
+      font-size: 15px;
+      color: rgba(198, 198, 198, 0.77);
+      font-weight: normal;
+      margin: 0px;
+    }
   }
 `;
 

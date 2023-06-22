@@ -22,7 +22,7 @@ function Preview() {
 
   const timeoutId = setTimeout(() => {
     setLoading(false);
-  }, 300000);
+  }, 4000);
 
   return () => {
     clearTimeout(timeoutId);

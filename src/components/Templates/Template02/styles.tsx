@@ -18,6 +18,7 @@ interface ThemeProps {
 }
 
 export const Container = styled.div`
+box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -188,8 +189,9 @@ export const AboutSection = styled.section`
   justify-content: space-between;
   padding-inline: 6rem;
   padding-block: 5rem;
+  
 
-  width:90%;
+  width:95%;
   margin:0 auto;
   .container-block-about {
    
@@ -212,23 +214,11 @@ export const LineAbout = styled.div`
 `;
 
 export const FirstBlockAbout = styled.div`
-  width: 55%;
- 
+  width: 50%;
 
-  .bottom-about-section {
-    display: flex;
-    justify-content: space-between;
 
-    .block-bottom {
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-    }
 
-    svg {
-      fill: ${(props: ThemeProps) => props.theme.fontTitleColor};
-    }
-  }
+  
 `;
 export const SecondBlockAbout = styled.div`
   position: relative;
@@ -246,7 +236,7 @@ export const SecondBlockAbout = styled.div`
     rgba(177, 151, 107, 0.08) 50%
   );
 
-  width: 520px;
+  width: 45%;
   height: 585px;
 `;
 
@@ -256,6 +246,7 @@ export const ServicesSection = styled.section`
   display: flex;
   flex-direction: column;
   width: 100%;
+
 
   background-color: ${(props: ThemeProps) =>
     mix(0.99, '#fcfcfc', props.theme.headerFooterBgColor)};
@@ -278,9 +269,10 @@ export const ServicesSection = styled.section`
 export const Row = styled.div`
   display: flex;
   align-items: center;
-  width: 85%;
-    height: auto;
+  width: 100%;
+    height: 350px;
     margin:0 auto;
+   
 
 
   .content-block-atuacao {
@@ -291,7 +283,7 @@ export const Row = styled.div`
     justify-content: center;
     padding-inline: 30px;
     width: 34%;
-    height: 220px;
+    height:  100%;
    
 
     .last-block-atuacao {

@@ -47,258 +47,9 @@ interface ApiResponse {
 const apiKey = process.env.REACT_APP_API_KEY;
 
 function Template01({ isVisible01 }: Template01Props) {
-  const [primeitoTitle, setPrimeitoTitle] = useState<string | null>(null);
-  const [sloganTitle, setSloganTitle] = useState<string | null>(null);
-  const [sobreEmpresa, setSobreEmpresa] = useState<string | null>(null);
-  const [sloganParallax, setSloganParallax] = useState<string | null>(null);
-  const [titleParallax, setTitleParallax] = useState<string | null>(null);
-  const [areasAtuacao, setAreasAtuacao] = useState<string | null>(null);
-  const [assaltoDomestico, setAssaltoDomestico] = useState<string | null>(null);
-  const [crimesArmas, setCrimesArmas] = useState<string | null>(null);
-  const [crimesDrogas, setCrimesDrogas] = useState<string | null>(null);
-  const [crimesPropriedade, setCrimesPropriedade] = useState<string | null>(null);
-  const [audienciaFianca, setAudienciaFianca] = useState<string | null>(null);
-  const [crimeAssedio, setCrimeAssedio] = useState<string | null>(null);
-  const [sloganFooter, setSloganFooter] = useState<string | null>(null);
-  const [textoFooter, setTextoFooter] = useState<string | null>(null);
-  const [footer, setFooter] = useState<string | null>(null);
+ 
   const nomeEmpresa = "Lux Amount Advocacia"
-  const MAX_RETRY_COUNT = 50; // Número máximo de tentativas
-  const RETRY_DELAY = 6000; // Tempo de espera entre as tentativas em milissegundos
   
-  const fetchData = async (
-    setter: React.Dispatch<React.SetStateAction<string | null>>,
-    localStorageKey: string,
-    content: string,
-    retryCount = 0,
-  ) => {
-    const storedData = localStorage.getItem(localStorageKey);
-  
-    if (!storedData) {
-      try {
-        const result = await axios.post(
-          'https://api.openai.com/v1/chat/completions',
-          {
-            model: 'gpt-3.5-turbo',
-            messages: [
-              {
-                role: 'user',
-                content,
-              },
-            ],
-          },
-          {
-            headers: {
-              Authorization: `Bearer ${apiKey}`,
-              'Content-Type': 'application/json',
-            },
-          },
-        );
-  
-        const responseData = result.data.choices[0].message.content;
-        setter(responseData);
-        localStorage.setItem(localStorageKey, responseData);
-      } catch (error) {
-        console.error(error);
-  
-        // Verificar se ainda há tentativas disponíveis
-        if (retryCount < MAX_RETRY_COUNT) {
-          setTimeout(
-            () => fetchData(setter, localStorageKey, content, retryCount + 1),
-            RETRY_DELAY,
-          );
-        } else {
-          console.error('Limite máximo de tentativas atingido');
-        }
-      }
-    } else {
-      setter(storedData);
-    }
-  };
-  
-  const clearCache = () => {
-    localStorage.removeItem('primeitoTitle');
-    localStorage.removeItem('sloganTitle');
-    localStorage.removeItem('sobreEmpresa');
-    localStorage.removeItem('sloganParallax');
-    localStorage.removeItem('titleParallax');
-    localStorage.removeItem('areasAtuacao');
-    localStorage.removeItem('assaltoDomestico');
-    localStorage.removeItem('crimesArmas');
-    localStorage.removeItem('crimesDrogas');
-    localStorage.removeItem('crimesPropriedade');
-    localStorage.removeItem('audienciaFianca');
-    localStorage.removeItem('crimeAssedio');
-    localStorage.removeItem('sloganFooter');
-    localStorage.removeItem('textoFooter');
-    localStorage.removeItem('footer');
-  };
-  
- 
-  useEffect(() => {
-    const sloganTitleContent = `Crie um slogan de até 1 linha para a empresa de advocacia chamada ${nomeEmpresa}. Não use aspas nos textos.`;
-    setTimeout(
-      () => fetchData(setSloganTitle, 'sloganTitle', sloganTitleContent),
-      10000
-    );
-  }, []);
-  
-  useEffect(() => {
-    const sobreEmpresaContent = `Crie um texto de 5 a 6 linhas sobre a firma de advocacia chamada ${nomeEmpresa}. Não use aspas nos textos.`;
-    setTimeout(
-      () => fetchData(setSobreEmpresa, 'sobreEmpresa', sobreEmpresaContent),
-      15000
-    );
-  }, []);
-  
-  useEffect(() => {
-    const sloganParallaxContent = `Crie um novo slogan de até 2 linhas com foco em atrair clientes para a firma de advocacia. Não use aspas nos textos.`;
-    setTimeout(
-      () => fetchData(setSloganParallax, 'sloganParallax', sloganParallaxContent),
-      20000
-    );
-  }, []);
-  
-  useEffect(() => {
-    const titleParallaxContent = `Crie um subtítulo de até 1 linha para uma seção com foco em atrair clientes para a firma de advocacia chamada ${nomeEmpresa}. Não use aspas nos textos.`;
-    setTimeout(
-      () => fetchData(setTitleParallax, 'titleParallax', titleParallaxContent),
-      25000
-    );
-  }, []);
-  
-  useEffect(() => {
-    const areasAtuacaoContent = `Crie um texto de até 2 linhas explicando que a firma de advocacia atua em todos os casos. Não use aspas nos textos.`;
-    setTimeout(
-      () => fetchData(setAreasAtuacao, 'areasAtuacao', areasAtuacaoContent),
-      30000
-    );
-  }, []);
-  
-  useEffect(() => {
-    const assaltoDomesticoContent = `Crie um texto de 2 linhas sobre o tema "Assalto Doméstico" e como a firma de advocacia trabalha nesses casos. Não use aspas nos textos.`;
-    setTimeout(
-      () => fetchData(setAssaltoDomestico, 'assaltoDomestico', assaltoDomesticoContent),
-      35000
-    );
-  }, []);
-  
-  useEffect(() => {
-    const crimesArmasContent = `Crie um texto de 2 linhas sobre o tema "Crimes de Armas" e como a firma de advocacia trabalha nesses casos. Não use aspas nos textos.`;
-    setTimeout(
-      () => fetchData(setCrimesArmas, 'crimesArmas', crimesArmasContent),
-      40000
-    );
-  }, []);
-  
-  useEffect(() => {
-    const crimesDrogasContent = `Crie um texto de 2 linhas sobre o tema "Crimes de Drogas" e como a firma de advocacia trabalha nesses casos. Não use aspas nos textos.`;
-    setTimeout(
-      () => fetchData(setCrimesDrogas, 'crimesDrogas', crimesDrogasContent),
-      45000
-    );
-  }, []);
-  
-  useEffect(() => {
-    const crimesPropriedadeContent = `Crie um texto de 2 linhas sobre o tema "Crimes de Propriedade" e como a firma de advocacia trabalha nesses casos. Não use aspas nos textos.`;
-    setTimeout(
-      () => fetchData(setCrimesPropriedade, 'crimesPropriedade', crimesPropriedadeContent),
-      50000
-    );
-  }, []);
-  
-  useEffect(() => {
-    const audienciaFiancaContent = `Crie um texto de 2 linhas sobre o tema "Audiência de Fiança" e como a firma de advocacia trabalha nesses casos. Não use aspas nos textos.`;
-    setTimeout(
-      () => fetchData(setAudienciaFianca, 'audienciaFianca', audienciaFiancaContent),
-      55000
-    );
-  }, []);
-  
-  useEffect(() => {
-    const crimeAssedioContent = `Crie um texto de 2 linhas sobre o tema "Crime de Assédio" e como a firma de advocacia trabalha nesses casos. Não use aspas nos textos.`;
-    setTimeout(
-      () => fetchData(setCrimeAssedio, 'crimeAssedio', crimeAssedioContent),
-      60000
-    );
-  }, []);
-  
-  useEffect(() => {
-    const sloganFooterContent = `Crie um slogan de até 1 linha transmitindo a mensagem "ESTAMOS AQUI PARA AJUDAR VOCÊ A ALCANÇAR SEUS OBJETIVOS" para a firma de advocacia. Não use aspas nos textos.`;
-    setTimeout(
-      () => fetchData(setSloganFooter, 'sloganFooter', sloganFooterContent),
-      65000
-    );
-  }, []);
-  
-  useEffect(() => {
-    const textoFooterContent = `Crie um texto de 3 linhas com o título "Fale com nossos advogados de defesa criminal hoje" transmitindo a mensagem "ESTAMOS AQUI PARA AJUDAR VOCÊ A ALCANÇAR SEUS OBJETIVOS" para a firma de advocacia. Não use aspas nos textos.`;
-    setTimeout(
-      () => fetchData(setTextoFooter, 'textoFooter', textoFooterContent),
-      70000
-    );
-  }, []);
-  
-  useEffect(() => {
-    const footerContent = `Crie um texto de até 3 linhas para ser colocado no rodapé de um site de uma firma de advocacia. Não use aspas nos textos.`;
-    setTimeout(
-      () => fetchData(setFooter, 'footer', footerContent),
-      75000
-    );
-  }, []);
-  
- 
-  
-  useEffect(() => {
-    const storedPrimeitoTitle = localStorage.getItem('primeitoTitle');
-    const storedSloganTitle = localStorage.getItem('sloganTitle');
-    const storedSobreEmpresa = localStorage.getItem('sobreEmpresa');
-    const storedSloganParallax = localStorage.getItem('sloganParallax');
-    const storedTitleParallax = localStorage.getItem('titleParallax');
-    const storedAreasAtuacao = localStorage.getItem('areasAtuacao');
-    const storedAssaltoDomestico = localStorage.getItem('assaltoDomestico');
-    const storedCrimesArmas = localStorage.getItem('crimesArmas');
-    const storedCrimesDrogas = localStorage.getItem('crimesDrogas');
-    const storedCrimesPropriedade = localStorage.getItem('crimesPropriedade');
-    const storedAudienciaFianca = localStorage.getItem('audienciaFianca');
-    const storedCrimeAssedio = localStorage.getItem('crimeAssedio');
-    const storedSloganFooter = localStorage.getItem('sloganFooter');
-    const storedTextoFooter = localStorage.getItem('textoFooter');
-    const storedFooter = localStorage.getItem('footer');
-  
-    if (storedPrimeitoTitle) setPrimeitoTitle(storedPrimeitoTitle);
-    if (storedSloganTitle) setSloganTitle(storedSloganTitle);
-    if (storedSobreEmpresa) setSobreEmpresa(storedSobreEmpresa);
-    if (storedSloganParallax) setSloganParallax(storedSloganParallax);
-    if (storedTitleParallax) setTitleParallax(storedTitleParallax);
-    if (storedAreasAtuacao) setAreasAtuacao(storedAreasAtuacao);
-    if (storedAssaltoDomestico) setAssaltoDomestico(storedAssaltoDomestico);
-    if (storedCrimesArmas) setCrimesArmas(storedCrimesArmas);
-    if (storedCrimesDrogas) setCrimesDrogas(storedCrimesDrogas);
-    if (storedCrimesPropriedade) setCrimesPropriedade(storedCrimesPropriedade);
-    if (storedAudienciaFianca) setAudienciaFianca(storedAudienciaFianca);
-    if (storedCrimeAssedio) setCrimeAssedio(storedCrimeAssedio);
-    if (storedSloganFooter) setSloganFooter(storedSloganFooter);
-    if (storedTextoFooter) setTextoFooter(storedTextoFooter);
-    if (storedFooter) setFooter(storedFooter);
-  
-    window.addEventListener('beforeunload', clearCache);
-    return () => {
-      window.removeEventListener('beforeunload', clearCache);
-    };
-  }, []);
-  
-
-
-
-
-
-
- 
-
-
- 
-
   // BANNER
   const [banner, setBanner] = useState<Template01[]>([]);
   const [imageUrl, setImageUrl] = useState('');
@@ -482,7 +233,7 @@ function Template01({ isVisible01 }: Template01Props) {
         <h1>{nomeEmpresa}</h1>
         <Line></Line>
         <h2>
-          {sloganTitle}
+        Defendendo seus direitos, garantindo sua justiça
         </h2>
         <button>Fale conosco agora</button>
       </HeaderFooter>
@@ -502,16 +253,16 @@ function Template01({ isVisible01 }: Template01Props) {
             </div>
             <div className='about-section'>
               <h2>Sobre Nós</h2>
-              <p>{sobreEmpresa}</p>
+              <p>Nossa equipe de advogados é amplamente reconhecida por sua excelência e dedicação na prestação de serviços jurídicos. Com vasta experiência e conhecimento, estamos preparados para enfrentar os mais desafiadores casos legais. Nossa abordagem estratégica e personalizada nos permite oferecer soluções eficientes e resultados positivos para nossos clientes. Confie em nossa expertise para proteger seus interesses e alcançar o sucesso legal desejado.</p>
             </div>
           </Info>
         </section>
       </AboutSection>
       <Parallax bgImage={thirdImageUrlTerceira}>
         <ParallaxContent>
-          <h4>{sloganParallax}</h4>
+          <h4>DEFENDEMOS SEUS DIREITOS COM SOLUÇÃO EFICIENTE</h4>
           <LineParallax></LineParallax>
-          <h2>{titleParallax}</h2>
+          <h2>Nossa empresa de advocacia é a escolha certa para você, pois contamos com uma equipe de profissionais altamente qualificados e comprometidos em defender seus interesses com eficiência e agilidade.</h2>
           <a>
             <Play size={32} weight="fill" />
           </a>
@@ -520,7 +271,7 @@ function Template01({ isVisible01 }: Template01Props) {
       <PracticeArea>
         <h1>Áreas de atuação</h1>
         <h4>
-          {areasAtuacao}
+        Nossa firma de advocacia busca sempre a excelência em serviços, oferecendo atendimento personalizado e soluções jurídicas eficazes para nossos clientes.
         </h4>
         <button>Ver todas as áreas</button>
         <PracticeAreaContentAll>
@@ -529,19 +280,19 @@ function Template01({ isVisible01 }: Template01Props) {
               <h3>01</h3>
               <h2>Assalto doméstico</h2>
               <LineSmall></LineSmall>
-              <p>{assaltoDomestico}</p>
+              <p>Protegendo lares, combatendo a violência. Nossa firma de advocacia está ao seu lado para enfrentar casos de assalto doméstico, buscando justiça e segurança para você e sua família.</p>
             </PracticeContent>
             <PracticeContent>
               <h3>02</h3>
               <h2>Crimes de armas</h2>
               <LineSmall></LineSmall>
-              <p>{crimesArmas}</p>
+              <p>Defendendo a paz, lutando contra o crime. Nossa firma de advocacia especializada em casos de crimes de armas está aqui para garantir seus direitos e promover a segurança na sociedade.</p>
             </PracticeContent>
             <PracticeContent>
               <h3>03</h3>
               <h2>Crimes de drogas</h2>
               <LineSmall></LineSmall>
-              <p>{crimesDrogas}</p>
+              <p>Transformando vidas, combatendo o vício. Nossa firma de advocacia é especializada em casos de crimes de drogas, oferecendo suporte legal e buscando justiça para ajudar na recuperação e reabilitação.</p>
             </PracticeContent>
           </PracticeAreaContent>
         </PracticeAreaContentAll>
@@ -551,30 +302,31 @@ function Template01({ isVisible01 }: Template01Props) {
               <h3>04</h3>
               <h2>Crimes de propriedade</h2>
               <LineSmall></LineSmall>
-              <p>{crimesPropriedade}</p>
+              <p>Protegendo seus direitos, defendendo sua propriedade. Nossa firma de advocacia é especializada em casos de crimes de propriedade, oferecendo representação legal sólida e estratégias eficazes para garantir a proteção de seus bens e interesses.</p>
+
             </PracticeContent>
             <PracticeContent>
               <h3>05</h3>
               <h2>Audiencia de fiança</h2>
               <LineSmall></LineSmall>
-              <p>{audienciaFianca}</p>
+              <p>Nas audiências de fiança, estamos ao seu lado para garantir que seus direitos sejam protegidos. Com nossa expertise jurídica, iremos apresentar os argumentos necessários para garantir uma fiança justa e acessível</p>
             </PracticeContent>
             <PracticeContent>
               <h3>06</h3>
               <h2>Crime de assédio</h2>
               <LineSmall></LineSmall>
-              <p>{crimeAssedio}</p>
+              <p>Não permita que o assédio afete sua vida. Nossa firma de advocacia está aqui para lutar pelos seus direitos, oferecendo apoio legal e buscando justiça nos casos de assédio. Juntos, podemos criar um ambiente seguro e protegido para todos.</p>
             </PracticeContent>
           </PracticeAreaContent>
         </PracticeAreaContentAll>
       </PracticeArea>
       <ParallaxContact bgImage={imageUrlTerceira}>
         <ParallaxContent>
-          <h4>{sloganFooter}</h4>
+          <h4>NÓS SOMOS SEU CAMINHO PARA O SUCESSO LEGAL</h4>
           <LineParallax></LineParallax>
           <h2>Fale com nossos advogados de defesa criminal hoje!</h2>
           <h3>
-           {textoFooter}
+          Fale com nossos advogados de defesa criminal hoje. Estamos aqui para ajudar você a alcançar seus objetivos de maneira legal e eficiente. Conte conosco para proteger seus direitos e liberdade.
           </h3>
           <Contact>
             <a>
@@ -585,26 +337,10 @@ function Template01({ isVisible01 }: Template01Props) {
         </ParallaxContent>
       </ParallaxContact>
       <Footer>
-        <FooterContent>
-          <h3>
-           {footer}
-          </h3>
-        </FooterContent>
-        <FooterRight>
-          <FooterContent>
-            <h2>Fale conosco</h2>
-            <h4>Nos siga no Instagram</h4>
-            <h4></h4>
-            <h4></h4>
-            <h4></h4>
-          </FooterContent>
-          <FooterContent>
-            <h2>Nossos links</h2>
-            <h4>Home </h4>
-            <h4>About</h4>
-           
-          </FooterContent>
-        </FooterRight>
+        <div className="content-footer">
+          <p>Copyright © 2023 Rei do Sites</p>
+          <p>Powered by Rei do Sites</p>
+        </div>
       </Footer>
     </Container>
   );
