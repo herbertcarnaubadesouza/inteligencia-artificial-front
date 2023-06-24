@@ -40,7 +40,7 @@ box-sizing: border-box;
   }
   h2 {
     color: ${(props: ThemeProps) =>
-      mix(0.8, '#000', props.theme.headerFooterBgColor)};
+    mix(0.8, '#000', props.theme.headerFooterBgColor)};
     font-family: ${(props: ThemeProps) => props.theme.font.fontFamily};
     z-index: 999;
     font-size: 2.5em;
@@ -50,7 +50,7 @@ box-sizing: border-box;
 
   h3 {
     color: ${(props: ThemeProps) =>
-      mix(0.8, '#000', props.theme.headerFooterBgColor)};
+    mix(0.8, '#000', props.theme.headerFooterBgColor)};
     font-family: ${(props: ThemeProps) => props.theme.font.fontFamily};
     z-index: 999;
     font-size: 1.2em;
@@ -112,7 +112,7 @@ export const HeaderBlock = styled.div<{ bgImage?: string }>`
     opacity: 50%;
     background-color: #000;
     background-color: ${(props: ThemeProps) =>
-      mix(0.9, '#000', props.theme.headerFooterBgColor)};
+    mix(0.9, '#000', props.theme.headerFooterBgColor)};
   }
 
   .container-header-footer-block {
@@ -189,17 +189,37 @@ export const AboutSection = styled.section`
   justify-content: space-between;
   padding-inline: 6rem;
   padding-block: 5rem;
-  
 
-  width:95%;
+
+  width:90%;
   margin:0 auto;
+
+  @media only screen and (max-width: 1620px) {
+    margin:0 auto;
+    width:95%;
+  }
   .container-block-about {
    
     display: flex;
     align-items: baseline;
     position: relative;
    
+   
   }
+`;
+
+export const LeftSideBlock = styled.div`
+  
+  width: 50%;
+  background-color:black;
+  
+`;
+
+export const RightSideBlock = styled.div`
+  
+  width: 50%;
+  
+  
 `;
 export const LineAbout = styled.div`
   height: 1.1px;
@@ -214,30 +234,27 @@ export const LineAbout = styled.div`
 `;
 
 export const FirstBlockAbout = styled.div`
-  width: 50%;
+  width: 60%;
 
 
 
   
 `;
 export const SecondBlockAbout = styled.div`
+ 
   position: relative;
+  width: 50%;
+  height: 585px;
   img {
-    width: 420px;
-    height: 485px;
-    object-fit: cover;
+    width: 100%;
+    height:  100%;
+    object-fit: contain;
     position: absolute;
     bottom: 50px;
   }
-  background-color: transparent;
-  background-image: linear-gradient(
-    90deg,
-    rgba(177, 151, 107, 0) 50%,
-    rgba(177, 151, 107, 0.08) 50%
-  );
+  
 
-  width: 45%;
-  height: 585px;
+
 `;
 
 /*SERVICES*/
@@ -317,7 +334,7 @@ export const WhyUs = styled.section<{ bgImage?: string }>`
   display: flex;
   width: 100%;
   position: relative;
-  background-image: url(${(props) =>  props.bgImage? props.bgImage : 'https://cdn.discordapp.com/attachments/1116206739373691010/1116573743058268180/ThomasiWilson1_A_successful_law_firms_executive_office_with_flo_acf05fba-84f6-4416-bf37-b27f5d02a190.png'});
+  background-image: url(${(props) => props.bgImage ? props.bgImage : 'https://cdn.discordapp.com/attachments/1116206739373691010/1116573743058268180/ThomasiWilson1_A_successful_law_firms_executive_office_with_flo_acf05fba-84f6-4416-bf37-b27f5d02a190.png'});
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -345,7 +362,7 @@ export const WhyUs = styled.section<{ bgImage?: string }>`
     opacity: 55%;
     background-color: #000;
     background-color: ${(props: ThemeProps) =>
-      mix(0.95, '#000', props.theme.headerFooterBgColor)};
+    mix(0.95, '#000', props.theme.headerFooterBgColor)};
   }
 
   .block-whyus {
@@ -508,7 +525,7 @@ export const Footer = styled.div`
     padding-inline: 6rem;
     padding-block: 20px;
     background-color: ${(props: ThemeProps) =>
-      mix(0.9, '#000', props.theme.headerFooterBgColor)};
+    mix(0.9, '#000', props.theme.headerFooterBgColor)};
 
     p {
       font-size: 15px;

@@ -89,9 +89,9 @@ const HeaderFooter = styled.div<{ bgImage?: string }>`
   }
 
   h2 {
-    
+    font-size: 18px;
     text-align: center;
-    min-width: 35rem;
+    width: 800px;
     color: ${(props: ThemeProps) => props.theme.headerFooterTextColor};
     font-family: ${(props: ThemeProps) => props.theme.font.fontFamily};
     z-index: 999;
@@ -138,12 +138,24 @@ margin-top:0 auto;
   display: flex;
   align-items:center;
   flex-direction: row;
-
   height:750px;
 
 
+ 
+ 
+
+
   .about{
-    width:80%;
+    width:70%;
+    margin:0 auto;
+
+    justify-content:center;
+    display: flex;
+    align-items:center;
+    @media only screen and (max-width: 1700px) {
+      width:90%;
+  }
+  
   
   }
 
@@ -279,7 +291,7 @@ const ParallaxContent = styled.div`
 const LogoTemplate = styled.img`
   width: 420px;
     height: 485px;
-  margin-right: 5rem;
+  margin-right: 1.5rem;
   z-index: 999;
   object-fit: cover;
 
@@ -411,6 +423,7 @@ const PracticeContent = styled.div`
  text-align:start;
   width:33%;
   height:350px;
+  
  
 
   
@@ -434,7 +447,7 @@ const Contact = styled.div`
   }
 `;
 
- const Footer = styled.div`
+const Footer = styled.div`
   width: 100%;
 
   .content-footer {
@@ -444,7 +457,7 @@ const Contact = styled.div`
     padding-inline: 6rem;
     padding-block: 20px;
     background-color: ${(props: ThemeProps) =>
-      mix(0.9, '#000', props.theme.headerFooterBgColor)};
+    mix(0.9, '#000', props.theme.headerFooterBgColor)};
 
     p {
       font-size: 15px;

@@ -22,8 +22,9 @@ function LeftSide({ isQuestionVisible, isQuestion02Visible, isQuestion03Visible,
           <div className="icons-container">
 
             <div className="block-image-left-side">
-              <img className={`iconProgressFour ${isQuestionVisible ? 'style-one' : ''} ${isQuestion02Visible ? 'style-two' : ''} ${isQuestion03Visible ? 'style-tree' : ''} ${isQuestion04Visible ? 'style-tree' : ''} ${isQuestion05Visible ? 'style-tree' : ''} ${isQuestion06Visible ? 'style-four' : ''}  ${isQuestion07Visible ? 'style-five' : ''}`} src="./images/popper.svg"></img>
 
+              <img className={`iconProgressFour ${isQuestionVisible ? 'style-one' : ''} ${isQuestion02Visible ? 'style-two' : ''} ${isQuestion03Visible ? 'style-tree' : ''} ${isQuestion04Visible ? 'style-tree' : ''} ${isQuestion05Visible ? 'style-tree' : ''} ${isQuestion06Visible ? 'style-four' : ''}  ${isQuestion07Visible ? 'style-five' : ''}`} src="./images/popper.svg"></img>
+              <p className='text-icon'>Publicação do site</p>
               {/* <div className={`tooltip-four ${isQuestionVisible ? 'style-one' : ''} ${isQuestion02Visible ? 'style-two' : ''} ${isQuestion03Visible ? 'style-tree' : ''} ${isQuestion04Visible ? 'style-four' : ''} ${isQuestion05Visible ? 'style-five' : ''} ${isQuestion06Visible ? 'style-six' : ''}  ${isQuestion07Visible ? 'style-seven' : ''}`}>
                 <p>Não desista agora!</p>
                 <img src="./images/hang.png"></img>
@@ -31,7 +32,7 @@ function LeftSide({ isQuestionVisible, isQuestion02Visible, isQuestion03Visible,
             </div>
             <div className="block-image-left-side">
               <img className={`iconProgressTree ${isQuestionVisible ? 'style-one' : ''} ${isQuestion02Visible ? 'style-two' : ''} ${isQuestion03Visible ? 'style-tree' : ''} ${isQuestion04Visible ? 'style-tree' : ''} ${isQuestion05Visible ? 'style-four' : ''} ${isQuestion06Visible ? 'style-four' : ''}  ${isQuestion07Visible ? 'style-four' : ''}`} src="./images/magic.svg"></img>
-
+              <p className='text-icon'>Um toque de mágica</p>
               {/* <div className={`tooltip-tree ${isQuestionVisible ? 'style-one' : ''} ${isQuestion02Visible ? 'style-two' : ''} ${isQuestion03Visible ? 'style-tree' : ''} ${isQuestion04Visible ? 'style-four' : ''} ${isQuestion05Visible ? 'style-five' : ''} ${isQuestion06Visible ? 'style-six' : ''}  ${isQuestion07Visible ? 'style-seven' : ''}`}>
                 <p>Espetacular, continue assim!</p>
                 <img src="./images/biceps.png"></img>
@@ -39,7 +40,7 @@ function LeftSide({ isQuestionVisible, isQuestion02Visible, isQuestion03Visible,
             </div>
             <div className="block-image-left-side">
               <img className={`iconProgressTwo ${isQuestionVisible ? 'style-one' : ''} ${isQuestion02Visible ? 'style-two' : ''} ${isQuestion03Visible ? 'style-two' : ''} ${isQuestion04Visible ? 'style-tree' : ''} ${isQuestion05Visible ? 'style-four' : ''} ${isQuestion06Visible ? 'style-four' : ''}  ${isQuestion07Visible ? 'style-four' : ''}`} src="./images/style.svg"></img>
-
+              <p className='text-icon'>Estilização</p>
               {/* <div className={`tooltip-two ${isQuestionVisible ? 'style-one' : ''} ${isQuestion02Visible ? 'style-two' : ''} ${isQuestion03Visible ? 'style-tree' : ''} ${isQuestion04Visible ? 'style-four' : ''} ${isQuestion05Visible ? 'style-five' : ''} ${isQuestion06Visible ? 'style-six' : ''}  ${isQuestion07Visible ? 'style-seven' : ''}`}>
                 <p>Você está quase terminando!</p>
                 <img src="./images/finish.png"></img>
@@ -47,7 +48,7 @@ function LeftSide({ isQuestionVisible, isQuestion02Visible, isQuestion03Visible,
             </div>
             <div className="block-image-left-side">
               <img className={`iconProgressOne ${isQuestionVisible ? 'style-one' : ''} ${isQuestion02Visible ? 'style-two' : ''} ${isQuestion03Visible ? 'style-tree' : ''} ${isQuestion04Visible ? 'style-four' : ''} ${isQuestion05Visible ? 'style-four' : ''} ${isQuestion06Visible ? 'style-four' : ''}  ${isQuestion07Visible ? 'style-four' : ''}`} src="./images/doc.svg"></img>
-
+              <p className='text-icon'>Primeiras informações</p>
               {/* <div className={`tooltip-one ${isQuestionVisible ? 'style-one' : ''} ${isQuestion02Visible ? 'style-two' : ''} ${isQuestion03Visible ? 'style-tree' : ''} ${isQuestion04Visible ? 'style-four' : ''} ${isQuestion05Visible ? 'style-five' : ''} ${isQuestion06Visible ? 'style-six' : ''}  ${isQuestion07Visible ? 'style-seven' : ''}`}>
                 <p>Agora só mais um!</p>
               </div> */}

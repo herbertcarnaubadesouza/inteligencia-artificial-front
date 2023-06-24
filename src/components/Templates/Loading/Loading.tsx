@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Lottie from 'react-lottie';
 import animationData from './foxy.json';
+import './loading.css';
 
 const Loading = () => {
-  const [timeRemaining, setTimeRemaining] = useState(300); // Tempo restante em segundos (5 minutos)
+  const [timeRemaining, setTimeRemaining] = useState(30); // Tempo restante em segundos (30 segundos)
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -23,56 +24,42 @@ const Loading = () => {
     autoplay: true,
     animationData: animationData,
     rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice'
-    }
+      preserveAspectRatio: 'xMidYMid slice',
+    },
   };
 
   return (
     <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-        width: '79.69vw',
-        backgroundColor: 'rgba(255, 255, 255, 0.5)',
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        zIndex: 999,
-        overflow: 'auto' // Adicionado para permitir o scroll
-      }}
+      className="div-loading"
+
     >
       <div
-        style={{
-          paddingLeft: '3rem',
-          paddingRight: '3rem',
-          padding: '10rem',
-          borderRadius: '1rem',
-          backgroundColor: '#fff',
-          boxShadow: '0 0 8px #000000'
-        }}
+        className="loading-container"
+
       >
         <Lottie
+
           options={defaultOptions}
-          height={400}
-          width={400}
-          style={{ position: 'absolute', top: '45%', left: '45%', transform: 'translate(-50%, -50%)', zIndex: 10000 }}
+          height={500}
+          width={500}
+          style={{ position: 'fixed', marginLeft: '290px', top: '45%', transform: 'translate(-50%, -50%)', zIndex: 10000 }}
         />
         <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginTop: '8rem',
-            marginBottom: '-6rem'
-          }}
+          className="btn"
+
+        />
+        <div
+          className="btn-1"
+
         >
-          <div style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
+          <div
+            className="btn-2"
+          >
             Aguarde, seu site está sendo gerado
           </div>
-          <div style={{ fontSize: '1.2rem', marginTop: '0.5rem' }}>
+          <div
+            className="btn-3"
+          >
             Tempo restante: {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
           </div>
         </div>

@@ -29,27 +29,27 @@ const options = [
   {
     id: 1,
     name: 'Saúde e beleza',
-    choices: ['hair removal master', 'tatto artist']
+    choices: ['Hair master', 'Tatto Artista']
   },
   {
     id: 2,
     name: 'Esporte',
-    choices: ['personal trainer', 'gym instructor']
+    choices: ['Personal trainer', 'Gym instructor']
   },
   {
     id: 3,
     name: 'Finanças',
-    choices: ['accountant', 'financial advisor']
+    choices: ['Accountant', 'Financial advisor']
   },
   {
     id: 4,
     name: 'Casa & Lar',
-    choices: ['cleaner', 'gardener']
+    choices: ['Cleaner', 'Gardener']
   },
   {
     id: 5,
     name: 'Autocuidado',
-    choices: ['doctor', 'nurse']
+    choices: ['Doctor', 'Nurse']
   },
   // ...
 ];
@@ -76,9 +76,9 @@ function Question01(props: Question01Props) {
   const [showLoading, setShowLoading] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowQuestion(true), 1000);
-    const timer2 = setTimeout(() => setShowLoading(true), 3800);
-    const timer3 = setTimeout(() => setShowButtons(true), 8500);
+    const timer = setTimeout(() => setShowQuestion(true), 10);
+    const timer2 = setTimeout(() => setShowLoading(true), 3500);
+    const timer3 = setTimeout(() => setShowButtons(true), 6500);
 
     return () => {
       clearTimeout(timer);
@@ -286,7 +286,7 @@ function Question01(props: Question01Props) {
           </div>
 
           <div className="right-nav-container">
-            <p className="choice-selected">{textoClicado}</p>
+
             <div className="button-continue" onClick={props.ocultarQuestion}>
               <p className="button-continue-text" >CONTINUAR</p>
             </div>

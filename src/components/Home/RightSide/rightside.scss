@@ -14,13 +14,14 @@
   background-color: #ffffff48;
   width: 70vw;
   height: 95%;
-  padding-top: 1rem;
+  padding-top: 2rem;
   padding-left: 2rem;
-  padding-right: 3.4rem;
-  border-radius: 3rem;
+  padding-right: 1.5rem;
+  border-radius: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  
 }
 
 .real-top-container {
@@ -30,7 +31,7 @@
 
 
 .real-top-container::-webkit-scrollbar {
-  width: 2px;
+  width: 1px;
 }
 
 .real-top-container::-webkit-scrollbar-track {
@@ -52,6 +53,7 @@
 }
 
 .logo {
+  
   margin-left: 4rem;
   margin-top: 2rem;
   margin-right: -14rem;
@@ -73,6 +75,7 @@
     display: flex;
     align-items: center;
     gap: 5px;
+    
 
     p {
       margin: 0px;

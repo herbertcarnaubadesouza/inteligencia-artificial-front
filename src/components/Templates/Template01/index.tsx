@@ -44,12 +44,13 @@ interface ApiResponse {
   }[];
 }
 
+import Loading from '../Loading/Loading';
 const apiKey = process.env.REACT_APP_API_KEY;
 
 function Template01({ isVisible01 }: Template01Props) {
- 
+
   const nomeEmpresa = "Lux Amount Advocacia"
-  
+
   // BANNER
   const [banner, setBanner] = useState<Template01[]>([]);
   const [imageUrl, setImageUrl] = useState('');
@@ -59,48 +60,59 @@ function Template01({ isVisible01 }: Template01Props) {
   const [secondBannerId, setSecondBannerId] = useState('');
   const [thirdBannerId, setThirdBannerId] = useState('');
 
+
   useEffect(() => {
     const fetchData = async () => {
-      const advogadoDocRef = doc(db, 'sites', 'advogado');
-      const bannerCollectionRef = collection(advogadoDocRef, 'banner');
-      const bannerSnapshot = await getDocs(bannerCollectionRef);
+      // Verificar se as imagens já estão armazenadas no localStorage
+      const bannerTemplate02 = localStorage.getItem('bannerTemplate02');
+      const bannerTemplate03 = localStorage.getItem('bannerTemplate03');
 
-      let bannerList = bannerSnapshot.docs.map((doc) => {
-        const data = doc.data();
+      if (bannerTemplate02 && bannerTemplate03) {
+        // As imagens já estão armazenadas no localStorage
+        setSecondImageUrl(bannerTemplate02);
+        setThirdImageUrl(bannerTemplate03);
+      } else {
+        // As imagens não estão armazenadas no localStorage, fazer a requisição no banco de dados
+        const advogadoDocRef = doc(db, 'sites', 'advogado');
+        const bannerCollectionRef = collection(advogadoDocRef, 'banner');
+        const bannerSnapshot = await getDocs(bannerCollectionRef);
 
-        const banner = {
-          id: doc.id,
-          imgUrl: data.imgUrl,
-        };
-        return banner;
-      });
+        let bannerList = bannerSnapshot.docs.map((doc) => {
+          const data = doc.data();
 
-      // BANNER TEMPLATE 01
-      const randomIndex = Math.floor(Math.random() * bannerList.length);
-      const randomBanner = bannerList[randomIndex];
-      setImageUrl(randomBanner.imgUrl);
-      setBannerId(randomBanner.id);
+          const banner = {
+            id: doc.id,
+            imgUrl: data.imgUrl,
+          };
+          return banner;
+        });
 
-      bannerList = bannerList.filter((_, index) => index !== randomIndex);
+        // BANNER TEMPLATE 01
+        const randomIndex = Math.floor(Math.random() * bannerList.length);
+        const randomBanner = bannerList[randomIndex];
+        setImageUrl(randomBanner.imgUrl);
+        setBannerId(randomBanner.id);
 
-      // BANNER TEMPLATE 02
-      const secondRandomIndex = Math.floor(Math.random() * bannerList.length);
-      const secondRandomBanner = bannerList[secondRandomIndex];
-      setSecondImageUrl(secondRandomBanner.imgUrl);
-      setSecondBannerId(secondRandomBanner.id);
-      localStorage.setItem('bannerTemplate02', secondImageUrl);
+        bannerList = bannerList.filter((_, index) => index !== randomIndex);
 
-      bannerList = bannerList.filter((_, index) => index !== secondRandomIndex);
+        // BANNER TEMPLATE 02
+        const secondRandomIndex = Math.floor(Math.random() * bannerList.length);
+        const secondRandomBanner = bannerList[secondRandomIndex];
+        setSecondImageUrl(secondRandomBanner.imgUrl);
+        setSecondBannerId(secondRandomBanner.id);
+        localStorage.setItem('bannerTemplate02', secondRandomBanner.imgUrl);
 
-      // BANNER TEMPLATE 03
-      const thirdRandomIndex = Math.floor(Math.random() * bannerList.length);
-      const thirdRandomBanner = bannerList[thirdRandomIndex];
-      setThirdImageUrl(thirdRandomBanner.imgUrl);
-      setThirdBannerId(thirdRandomBanner.id);
+        bannerList = bannerList.filter((_, index) => index !== secondRandomIndex);
 
-      localStorage.setItem('bannerTemplate03', thirdImageUrl);
+        // BANNER TEMPLATE 03
+        const thirdRandomIndex = Math.floor(Math.random() * bannerList.length);
+        const thirdRandomBanner = bannerList[thirdRandomIndex];
+        setThirdImageUrl(thirdRandomBanner.imgUrl);
+        setThirdBannerId(thirdRandomBanner.id);
+        localStorage.setItem('bannerTemplate03', thirdRandomBanner.imgUrl);
 
-      setBanner(bannerList);
+        setBanner(bannerList);
+      }
     };
 
     fetchData();
@@ -108,7 +120,7 @@ function Template01({ isVisible01 }: Template01Props) {
 
 
 
-  
+
   // ABOUT
   const [about, setAbout] = useState<Template01[]>([]);
   const [imageUrlSegunda, setImageUrlSegunda] = useState('');
@@ -224,16 +236,48 @@ function Template01({ isVisible01 }: Template01Props) {
 
     fetchData();
   }, []);
- 
+
+
+
+
+  const [loading, setLoading] = useState(true);
+
+  // LOADING
+  useEffect(() => {
+    const localStorageValue = localStorage.getItem('loading');
+
+    if (localStorageValue !== null) {
+      setLoading(localStorageValue === 'true');
+    }
+
+    const timeoutId = setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, []);
+
+  // Salvar o estado no localStorage
+  useEffect(() => {
+    localStorage.setItem('loading', loading.toString());
+  }, [loading]);
+
+  // Limpar o estado do localStorage ao encerrar o navegador
+  window.addEventListener('beforeunload', () => {
+    localStorage.removeItem('loading');
+  });
+
 
   return (
     <Container>
-     
+      {loading ? <Loading /> : null}
       <HeaderFooter bgImage={imageUrl} as="header">
         <h1>{nomeEmpresa}</h1>
         <Line></Line>
         <h2>
-        Defendendo seus direitos, garantindo sua justiça
+          Defendendo seus direitos, garantindo sua justiça
         </h2>
         <button>Fale conosco agora</button>
       </HeaderFooter>
@@ -242,18 +286,21 @@ function Template01({ isVisible01 }: Template01Props) {
         <section className="about">
           <Info>
             <div className='about-section'>
-            <LogoTemplate
-              src={
-                imageUrlSegunda
-                  ? imageUrlSegunda
-                  : 'https://cdn.discordapp.com/attachments/1116206739373691010/1116758018403614750/ThomasiWilson1_In_a_bustling_metropolis_where_the_pillars_of_la_56479b76-2b1a-45f8-92e6-e7298d120c8c.png'
-              }
-              alt="carregando"
-            />
+              <LogoTemplate
+                src={
+                  imageUrlSegunda ? imageUrlSegunda
+                    : 'https://cdn.discordapp.com/attachments/1116206739373691010/1116758018403614750/ThomasiWilson1_In_a_bustling_metropolis_where_the_pillars_of_la_56479b76-2b1a-45f8-92e6-e7298d120c8c.png'
+                }
+                alt="carregando"
+              />
             </div>
             <div className='about-section'>
-              <h2>Sobre Nós</h2>
-              <p>Nossa equipe de advogados é amplamente reconhecida por sua excelência e dedicação na prestação de serviços jurídicos. Com vasta experiência e conhecimento, estamos preparados para enfrentar os mais desafiadores casos legais. Nossa abordagem estratégica e personalizada nos permite oferecer soluções eficientes e resultados positivos para nossos clientes. Confie em nossa expertise para proteger seus interesses e alcançar o sucesso legal desejado.</p>
+
+              <h2>Sobre Nós </h2>
+              <p>Nossa equipe de advogados é amplamente reconhecida por sua excelência e dedicação na prestação de serviços jurídicos. Com vasta experiência e conhecimento, estamos preparados para enfrentar os mais desafiadores casos legais. Nossa abordagem estratégica e personalizada nos permite oferecer soluções eficientes e resultados positivos para nossos clientes. Confie em nossa expertise para proteger seus interesses e alcançar o sucesso legal desejado.
+                Nossa equipe de advogados é amplamente reconhecida por sua excelência e dedicação na prestação de serviços jurídicos. Com vasta experiência e conhecimento, estamos preparados para enfrentar os mais desafiadores casos legais. Nossa abordagem estratégica e personalizada nos permite oferecer soluções eficientes e resultados positivos para nossos clientes. Confie em nossa expertise para proteger seus interesses e alcançar o sucesso legal desejado.
+              </p>
+
             </div>
           </Info>
         </section>
@@ -271,7 +318,7 @@ function Template01({ isVisible01 }: Template01Props) {
       <PracticeArea>
         <h1>Áreas de atuação</h1>
         <h4>
-        Nossa firma de advocacia busca sempre a excelência em serviços, oferecendo atendimento personalizado e soluções jurídicas eficazes para nossos clientes.
+          Nossa firma de advocacia busca sempre a excelência em serviços, oferecendo atendimento personalizado e soluções jurídicas eficazes para nossos clientes.
         </h4>
         <button>Ver todas as áreas</button>
         <PracticeAreaContentAll>
@@ -300,9 +347,9 @@ function Template01({ isVisible01 }: Template01Props) {
           <PracticeAreaContent>
             <PracticeContent>
               <h3>04</h3>
-              <h2>Crimes de propriedade</h2>
+              <h2>Crimes de pessoais</h2>
               <LineSmall></LineSmall>
-              <p>Protegendo seus direitos, defendendo sua propriedade. Nossa firma de advocacia é especializada em casos de crimes de propriedade, oferecendo representação legal sólida e estratégias eficazes para garantir a proteção de seus bens e interesses.</p>
+              <p>Protegendo seus direitos, defendendo sua propriedade. Nossa firma de advocacia é especializada em casos de crimes de propriedade, oferecendo representação legal sólida e estratégias eficazes.</p>
 
             </PracticeContent>
             <PracticeContent>
@@ -326,7 +373,7 @@ function Template01({ isVisible01 }: Template01Props) {
           <LineParallax></LineParallax>
           <h2>Fale com nossos advogados de defesa criminal hoje!</h2>
           <h3>
-          Fale com nossos advogados de defesa criminal hoje. Estamos aqui para ajudar você a alcançar seus objetivos de maneira legal e eficiente. Conte conosco para proteger seus direitos e liberdade.
+            Fale com nossos advogados de defesa criminal hoje. Estamos aqui para ajudar você a alcançar seus objetivos de maneira legal e eficiente. Conte conosco para proteger seus direitos e liberdade.
           </h3>
           <Contact>
             <a>

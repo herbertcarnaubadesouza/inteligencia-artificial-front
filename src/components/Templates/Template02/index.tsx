@@ -53,11 +53,11 @@ interface ApiResponse {
     };
   }[];
 }
-
+import Loading from '../Loading/Loading';
 const apiKey = process.env.REACT_APP_API_KEY;
 
 function Template02({ isVisible02 }: Template02Props) {
- 
+
 
 
   // BANNER
@@ -235,15 +235,45 @@ function Template02({ isVisible02 }: Template02Props) {
   const nomeEmpresa = "Seraphim Law Group"
 
 
+
+  const [loading, setLoading] = useState(true);
+
+  // LOADING
+  useEffect(() => {
+    const localStorageValue = localStorage.getItem('loading2');
+
+    if (localStorageValue !== null) {
+      setLoading(localStorageValue === 'true');
+    }
+
+    const timeoutId = setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, []);
+
+  // Salvar o estado no localStorage
+  useEffect(() => {
+    localStorage.setItem('loading2', loading.toString());
+  }, [loading]);
+
+  // Limpar o estado do localStorage ao encerrar o navegador
+  window.addEventListener('beforeunload', () => {
+    localStorage.removeItem('loading2');
+  });
   return (
     <Container>
+      {loading ? <Loading /> : null}
       <HeaderBlock bgImage={imageUrl}>
         <div className="container-block-header">
           <LineHeader></LineHeader>
           <span>A justiça é nosso compromisso, sua causa é nossa missão.</span>
         </div>
         <h1>
-       {nomeEmpresa}
+          {nomeEmpresa}
         </h1>
         <LineHeaderBottom></LineHeaderBottom>
         <div className="container-header-footer-block">
@@ -271,14 +301,14 @@ function Template02({ isVisible02 }: Template02Props) {
           </div>
           <h2>Você veio ao lugar certo</h2>
           <p>A Seraphim Law Group é um escritório de advocacia comprometido em proporcionar soluções jurídicas cuidadosamente planejadas aos seus clientes. Com uma equipe de profissionais altamente qualificados e experientes, a firma se dedica a atender às necessidades jurídicas de indivíduos e empresas em diversas áreas do direito. A visão da Seraphim é ser uma referência em excelência, ética e inovação jurídica, estabelecendo uma relação de confiança e parceria com seus clientes.</p>
-         
+
         </FirstBlockAbout>
         <SecondBlockAbout>
           <img
             src={
-              imageUrlSegunda
+              imageUrlTerceira
                 ? imageUrlSegunda
-                : 'https://cdn.discordapp.com/attachments/1116206739373691010/1116758018403614750/ThomasiWilson1_In_a_bustling_metropolis_where_the_pillars_of_la_56479b76-2b1a-45f8-92e6-e7298d120c8c.png'
+                : ''
             }
           ></img>
         </SecondBlockAbout>
@@ -303,7 +333,7 @@ function Template02({ isVisible02 }: Template02Props) {
                 <h3>Custódia de criança</h3>
                 <p>Nós nos empenhamos em assegurar o bem-estar das crianças, buscando soluções de custódia sensíveis e equitativas que promovam o melhor interesse dos filhos, garantindo uma transição suave e estável.</p>
               </div>
-              
+
             </Row>
             <Row>
               <div className="content-block-atuacao">
@@ -321,9 +351,9 @@ function Template02({ isVisible02 }: Template02Props) {
                 <h3>Acordos de propriedade​​​</h3>
                 <p>Negociamos e elaboramos acordos de propriedade personalizados, protegendo seus interesses e garantindo uma divisão justa e equitativa de bens, imóveis e ativos, com o objetivo de alcançar soluções amigáveis.</p>
               </div>
-              
-              
-             
+
+
+
             </Row>
           </Column>
         </div>
@@ -342,7 +372,7 @@ function Template02({ isVisible02 }: Template02Props) {
                 <div className="block-whyus-p">
                   <h4>Dedicação aos resultados</h4>
                   <p>
-                 
+
                   </p>
                 </div>
               </div>
@@ -351,7 +381,7 @@ function Template02({ isVisible02 }: Template02Props) {
                 <div className="block-whyus-p">
                   <h4>Profissionalismo e excelência jurídic</h4>
                   <p>
-                    
+
                   </p>
                 </div>
               </div>
@@ -360,7 +390,7 @@ function Template02({ isVisible02 }: Template02Props) {
                 <div className="block-whyus-p">
                   <h4>Atendimento personalizado e foco no cliente</h4>
                   <p>
-                  
+
                   </p>
                 </div>
               </div>

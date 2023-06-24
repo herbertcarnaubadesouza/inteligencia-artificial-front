@@ -223,14 +223,15 @@
 
   &.clicked {
     background-color: #F77F00;
-    border-color: #F77F00;
+   
   }
 }
 
 .choice:hover {
   background-color: #F77F00;
-  border-color: #F77F00;
-  cursor: pointer;
+  border: none!important;
+  transform: scale(1);
+ 
 }
 
 .choice-text {

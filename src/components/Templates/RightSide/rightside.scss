@@ -21,8 +21,8 @@
   width: 25%;
   height: 100vh;
   padding-top: 2rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -210,8 +210,9 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   gap: 1rem;
+  
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   background: rgba(255, 255, 255, 0.3);
@@ -221,17 +222,20 @@
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
-  line-height: 12px;
+ 
+
 
   .button-text-versao {
     font-family: 'Raleway';
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 15px;
     line-height: 12px;
     display: flex;
     align-items: center;
     color: #ffffff;
+  
+
   }
 
   &.clicked {
@@ -435,10 +439,9 @@
 
 .template-buttons-container-h2 {
   display: flex;
-
   align-items: center;
-  gap: 1rem;
-
-  padding-right: 1.5rem;
+  gap: 0.5rem;
+  padding-right:  0.5rem;
   padding-left: 0.5rem;
 }
+
