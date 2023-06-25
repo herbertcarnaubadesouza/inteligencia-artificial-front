@@ -77,8 +77,8 @@ function Question01(props: Question01Props) {
 
   useEffect(() => {
     const timer = setTimeout(() => setShowQuestion(true), 10);
-    const timer2 = setTimeout(() => setShowLoading(true), 3500);
-    const timer3 = setTimeout(() => setShowButtons(true), 6500);
+    const timer2 = setTimeout(() => setShowLoading(true), 4500);
+    const timer3 = setTimeout(() => setShowButtons(true), 7500);
 
     return () => {
       clearTimeout(timer);
@@ -181,7 +181,7 @@ function Question01(props: Question01Props) {
                 <div className="question-back">
                   <p className="question">
                     Qual categoria melhor descreve o objetivo do seu site? (por
-                    exemplo, serviços online, portfólio, blog)
+                    exemplo, loja virtual, serviços online, portfólio, blog)
                   </p>
                 </div>
               </div>
@@ -189,7 +189,7 @@ function Question01(props: Question01Props) {
             {showLoading && !showButtons && (
               <div className="while-typing">
                 <p>FOXXY AI está digitando...</p>
-                <BeatLoader speedMultiplier={0.6} size={12} color="#ccc" />
+                <BeatLoader speedMultiplier={0.5} size={12} color="#ccc" />
               </div>
             )}
             {showButtons && (

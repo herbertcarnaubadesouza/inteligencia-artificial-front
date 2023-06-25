@@ -119,8 +119,8 @@
   overflow: hidden;
   width: 0;
 
-  animation: blink 5s,
-    typing 6s steps(40, end) forwards 2s;
+  animation: blink 1s,
+  typing 1s steps(20, end) forwards 1s
 }
 
 .question-back {

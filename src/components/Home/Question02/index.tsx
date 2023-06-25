@@ -25,9 +25,9 @@ function Question02(props: Question02Props) {
   const [showLoading, setShowLoading] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowQuestion(true), 1000);
-    const timer2 = setTimeout(() => setShowLoading(true), 3800);
-    const timer3 = setTimeout(() => setShowButtons(true), 8500);
+    const timer = setTimeout(() => setShowQuestion(true), 10);
+    const timer2 = setTimeout(() => setShowLoading(true), 3000);
+    const timer3 = setTimeout(() => setShowButtons(true), 7000);
 
     return () => {
       clearTimeout(timer);
@@ -107,7 +107,7 @@ function Question02(props: Question02Props) {
             )}
             {showLoading && !showButtons && (
               <div className="while-typing">
-                <p>Rei do Sites IA está digitando...</p>
+                <p>FOXXY AI está digitando...</p>
                 <BeatLoader speedMultiplier={0.6} size={12} color="#ccc" />
               </div>
             )}

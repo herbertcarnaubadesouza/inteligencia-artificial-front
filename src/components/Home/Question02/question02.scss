@@ -51,7 +51,7 @@
   color: #fff;
   font-size: 18px;
   font-weight: 400;
-  border-right: 0.15em solid #3f3767;
+  border-right: 0.15rem solid #3f3767;
   padding-left: 2rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -60,8 +60,8 @@
   overflow: hidden;
   width: 0;
 
-  animation: blink 5s,
-    typing 6s steps(40, end) forwards 2s;
+  animation: blink 1s,
+  typing 1s steps(20, end) forwards 1s;
 }
 
 .question-back {
