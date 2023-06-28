@@ -210,26 +210,29 @@ const LogoTemplate = styled.img`
   margin-right: 1.5rem;
   z-index: 999;
   object-fit: cover;
+  
 
 
 
   @media only screen and (max-width: 1540px) {
-    width:95%;
+    width:100%;
     height: 495px;
-    margin-right:0rem;
+    margin:0rem;
     
 
   }
   @media only screen and (max-width: 1000px) {
-    width:95%;
+    width:100%;
     height: 495px; 
-    margin-right:0rem;
+    margin:0rem;
+    
   
   }
   @media only screen and (max-width: 768px) {
-    width:95%;
+    width:100%;
     height: 495px; 
-    margin-right:0rem; 
+    margin:0rem;
+    
   
   }
 `;
@@ -255,11 +258,12 @@ const Info = styled.div`
     @media only screen and (max-width: 1000px) {
    
     height: 500px;
-    width:90%;
+    width:95%;
     margin: 0 auto;
     display: flex;
     align-items:center;
    justify-content:center;
+   background-color:red;
   
   }
    
