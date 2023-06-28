@@ -163,30 +163,34 @@ margin-top:0 auto;
   display: flex;
   align-items:center;
   flex-direction: row;
-  height:750px;
+  height:auto;
+  padding-block:80px;
 
-  @media only screen and (max-width: 1000px) {
-    height:900px;
 
-  }
-  @media only screen and (max-width: 768px) {
-    height:1150px;
-
-  }
   .about{
     width:95%;
     justify-content:center;
     display: flex;
     align-items:center;
+  
  
     @media only screen and (max-width: 1700px) {
-      width:90%;
+      width:95%;
   }
+  }
+
+  @media only screen and (max-width: 1000px) {
+   
+    height:auto;
+  }
+  @media only screen and (max-width: 768px) {
+    height:auto;
+    padding-block:100px;
   }
 
 .about-section{
   margin-top:0 auto;
-  width:45%;
+  width:50%;
   @media only screen and (max-width: 1000px) {
     
     width:95%;
@@ -202,8 +206,9 @@ margin-top:0 auto;
   
 `;
 const LogoTemplate = styled.img`
-  width: 420px;
-    height: 485px;
+ margin:0 auto ;
+  width:70%;
+  height: 495px;
   margin-right: 1.5rem;
   z-index: 999;
   object-fit: cover;
@@ -211,19 +216,22 @@ const LogoTemplate = styled.img`
 
 
   @media only screen and (max-width: 1540px) {
-    width: 420px;
-    height: 485px;
+    width:95%;
+    height: 495px;
+    margin-right:0rem;
     
 
   }
   @media only screen and (max-width: 1000px) {
-    width: 500px;
+    width:95%;
     height: 495px; 
+    margin-right:0rem;
   
   }
   @media only screen and (max-width: 768px) {
-    width: 450px;
-    height:600px; 
+    width:95%;
+    height: 495px; 
+    margin-right:0rem; 
   
   }
 `;
@@ -261,6 +269,9 @@ const Info = styled.div`
 
 `;
 
+
+
+''
 
 
 const Parallax = styled.div<{ bgImage?: string }>`
