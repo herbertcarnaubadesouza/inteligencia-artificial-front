@@ -4,6 +4,7 @@ import './question06.scss';
 import PlacesAutocomplete from 'react-places-autocomplete';
 import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import { Suggestion } from "react-places-autocomplete";
+import { useNavigate } from 'react-router-dom';
 
 interface Question06Props {
   ocultarQuestion06: () => void;
@@ -53,9 +54,9 @@ function Question06(props: Question06Props) {
   const [showLoading, setShowLoading] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowQuestion(true), 1000);
-    const timer2 = setTimeout(() => setShowLoading(true), 3800);
-    const timer3 = setTimeout(() => setShowButtons(true), 8500);
+    const timer = setTimeout(() => setShowQuestion(true), 10);
+    const timer2 = setTimeout(() => setShowLoading(true), 3000);
+    const timer3 = setTimeout(() => setShowButtons(true), 5700);
 
     return () => {
       clearTimeout(timer);
@@ -139,6 +140,12 @@ function Question06(props: Question06Props) {
     localStorage.setItem('nomeEmpresa', nomeEmpresa);
   }, [nomeEmpresa]);
 
+  const navigate = useNavigate();
+
+  const goToPreview = () => {
+    navigate('/preview');
+  };;
+
   return (
     <>
       <div className='real-top-container'>
@@ -182,45 +189,7 @@ function Question06(props: Question06Props) {
           </div>
         </div>
 
-        <div className="question01-label">
-          <div className="question-label-container">
-            <img src="./images/logoFoxxy.svg" alt="" />
-            <div className="question-back">
-              <p className="question-normal-label">
-                Agora me diga qual vai ser o uso do seu site. Isso me ajudará a saber quais ferramentas e páginas você precisa
-              </p>
-            </div>
-          </div>
-        </div>
 
-        <div className="question01-selected">
-          <div className="question-selected-container">
-            <img src="./images/selected.svg" alt="" />
-            <p className="question-selected-label">
-              Minhas escolhas: {localStorage.getItem('escolha03')}
-            </p>
-          </div>
-        </div>
-
-        <div className="question01-label">
-          <div className="question-label-container">
-            <img src="./images/logoFoxxy.svg" alt="" />
-            <div className="question-back">
-              <p className="question-normal-label">
-                Informe a localização física de sua empresa (como o endereço de uma loja) ou a área que você atende (como região, cidade ou CEP)
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="question01-selected">
-          <div className="question-selected-container">
-            <img src="./images/selected.svg" alt="" />
-            <p className="question-selected-label">
-              Minhas escolhas: {localStorage.getItem('escolha04')}: {localStorage.getItem('Endereco')}
-            </p>
-          </div>
-        </div>
 
         <div className="question01-label">
           <div className="question-label-container">
@@ -256,7 +225,7 @@ function Question06(props: Question06Props) {
             )}
             {showLoading && !showButtons && (
               <div className="while-typing">
-                <p>Rei do Sites IA está digitando...</p>
+                <p>FOXXY AI está digitando...</p>
                 <BeatLoader speedMultiplier={0.6} size={12} color="#ccc" />
               </div>
             )}
@@ -265,19 +234,19 @@ function Question06(props: Question06Props) {
                 <div className="choice-container">
                   <div className="normal-buttons-container">
 
-                    <div className={buttonStates['Programa de fidelidade'] ? 'normal-button clicked' : 'normal-button'}
+                    <div className={buttonStates['Programa de fidelidade'] ? 'normal-buttone clicked' : 'normal-buttone'}
                       onClick={() => handleChoice('Programa de fidelidade')}>
                       <img className="choice-icon" src="./images/loyalty.png" alt="" />
                       <p className="button-text">Programa de fidelidade</p>
                     </div>
 
-                    <div className={buttonStates['Custo X Benefício'] ? 'normal-button clicked' : 'normal-button'}
+                    <div className={buttonStates['Custo X Benefício'] ? 'normal-buttone clicked' : 'normal-buttone'}
                       onClick={() => handleChoice('Custo X Benefício')}>
                       <img className="choice-icon" src="./images/price.png" alt="" />
                       <p className="button-text">Custo X Benefício</p>
                     </div>
 
-                    <div className={buttonStates['Experiência do cliente'] ? 'normal-button clicked' : 'normal-button'}
+                    <div className={buttonStates['Experiência do cliente'] ? 'normal-buttone clicked' : 'normal-buttone'}
                       onClick={() => handleChoice('Experiência do cliente')}>
                       <img className="choice-icon" src="./images/customer.png" alt="" />
                       <p className="button-text">Experiência do cliente</p>
@@ -286,19 +255,19 @@ function Question06(props: Question06Props) {
 
                   <div className="normal-buttons-container">
 
-                    <div className={buttonStates['Serviço amigável'] ? 'normal-button clicked' : 'normal-button'}
+                    <div className={buttonStates['Serviço amigável'] ? 'normal-buttone clicked' : 'normal-buttone'}
                       onClick={() => handleChoice('Serviço amigável')}>
                       <img className="choice-icon" src="./images/friendly.png" alt="" />
                       <p className="button-text">Serviço amigável</p>
                     </div>
 
-                    <div className={buttonStates['Gerar resultados'] ? 'normal-button clicked' : 'normal-button'}
+                    <div className={buttonStates['Gerar resultados'] ? 'normal-buttone clicked' : 'normal-buttone'}
                       onClick={() => handleChoice('Gerar resultados')}>
                       <img className="choice-icon" src="./images/results.png" alt="" />
                       <p className="button-text">Gerar resultados</p>
                     </div>
 
-                    <div className={buttonStates['Horário flexível'] ? 'normal-button clicked' : 'normal-button'}
+                    <div className={buttonStates['Horário flexível'] ? 'normal-buttone clicked' : 'normal-buttone'}
                       onClick={() => handleChoice('Horário flexível')}>
                       <img className="choice-icon" src="./images/hours.png" alt="" />
                       <p className="button-text">Horário flexível</p>
@@ -318,11 +287,11 @@ function Question06(props: Question06Props) {
         <div className="linha"></div>
         <div className="nav-container">
           <div className="button-back" onClick={props.voltarQuestion06}>
-            <img className="button-back-icon" src="./images/back.svg" alt="" />
-            <p className="button-back-text">Voltar</p>
+            <img className="button-back-icone" src="./images/back.svg" alt="" />
+            <p className="button-back-text">VOLTAR</p>
           </div>
-          <div className="button-continue" onClick={props.ocultarQuestion06}>
-            <p className="button-continue-text">Continuar</p>
+          <div className="button-continue" onClick={goToPreview}>
+            <p className="button-continue-text">CONTINUAR</p>
           </div>
         </div>
       </div>

@@ -76,8 +76,8 @@ function Question01(props: Question01Props) {
   const [showLoading, setShowLoading] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowQuestion(true), 10);
-    const timer2 = setTimeout(() => setShowLoading(true), 4500);
+    const timer = setTimeout(() => setShowQuestion(true), 100);
+    const timer2 = setTimeout(() => setShowLoading(true), 4000);
     const timer3 = setTimeout(() => setShowButtons(true), 7500);
 
     return () => {
@@ -179,7 +179,7 @@ function Question01(props: Question01Props) {
               <div className="question-container">
                 <img src="./images/logoFoxxy.svg" alt="" />
                 <div className="question-back">
-                  <p className="question">
+                  <p className="questione">
                     Qual categoria melhor descreve o objetivo do seu site? (por
                     exemplo, loja virtual, serviços online, portfólio, blog)
                   </p>
@@ -194,24 +194,24 @@ function Question01(props: Question01Props) {
             )}
             {showButtons && (
               <div className="second-block-right-side-container">
-                <p className="label">
+                <p className="label-text">
                   Pesquise para encontrar o tema que combina com sua profissão,
                   paixão ou passatempo
                 </p>
 
-                <div className="search-container">
+                <div className="search-containere">
                   <img className="search-icon" src="./images/browse.svg" alt="" />
                   <input
-                    className="search"
+                    className="searche"
                     type="text"
-                    placeholder="Por exemplo: Salão de Beleza, Loja de Roupas, Agência de Marketing"
+                    placeholder="Busque pelo que desejar ..."
                     value={searchTerm}
                     onChange={handleSearchChange}
                   />
                 </div>
 
                 <div className={`choice-container-one ${isActive ? '' : 'inactive'}`}>
-                  <p className="label">Ou navegue pelas categorias:</p>
+                  <p className="label-text">Ou navegue pelas categorias:</p>
 
 
                   <div className="buttons-container">
@@ -278,11 +278,11 @@ function Question01(props: Question01Props) {
         <div className="nav-container">
           <div className={`button-back ${isButtonActive ? 'active' : ''}`} onClick={handleButtonClick}>
             <img
-              className="button-back-icon"
+              className="button-back-icone"
               src="./images/back.svg"
               alt=""
             />
-            <p className="button-back-text">{isButtonActive ? 'Voltar para todas as categorias' : 'VOLTAR'}</p>
+            <p className="button-back-text">{isButtonActive ? 'VOLTAR PARA TODAS AS CATEGORIAS' : 'VOLTAR'}</p>
           </div>
 
           <div className="right-nav-container">

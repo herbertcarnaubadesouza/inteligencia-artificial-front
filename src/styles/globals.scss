@@ -7,7 +7,8 @@ body {
   background: url(../assets/left-side-bg-new.png);
   background-repeat: no-repeat;
   background-size: cover;
-  overflow-x: hidden;
+
+  background-position: center;
 }
 
 code {
@@ -18,6 +19,4 @@ code {
 .main-container {
   display: flex;
   flex-direction: row;
-
-;
 }

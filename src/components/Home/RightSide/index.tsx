@@ -37,20 +37,20 @@ function RightSide() {
 
   const ocultarQuestion = () => {
     setIsQuestionVisible(false);
-    setIsQuestion02Visible(true);
+    setIsQuestion05Visible(true);
   };
 
   const ocultarQuestion02 = () => {
     setIsQuestionVisible(false);
     setIsQuestion02Visible(false);
-    setIsQuestion03Visible(true)
+    setIsQuestion04Visible(false)
   };
 
   const ocultarQuestion03 = () => {
     setIsQuestionVisible(false);
     setIsQuestion02Visible(false);
     setIsQuestion03Visible(false);
-    setIsQuestion04Visible(true);
+    setIsQuestion04Visible(false);
   };
 
   const ocultarQuestion04 = () => {
@@ -58,16 +58,16 @@ function RightSide() {
     setIsQuestion02Visible(false);
     setIsQuestion03Visible(false);
     setIsQuestion04Visible(false);
-    setIsQuestion05Visible(true);
+    setIsQuestion05Visible(false);
   };
 
   const ocultarQuestion05 = () => {
     setIsQuestionVisible(false);
     setIsQuestion02Visible(false);
     setIsQuestion03Visible(false);
-    setIsQuestion04Visible(false);
+    setIsQuestion04Visible(true);
     setIsQuestion05Visible(false);
-    setIsQuestion06Visible(true);
+    setIsQuestion06Visible(false);
   };
 
   const ocultarQuestion06 = () => {
@@ -77,11 +77,11 @@ function RightSide() {
     setIsQuestion04Visible(false);
     setIsQuestion05Visible(false);
     setIsQuestion06Visible(false);
-    setIsQuestion07Visible(true);
+    setIsQuestion07Visible(false);
   };
 
   const voltarQuestion02 = () => {
-    setIsQuestionVisible(true);
+    setIsQuestionVisible(false);
     setIsQuestion02Visible(false);
     setIsQuestion03Visible(false);
     setIsQuestion04Visible(false);
@@ -92,7 +92,7 @@ function RightSide() {
 
   const voltarQuestion03 = () => {
     setIsQuestionVisible(false);
-    setIsQuestion02Visible(true);
+    setIsQuestion02Visible(false);
     setIsQuestion03Visible(false);
     setIsQuestion04Visible(false);
     setIsQuestion05Visible(false);
@@ -103,18 +103,18 @@ function RightSide() {
   const voltarQuestion04 = () => {
     setIsQuestionVisible(false);
     setIsQuestion02Visible(false);
-    setIsQuestion03Visible(true);
+    setIsQuestion03Visible(false);
     setIsQuestion04Visible(false);
-    setIsQuestion05Visible(false);
+    setIsQuestion05Visible(true);
     setIsQuestion06Visible(false);
     setIsQuestion07Visible(false);
   };
 
   const voltarQuestion05 = () => {
-    setIsQuestionVisible(false);
+    setIsQuestionVisible(true);
     setIsQuestion02Visible(false);
     setIsQuestion03Visible(false);
-    setIsQuestion04Visible(true);
+    setIsQuestion04Visible(false);
     setIsQuestion05Visible(false);
     setIsQuestion06Visible(false);
     setIsQuestion07Visible(false);
@@ -125,7 +125,7 @@ function RightSide() {
     setIsQuestion02Visible(false);
     setIsQuestion03Visible(false);
     setIsQuestion04Visible(false);
-    setIsQuestion05Visible(true);
+    setIsQuestion05Visible(false);
     setIsQuestion06Visible(false);
     setIsQuestion07Visible(false);
   };
@@ -136,7 +136,7 @@ function RightSide() {
     setIsQuestion03Visible(false);
     setIsQuestion04Visible(false);
     setIsQuestion05Visible(false);
-    setIsQuestion06Visible(true);
+    setIsQuestion06Visible(false);
     setIsQuestion07Visible(false);
   };
 

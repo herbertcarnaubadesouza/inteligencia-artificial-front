@@ -32,12 +32,13 @@ export const Container = styled.div`
     color: #fff;
     font-family: ${(props: ThemeProps) => props.theme.font.fontFamily};
     z-index: 999;
-    font-size: 3em;
+    font-size: 2.4rem;
     font-weight: 500;
     text-align: left;
     margin-block: 0;
-    margin-right: 35%;
+    margin-right: 1%;
     line-height: 1.4em;
+    width: 100%;
   }
   h2 {
     color: ${(props: ThemeProps) =>
@@ -137,17 +138,26 @@ export const AboutSection = styled.section`
   background-color: #fff;
   padding-block: 100px;
   padding-left: 6rem;
-  padding-right: 8.2rem;
-
-
+  padding-right: 3.2rem;
   width: 80%;
   margin: 0 auto;
-
-
-
+ 
   @media only screen and (max-width: 1520px) {
-    width: 85%;
+  
+    width: 98%;
+
   }
+  @media only screen and (max-width: 1200px) {
+    padding-left: 0rem;
+    padding-right: 0rem;
+    width: 90%;
+    display:flex;
+    flex-direction:column-reverse;
+    padding-top: 5rem;
+    
+  }
+
+
 `;
 export const LeftSideBlock = styled.div`
   display: flex;
@@ -156,7 +166,12 @@ export const LeftSideBlock = styled.div`
   width: 60%;
  
 
-
+  @media only screen and (max-width: 1200px) {
+    margin: 0 auto;
+    width: 75%;
+    margin-top:5rem;
+  
+  }
   .title-about-section-block {
     h2,
     h3 {
@@ -232,22 +247,34 @@ export const LeftSideBlock = styled.div`
   }
 `;
 export const RightSideBlock = styled.div`
-width: 30%;
-
-
-
-
-
-
-
-
+  width: 30%;
   margin-left: -40px;
+
+
   img {
     width: 340px;
     height: 533px;
     object-fit: cover;
     box-shadow: 40px -40px 0 0 ${(props: ThemeProps) => mix(0.1, '#ffffffc6', props.theme.headerFooterBgColor)};
   }
+
+
+  @media only screen and (max-width: 1200px) {
+ 
+    margin: 0 auto;
+    width: 75%;
+   
+    display: flex;
+     justify-content:center;
+    align-items:center;
+    margin:0;
+    img {
+    width: 75%;
+    height: 35%;
+    }
+
+  }
+
 `;
 export const LineAboutSection = styled.div`
   height: 5.5px;
@@ -265,10 +292,11 @@ export const IconSection = styled.section`
     flex-direction: row;
     justify-content: center;
     gap: 5rem;
-    
+   
     background-color: ${(props: ThemeProps) =>
     mix(0.9, '#ffffff', props.theme.headerFooterBgColor)};
-  
+   
+
   }
   .meta-icons {
     display: flex;
@@ -294,6 +322,27 @@ export const IconSection = styled.section`
   svg {
     fill: ${(props: ThemeProps) => props.theme.fontTitleColor};
   }
+
+
+  @media screen and (max-width:768px){
+    .Container-blocks {
+      gap: 2rem;
+      padding: 0rem;
+      padding-block: 2.5rem;
+    }
+    .meta-icons{
+   
+      
+      h3{
+        font-size: 18px;
+      }
+      p {
+        font-size: 9px;
+        text-align:center;
+        line-height: 1.1rem;
+      }
+    }
+   }
 `;
 
 export const AwardsSection = styled.section`
@@ -402,16 +451,19 @@ export const PraticaceSection = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
-
-  padding-block: 100px;
+  padding-block: 70px;
   padding-left: 1rem;
   padding-right: 1rem;
   width: 99%;
   margin: 0 auto;
-height:870px;
+  height:auto;
   gap:50px;
 
- 
+ @media screen and (max-width:1100px){
+  flex-direction:column;
+  justify-content: center;
+  
+ }
  
 `;
 
@@ -440,6 +492,28 @@ export const LeftAwardBlock = styled.div`
     line-height: 1.5rem;
     width: 90%;
   }
+  
+ @media screen and (max-width:1100px){
+  margin:0;
+  flex-direction:column;
+  width: 100%;
+  display: flex;
+  align-items:center;
+ justify-content:center;
+  height:auto;
+h2{
+  
+    font-size:30px;
+
+margin:15px 0px;
+}
+  img {
+    margin-top: 0px;
+   
+  }
+
+
+ }
 `;
 
 export const RigthAwardBlock = styled.div`
@@ -448,16 +522,8 @@ export const RigthAwardBlock = styled.div`
   width: 30%;
   height: 100%;
   gap: 10px;
-
   margin-top:120px;
 
-  @media only screen and (max-width: 1600px) {
-  margin-top:60px;
-  }
- 
-  
- 
-  
 
 
 
@@ -467,7 +533,7 @@ export const RigthAwardBlock = styled.div`
     gap: 1rem;
     width:100%;
     height:200px;
-   
+    
   
     @media only screen and (max-width: 1600px) {
      margin-bottom:8px;
@@ -491,9 +557,49 @@ export const RigthAwardBlock = styled.div`
       color: #3a3a3a;
       font-weight: 400;
       line-height: 1.5rem;
-      width: 90%;
+      width: 95%;
     }
+
+
+    @media only screen and (max-width: 1100px) {
+  
+    width:100%;
+    height:250px;
+    padding-left:30px;
+   
   }
+  }
+
+  
+  @media only screen and (max-width: 1600px) {
+  margin-top:10px;
+  }
+
+
+  @media only screen and (max-width: 1100px) {
+    
+   margin: 0 auto;
+  flex-direction: column;
+  width: 95%;
+  height: 510px !important;
+  align-items:center;
+  justify-content:center;
+  text-align:start;
+  margin-top:0px;
+ 
+ 
+ 
+  }
+
+  @media only screen and (max-width: 600px) {
+    
+  
+    height: 670px !important;
+   
+   
+   
+   
+    }
 `;
 
 export const HowWorksSection = styled.div`
@@ -503,7 +609,8 @@ export const HowWorksSection = styled.div`
   align-items: center;
   text-align: end;
   width: 100%;
-  height: 800px;
+  height: auto;
+padding-block:20px;
 
 `;
 
@@ -514,9 +621,10 @@ export const HowWorksHeaderSection = styled.div`
   align-items: center;
   text-align: center;
   width: 100%;
-  height: 80%;
+  height: auto;
   gap: 10px;
   margin-top: 50px;
+  
  
 
 
@@ -529,9 +637,10 @@ export const HowWorksHeaderSection = styled.div`
   }
   .containe-title {
     width: 100%;
-    height: 200px;
-    margin-top: 60px;
-   
+    height: auto;
+    margin-top: 10px;
+    padding-block:30px;
+
 
     h2 {
       text-align: center;
@@ -552,6 +661,29 @@ export const HowWorksHeaderSection = styled.div`
 
       color: #000;
     }
+
+    @media screen and (max-width:1110px){
+      
+   
+      h2 {
+    
+      font-size: 30px;
+      margin-bottom: 20px;
+     
+    }
+    p {
+     
+    
+      font-size: 18px;
+      margin: 0 auto;
+      width: 95%;
+     
+
+     
+
+     
+    }
+  }
   }
 
   .container-works-pai {
@@ -602,6 +734,7 @@ export const HowWorksHeaderSection = styled.div`
     mix(0.8, '#c9c7c7af', props.theme.headerFooterBgColor)};
       }
     }
+    
   }
 
   .container-btn {
@@ -629,6 +762,36 @@ export const HowWorksHeaderSection = styled.div`
       }
     }
   }
+
+  @media screen and (max-width:1110px){
+    .container-works-pai {
+    margin: 0 auto;
+    height: 50%;
+    width: 100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction: column;
+    margin-bottom: 50px;
+  
+    .container-works {
+      margin:0 auto;
+      width: 96%;
+      height: 320px;
+      background-color: ${(props: ThemeProps) =>
+    mix(0.95, '#eeeeee', props.theme.headerFooterBgColor)};
+      justify-content: space-around;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      border-radius: 7%;}
+  }
+
+  
+  
+
+  
+  }
 `;
 
 export const HowLocationSection = styled.div`
@@ -638,13 +801,16 @@ export const HowLocationSection = styled.div`
   align-items: center;
   text-align: center;
   width: 100%;
-  height: 600px;
+  height: 450px;
+  padding-block:20px;
+
+  
+  
 
   .container-location {
     margin: 0 auto;
     width: 90%;
-    height: 60%;
-
+    height: 90%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -653,7 +819,7 @@ export const HowLocationSection = styled.div`
 
   .container-title {
     width: 100%;
-    height: 35%;
+    height:auto;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -668,6 +834,7 @@ export const HowLocationSection = styled.div`
       margin-bottom: 20px;
       color: #000;
       font-weight: 500;
+      
     }
     p {
       margin: 0 auto;
@@ -676,10 +843,13 @@ export const HowLocationSection = styled.div`
       font-size: 20px;
       color: #000;
     }
+    
+   
+  
   }
   .container-modalLocation {
     width: 100%;
-    height: 60%;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -737,7 +907,35 @@ export const HowLocationSection = styled.div`
         }
       }
     }
+    
   }
+
+  @media screen and (max-width: 1100px) {
+  height:auto;
+  margin: 0 ;
+  padding:0rem;
+  padding-block:3rem;
+
+  .container-modalLocation {
+    width: 100%;
+    height: 90%;
+    flex-direction:column; 
+    .modalLocation{
+      margin: 0 auto;
+      width: 100%;
+      display:flex;
+      align-items:center;
+justify-content:center;
+flex-direction:column;
+      height: 250px;
+  }
+  
+  }
+
+  }
+
+ 
+
 `;
 
 export const HowHelpSection = styled.div<{ bgImage?: string }>`
@@ -773,16 +971,16 @@ export const HowHelpSection = styled.div<{ bgImage?: string }>`
     h1 {
       text-align: center;
       margin: 0 auto;
-      width: 90%;
-      font-size: 45;
+      width: 95%;
+      font-size: 35px;
       font-weight: 400;
-      margin-bottom: 40px;
+      margin-bottom: 35px;
     }
     p {
       text-align: center;
       margin: 0 auto;
       width: 70%;
-      font-size: 22px;
+      font-size: 18px;
       margin-bottom: 60px;
     }
     .btn {
@@ -829,5 +1027,36 @@ export const Footer = styled.div`
       font-weight: normal;
       margin: 0px;
     }
+
+    
   }
+
+  @media screen and (max-width:678px) {
+    .content-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 1rem;
+    padding-block: 4px;
+    background-color: ${(props: ThemeProps) =>
+    mix(0.9, '#000', props.theme.headerFooterBgColor)};
+ p {
+    background-color:black;
+      font-size: 12px;
+      color: rgba(198, 198, 198, 0.77);
+      font-weight: normal;
+      margin: 0px;
+      display: flex;
+    align-items: center;
+    justify-content: end;
+      width:50%;
+      height:30px;
+
+    }
+
+ 
+  }
+}
+
+
 `;

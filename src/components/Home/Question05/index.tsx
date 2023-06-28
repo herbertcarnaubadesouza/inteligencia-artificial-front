@@ -53,9 +53,9 @@ function Question05(props: Question05Props) {
   const [showLoading, setShowLoading] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowQuestion(true), 1000);
-    const timer2 = setTimeout(() => setShowLoading(true), 3800);
-    const timer3 = setTimeout(() => setShowButtons(true), 8500);
+    const timer = setTimeout(() => setShowQuestion(true), 10);
+    const timer2 = setTimeout(() => setShowLoading(true), 3000);
+    const timer3 = setTimeout(() => setShowButtons(true), 5700);
 
     return () => {
       clearTimeout(timer);
@@ -126,6 +126,7 @@ function Question05(props: Question05Props) {
     const inputElement = document.getElementById('name') as HTMLInputElement;
     if (inputElement) {
       setNomeEmpresa(inputElement.value);
+
     }
   };
 
@@ -156,68 +157,14 @@ function Question05(props: Question05Props) {
           </div>
         </div>
 
-        <div className="question01-label">
-          <div className="question-label-container">
-            <img src="./images/logoFoxxy.svg" alt="" />
-            <div className="question-back">
-              <p className="question-normal-label">
-                Personalize o seu site escolhendo os serviços que você vai oferecer (você pode mudar isso depois)
-              </p>
-            </div>
-          </div>
-        </div>
 
-        <div className="question01-selected">
-          <div className="question-selected-container">
-            <img src="./images/selected.svg" alt="" />
-            <p className="question-selected-label">
-              Minhas escolhas: {localStorage.getItem('escolha02')}
-            </p>
-          </div>
-        </div>
 
-        <div className="question01-label">
-          <div className="question-label-container">
-            <img src="./images/logoFoxxy.svg" alt="" />
-            <div className="question-back">
-              <p className="question-normal-label">
-                Agora me diga qual vai ser o uso do seu site. Isso me ajudará a saber quais ferramentas e páginas você precisa
-              </p>
-            </div>
-          </div>
-        </div>
 
-        <div className="question01-selected">
-          <div className="question-selected-container">
-            <img src="./images/selected.svg" alt="" />
-            <p className="question-selected-label">
-              Minhas escolhas: {localStorage.getItem('escolha03')}
-            </p>
-          </div>
-        </div>
 
-        <div className="question01-label">
-          <div className="question-label-container">
-            <img src="./images/logoFoxxy.svg" alt="" />
-            <div className="question-back">
-              <p className="question-normal-label">
-                Informe a localização física de sua empresa (como o endereço de uma loja) ou a área que você atende
-              </p>
-            </div>
-          </div>
-        </div>
 
-        <div className="question01-selected">
-          <div className="question-selected-container">
-            <img src="./images/selected.svg" alt="" />
-            <p className="question-selected-label">
-              Minhas escolhas: {localStorage.getItem('escolha04')}: {localStorage.getItem('Endereco')}
-            </p>
-          </div>
-        </div>
 
         <div id="quention01">
-          <div id="top-container" className="top-container">
+          <div id="top-container" className="top-containere">
             {showQuestion && (
               <div className="question-container">
                 <img src="./images/logoFoxxy.svg" alt="" />
@@ -230,23 +177,24 @@ function Question05(props: Question05Props) {
             )}
             {showLoading && !showButtons && (
               <div className="while-typing">
-                <p>Rei do Sites IA está digitando...</p>
+                <p>FOXXY AI está digitando...</p>
                 <BeatLoader speedMultiplier={0.6} size={12} color="#ccc" />
               </div>
             )}
             {showButtons && (
               <div className="second-block-right-side-container">
                 <div className="choice-container">
-                  <div className="adress-search-container">
+                  <div className="adress-search-containere">
                     <img className="search-icon" src="./images/browse.svg" alt="" />
                     <div className="adress-search-input">
                       <input
                         id="name"
-                        className="adress-search"
+                        className="adress-searche"
                         type="text"
                         placeholder="Escreva o nome da sua empresa aqui"
                         value={nomeEmpresa}
                         onChange={handleNomeEmpresaChange}
+                        autoComplete='off'
                       />
                     </div>
                   </div>
@@ -262,11 +210,11 @@ function Question05(props: Question05Props) {
         <div className="linha"></div>
         <div className="nav-container">
           <div className="button-back" onClick={props.voltarQuestion05}>
-            <img className="button-back-icon" src="./images/back.svg" alt="" />
-            <p className="button-back-text">Voltar</p>
+            <img className="button-back-icone" src="./images/back.svg" alt="" />
+            <p className="button-back-text">VOLTAR</p>
           </div>
           <div className="button-continue" onClick={props.ocultarQuestion05}>
-            <p className="button-continue-text">Continuar</p>
+            <p className="button-continue-text">CONTINUAR</p>
           </div>
         </div>
       </div>

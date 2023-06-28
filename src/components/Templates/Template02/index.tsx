@@ -279,15 +279,8 @@ function Template02({ isVisible02 }: Template02Props) {
         <div className="container-header-footer-block">
           <div>
             <div className="header-footer-block">
-              <MapPin size={16} weight="fill" />
-              <span>Our Location</span>
-            </div>
-            <h4>Melbourne, Australia</h4>
-          </div>
-          <div>
-            <div className="header-footer-block">
               <PhoneCall size={16} weight="fill" />
-              <span>Free Review</span>
+              <span>Entre em contato</span>
             </div>
             <h4>91 123-456-7890/91</h4>
           </div>

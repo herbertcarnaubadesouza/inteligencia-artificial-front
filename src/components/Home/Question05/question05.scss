@@ -3,9 +3,8 @@
   padding-right: 1rem;
   height: 65.5vh;
   scrollbar-width: thin;
-  scrollbar-color: #ffffff #E9E8ED;
+  scrollbar-color: #ffffff #e9e8ed;
 }
-
 
 .real-top-container::-webkit-scrollbar {
   width: 6px;
@@ -13,26 +12,25 @@
 }
 
 .real-top-container::-webkit-scrollbar-track {
-  background-color: #E9E8ED;
+  background-color: #e9e8ed;
   border-radius: 6px;
-
 }
 
 .real-top-container::-webkit-scrollbar-thumb {
   background-color: #ffffff;
-  border: 2px solid #E9E8ED;
+  border: 2px solid #e9e8ed;
   border-radius: 6px;
 }
 
 .real-top-container::-webkit-scrollbar::after {
-  content: "";
+  content: '';
   display: block;
   margin-left: 10px;
   /* Adiciona margem esquerda à barra de rolagem */
 }
 
 .top-container {
-  padding-bottom: 20rem;
+  padding-bottom: 5rem;
 }
 
 .inactive {
@@ -49,7 +47,6 @@
   background-color: #231a5000;
 }
 
-
 .question-container {
   display: flex;
   flex-direction: row;
@@ -64,7 +61,6 @@
 }
 
 .while-typing {
-
   display: flex;
   align-items: center;
   opacity: 0; // Inicialmente invisível
@@ -116,8 +112,7 @@
   overflow: hidden;
   width: 0;
 
-  animation: blink 5s,
-    typing 6s steps(40, end) forwards 2s;
+  animation: blink 5s, typing 6s steps(40, end) forwards 2s;
 }
 
 .question-back {
@@ -278,7 +273,7 @@
 }
 
 .button:hover {
-  background-color: #F77F00;
+  background-color: #f77f00;
   cursor: pointer;
 }
 
@@ -293,12 +288,12 @@
   margin-bottom: 0.5rem;
   padding-left: 3.5rem;
   padding-right: 3.5rem;
-  background-color: #F77F00;
+  background-color: #f77f00;
   border-radius: 1rem;
 }
 
 .button-continue:hover {
-  background-color: #F77F00;
+  background-color: #f77f00;
   cursor: pointer;
 
   .button-continue-text {
@@ -334,7 +329,7 @@
   cursor: pointer;
 
   .button-back-icon {
-    background-color: #F77F00;
+    background-color: #f77f00;
   }
 
   .button-back-text {
@@ -413,7 +408,6 @@
   }
 }
 
-
 .tooltip-two {
   &.style-one {
     display: none;
@@ -484,7 +478,6 @@
 }
 
 @keyframes blink {
-
   0%,
   100% {
     border-color: transparent;
@@ -510,7 +503,6 @@ li {
 }
 
 li.active {
-
   position: relative;
 }
 
@@ -521,7 +513,7 @@ li.active:after {
   left: 0;
   width: 100%;
   height: 2px;
-  background-color: #F77F00;
+  background-color: #f77f00;
 }
 
 .linha {
@@ -551,7 +543,7 @@ li.active:after {
 
 .normal-button {
   &.clicked {
-    background-color: #F77F00;
+    background-color: #f77f00;
     border: none;
   }
 }
@@ -568,11 +560,10 @@ li.active:after {
   background-color: #ffffff48;
   border: none;
   border-radius: 0.5rem;
-
 }
 
 .normal-button:hover {
-  background-color: #F77F00;
+  background-color: #f77f00;
   border: none;
   cursor: pointer;
 }
@@ -627,52 +618,13 @@ li.active:after {
 
 .suggestion-item {
   background-color: #fff;
-
 }
-
-
-.adress-search {
-  color: #ffffff;
-  font-size: 18px;
-  font-weight: 400;
-  border: none;
-  background-color: #00000000;
-  width: 100%;
-}
-
-
-.adress-search {
-  width: 90%;
-
-  &::placeholder {
-    color: #ffffff;
-    font-weight: 400;
-    opacity: 0.9;
-  }
-
-  &:focus {
-    outline: none;
-  }
-}
-
 
 .adress-container {
   display: flex;
   width: 100%;
   flex-direction: column;
   overflow-x: hidden;
-}
-
-.adress-search-container {
-  padding: 1.2rem;
-  border-radius: 1.5rem;
-  background-color: #ffffff3b;
-  align-items: center;
-  display: flex;
-  border: none;
-
-  margin-bottom: 3rem;
-  margin-left: 5rem;
 }
 
 .adress-search-input {
@@ -686,4 +638,43 @@ li.active:after {
   font-weight: 400;
   margin-left: 5rem;
   padding-top: 1rem;
+}
+
+// gui
+
+.adress-searche {
+  width: 70%;
+  background-color: transparent !important;
+  border: none !important;
+  caret-color: rgb(255, 255, 255);
+  color: #fff;
+  font-size: 18px;
+  font-weight: 300;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+
+  height: 25px;
+  &::placeholder {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 300;
+    margin-top: -0.5rem;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.adress-search-containere {
+  padding: 1.2rem;
+  border-radius: 1.5rem;
+  background-color: #ffffff3b;
+  align-items: center;
+  display: flex;
+  border: none;
+  margin-right: 23px;
+  margin-bottom: 3rem;
+  margin-left: 5rem;
 }

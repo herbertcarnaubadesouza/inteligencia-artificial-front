@@ -302,25 +302,25 @@ function Template03({ isVisible03 }: Template03Props) {
       <IconSection>
         <div className="Container-blocks">
           <div className="meta-icons">
-            <Scales size={50} weight="fill" />
+            <Scales size={40} weight="fill" />
             <h3>120+</h3>
             <p>Casos Resolvidos</p>
           </div>
 
           <div className="meta-icons">
-            <Hammer size={50} weight="fill" />
+            <Hammer size={40} weight="fill" />
             <h3>120+</h3>
             <p>Clientes Satisfeitos</p>
           </div>
 
           <div className="meta-icons">
-            <Buildings size={50} weight="fill" />
+            <Buildings size={40} weight="fill" />
             <h3>120+</h3>
             <p>Escritorios</p>
           </div>
 
           <div className="meta-icons">
-            <BagSimple size={50} weight="fill" />
+            <BagSimple size={40} weight="fill" />
             <h3>120+</h3>
             <p>Associados Legais</p>
           </div>

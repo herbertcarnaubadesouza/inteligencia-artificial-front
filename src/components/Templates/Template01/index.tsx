@@ -283,9 +283,9 @@ function Template01({ isVisible01 }: Template01Props) {
       </HeaderFooter>
 
       <AboutSection>
-        <section className="about">
+        <section className="about" >
           <Info>
-            <div className='about-section'>
+            <div className='about-section ' id='about-section'>
               <LogoTemplate
                 src={
                   imageUrlSegunda ? imageUrlSegunda
@@ -294,7 +294,7 @@ function Template01({ isVisible01 }: Template01Props) {
                 alt="carregando"
               />
             </div>
-            <div className='about-section'>
+            <div className='about-section' >
 
               <h2>Sobre Nós </h2>
               <p>Nossa equipe de advogados é amplamente reconhecida por sua excelência e dedicação na prestação de serviços jurídicos. Com vasta experiência e conhecimento, estamos preparados para enfrentar os mais desafiadores casos legais. Nossa abordagem estratégica e personalizada nos permite oferecer soluções eficientes e resultados positivos para nossos clientes. Confie em nossa expertise para proteger seus interesses e alcançar o sucesso legal desejado.
@@ -321,6 +321,7 @@ function Template01({ isVisible01 }: Template01Props) {
           Nossa firma de advocacia busca sempre a excelência em serviços, oferecendo atendimento personalizado e soluções jurídicas eficazes para nossos clientes.
         </h4>
         <button>Ver todas as áreas</button>
+
         <PracticeAreaContentAll>
           <PracticeAreaContent>
             <PracticeContent>
@@ -377,7 +378,7 @@ function Template01({ isVisible01 }: Template01Props) {
           </h3>
           <Contact>
             <a>
-              <Phone size={32} weight="fill" />
+              <Phone size={28} weight="fill" />
             </a>
             <h2>929-242-6868</h2>
           </Contact>

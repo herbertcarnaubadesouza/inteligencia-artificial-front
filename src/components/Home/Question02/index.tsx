@@ -25,9 +25,9 @@ function Question02(props: Question02Props) {
   const [showLoading, setShowLoading] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowQuestion(true), 10);
-    const timer2 = setTimeout(() => setShowLoading(true), 3000);
-    const timer3 = setTimeout(() => setShowButtons(true), 7000);
+    const timer = setTimeout(() => setShowQuestion(true), 100);
+    const timer2 = setTimeout(() => setShowLoading(true), 4000);
+    const timer3 = setTimeout(() => setShowButtons(true), 6900);
 
     return () => {
       clearTimeout(timer);
@@ -167,7 +167,7 @@ function Question02(props: Question02Props) {
         <div className="nav-container">
           <div className="button-back" onClick={props.voltarQuestion02}>
             <img
-              className="button-back-icon"
+              className="button-back-icone"
               src="./images/back.svg"
               alt=""
             />

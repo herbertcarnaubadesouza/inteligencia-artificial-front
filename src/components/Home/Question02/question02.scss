@@ -3,9 +3,8 @@
   padding-right: 1rem;
   height: 65.5vh;
   scrollbar-width: thin;
-  scrollbar-color: #ffffff #E9E8ED;
+  scrollbar-color: #ffffff #e9e8ed;
 }
-
 
 .real-top-container::-webkit-scrollbar {
   width: 6px;
@@ -13,19 +12,18 @@
 }
 
 .real-top-container::-webkit-scrollbar-track {
-  background-color: #E9E8ED;
+  background-color: #e9e8ed;
   border-radius: 6px;
-
 }
 
 .real-top-container::-webkit-scrollbar-thumb {
   background-color: #ffffff;
-  border: 2px solid #E9E8ED;
+  border: 2px solid #e9e8ed;
   border-radius: 6px;
 }
 
 .real-top-container::-webkit-scrollbar::after {
-  content: "";
+  content: '';
   display: block;
   margin-left: 10px;
   /* Adiciona margem esquerda à barra de rolagem */
@@ -60,8 +58,7 @@
   overflow: hidden;
   width: 0;
 
-  animation: blink 1s,
-  typing 1s steps(20, end) forwards 1s;
+  animation: blink 1s, typing 1s steps(20, end) forwards 1s;
 }
 
 .question-back {
@@ -111,7 +108,6 @@
 }
 
 .while-typing {
-
   display: flex;
   align-items: center;
   opacity: 0; // Inicialmente invisível
@@ -140,7 +136,6 @@
   white-space: nowrap; // evita quebras de linha
 }
 
-
 .question-selected-label {
   color: #fff;
   font-size: 18px;
@@ -148,10 +143,6 @@
   white-space: nowrap;
   padding-left: 2rem;
 }
-
-
-
-
 
 .label {
   color: #fff;
@@ -278,7 +269,7 @@
 }
 
 .button:hover {
-  background-color: #F77F00;
+  background-color: #f77f00;
   cursor: pointer;
 }
 
@@ -293,12 +284,12 @@
   margin-bottom: 0.5rem;
   padding-left: 3.5rem;
   padding-right: 3.5rem;
-  background-color: #F77F00;
+  background-color: #f77f00;
   border-radius: 1rem;
 }
 
 .button-continue:hover {
-  background-color: #F77F00;
+  background-color: #f77f00;
   cursor: pointer;
 
   .button-continue-text {
@@ -334,7 +325,7 @@
   cursor: pointer;
 
   .button-back-icon {
-    background-color: #F77F00;
+    background-color: #f77f00;
   }
 
   .button-back-text {
@@ -413,7 +404,6 @@
   }
 }
 
-
 .tooltip-two {
   &.style-one {
     display: none;
@@ -484,7 +474,6 @@
 }
 
 @keyframes blink {
-
   0%,
   100% {
     border-color: transparent;
@@ -510,7 +499,6 @@ li {
 }
 
 li.active {
-
   position: relative;
 }
 
@@ -521,7 +509,7 @@ li.active:after {
   left: 0;
   width: 100%;
   height: 2px;
-  background-color: #F77F00;
+  background-color: #f77f00;
 }
 
 .linha {
@@ -547,11 +535,12 @@ li.active:after {
   margin-bottom: 1rem;
   padding-left: 5rem;
   padding-right: 5px;
+  margin-right: 5px;
 }
 
 .normal-button {
   &.clicked {
-    background-color: #F77F00;
+    background-color: #f77f00;
     border: none;
   }
 }
@@ -568,11 +557,10 @@ li.active:after {
   background-color: #ffffff48;
   border: none;
   border-radius: 0.5rem;
-
 }
 
 .normal-button:hover {
-  background-color: #F77F00;
+  background-color: #f77f00;
   border: none;
   cursor: pointer;
 }

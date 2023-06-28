@@ -4,15 +4,13 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 
-
-
-
 * {
   box-sizing: border-box;
+
+  overflow: hidden;
 }
 
 .template-rightside-container {
-
   background-image: url('../../../../public/images/back-right.png');
   background-position: center;
   background-repeat: no-repeat;
@@ -45,7 +43,6 @@
 .real-top-container::-webkit-scrollbar-thumb {
   background-color: #888888;
 }
-
 
 .while-typing {
   display: flex;
@@ -118,13 +115,12 @@
   border-radius: 0.5rem;
 
   &.clicked {
-    background-color: #F77F00;
-
+    background-color: #f77f00;
   }
 }
 
 .template-button:hover {
-  background-color: #F77F00;
+  background-color: #f77f00;
   cursor: pointer;
 }
 
@@ -140,12 +136,12 @@
   border-radius: 0.5rem;
 
   &.clicked {
-    background-color: #F77F00;
+    background-color: #f77f00;
   }
 }
 
 .font-button:hover {
-  background-color: #F77F00;
+  background-color: #f77f00;
   cursor: pointer;
 }
 
@@ -212,7 +208,7 @@
   align-items: center;
   justify-content: space-around;
   gap: 1rem;
-  
+
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   background: rgba(255, 255, 255, 0.3);
@@ -222,8 +218,6 @@
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
- 
-
 
   .button-text-versao {
     font-family: 'Raleway';
@@ -234,8 +228,6 @@
     display: flex;
     align-items: center;
     color: #ffffff;
-  
-
   }
 
   &.clicked {
@@ -367,7 +359,6 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 30px;
-
 }
 
 .button-back-donw {
@@ -412,7 +403,6 @@
   backdrop-filter: blur(10.479px);
   border-radius: 16px;
 
-
   &:hover {
     cursor: pointer;
     background: #f77f00;
@@ -436,12 +426,130 @@
   }
 }
 
-
 .template-buttons-container-h2 {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding-right:  0.5rem;
+  padding-right: 0.5rem;
   padding-left: 0.5rem;
 }
+@media (max-width: 1200px) {
+  .template-rightside-container {
+    display: none;
+  }
+}
+@media (max-width: 2500px) {
+  .template-rightside-container {
+    padding-top: 0.7rem;
 
+    .style-h2 {
+      font-size: 16px;
+    }
+
+    .template-buttons-container-h2 {
+      img {
+        height: 30px;
+        width: 35px;
+      }
+    }
+
+    .template-label {
+      color: #ffffff;
+      font-size: 16px;
+
+      padding-top: 0.1rem;
+    }
+    .template-button-versao {
+      height: 30px;
+
+      justify-content: center;
+
+      padding-top: 0.1rem;
+      padding-bottom: 0.1rem;
+
+      .button-text-versao {
+        font-size: 13px;
+      }
+    }
+    .template-buttons-container {
+      gap: 1rem;
+      margin-bottom: 0.4rem;
+      padding-top: 0.4rem;
+      padding-right: 0.5rem;
+      padding-left: 0.5rem;
+    }
+    .template-button-cores {
+      width: 100%;
+      height: 50px;
+    }
+
+    .font-button-fonte {
+      width: 100%;
+      height: 60px;
+      padding-left: 10px;
+
+      padding-top: 0rem;
+      padding-bottom: 0rem;
+
+      .font-text {
+        width: 100%;
+        height: 45px;
+        margin-left: 1px;
+        font-size: 14px;
+
+        .text-menor {
+          font-size: 10px;
+          font-family: 'Poppins', sans-serif;
+        }
+      }
+    }
+
+    .nav-container-donw {
+      width: 95%;
+      font-size: 14px;
+      margin-bottom: 40px;
+    }
+
+    .button-back-donw {
+      width: 30%;
+      font-size: 14px;
+
+      .button-back-icon-donw {
+        width: 25px;
+        height: 25px;
+        padding: 1px;
+        font-size: 14px;
+        border-radius: 30px;
+        &:hover {
+          cursor: pointer;
+          background: #f77f00;
+        }
+      }
+    }
+
+    .button-continue-donw {
+      padding: 25px 50px;
+
+      height: 1px;
+
+      &:hover {
+        cursor: pointer;
+        background: #f77f00;
+      }
+
+      .button-continue-text-donw {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+@media  (min-width: 1200px) {
+  .OpenClose{
+    display: none;
+    z-index: 999;
+    right: 50%;
+    margin-right: 400px;
+    position: fixed;
+  }
+}

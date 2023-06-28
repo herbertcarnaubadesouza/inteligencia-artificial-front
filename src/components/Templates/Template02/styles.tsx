@@ -63,7 +63,9 @@ box-sizing: border-box;
     font-family: ${(props: ThemeProps) => props.theme.font.fontFamily};
     z-index: 999;
     font-weight: inherit;
-    font-size: 16px;
+    font-size: 14px;
+
+
   }
 
   p {
@@ -78,6 +80,13 @@ box-sizing: border-box;
     gap: 20px;
     position: relative;
   }
+  @media screen and (max-width:900px) {
+
+  span {
+    font-size:12px;
+  }
+
+}
 `;
 
 export const HeaderBlock = styled.div<{ bgImage?: string }>`
@@ -102,6 +111,7 @@ export const HeaderBlock = styled.div<{ bgImage?: string }>`
   width: 100%;
   position: relative;
 
+
   &::before {
     content: '';
     position: absolute;
@@ -118,10 +128,15 @@ export const HeaderBlock = styled.div<{ bgImage?: string }>`
   .container-header-footer-block {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: start;
     width: 100%;
     z-index: 999;
+    
+    @media only screen and (max-width: 500px) {
+      justify-content: center;
+  }
 
+   
     svg {
       fill: ${(props: ThemeProps) => props.theme.fontTitleColor};
     }
@@ -131,24 +146,42 @@ export const HeaderBlock = styled.div<{ bgImage?: string }>`
     display: flex;
     align-items: center;
     gap: 8px;
+    width:100%;
+    justify-content:center;
+    background-color:black;
+ 
   }
 
   h4 {
     color: #fff;
     font-family: ${(props: ThemeProps) => props.theme.font.fontFamily};
     z-index: 999;
-    font-size: 2em;
+    font-size: 1em;
     font-weight: 600;
     text-align: left;
     z-index: 99999;
     margin-top: 1rem;
     margin-bottom: 0;
+   
   }
 
   @media only screen and (min-width: 1620px) {
     background-size: cover;
     object-fit: cover;
     background-position: center center;
+  }
+
+  
+  @media only screen and (max-width: 768px) {
+   h1{
+  margin-top:4rem;
+  margin-bottom:7rem;
+    width: 320px;
+    font-size:33px;
+    text-align:center;
+   }
+   
+   
   }
 `;
 
@@ -187,12 +220,11 @@ export const AboutSection = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-inline: 6rem;
-  padding-block: 5rem;
-
-
+  padding-inline: 1.5rem;
+  padding-block: 4rem;
   width:90%;
   margin:0 auto;
+ 
 
   @media only screen and (max-width: 1620px) {
     margin:0 auto;
@@ -206,12 +238,22 @@ export const AboutSection = styled.section`
    
    
   }
+
+  @media only screen and (max-width: 1200px) {
+  display: flex;
+  flex-direction: column;
+  margin:0 auto;
+  width:90%;
+   
+  }
 `;
 
 export const LeftSideBlock = styled.div`
   
   width: 50%;
-  background-color:black;
+ 
+  
+  
   
 `;
 
@@ -235,7 +277,13 @@ export const LineAbout = styled.div`
 
 export const FirstBlockAbout = styled.div`
   width: 60%;
-
+ 
+  margin-right:2rem;
+  @media only screen and (max-width: 1200px) {
+    width: 100%;
+    margin-right:0rem;
+   
+  }
 
 
   
@@ -248,9 +296,23 @@ export const SecondBlockAbout = styled.div`
   img {
     width: 100%;
     height:  100%;
-    object-fit: contain;
+    object-fit: cover;
     position: absolute;
-    bottom: 50px;
+  
+  }
+  @media only screen and (max-width: 1200px) {
+    height: 650px;
+    margin-top:1.5rem;
+    width: 80%;
+
+   
+  }
+  @media only screen and (max-width: 670px) {
+    height: 600px;
+    margin-top:2rem;
+    width: 100%;
+
+   
   }
   
 
@@ -271,15 +333,16 @@ export const ServicesSection = styled.section`
   svg {
     fill: ${(props: ThemeProps) => props.theme.fontTitleColor};
   }
-
+ 
   h2 {
     text-align: center;
   }
 
   .full-content-website {
-    padding-inline: 6rem;
-    padding-block: 6rem;
+    padding-inline: 1.5rem;
+    padding-block: 5rem;
     margin-inline: auto;
+   
   }
 `;
 
@@ -289,8 +352,24 @@ export const Row = styled.div`
   width: 100%;
     height: 350px;
     margin:0 auto;
-   
 
+
+    @media only screen and (max-width: 1200px) {
+    display:flex;
+    flex-direction: column; 
+    height:600px;
+     width:100%;
+     gap: 0.5rem;
+   
+  }
+
+  @media only screen and (max-width: 500px) {
+    display:flex;
+    flex-direction: column; 
+    height:750px;
+     width:100%;
+   
+  }
 
   .content-block-atuacao {
     border: 1px solid #e1e1e186;
@@ -301,6 +380,12 @@ export const Row = styled.div`
     padding-inline: 30px;
     width: 34%;
     height:  100%;
+    @media only screen and (max-width: 1200px) {
+      height: 100%;
+      width:100%;
+   
+   
+  }
    
 
     .last-block-atuacao {
@@ -328,6 +413,20 @@ export const Row = styled.div`
 `;
 export const Column = styled.div`
   margin-top: 2rem;
+ 
+  @media only screen and (max-width: 1200px) {
+    display:flex;
+    flex-direction: column; 
+  
+  width:100%;
+  
+   
+   
+   
+   
+  }
+ 
+
 `;
 
 export const WhyUs = styled.section<{ bgImage?: string }>`
@@ -348,8 +447,13 @@ export const WhyUs = styled.section<{ bgImage?: string }>`
     display: flex;
     align-items: center;
     gap: 5rem;
-   
     justify-content:space-around;
+    .left-side-whyus{
+     @media screen and (max-width:900px) {
+      display: none;
+    }
+}
+   
   }
 
   &::before {
@@ -412,6 +516,8 @@ export const WhyUs = styled.section<{ bgImage?: string }>`
     font-size: 15px;
   }
 `;
+
+
 export const RightSideWhyUs = styled.div`
   .rows-block {
     display: flex;
@@ -435,6 +541,16 @@ export const RightSideWhyUs = styled.div`
       background: #ffffff37;
       cursor: pointer;
     }
+
+    @media screen and (max-width:900px) {
+
+      h2{
+        font-size:22px;
+        span {
+          font-size:16px;
+        }
+      }
+      }
   }
 `;
 
@@ -459,17 +575,25 @@ export const ContactSection = styled.section`
 
   h4 {
     font-weight: 700;
-    font-size: 1.2em;
+    font-size: 1.4em;
     margin: 0;
   }
 
   h2 {
     margin: 0;
+    
+  }
+  @media screen and (max-width:676px) {
+
+    h2 {
+   font-size: 27px;
+    
   }
 
+}
   h3 {
     font-weight: 600;
-    font-size: 2.5em;
+    font-size: 2.1em;
     color: #000;
     font-weight: normal;
     margin: 0;
@@ -533,5 +657,36 @@ export const Footer = styled.div`
       font-weight: normal;
       margin: 0px;
     }
+
+    
   }
+
+  @media screen and (max-width:678px) {
+    .content-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 1rem;
+    padding-block: 4px;
+    background-color: ${(props: ThemeProps) =>
+    mix(0.9, '#000', props.theme.headerFooterBgColor)};
+ p {
+    background-color:black;
+      font-size: 12px;
+      color: rgba(198, 198, 198, 0.77);
+      font-weight: normal;
+      margin: 0px;
+      display: flex;
+    align-items: center;
+    justify-content: end;
+      width:50%;
+      height:30px;
+
+    }
+
+ 
+  }
+}
+
+
 `;

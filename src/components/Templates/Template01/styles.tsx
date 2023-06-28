@@ -86,6 +86,7 @@ const HeaderFooter = styled.div<{ bgImage?: string }>`
     font-size: 48px;
     color: ${(props: ThemeProps) => props.theme.headerFooterTextColor};
     z-index: 999;
+   
   }
 
   h2 {
@@ -112,7 +113,31 @@ const HeaderFooter = styled.div<{ bgImage?: string }>`
     cursor: pointer;
     z-index: 999;
     border: none;
+
+ 
    
+  }
+
+
+     @media only screen and (max-width: 768px) {
+      h1 {
+        width: 330px;
+       
+        font-size: 26px;
+        }
+        h2 {
+        width: 330px;
+       
+        font-size: 14px;
+        }
+        
+  button {
+    width: 250px;
+    font-size:17px;
+    padding-left: 0rem;
+    padding-right: 0rem;
+
+  }
   }
 `;
 
@@ -140,26 +165,100 @@ margin-top:0 auto;
   flex-direction: row;
   height:750px;
 
+  @media only screen and (max-width: 1000px) {
+    height:900px;
 
- 
- 
+  }
+  @media only screen and (max-width: 768px) {
+    height:1150px;
 
-
+  }
   .about{
-    width:70%;
-    margin:0 auto;
-
+    width:95%;
     justify-content:center;
     display: flex;
     align-items:center;
+ 
     @media only screen and (max-width: 1700px) {
       width:90%;
   }
-  
-  
   }
 
+.about-section{
+  margin-top:0 auto;
+  width:45%;
+  @media only screen and (max-width: 1000px) {
+    
+    width:95%;
+    margin-top: 0 auto;
+
+ 
+   }
   
+ 
+    
+
+}
+  
+`;
+const LogoTemplate = styled.img`
+  width: 420px;
+    height: 485px;
+  margin-right: 1.5rem;
+  z-index: 999;
+  object-fit: cover;
+
+
+
+  @media only screen and (max-width: 1540px) {
+    width: 420px;
+    height: 485px;
+    
+
+  }
+  @media only screen and (max-width: 1000px) {
+    width: 500px;
+    height: 495px; 
+  
+  }
+  @media only screen and (max-width: 768px) {
+    width: 450px;
+    height:600px; 
+  
+  }
+`;
+
+
+
+const Info = styled.div`
+  gap:20px;
+  display: flex;
+  @media only screen and (max-width: 1000px) {
+
+   flex-direction:column-reverse;
+   align-items:center;
+   justify-content:center;
+
+  }
+  #about-section {
+
+
+    display: flex;
+    align-items:center;
+    justify-content:end;
+    @media only screen and (max-width: 1000px) {
+   
+    height: 500px;
+    width:90%;
+    margin: 0 auto;
+    display: flex;
+    align-items:center;
+   justify-content:center;
+  
+  }
+   
+    }
+
 `;
 
 
@@ -176,6 +275,7 @@ const Parallax = styled.div<{ bgImage?: string }>`
   background-size: cover;
   width: 100%;
   position: relative;
+ 
 
   h2 {
     font-size: 40px;
@@ -204,6 +304,9 @@ const Parallax = styled.div<{ bgImage?: string }>`
     opacity: 10%;
     background-color: ${(props: ThemeProps) => props.theme.headerFooterBgColor};
   }
+
+
+ 
 `;
 
 const ParallaxContact = styled.div<{ bgImage?: string }>`
@@ -218,9 +321,10 @@ const ParallaxContact = styled.div<{ bgImage?: string }>`
   background-size: cover;
   width: 100%;
   position: relative;
+ 
 
   h2 {
-    font-size: 40px;
+    font-size: 10px;
     max-width: 50rem;
     color: ${(props: ThemeProps) => props.theme.headerFooterTextColor};
     font-family: ${(props: ThemeProps) => props.theme.font.fontFamily};
@@ -254,6 +358,11 @@ const ParallaxContact = styled.div<{ bgImage?: string }>`
     opacity: 10%;
     background-color: ${(props: ThemeProps) => props.theme.headerFooterBgColor};
   }
+
+  
+ 
+ 
+  
 `;
 
 const ParallaxContent = styled.div`
@@ -261,16 +370,31 @@ const ParallaxContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+  h4 {
+    margin:0 auto;
+    width:90%;
+    font-size:8px;
+    margin-bottom: 20px;
+  }
 
   h2{
-    font-size:22px;
+    margin:0 auto;
+    width:90%;
+    font-size:16px;
     margin-bottom: 40px;
+    font-weight:500;
+  }
+  h3{
+    margin:0 auto;
+    width:90%;
+    font-size:20px;
+    font-weight:700;
+    margin-bottom: 20px;
   }
 
   a {
     background-color: #fff;
-    font-size: 20px;
+    font-size: 18px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -285,22 +409,11 @@ const ParallaxContent = styled.div`
     &:hover {
       cursor: pointer;
     }
+   
   }
 `;
 
-const LogoTemplate = styled.img`
-  width: 420px;
-    height: 485px;
-  margin-right: 1.5rem;
-  z-index: 999;
-  object-fit: cover;
 
-
-  @media only screen and (max-width: 1540px) {
-    width: 420px;
-    height: 485px;
-  }
-`;
 
 const Line = styled.div`
   height: 5px;
@@ -329,11 +442,7 @@ const LineParallax = styled.div`
   z-index: 999;
 `;
 
-const Info = styled.div`
 
-  display: flex;
-
-`;
 
 const PracticeArea = styled.div`
   display: flex;
@@ -341,9 +450,8 @@ const PracticeArea = styled.div`
   align-items: center;
   justify-content: center;
   text-align:center;
-  padding-top: 5rem;
+  padding-top: 2rem;
   padding-bottom: 5rem;
-
   width: 100%;
 
   h1 {
@@ -387,11 +495,15 @@ const PracticeAreaContentAll = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
   gap: 5rem;
   width:100%;
   margin-top:70px;
-  
+
+  @media only screen and (max-width: 1000px) {
+    margin-top:0px;
+    gap: 1rem; /* Em telas menores, exibe os componentes em coluna */
+    }
+
 
   
   
@@ -404,10 +516,22 @@ const PracticeAreaContent = styled.div`
   justify-content: center;
   margin: 0 auto;
   width:90%;
-  
-   
- 
 
+
+
+
+  @media only screen and (max-width: 1000px) {
+ 
+ 
+  display: flex;
+  flex-wrap: wrap; /* Permite que os componentes quebrem para uma nova linha */
+  justify-content: center;
+  gap: 1rem;
+  width: 95%;
+  margin: 0 auto;
+  flex-direction: column; /* Em telas menores, exibe os componentes em coluna */
+  }
+      
   
 
 
@@ -420,12 +544,29 @@ const PracticeContent = styled.div`
   flex-direction: column;
   padding-left: 2rem;
   padding-right: 2rem;
+ 
  text-align:start;
   width:33%;
   height:350px;
   
+
+ 
+  @media only screen and (max-width: 1000px) {
+    height:290px;
+    display: flex;
+  padding: 2rem;
+  text-align: start;
+  width: 98%;
+
+
+  }
+   
+  @media only screen and (max-width: 600px) {
+    height:370px;
  
 
+
+  }
   
 
 
@@ -438,7 +579,7 @@ const Contact = styled.div`
   gap: 2rem;
 
   h2 {
-    font-size: 40px;
+    font-size: 30px;
     max-width: 50rem;
     color: ${(props: ThemeProps) => props.theme.headerFooterTextColor};
     font-family: ${(props: ThemeProps) => props.theme.font.fontFamily};
@@ -465,8 +606,40 @@ const Footer = styled.div`
       font-weight: normal;
       margin: 0px;
     }
+
+    
   }
+
+  @media screen and (max-width:678px) {
+    .content-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 1rem;
+    padding-block: 4px;
+    background-color: ${(props: ThemeProps) =>
+    mix(0.9, '#000', props.theme.headerFooterBgColor)};
+ p {
+    background-color:black;
+      font-size: 11px;
+      color: rgba(198, 198, 198, 0.77);
+      font-weight: normal;
+      margin: 0px;
+      display: flex;
+    align-items: center;
+    justify-content: end;
+      width:50%;
+      height:30px;
+
+    }
+
+ 
+  }
+}
+
+
 `;
+
 
 const FooterContent = styled.div`
 

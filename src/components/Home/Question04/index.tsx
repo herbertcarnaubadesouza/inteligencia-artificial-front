@@ -5,7 +5,7 @@ import PlacesAutocomplete, {
 } from 'react-places-autocomplete';
 import { BeatLoader } from 'react-spinners';
 import './question04.scss';
-
+import { useNavigate } from 'react-router-dom';
 interface Question04Props {
   ocultarQuestion04: () => void;
   voltarQuestion04: () => void;
@@ -53,9 +53,9 @@ function Question04(props: Question04Props) {
   const [showLoading, setShowLoading] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowQuestion(true), 1000);
-    const timer2 = setTimeout(() => setShowLoading(true), 3800);
-    const timer3 = setTimeout(() => setShowButtons(true), 8500);
+    const timer = setTimeout(() => setShowQuestion(true), 10);
+    const timer2 = setTimeout(() => setShowLoading(true), 4000);
+    const timer3 = setTimeout(() => setShowButtons(true), 6900);
 
     return () => {
       clearTimeout(timer);
@@ -130,6 +130,11 @@ function Question04(props: Question04Props) {
       setAddress(inputElement.value);
     }
   };
+  const navigate = useNavigate();
+
+  const goToPreview = () => {
+    navigate('/preview');
+  };
 
   useEffect(() => {
     localStorage.setItem('Endereco', address);
@@ -164,8 +169,7 @@ function Question04(props: Question04Props) {
             <img src="./images/logoFoxxy.svg" alt="" />
             <div className="question-back">
               <p className="question-normal-label">
-                Personalize o seu site escolhendo os serviços que você vai
-                oferecer (você pode mudar isso depois)
+                Então, como você quer que sua empresa seja chamada?
               </p>
             </div>
           </div>
@@ -175,34 +179,13 @@ function Question04(props: Question04Props) {
           <div className="question-selected-container">
             <img src="./images/selected.svg" alt="" />
             <p className="question-selected-label">
-              Minhas escolhas: {localStorage.getItem('escolha02')}
-            </p>
-          </div>
-        </div>
-
-        <div className="question01-label">
-          <div className="question-label-container">
-            <img src="./images/logoFoxxy.svg" alt="" />
-            <div className="question-back">
-              <p className="question-normal-label">
-                Agora me diga qual vai ser o uso do seu site. Isso me ajudará a
-                saber quais ferramentas e páginas você precisa
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="question01-selected">
-          <div className="question-selected-container">
-            <img src="./images/selected.svg" alt="" />
-            <p className="question-selected-label">
-              Minhas escolhas: {localStorage.getItem('escolha03')}
+              Minhas escolha: {localStorage.getItem('nomeEmpresa')}
             </p>
           </div>
         </div>
 
         <div id="quention01">
-          <div id="top-container" className="top-container">
+          <div id="top-container" className="top-containere">
             {showQuestion && (
               <div id="atual" className="question-container">
                 <img src="./images/logoFoxxy.svg" alt="" />
@@ -216,7 +199,7 @@ function Question04(props: Question04Props) {
             )}
             {showLoading && !showButtons && (
               <div className="while-typing">
-                <p>Rei do Sites IA está digitando...</p>
+                <p>FOXXY AI está digitando...</p>
                 <BeatLoader speedMultiplier={0.6} size={12} color="#ccc" />
               </div>
             )}
@@ -227,8 +210,8 @@ function Question04(props: Question04Props) {
                     <div
                       className={
                         buttonStates['Empresa física']
-                          ? 'local-button clicked'
-                          : 'local-button'
+                          ? 'local-buttone clicked'
+                          : 'local-buttone'
                       }
                       onClick={() => handleChoice('Empresa física')}
                     >
@@ -244,8 +227,8 @@ function Question04(props: Question04Props) {
                     <div
                       className={
                         buttonStates['Área de serviço']
-                          ? 'local-button clicked'
-                          : 'local-button'
+                          ? 'local-buttone clicked'
+                          : 'local-buttone'
                       }
                       onClick={() => handleChoice('Área de serviço')}
                     >
@@ -261,8 +244,8 @@ function Question04(props: Question04Props) {
                     <div
                       className={
                         buttonStates['Apenas online']
-                          ? 'local-button clicked'
-                          : 'local-button'
+                          ? 'local-buttone clicked'
+                          : 'local-buttone'
                       }
                       onClick={() => handleChoice('Apenas online')}
                     >
@@ -285,7 +268,7 @@ function Question04(props: Question04Props) {
                     <p className="adress-label">
                       Insira endereço da sua empresa
                     </p>
-                    <div className="adress-search-container">
+                    <div className="adress-search-containera">
                       <img
                         className="search-icon"
                         src="./images/browse.svg"
@@ -305,7 +288,7 @@ function Question04(props: Question04Props) {
                           <div className="adress-search-input">
                             <input
                               id="adress"
-                              className="adress-search"
+                              className="adress-searche"
                               type="text"
                               {...getInputProps({
                                 placeholder:
@@ -313,12 +296,12 @@ function Question04(props: Question04Props) {
                               })}
                             />
 
-                            <div className="autocomplete-dropdown-container">
-                              {loading && <div>Carregando...</div>}
+                            <div className="autocomplete-dropdown-containere">
+                              {loading && <div className='carregando'>Carregando...</div>}
                               {suggestions.map((suggestion, index) => {
                                 const className = suggestion.active
-                                  ? 'suggestion-item--active'
-                                  : 'suggestion-item';
+                                  ? 'suggestion-item--activee'
+                                  : 'suggestion-iteme';
                                 return (
                                   <div
                                     {...getSuggestionItemProps({
@@ -349,11 +332,11 @@ function Question04(props: Question04Props) {
         <div className="linha"></div>
         <div className="nav-container">
           <div className="button-back" onClick={props.voltarQuestion04}>
-            <img className="button-back-icon" src="./images/back.svg" alt="" />
-            <p className="button-back-text">Voltar</p>
+            <img className="button-back-icone" src="./images/back.svg" alt="" />
+            <p className="button-back-text">VOLTAR</p>
           </div>
-          <div className="button-continue" onClick={props.ocultarQuestion04}>
-            <p className="button-continue-text">Continuar</p>
+          <div className="button-continue" onClick={goToPreview}>
+            <p className="button-continue-text">CONTINUAR</p>
           </div>
         </div>
       </div>

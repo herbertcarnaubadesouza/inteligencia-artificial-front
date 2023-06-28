@@ -4,16 +4,14 @@
   padding-top: 6rem;
   padding-left: 3.6rem;
   max-height: 100vh !important;
- 
 }
 
-
-.full-container>* {
+.full-container > * {
   max-height: 100%;
 }
 
 .RightSideContainer {
-  background-color: #ffffff48;
+  background-color: #4c4c74a4;
   width: 70vw;
   height: 95%;
   padding-top: 2rem;
@@ -23,32 +21,26 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  
+  backdrop-filter: blur(11px);
 }
 
 .real-top-container {
   overflow: auto;
 
-
   scrollbar-color: #888888 #f4f4f44d;
 }
 
-
 .real-top-container::-webkit-scrollbar {
   width: 1px;
-
 }
 
 .real-top-container::-webkit-scrollbar-track {
   background-color: #f4f4f469;
-  
 }
 
 .real-top-container::-webkit-scrollbar-thumb {
   background-color: #888888;
 }
-
 
 .second-block-right-side-container {
   opacity: 0; // Inicialmente invisível
@@ -60,11 +52,9 @@
 }
 
 .logo {
-  
   margin-left: 4rem;
   margin-top: 2rem;
   margin-right: -14rem;
-
 }
 
 .tooltip {
@@ -82,7 +72,6 @@
     display: flex;
     align-items: center;
     gap: 5px;
-    
 
     p {
       margin: 0px;
@@ -202,8 +191,6 @@
       width: 18px;
       height: 18px;
     }
-
-
   }
 
   &.style-four {
@@ -323,7 +310,6 @@
   &.style-seven {
     display: none;
   }
-
 }
 
 .tooltip-six {
@@ -375,7 +361,6 @@
   &.style-seven {
     display: none;
   }
-
 }
 
 .tooltip-seven {
@@ -427,8 +412,6 @@
       height: 18px;
     }
   }
-
-
 }
 
 @keyframes fadeIn {
@@ -470,7 +453,6 @@
 }
 
 @keyframes blink {
-
   0%,
   100% {
     border-color: transparent;

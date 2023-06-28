@@ -27,11 +27,19 @@ function RightSide() {
     leftSide.setCurrentFont(font);
     setCurrentFontName(font.name);
   };
+  const [openClose, setOpenClose] = useState(false);
+
+  const handleCloseOpen = () => {
+    setOpenClose(!openClose);
+  }
+
 
   return (
     <>
       {leftSide.jsx}
-      <div className="template-rightside-container">
+
+      <div className={` ${openClose ? "openClose" : "template-rightside-container"}`}>
+
         <div className="template-top-container">
           <div className="template-buttons-container-h2">
             <img src="./images/tinta.png" alt="" />
