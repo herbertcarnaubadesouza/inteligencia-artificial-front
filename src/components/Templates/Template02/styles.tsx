@@ -86,6 +86,7 @@ width:100%;
 
   span {
     font-size:12px;
+    margin-left:5px;
   }
 
 }
@@ -144,7 +145,7 @@ export const HeaderBlock = styled.div<{ bgImage?: string }>`
     gap: 8px;
     width:100%;
     justify-content:center;
-    background-color:black;
+   
  
   }
 
@@ -515,8 +516,15 @@ export const WhyUs = styled.section<{ bgImage?: string }>`
 
 
 export const RightSideWhyUs = styled.div`
+
+
+
   .rows-block {
     display: flex;
+ 
+    @media screen and (max-width:600px) {
+      margin-right:40%;
+      }
   }
 
   .row-div-block {
@@ -528,6 +536,7 @@ export const RightSideWhyUs = styled.div`
     width: 270px;
     height: 160px;
     gap: 20px;
+   
 
     h2 {
       margin: 0;
@@ -539,6 +548,9 @@ export const RightSideWhyUs = styled.div`
     }
 
     @media screen and (max-width:900px) {
+      width:230px;
+      margin:0 ;
+
 
       h2{
         font-size:22px;
@@ -566,7 +578,7 @@ export const ContactSection = styled.section`
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 19px;
   }
 
   h4 {
@@ -667,7 +679,7 @@ export const Footer = styled.div`
     background-color: ${(props: ThemeProps) =>
     mix(0.9, '#000', props.theme.headerFooterBgColor)};
  p {
-    background-color:black;
+   
       font-size: 12px;
       color: rgba(198, 198, 198, 0.77);
       font-weight: normal;

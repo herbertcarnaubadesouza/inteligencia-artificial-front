@@ -27,20 +27,28 @@ function RightSide() {
     leftSide.setCurrentFont(font);
     setCurrentFontName(font.name);
   };
-  const [openClose, setOpenClose] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
-  const handleCloseOpen = () => {
-    setOpenClose(!openClose);
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+    setIsOpen(!isOpen);
+  }
+  const handleFalse = () => {
+    setIsOpen(false);
+
   }
 
 
   return (
     <>
       {leftSide.jsx}
+      <div className='buttonContainer'>  <button onClick={toggleMenu}> <img src="./images/abrir.svg" alt="" /></button></div>
 
-      <div className={` ${openClose ? "openClose" : "template-rightside-container"}`}>
+
+      <div className={`template-rightside-container ${isOpen ? 'open' : ''}`} onClick={handleFalse}>
 
         <div className="template-top-container">
+
           <div className="template-buttons-container-h2">
             <img src="./images/tinta.png" alt="" />
             <h2 className="style-h2"> Estilização</h2>

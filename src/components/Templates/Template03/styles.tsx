@@ -138,23 +138,18 @@ export const AboutSection = styled.section`
   justify-content: space-between;
   background-color: #fff;
   padding-block: 100px;
-  padding-left: 6rem;
-  padding-right: 3.2rem;
-  width: 80%;
+  width: 75%;
   margin: 0 auto;
- 
-  @media only screen and (max-width: 1520px) {
-  
-    width: 98%;
 
-  }
+ 
   @media only screen and (max-width: 1200px) {
     padding-left: 0rem;
     padding-right: 0rem;
-    width: 90%;
+    width: 80%;
     display:flex;
     flex-direction:column-reverse;
     padding-top: 5rem;
+   
     
   }
 
@@ -164,7 +159,9 @@ export const LeftSideBlock = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
-  width: 60%;
+  width: 55%;
+
+  
  
 
   @media only screen and (max-width: 1200px) {
@@ -174,6 +171,7 @@ export const LeftSideBlock = styled.div`
   
   }
   .title-about-section-block {
+    
     h2,
     h3 {
       color: ${(props: ThemeProps) =>
@@ -207,6 +205,7 @@ export const LeftSideBlock = styled.div`
     gap: 3rem;
 
     .footer-div-block-content {
+     
       display: flex;
       flex-direction: column;
       gap: 1rem;
@@ -248,7 +247,7 @@ export const LeftSideBlock = styled.div`
   }
 `;
 export const RightSideBlock = styled.div`
-  width: 30%;
+  width: 40%;
   margin-left: -40px;
 
 
