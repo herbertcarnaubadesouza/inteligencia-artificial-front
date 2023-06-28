@@ -333,6 +333,7 @@ export const ServicesSection = styled.section`
  
   h2 {
     text-align: center;
+ 
   }
 
   .full-content-website {
@@ -341,6 +342,15 @@ export const ServicesSection = styled.section`
     margin-inline: auto;
    
   }
+  @media screen and (max-width: 768px) {
+    h2 {
+    text-align: center;
+    font-size:26px;
+ 
+  }
+  }
+    
+  
 `;
 
 export const Row = styled.div`

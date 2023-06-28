@@ -65,6 +65,7 @@
 
   opacity: 0; // Inicialmente invisível
   animation: fadeIn 2s forwards;
+  
 }
 
 .while-typing {
@@ -110,6 +111,7 @@
   border-bottom-right-radius: 1rem;
   width: 92%;
   padding-right: 1.5rem;
+  
 }
 
 .label {
@@ -145,6 +147,9 @@
   padding-bottom: 2rem;
   border-radius: 10px;
   margin-right: 23px;
+  width: 100%;
+
+  
 }
 
 .choice-head {
@@ -171,11 +176,6 @@
   gap: 1rem;
 }
 
-.choices-array {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-}
 
 .choice {
   background-color: #ffffff3b;
@@ -183,6 +183,7 @@
   border-radius: 2rem;
   border: none;
   margin-right: 1rem;
+
 
   &.clicked {
     background-color: #f77f00;
@@ -195,13 +196,7 @@
   transform: scale(1);
 }
 
-.choice-text {
-  color: #fff;
-  font-size: 16px;
-  font-weight: 500;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
+
 
 .buttons-container {
   display: flex;
@@ -209,100 +204,18 @@
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
-  margin-right: 23px;
-}
-
-.button {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0px;
-  padding-left: 2rem;
-  padding-top: 1.5rem;
-  padding-bottom: 1rem;
-  background-color: #ffffff54;
-  border-radius: 1rem;
 }
 
-.button:hover {
-  background-color: #f77f00;
-  cursor: pointer;
-}
 
-.button-text {
-  color: #fff;
-  font-size: 16px;
-  font-weight: 400;
-}
 
-.button-continuee {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-  padding-left: 3.5rem;
-  padding-right: 3.5rem;
-  background-color: #f77f00;
-  border-radius: 1rem;
-}
 
-.button-continuee:hover {
-  background-color: #f78000ee;
-  cursor: pointer;
 
-  .button-continue-text {
-    color: #fff;
-  }
-}
 
-.button-continue-text {
-  color: #fff;
-  font-size: 18px;
-  font-weight: 600;
-}
 
-.button-back {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 0.3rem;
-  margin-top: 0.5rem;
 
-  &.active {
-    .button-back-icon {
-      background-color: #ffffff00;
-    }
 
-    .button-back-text {
-      color: #fff;
-    }
-  }
-}
 
-.button-back:hover {
-  cursor: pointer;
-
-  .button-back-icon {
-    background-color: #f77f00;
-  }
-
-  .button-back-text {
-    color: #fff;
-  }
-}
-
-.button-back-icon {
-  height: 2rem;
-  width: 2rem;
-  background-color: #e9e8ed00;
-  padding: 0.7rem;
-  border-radius: 2rem;
-}
-
-.button-back-text {
-  color: #e9e8ed;
-  font-size: 18px;
-  font-weight: 700;
-}
 
 .nav-container {
   display: flex;
@@ -350,6 +263,7 @@
 .tooltip-two {
   &.style-one {
     display: none;
+  
   }
 
   &.style.two {
@@ -408,18 +322,34 @@ ul {
   color: #fff;
   font-size: 16px;
   font-weight: 700;
-  // justify-content: space-between;
   margin: 0;
   padding: 0;
+  width: 100%;
+  align-items: center;
+  gap: 5px;
+ 
+
 }
 
 li {
+
   cursor: pointer;
   padding: 10px;
+
+  @media (max-width:700px) {width: 13%;
+     font-size: 8px;
+     text-align: start;
+    
+  }
+
+
+  
 }
 
 li.active {
+
   position: relative;
+
 }
 
 li.active:after {
@@ -430,6 +360,7 @@ li.active:after {
   width: 100%;
   height: 2px;
   background-color: #f77f00;
+
 }
 
 .linha {
@@ -438,6 +369,7 @@ li.active:after {
   background-color: #ffffff69;
   margin-top: 3rem;
   margin-bottom: 0.75rem;
+
 }
 
 .right-nav-container {
@@ -490,21 +422,6 @@ li.active:after {
   }
 }
 
-.questione {
-  color: #fff;
-  font-size: 18px;
-  font-weight: 400;
-  border-right: 0.15rem solid #ffffff;
-  padding-left: 2rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-
-  white-space: nowrap;
-  overflow: hidden;
-  width: 0;
-  max-width: 85%;
-  animation: blink 6s, typing 6s steps(25, end) forwards 2s;
-}
 
 @keyframes blink {
   0%,
@@ -528,12 +445,178 @@ li.active:after {
   }
 }
 .search-containere {
-  padding: 1.2rem;
+  padding: 1rem;
   border-radius: 1.5rem;
   background-color: #ffffff3b;
   align-items: center;
   margin-bottom: 1.5rem;
   display: flex;
   border: none;
-  margin-right: 23px;
+
+  padding-right: 0;
+}
+// gui
+.buttone {
+  width: 32%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0px;
+  padding-left: 2rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1rem;
+  background-color: #ffffff54;
+  border-radius: 1rem;
+  justify-content: center;
+  max-height: 150px;
+
+  @media (max-width:700px) {
+    min-height: 80px;
+   padding: 0;
+   align-items: center;
+   padding-top: 0.5rem;
+   padding-top: 0.5rem;
+   padding-left: 0.2rem;
+   padding-right: 0.3rem;
+  }
+}
+
+.button:hover {
+  background-color: #f77f00;
+  cursor: pointer;
+}
+.buttone-icon{
+  @media (max-width:700px) {
+   width: 20px;
+   height:20px;
+  }
+}
+
+.buttone-text {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+
+  @media (max-width:700px) {
+    font-size: 8px;
+    text-align: center;
+  }
+}
+
+
+.question-backe {
+  background-color: #ffffff3b;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  width: 92%;
+  padding-right: 1.5rem;
+ 
+
+  @media (max-width: 1440px ) {
+    width: 90%;
+  }
+  
+}
+
+
+.label-text {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 300;
+  padding-block: 13px;
+
+
+  @media (max-width: 1440px ) {
+    font-size: 12px;
+  }
+}
+.questione {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+  border-right: 0.15rem solid #ffffff;
+  padding-left: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  max-width: 100%;
+  animation: blink 6s, typing 6s steps(35, end) forwards 2s;
+
+  @media (max-width: 1440px ) {
+    font-size: 12px;
+    white-space: pre-line;
+    max-height: 95px;
+  }
+}
+
+
+.choice-texte {
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
+
+
+}.button-back-texte {
+  color: #e9e8ed;
+  font-size: 18px;
+  font-weight: 700;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
+}
+
+.button-continuee {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding-left: 3.5rem;
+  padding-right: 3.5rem;
+  background-color: #f77f00;
+  border-radius: 1rem;
+
+  @media (max-width: 768px) { 
+    margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  background-color: #f77f00;
+  border-radius: 1rem;
+
+  }
+}
+
+.button-continuee:hover {
+  background-color: #f78000ee;
+  cursor: pointer;
+
+  .button-continue-text {
+    color: #fff;
+
+    
+  }
+}
+
+
+
+
+.button-back:hover {
+  cursor: pointer;
+
+  .button-back-icon {
+    background-color: #f77f00;
+  }
+
+  .button-back-text {
+    color: #fff;
+  }
 }

@@ -505,7 +505,7 @@ export const LeftAwardBlock = styled.div`
   margin-bottom:25px;
 h2{
   
-    font-size:25px;
+    font-size:28px;
 
 margin:15px 0px;
 }
@@ -846,6 +846,14 @@ export const HowLocationSection = styled.div`
       color: #000;
     }
     
+    @media screen and (max-width: 768px) {
+      h1 {
+      
+      font-size: 32px;
+    
+      
+    }
+    }
    
   
   }

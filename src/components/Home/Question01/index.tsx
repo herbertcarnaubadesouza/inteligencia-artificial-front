@@ -48,7 +48,7 @@ const options = [
   },
   {
     id: 5,
-    name: 'Autocuidado',
+    name: 'Cuidados',
     choices: ['Doctor', 'Nurse']
   },
   // ...
@@ -61,9 +61,9 @@ interface ButtonProps {
 }
 
 const Button: React.FC<ButtonProps> = ({ imgSrc, text, onClick }) => (
-  <div className="button" onClick={onClick}>
-    <img className="button-icon" src={imgSrc} alt="" />
-    <p className="button-text">{text}</p>
+  <div className="buttone" onClick={onClick}>
+    <img className="buttone-icon" src={imgSrc} alt="" />
+    <p className="buttone-text">{text}</p>
   </div>
 );
 
@@ -178,7 +178,7 @@ function Question01(props: Question01Props) {
             {showQuestion && (
               <div className="question-container">
                 <img src="./images/logoFoxxy.svg" alt="" />
-                <div className="question-back">
+                <div className="question-backe">
                   <p className="questione">
                     Qual categoria melhor descreve o objetivo do seu site? (por
                     exemplo, loja virtual, serviços online, portfólio, blog)
@@ -252,7 +252,7 @@ function Question01(props: Question01Props) {
                         </li>
                       ))}
                     </ul>
-                    <div className="choices-array">
+                    <div className="choices-arraye">
                       {activeChoices
                         .filter((choice) => choice.toLowerCase().includes(searchTerm.toLowerCase()))
                         .map((choice) => (
@@ -260,7 +260,7 @@ function Question01(props: Question01Props) {
                             className={buttonStates[choice] ? 'choice clicked' : 'choice'}
                             onClick={() => handleChoice(choice)}
                           >
-                            <p className="choice-text">{choice}</p>
+                            <p className="choice-texte">{choice}</p>
                           </div>
                         ))}
                     </div>
@@ -282,12 +282,12 @@ function Question01(props: Question01Props) {
               src="./images/back.svg"
               alt=""
             />
-            <p className="button-back-text">{isButtonActive ? 'VOLTAR PARA TODAS AS CATEGORIAS' : 'VOLTAR'}</p>
+            <p className="button-back-texte">{isButtonActive ? 'VOLTAR PARA TODAS AS CATEGORIAS' : 'VOLTAR'}</p>
           </div>
 
           <div className="right-nav-container">
 
-            <div className="button-continue" onClick={props.ocultarQuestion}>
+            <div className="button-continuee" onClick={props.ocultarQuestion}>
               <p className="button-continue-text" >CONTINUAR</p>
             </div>
           </div>
