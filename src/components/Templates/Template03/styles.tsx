@@ -496,14 +496,16 @@ export const LeftAwardBlock = styled.div`
  @media screen and (max-width:1100px){
   margin:0;
   flex-direction:column;
-  width: 100%;
+  width: 85%;
   display: flex;
   align-items:center;
  justify-content:center;
   height:auto;
+  margin-right:25px;
+  margin-bottom:25px;
 h2{
   
-    font-size:30px;
+    font-size:25px;
 
 margin:15px 0px;
 }
