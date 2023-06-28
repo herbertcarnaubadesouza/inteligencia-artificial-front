@@ -20,6 +20,7 @@ interface ThemeProps {
 
 
 export const Container = styled.div`
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;

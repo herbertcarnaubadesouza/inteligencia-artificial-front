@@ -47,16 +47,14 @@ const HeaderFooter = styled.div<{ bgImage?: string }>`
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  max-width: 100%;
-  position: relative;
+
   background-image: url(${(props) => props.bgImage ? props.bgImage : 'https://cdn.discordapp.com/attachments/1116206739373691010/1116573743058268180/ThomasiWilson1_A_successful_law_firms_executive_office_with_flo_acf05fba-84f6-4416-bf37-b27f5d02a190.png'});
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  padding-top: 20rem;
+  padding-top: 10rem;
   padding-bottom: 20rem;
-  padding-left: 45rem;
-  padding-right: 45rem;
+ 
   text-align: center;
   background-position: center;
   background-repeat: no-repeat;

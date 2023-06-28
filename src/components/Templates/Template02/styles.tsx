@@ -18,14 +18,16 @@ interface ThemeProps {
 }
 
 export const Container = styled.div`
-box-sizing: border-box;
+width:100%;
+ box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+ 
   font-family: ${(props: ThemeProps) => props.theme.font.fontFamily};
   background-color: ${(props: ThemeProps) => props.theme.containerBgColor};
-
+  overflow-x: hidden;
   h1 {
     color: #fff;
     font-family: ${(props: ThemeProps) => props.theme.font.fontFamily};
@@ -94,7 +96,6 @@ export const HeaderBlock = styled.div<{ bgImage?: string }>`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  position: relative;
   background-image: url(${(props) => props.bgImage ? props.bgImage : 'https://cdn.discordapp.com/attachments/1116206739373691010/1116573743058268180/ThomasiWilson1_A_successful_law_firms_executive_office_with_flo_acf05fba-84f6-4416-bf37-b27f5d02a190.png'});
 
   background-repeat: no-repeat;
@@ -102,12 +103,7 @@ export const HeaderBlock = styled.div<{ bgImage?: string }>`
   background-size: cover;
   padding-top: 12rem;
   padding-bottom: 2rem;
-  padding-inline: 6rem;
   text-align: center;
-   margin: 0 auto;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
   width: 100%;
   position: relative;
 
