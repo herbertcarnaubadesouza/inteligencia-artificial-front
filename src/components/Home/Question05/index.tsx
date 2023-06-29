@@ -207,7 +207,7 @@ function Question05(props: Question05Props) {
       </div >
 
       <div className="down-container">
-        <div className="linha"></div>
+        <div className="linhae"></div>
         <div className="nav-container">
           <div className="button-back" onClick={props.voltarQuestion05}>
             <img className="button-back-icone" src="./images/back.svg" alt="" />

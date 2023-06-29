@@ -44,7 +44,7 @@
   gap: 1rem;
   border-radius: 0.5rem;
   padding-inline: 5px;
-  background-color: #231a5000;
+ 
 
 }
 
@@ -193,6 +193,7 @@ background-color: red;
   width: 26px;
   height: 26px;
   margin-right: 0.7rem;
+  
 }
 
 .search {
@@ -670,7 +671,7 @@ li.active:after {
 // gui
 
 .adress-searche {
-  width: 70%;
+  width: 100%;
   background-color: transparent !important;
   border: none !important;
   caret-color: rgb(255, 255, 255);
@@ -680,8 +681,7 @@ li.active:after {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-
-  height: 25px;
+  
   &::placeholder {
     color: #fff;
     font-size: 16px;
@@ -692,6 +692,15 @@ li.active:after {
   &:focus {
     outline: none;
   }
+  @media (max-width: 768px) {&::placeholder {
+    color: #fff;
+    font-size:12px;
+    font-weight: 300;
+ 
+    
+    
+  }}
+
 }
 
 .adress-search-containere {
@@ -706,23 +715,30 @@ li.active:after {
   margin-left: 5rem;
 
   @media (max-width: 1440px ) {
-    background-color: red;
+    
     padding: 0.5rem;
     border-radius: 1.5rem;
     background-color: #ffffff3b;
     margin-right: 0px;
     margin-bottom: 0rem;
     margin-left: 0rem;
+  
+    
   }
 }
 
 * {
   @media (max-width: 1440px ) {
-    img {
-     width: 40px;
-     height:40px;
+
+    .real-top-container{
+      img {
+        width: 40px;
+        height:40px;
+       }
+
+    } 
     }
-   }
+   
 }
 
   

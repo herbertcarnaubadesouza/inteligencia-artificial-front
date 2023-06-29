@@ -474,11 +474,14 @@
     padding-top: 1rem;
     padding-left: 0rem;
     max-height: 100vh !important;
-    width: 100%;
+    width: 100vw;
     align-items: center;
     justify-content: center;
     margin: 0;
     padding: 0;
+    padding-block: 10px;
+ 
+
    
     
   }
@@ -486,7 +489,7 @@
 .RightSideContainer {
   background-color: #4c4c74a4;
   width: 90%;
-  height: 85%;
+  height: 80%;
   padding-top: 2rem;
   padding-left: 2rem;
   padding-right: 1.5rem;
@@ -494,8 +497,10 @@
   margin: 0;
   padding: 0;
   margin: 0 auto;
-  padding-block: 25px;
+  padding-block: 20px;
   padding-inline: 15px;
+  
+  
 
   
 }

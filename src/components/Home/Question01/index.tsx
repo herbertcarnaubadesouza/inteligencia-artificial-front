@@ -274,7 +274,7 @@ function Question01(props: Question01Props) {
       </div>
 
       <div className="down-container">
-        <div className="linha"></div>
+        <div className="linhae"></div>
         <div className="nav-container">
           <div className={`button-back ${isButtonActive ? 'active' : ''}`} onClick={handleButtonClick}>
             <img

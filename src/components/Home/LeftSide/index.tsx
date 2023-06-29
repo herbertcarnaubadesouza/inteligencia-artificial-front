@@ -38,14 +38,7 @@ function LeftSide({ isQuestionVisible, isQuestion02Visible, isQuestion03Visible,
                 <img src="./images/biceps.png"></img>
               </div> */}
             </div>
-            <div className="block-image-left-side">
-              <img className={`iconProgressTwo  ${isQuestionVisible ? 'style-one' : ''} ${isQuestion02Visible ? 'style-one' : ''} ${isQuestion03Visible ? 'style-tree' : ''} ${isQuestion04Visible ? 'style-four' : ''} ${isQuestion05Visible ? 'style-tree' : ''} ${isQuestion06Visible ? 'style-four' : ''}  ${isQuestion07Visible ? 'style-five' : ''}`} src="./images/style.svg"></img>
-              <p className='text-icon'>Estilização</p>
-              {/* <div className={`tooltip-two ${isQuestionVisible ? 'style-one' : ''} ${isQuestion02Visible ? 'style-two' : ''} ${isQuestion03Visible ? 'style-tree' : ''} ${isQuestion04Visible ? 'style-four' : ''} ${isQuestion05Visible ? 'style-five' : ''} ${isQuestion06Visible ? 'style-six' : ''}  ${isQuestion07Visible ? 'style-seven' : ''}`}>
-                <p>Você está quase terminando!</p>
-                <img src="./images/finish.png"></img>
-              </div> */}
-            </div>
+
             <div className="block-image-left-side">
               <img className={`iconProgressOne  ${isQuestionVisible ? 'style-one' : ''} ${isQuestion02Visible ? 'style-one' : ''} ${isQuestion03Visible ? 'style-tree' : ''} ${isQuestion04Visible ? 'style-four' : ''} ${isQuestion05Visible ? 'style-tree' : ''} ${isQuestion06Visible ? 'style-four' : ''}  ${isQuestion07Visible ? 'style-five' : ''}`} src="./images/doc.svg"></img>
               <p className='text-icon'>Primeiras informações</p>

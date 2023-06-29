@@ -591,28 +591,36 @@
   .buttonContainer{
     position: absolute;
     z-index: 999;
-    width: 0px;
+    width: 50px;
     display: flex;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     border: none;
-    right: 23px;
-   
+    right: 0.5px;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     flex-direction: column;
+   
      img{
       color: white;
       background-color: transparent !important;
+      width: 30px;
+      height:30px;
+      object-fit: contain;
+      padding: 5px;
+     
      }
+
+     
   button {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
-    border-radius: 15px;
+    padding: 5px;
+  
+    border-radius: 50%;
     background: #f77f00;
     border: none;
     color: white;
@@ -632,3 +640,5 @@
     display: none;
   }
 }
+
+

@@ -33,10 +33,7 @@ function RightSide() {
     setIsOpen(!isOpen);
     setIsOpen(!isOpen);
   }
-  const handleFalse = () => {
-    setIsOpen(false);
 
-  }
 
 
   return (
@@ -45,7 +42,7 @@ function RightSide() {
       <div className='buttonContainer'>  <button onClick={toggleMenu}> <img src="./images/abrir.svg" alt="" /></button></div>
 
 
-      <div className={`template-rightside-container ${isOpen ? 'open' : ''}`} onClick={handleFalse}>
+      <div className={`template-rightside-container ${isOpen ? 'open' : ''}`} >
 
         <div className="template-top-container">
 

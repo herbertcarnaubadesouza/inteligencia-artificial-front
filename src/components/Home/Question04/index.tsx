@@ -292,7 +292,7 @@ function Question04(props: Question04Props) {
                               type="text"
                               {...getInputProps({
                                 placeholder:
-                                  'Número da casa, Cidade, Estado, CEP, País',
+                                  'N° da casa, Cidade, Estado, CEP, País',
                               })}
                             />
 
@@ -329,13 +329,13 @@ function Question04(props: Question04Props) {
       </div>
 
       <div className="down-container">
-        <div className="linha"></div>
+        <div className="linhae"></div>
         <div className="nav-container">
           <div className="button-back" onClick={props.voltarQuestion04}>
             <img className="button-back-icone" src="./images/back.svg" alt="" />
-            <p className="button-back-text">VOLTAR</p>
+            <p className="button-back-texte">VOLTAR</p>
           </div>
-          <div className="button-continue" onClick={goToPreview}>
+          <div className="button-continuee" onClick={goToPreview}>
             <p className="button-continue-text">CONTINUAR</p>
           </div>
         </div>
