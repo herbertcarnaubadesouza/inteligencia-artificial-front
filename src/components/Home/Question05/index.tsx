@@ -185,7 +185,7 @@ function Question05(props: Question05Props) {
               <div className="second-block-right-side-container">
                 <div className="choice-container">
                   <div className="adress-search-containere">
-                    <img className="search-icon" src="./images/browse.svg" alt="" />
+                    <img className="search-icone" src="./images/browse.svg" alt="" />
                     <div className="adress-search-input">
                       <input
                         id="name"

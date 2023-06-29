@@ -123,12 +123,19 @@
   margin-top: -0.5rem;
 }
 
-.search-icon {
-  width: 26px;
+.search-icone {
+  width: 16px;
   height: 26px;
-  margin-right: 0.7rem;
+  margin-right: 0.5rem;
+
+@media (max-width: 768px) {
+ margin-right: 0.2em;
+  padding: 6px;
+  
 }
 
+
+}
 .choice-container-two {
   &.inactive {
     display: none;
@@ -371,7 +378,7 @@
   height: 25px;
   &::placeholder {
     color: #fff;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 300;
     margin-top: -0.5rem;
   }
@@ -412,9 +419,13 @@
   display: flex;
   border: none;
   padding-right: 0;
+
+  
   @media (max-width: 768px) {
     padding: 0.5rem;
+    padding: 0rem;
     
+   
   }
 
   

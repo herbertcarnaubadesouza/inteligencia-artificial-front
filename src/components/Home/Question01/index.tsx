@@ -200,7 +200,7 @@ function Question01(props: Question01Props) {
                 </p>
 
                 <div className="search-containere">
-                  <img className="search-icon" src="./images/browse.svg" alt="" />
+                  <img className="search-icone" src="./images/browse.svg" alt="" />
                   <input
                     className="searche"
                     type="text"
