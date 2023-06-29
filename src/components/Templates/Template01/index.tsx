@@ -288,7 +288,7 @@ function Template01({ isVisible01 }: Template01Props) {
             <div className='about-section ' id='about-section'>
               <LogoTemplate
                 src={
-                  imageUrlSegunda ? imageUrlSegunda
+                  thirdImageUrlSegunda ? thirdImageUrlSegunda
                     : 'https://cdn.discordapp.com/attachments/1116206739373691010/1116758018403614750/ThomasiWilson1_In_a_bustling_metropolis_where_the_pillars_of_la_56479b76-2b1a-45f8-92e6-e7298d120c8c.png'
                 }
                 alt="carregando"
@@ -305,7 +305,7 @@ function Template01({ isVisible01 }: Template01Props) {
           </Info>
         </section>
       </AboutSection>
-      <Parallax bgImage={thirdImageUrlTerceira}>
+      <Parallax bgImage={secondImageUrl}>
         <ParallaxContent>
           <h4>DEFENDEMOS SEUS DIREITOS COM SOLUÇÃO EFICIENTE</h4>
           <LineParallax></LineParallax>
@@ -368,7 +368,7 @@ function Template01({ isVisible01 }: Template01Props) {
           </PracticeAreaContent>
         </PracticeAreaContentAll>
       </PracticeArea>
-      <ParallaxContact bgImage={imageUrlTerceira}>
+      <ParallaxContact bgImage={thirdImageUrl}>
         <ParallaxContent>
           <h4>NÓS SOMOS SEU CAMINHO PARA O SUCESSO LEGAL</h4>
           <LineParallax></LineParallax>

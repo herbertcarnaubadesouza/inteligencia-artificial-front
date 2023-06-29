@@ -532,9 +532,7 @@ export const RightSideWhyUs = styled.div`
   .rows-block {
     display: flex;
  
-    @media screen and (max-width:600px) {
-      margin-right:40%;
-      }
+    
   }
 
   .row-div-block {

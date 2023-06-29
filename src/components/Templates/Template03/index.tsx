@@ -292,8 +292,8 @@ function Template03({ isVisible03 }: Template03Props) {
         <RightSideBlock>
           <img
             src={
-              imageUrlSegunda
-                ? imageUrlSegunda
+              thirdImageUrlSegunda
+                ? thirdImageUrlSegunda
                 : 'https://cdn.discordapp.com/attachments/1116206739373691010/1116758018403614750/ThomasiWilson1_In_a_bustling_metropolis_where_the_pillars_of_la_56479b76-2b1a-45f8-92e6-e7298d120c8c.png'
             }
           ></img>
@@ -337,8 +337,8 @@ function Template03({ isVisible03 }: Template03Props) {
           </p>
           <img
             src={
-              thirdImageUrlTerceira
-                ? thirdImageUrlTerceira
+              secondImageUrlTerceira
+                ? secondImageUrlTerceira
                 : 'https://cdn.discordapp.com/attachments/1116206739373691010/1116758018403614750/ThomasiWilson1_In_a_bustling_metropolis_where_the_pillars_of_la_56479b76-2b1a-45f8-92e6-e7298d120c8c.png'
             }
             alt=""
@@ -499,7 +499,7 @@ function Template03({ isVisible03 }: Template03Props) {
         </div>
       </HowLocationSection>
 
-      <HowHelpSection bgImage={imageUrlTerceira}>
+      <HowHelpSection bgImage={secondImageUrlTerceira}>
         <div className="container-help">
           <LineAwardsSection></LineAwardsSection>
 
