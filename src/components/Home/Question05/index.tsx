@@ -138,10 +138,10 @@ function Question05(props: Question05Props) {
     <>
       <div className='real-top-container'>
         <div className="question01-label">
-          <div className="question-label-container">
+          <div className="question-label-containere">
             <img src="./images/logoFoxxy.svg" alt="" />
-            <div className="question-back">
-              <p className="question-normal-label">
+            <div className="questione-back">
+              <p className="question-normal-labele" >
                 Qual categoria melhor descreve o objetivo do seu site? (por exemplo, loja virtual, serviços online, portfólio, blog)
               </p>
             </div>
@@ -151,7 +151,7 @@ function Question05(props: Question05Props) {
         <div className="question01-selected">
           <div className="question-selected-container">
             <img src="./images/selected.svg" alt="" />
-            <p className="question-selected-label">
+            <p className="question-selected-labele">
               Minha escolha: {localStorage.getItem('textoClicado')}
             </p>
           </div>
@@ -168,8 +168,8 @@ function Question05(props: Question05Props) {
             {showQuestion && (
               <div className="question-container">
                 <img src="./images/logoFoxxy.svg" alt="" />
-                <div className="question-back">
-                  <p className="question">
+                <div className="question-backe">
+                  <p className="questione">
                     Então, como você quer que sua empresa seja chamada?
                   </p>
                 </div>
@@ -211,9 +211,9 @@ function Question05(props: Question05Props) {
         <div className="nav-container">
           <div className="button-back" onClick={props.voltarQuestion05}>
             <img className="button-back-icone" src="./images/back.svg" alt="" />
-            <p className="button-back-text">VOLTAR</p>
+            <p className="button-back-texte">VOLTAR</p>
           </div>
-          <div className="button-continue" onClick={props.ocultarQuestion05}>
+          <div className="button-continuee" onClick={props.ocultarQuestion05}>
             <p className="button-continue-text">CONTINUAR</p>
           </div>
         </div>

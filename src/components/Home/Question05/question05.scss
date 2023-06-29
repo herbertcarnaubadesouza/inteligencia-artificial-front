@@ -37,7 +37,7 @@
   display: none;
 }
 
-.question-label-container {
+.question-label-containere {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -45,6 +45,7 @@
   border-radius: 0.5rem;
   padding-inline: 5px;
   background-color: #231a5000;
+
 }
 
 .question-container {
@@ -55,7 +56,8 @@
   background-color: #ffffff00;
   border-radius: 0.5rem;
   padding-inline: 5px;
-
+width: 100%;
+background-color: red;
   opacity: 0; // Inicialmente invisível
   animation: fadeIn 2s forwards;
 }
@@ -89,12 +91,21 @@
   white-space: nowrap; // evita quebras de linha
 }
 
-.question-selected-label {
+.question-selected-labele {
   color: #fff;
   font-size: 18px;
   font-weight: 400;
   white-space: nowrap;
   padding-left: 2rem;
+
+  
+  @media (max-width: 1440px ) {
+    padding-left: 1rem;
+    font-size: 14px;
+    white-space: pre-wrap;
+    text-align: start;
+  }
+  
 }
 
 // INICIO
@@ -115,16 +126,18 @@
   animation: blink 5s, typing 6s steps(40, end) forwards 2s;
 }
 
-.question-back {
+.questione-back {
   background-color: #ffffff3b;
   border-top-left-radius: 2rem;
   border-top-right-radius: 1rem;
   border-bottom-right-radius: 1rem;
-  width: 92%;
-  padding-right: 1.5rem;
+  width: 100%;
+  padding-right: 1rem;
+  
+
 }
 
-.question-normal-label {
+.question-normal-labele {
   color: #fff;
   font-size: 18px;
   font-weight: 400;
@@ -132,6 +145,15 @@
   padding-left: 2rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
+
+  @media (max-width: 1440px ) {
+    padding-top: 0.5rem;
+    padding-left: 1.5rem;
+    padding-bottom:0.5rem;;
+    font-size: 12px;
+    white-space: pre-wrap;
+    text-align: start;
+  }
 }
 
 .question-selected-container {
@@ -144,6 +166,8 @@
   padding-inline: 5px;
   padding-top: 1rem;
   padding-bottom: 1.7rem;
+
+  
 }
 
 // FIM
@@ -537,9 +561,11 @@ li.active:after {
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
-  padding-left: 5rem;
+  
   padding-right: 5px;
+
 }
+
 
 .normal-button {
   &.clicked {
@@ -630,6 +656,7 @@ li.active:after {
 .adress-search-input {
   display: flex;
   width: 100%;
+  
 }
 
 .adress-label {
@@ -677,4 +704,25 @@ li.active:after {
   margin-right: 23px;
   margin-bottom: 3rem;
   margin-left: 5rem;
+
+  @media (max-width: 1440px ) {
+    background-color: red;
+    padding: 0.5rem;
+    border-radius: 1.5rem;
+    background-color: #ffffff3b;
+    margin-right: 0px;
+    margin-bottom: 0rem;
+    margin-left: 0rem;
+  }
 }
+
+* {
+  @media (max-width: 1440px ) {
+    img {
+     width: 40px;
+     height:40px;
+    }
+   }
+}
+
+  

@@ -30,7 +30,8 @@
 }
 
 .top-containere {
-  padding-bottom: 15rem;
+  padding-bottom: 10rem;
+  background-color: #231a50;
 }
 
 .inactive {
@@ -531,7 +532,8 @@ li.active:after {
   gap: 1rem;
 }
 
-.normal-buttons-container {
+.normal-buttons-containere {
+  margin: 0 auto;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -539,7 +541,15 @@ li.active:after {
   margin-bottom: 1rem;
   padding-left: 5rem;
   padding-right: 5px;
-  width: 100%;
+width:100%; 
+  @media (max-width: 1440px ) {
+  
+  padding: 0;
+    margin: 0;
+    flex-direction: row;
+   padding-left: 6%
+  }
+ 
 }
 
 .normal-button {
@@ -561,6 +571,7 @@ li.active:after {
   background-color: #ffffff48;
   border: none;
   border-radius: 0.5rem;
+  
 }
 
 .normal-button:hover {
@@ -569,10 +580,15 @@ li.active:after {
   cursor: pointer;
 }
 
-.local-text {
+.local-texte {
   color: #ffffff;
   font-size: 20px;
   font-weight: 400;
+
+  @media (max-width: 1440px ) {
+    font-size: 16px;
+    text-align: center;
+  }
 }
 
 .local-buttone {
@@ -594,12 +610,26 @@ li.active:after {
   background-color: #ffffff3b;
   border-radius: 0.5rem;
   cursor: pointer;
+  @media (max-width: 1440px ) {
+ 
+   padding: 0;
+   margin: 0;
+   padding-block: 10px;
+   padding-inline: 10px;
+ 
+  }
 
   &:hover {
     background-color: #f77f00;
   }
 }
 
+.flex {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
 .local-icon-container {
   display: flex;
   flex-direction: row;
@@ -631,6 +661,12 @@ li.active:after {
 
   margin-left: 5rem;
   width: 92%;
+
+  @media (max-width: 1440px ) {
+    width: 100%;
+   margin: 0px 8px;
+   
+  }
 }
 
 .adress-search-input {
@@ -638,14 +674,18 @@ li.active:after {
   width: 80%;
 }
 
-.adress-label {
+.adress-labele {
   color: #ffffff;
   font-size: 18px;
   font-weight: 400;
   margin-left: 5rem;
   padding-top: 1rem;
-}
 
+  @media (max-width: 1440px ) {
+    margin-left: 5%;
+  
+}
+}
 // gui
 .autocomplete-dropdown-containere {
   color: #000000;
@@ -656,17 +696,34 @@ li.active:after {
   font-weight: 300;
   border: none;
   background-color: #ffffff00;
-
-  width: 85%;
+  width: 90%;
   position: absolute;
-  top: 90%;
-  margin-right: 120px;
+  margin-top: 60px;
+  border-radius: 5px;
+ 
+  
+
+
+  
+  @media (max-width: 1440px ) {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+
+
+
 }
 
 .suggestion-item--activee {
   background-color: #f77f00;
   margin: 0 auto;
   width: 100%;
+  padding-inline: 50px;
+  padding-inline: 50px;
+  padding-block: 4px;
+ 
+
 }
 
 .suggestion-iteme {
@@ -674,6 +731,9 @@ li.active:after {
   color: #ffffff;
   margin: 0 auto;
   width: 100%;
+  padding-inline: 50px;
+  padding-block: 2px;
+  
 }
 
 .carregando {
@@ -687,6 +747,9 @@ li.active:after {
   width: 100%;
   flex-direction: column;
   overflow-x: hidden;
-
   justify-content: center;
+  padding-bottom: 150px;
+
+ 
+
 }

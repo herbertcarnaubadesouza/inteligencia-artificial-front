@@ -282,7 +282,7 @@ function Question01(props: Question01Props) {
               src="./images/back.svg"
               alt=""
             />
-            <p className="button-back-texte">{isButtonActive ? 'VOLTAR PARA TODAS AS CATEGORIAS' : 'VOLTAR'}</p>
+            <p className="button-back-texte">{isButtonActive ? 'VOLTAR PARA TODAS' : 'VOLTAR'}</p>
           </div>
 
           <div className="right-nav-container">

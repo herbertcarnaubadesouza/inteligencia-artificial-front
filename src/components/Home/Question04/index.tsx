@@ -144,12 +144,11 @@ function Question04(props: Question04Props) {
     <>
       <div className="real-top-container">
         <div className="question01-label">
-          <div className="question-label-container">
+          <div className="question-label-containere">
             <img src="./images/logoFoxxy.svg" alt="" />
-            <div className="question-back">
-              <p className="question-normal-label">
-                Qual categoria melhor descreve o objetivo do seu site? (por
-                exemplo, loja virtual, serviços online, portfólio, blog)
+            <div className="questione-back">
+              <p className="question-normal-labele" >
+                Qual categoria melhor descreve o objetivo do seu site? (por exemplo, loja virtual, serviços online, portfólio, blog)
               </p>
             </div>
           </div>
@@ -158,17 +157,18 @@ function Question04(props: Question04Props) {
         <div className="question01-selected">
           <div className="question-selected-container">
             <img src="./images/selected.svg" alt="" />
-            <p className="question-selected-label">
+            <p className="question-selected-labele">
               Minha escolha: {localStorage.getItem('textoClicado')}
             </p>
           </div>
         </div>
 
+
         <div className="question01-label">
           <div className="question-label-container">
             <img src="./images/logoFoxxy.svg" alt="" />
-            <div className="question-back">
-              <p className="question-normal-label">
+            <div className="question-backe">
+              <p className="question-normal-labele">
                 Então, como você quer que sua empresa seja chamada?
               </p>
             </div>
@@ -178,7 +178,7 @@ function Question04(props: Question04Props) {
         <div className="question01-selected">
           <div className="question-selected-container">
             <img src="./images/selected.svg" alt="" />
-            <p className="question-selected-label">
+            <p className="question-selected-labele">
               Minhas escolha: {localStorage.getItem('nomeEmpresa')}
             </p>
           </div>
@@ -189,8 +189,8 @@ function Question04(props: Question04Props) {
             {showQuestion && (
               <div id="atual" className="question-container">
                 <img src="./images/logoFoxxy.svg" alt="" />
-                <div className="question-back">
-                  <p className="question">
+                <div className="question-backe">
+                  <p className="questione">
                     Informe a localização física de sua empresa (como o endereço
                     de uma loja) ou a área que você atende
                   </p>
@@ -206,7 +206,7 @@ function Question04(props: Question04Props) {
             {showButtons && (
               <div className="second-block-right-side-container">
                 <div className="choice-container">
-                  <div className="normal-buttons-container">
+                  <div className="normal-buttons-containere">
                     <div
                       className={
                         buttonStates['Empresa física']
@@ -215,13 +215,13 @@ function Question04(props: Question04Props) {
                       }
                       onClick={() => handleChoice('Empresa física')}
                     >
-                      <div>
+                      <div className='flex'>
                         <img
                           className="choice-local-icon"
                           src="./images/business.svg"
                           alt=""
                         />
-                        <p className="local-text">Empresa física</p>
+                        <p className="local-texte">Empresa física</p>
                       </div>
                     </div>
                     <div
@@ -232,13 +232,13 @@ function Question04(props: Question04Props) {
                       }
                       onClick={() => handleChoice('Área de serviço')}
                     >
-                      <div>
+                      <div className='flex'>
                         <img
                           className="choice-local-icon"
                           src="./images/service.svg"
                           alt=""
                         />
-                        <p className="local-text">Área de serviço</p>
+                        <p className="local-texte">Área de serviço</p>
                       </div>
                     </div>
                     <div
@@ -249,13 +249,13 @@ function Question04(props: Question04Props) {
                       }
                       onClick={() => handleChoice('Apenas online')}
                     >
-                      <div>
+                      <div className='flex'>
                         <img
                           className="choice-local-icon"
                           src="./images/online.svg"
                           alt=""
                         />
-                        <p className="local-text">Apenas online</p>
+                        <p className="local-texte">Apenas online</p>
                       </div>
                     </div>
                   </div>
@@ -265,7 +265,7 @@ function Question04(props: Question04Props) {
                       : 'inactive'
                       }`}
                   >
-                    <p className="adress-label">
+                    <p className="adress-labele">
                       Insira endereço da sua empresa
                     </p>
                     <div className="adress-search-containera">

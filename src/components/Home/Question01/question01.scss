@@ -1,4 +1,5 @@
 .real-top-container {
+  z-index: 999;
   overflow: auto;
   padding-right: 1rem;
   height: 65.5vh;
@@ -223,6 +224,7 @@
   justify-content: space-between;
   align-items: center;
   padding-bottom: 1rem;
+
 }
 
 .block-image-left-side {
@@ -316,52 +318,7 @@
 
 // TAB MENU
 
-ul {
-  list-style-type: none;
-  display: flex;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 700;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  align-items: center;
-  gap: 5px;
- 
 
-}
-
-li {
-
-  cursor: pointer;
-  padding: 10px;
-
-  @media (max-width:700px) {width: 13%;
-     font-size: 8px;
-     text-align: start;
-    
-  }
-
-
-  
-}
-
-li.active {
-
-  position: relative;
-
-}
-
-li.active:after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: #f77f00;
-
-}
 
 .linha {
   border: none;
@@ -377,6 +334,7 @@ li.active:after {
   flex-direction: row;
   align-items: center;
   gap: 1rem;
+  
 }
 /// Gui
 .button-back-icone {
@@ -445,16 +403,23 @@ li.active:after {
   }
 }
 .search-containere {
-  padding: 1rem;
+  padding: 0.8rem;
   border-radius: 1.5rem;
   background-color: #ffffff3b;
   align-items: center;
   margin-bottom: 1.5rem;
   display: flex;
   border: none;
-
   padding-right: 0;
+  @media (max-width: 768px) {
+    padding: 0.5rem;
+    
+  }
+
+  
 }
+
+
 // gui
 .buttone {
   width: 32%;
@@ -481,7 +446,7 @@ li.active:after {
   }
 }
 
-.button:hover {
+.buttone:hover {
   background-color: #f77f00;
   cursor: pointer;
 }
@@ -509,12 +474,12 @@ li.active:after {
   border-top-left-radius: 2rem;
   border-top-right-radius: 1rem;
   border-bottom-right-radius: 1rem;
-  width: 92%;
+  width: 100%;
   padding-right: 1.5rem;
  
 
   @media (max-width: 1440px ) {
-    width: 90%;
+    width: 100%;
   }
   
 }
@@ -546,9 +511,13 @@ li.active:after {
   animation: blink 6s, typing 6s steps(35, end) forwards 2s;
 
   @media (max-width: 1440px ) {
+   
+   
     font-size: 12px;
-    white-space: pre-line;
-    max-height: 95px;
+    white-space: pre-wrap;
+   min-height: 40px;
+   max-height: 90px;
+   animation: blink 6s, typing 6s steps(100, end) forwards 2s;
   }
 }
 
@@ -572,7 +541,7 @@ li.active:after {
   font-weight: 700;
 
   @media (max-width: 768px) {
-    font-size: 12px;
+    font-size: 11px;
   }
 }
 
@@ -585,12 +554,16 @@ li.active:after {
   border-radius: 1rem;
 
   @media (max-width: 768px) { 
-    margin-top: 0.5rem;
+    
+  margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   background-color: #f77f00;
   border-radius: 1rem;
+  .button-continue-text {
+    font-size: 16px;
+  }
 
   }
 }
@@ -601,7 +574,7 @@ li.active:after {
 
   .button-continue-text {
     color: #fff;
-
+    
     
   }
 }
@@ -619,4 +592,52 @@ li.active:after {
   .button-back-text {
     color: #fff;
   }
+}
+ul {
+  list-style-type: none;
+  display: flex;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  align-items: center;
+  gap: 5px;
+ flex-wrap: wrap;
+ 
+
+}
+
+li {
+
+  cursor: pointer;
+  padding: 10px;
+
+  @media (max-width:700px) {width: 48%;
+     font-size: 11px;
+     text-align: start;
+     
+    
+  }
+
+
+  
+}
+
+li.active {
+
+  position: relative;
+
+}
+
+li.active:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #f77f00;
+
 }
