@@ -189,7 +189,7 @@ function Question05(props: Question05Props) {
                     <div className="adress-search-input">
                       <input
                         id="name"
-                        className="adress-searche"
+                        className="searche"
                         type="text"
                         placeholder="Escreva o nome da sua empresa aqui"
                         value={nomeEmpresa}

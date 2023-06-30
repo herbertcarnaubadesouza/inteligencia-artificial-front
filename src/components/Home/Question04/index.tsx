@@ -268,9 +268,9 @@ function Question04(props: Question04Props) {
                     <p className="adress-labele">
                       Insira endereço da sua empresa
                     </p>
-                    <div className="adress-search-containera">
+                    <div className="search-containere">
                       <img
-                        className="search-icon"
+                        className="search-icone"
                         src="./images/browse.svg"
                         alt=""
                       />
@@ -288,7 +288,7 @@ function Question04(props: Question04Props) {
                           <div className="adress-search-input">
                             <input
                               id="adress"
-                              className="adress-searche"
+                              className="searche"
                               type="text"
                               {...getInputProps({
                                 placeholder:

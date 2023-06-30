@@ -44,8 +44,6 @@
   gap: 1rem;
   border-radius: 0.5rem;
   padding-inline: 5px;
- 
-
 }
 
 .question-container {
@@ -56,8 +54,8 @@
   background-color: #ffffff00;
   border-radius: 0.5rem;
   padding-inline: 5px;
-width: 100%;
-background-color: red;
+  width: 100%;
+  background-color: red;
   opacity: 0; // Inicialmente invisível
   animation: fadeIn 2s forwards;
 }
@@ -98,14 +96,12 @@ background-color: red;
   white-space: nowrap;
   padding-left: 2rem;
 
-  
-  @media (max-width: 1440px ) {
+  @media (max-width: 1440px) {
     padding-left: 1rem;
     font-size: 14px;
     white-space: pre-wrap;
     text-align: start;
   }
-  
 }
 
 // INICIO
@@ -133,8 +129,6 @@ background-color: red;
   border-bottom-right-radius: 1rem;
   width: 100%;
   padding-right: 1rem;
-  
-
 }
 
 .question-normal-labele {
@@ -146,10 +140,10 @@ background-color: red;
   padding-top: 1rem;
   padding-bottom: 1rem;
 
-  @media (max-width: 1440px ) {
+  @media (max-width: 1440px) {
     padding-top: 0.5rem;
     padding-left: 1.5rem;
-    padding-bottom:0.5rem;;
+    padding-bottom: 0.5rem;
     font-size: 12px;
     white-space: pre-wrap;
     text-align: start;
@@ -166,8 +160,6 @@ background-color: red;
   padding-inline: 5px;
   padding-top: 1rem;
   padding-bottom: 1.7rem;
-
-  
 }
 
 // FIM
@@ -193,7 +185,6 @@ background-color: red;
   width: 26px;
   height: 26px;
   margin-right: 0.7rem;
-  
 }
 
 .search {
@@ -562,11 +553,9 @@ li.active:after {
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
-  
+
   padding-right: 5px;
-
 }
-
 
 .normal-button {
   &.clicked {
@@ -657,7 +646,6 @@ li.active:after {
 .adress-search-input {
   display: flex;
   width: 100%;
-  
 }
 
 .adress-label {
@@ -681,10 +669,11 @@ li.active:after {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-  
+
+  height: 25px;
   &::placeholder {
     color: #fff;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 300;
     margin-top: -0.5rem;
   }
@@ -692,15 +681,16 @@ li.active:after {
   &:focus {
     outline: none;
   }
-  @media (max-width: 768px) {&::placeholder {
-    color: #fff;
-    font-size:12px;
-    font-weight: 300;
- 
-    
-    
-  }}
 
+  @media (max-width: 768px) {
+    height: 20px;
+    &::placeholder {
+      color: #fff;
+      font-size: 13px;
+      font-weight: 300;
+      margin-top: -0.5rem;
+    }
+  }
 }
 
 .adress-search-containere {
@@ -710,35 +700,27 @@ li.active:after {
   align-items: center;
   display: flex;
   border: none;
-  margin-right: 23px;
-  margin-bottom: 3rem;
-  margin-left: 5rem;
+  margin-right: 0px;
+  margin-bottom: 2rem;
+  margin-left: 0rem;
 
-  @media (max-width: 1440px ) {
-    
-    padding: 0.5rem;
+  @media (max-width: 1440px) {
+    padding: 0.2rem;
     border-radius: 1.5rem;
     background-color: #ffffff3b;
     margin-right: 0px;
     margin-bottom: 0rem;
     margin-left: 0rem;
-  
-    
   }
 }
 
 * {
-  @media (max-width: 1440px ) {
-
-    .real-top-container{
+  @media (max-width: 1440px) {
+    .real-top-container {
       img {
         width: 40px;
-        height:40px;
-       }
-
-    } 
+        height: 40px;
+      }
     }
-   
+  }
 }
-
-  

@@ -318,6 +318,10 @@ const Parallax = styled.div<{ bgImage?: string }>`
     background-color: ${(props: ThemeProps) => props.theme.headerFooterBgColor};
   }
 
+@media screen  and (min-width: 768px) {
+  background-attachment: none;
+}
+  
 
  
 `;
@@ -328,7 +332,7 @@ const ParallaxContact = styled.div<{ bgImage?: string }>`
   align-items: center;
   justify-content: center;
   background-image: url(${(props) => props.bgImage ? props.bgImage : 'https://cdn.discordapp.com/attachments/1116206739373691010/1116573743058268180/ThomasiWilson1_A_successful_law_firms_executive_office_with_flo_acf05fba-84f6-4416-bf37-b27f5d02a190.png'});
-  background-attachment: fixed;
+  
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

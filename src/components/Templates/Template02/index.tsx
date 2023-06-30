@@ -58,181 +58,154 @@ const apiKey = process.env.REACT_APP_API_KEY;
 
 function Template02({ isVisible02 }: Template02Props) {
 
-
-
-  // BANNER
-  const [banner, setBanner] = useState<Template02[]>([]);
-  const [imageUrl, setImageUrl] = useState('');
-  const [secondImageUrl, setSecondImageUrl] = useState('');
-  const [thirdImageUrl, setThirdImageUrl] = useState('');
-  const [bannerId, setBannerId] = useState('');
-  const [secondBannerId, setSecondBannerId] = useState('');
-  const [thirdBannerId, setThirdBannerId] = useState('');
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const advogadoDocRef = doc(db, 'sites', 'advogado');
-      const bannerCollectionRef = collection(advogadoDocRef, 'banner');
-      const bannerSnapshot = await getDocs(bannerCollectionRef);
-
-      let bannerList = bannerSnapshot.docs.map((doc) => {
-        const data = doc.data();
-
-        const banner = {
-          id: doc.id,
-          imgUrl: data.imgUrl,
-        };
-        return banner;
-      });
-
-      // BANNER TEMPLATE 01
-      const randomIndex = Math.floor(Math.random() * bannerList.length);
-      const randomBanner = bannerList[randomIndex];
-      setImageUrl(randomBanner.imgUrl);
-      setBannerId(randomBanner.id);
-
-      bannerList = bannerList.filter((_, index) => index !== randomIndex);
-
-      // BANNER TEMPLATE 02
-      const secondRandomIndex = Math.floor(Math.random() * bannerList.length);
-      const secondRandomBanner = bannerList[secondRandomIndex];
-      setSecondImageUrl(secondRandomBanner.imgUrl);
-      setSecondBannerId(secondRandomBanner.id);
-      localStorage.setItem('bannerTemplate02', secondImageUrl);
-
-      bannerList = bannerList.filter((_, index) => index !== secondRandomIndex);
-
-      // BANNER TEMPLATE 03
-      const thirdRandomIndex = Math.floor(Math.random() * bannerList.length);
-      const thirdRandomBanner = bannerList[thirdRandomIndex];
-      setThirdImageUrl(thirdRandomBanner.imgUrl);
-      setThirdBannerId(thirdRandomBanner.id);
-
-      localStorage.setItem('bannerTemplate03', thirdImageUrl);
-
-      setBanner(bannerList);
-    };
-
-    fetchData();
-  }, []);
-
-  // ABOUT
-  const [about, setAbout] = useState<Template02[]>([]);
-  const [imageUrlSegunda, setImageUrlSegunda] = useState('');
-  const [secondImageUrlSegunda, setSecondImageUrlSegunda] = useState('');
-  const [thirdImageUrlSegunda, setThirdImageUrlSegunda] = useState('');
-  const [aboutId, setAboutId] = useState('');
-  const [secondAboutId, setSecondAboutId] = useState('');
-  const [thirdAboutId, setThirdAboutId] = useState('');
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const advogadoDocRef = doc(db, 'sites', 'advogado');
-      const aboutCollectionRef = collection(advogadoDocRef, 'subtitulo');
-      const aboutSnapshot = await getDocs(aboutCollectionRef);
-
-      let aboutList = aboutSnapshot.docs.map((doc) => {
-        const data = doc.data();
-
-        const about = {
-          id: doc.id,
-          imgUrl: data.imgUrl,
-        };
-
-        return about;
-      });
-
-      // ABOUT TEMPLATE 01
-      const randomIndex = Math.floor(Math.random() * aboutList.length);
-      const randomAbout = aboutList[randomIndex];
-      setImageUrlSegunda(randomAbout.imgUrl);
-      setAboutId(randomAbout.id);
-
-      aboutList = aboutList.filter((_, index) => index !== randomIndex);
-
-      //ABOUT TEMPLATE 02
-      const secondRandomIndex = Math.floor(Math.random() * aboutList.length);
-      const secondRandomAbout = aboutList[secondRandomIndex];
-      setSecondImageUrlSegunda(secondRandomAbout.imgUrl);
-      setSecondAboutId(secondRandomAbout.id);
-      localStorage.setItem('aboutTemplate02', secondImageUrlSegunda);
-
-      aboutList = aboutList.filter((_, index) => index !== secondRandomIndex);
-
-      // ABOUT TEMPLATE 03
-      const thirdRandomIndex = Math.floor(Math.random() * aboutList.length);
-      const thirdRandomAbout = aboutList[thirdRandomIndex];
-      setThirdImageUrlSegunda(thirdRandomAbout.imgUrl);
-      setThirdAboutId(thirdRandomAbout.id);
-
-      localStorage.setItem('aboutTemplate03', thirdImageUrlSegunda);
-
-      setAbout(aboutList);
-    };
-
-    fetchData();
-  }, []);
-
-  // PARALLAX
-  const [parallax, setParallax] = useState<Template02[]>([]);
-  const [imageUrlTerceira, setImageUrlTerceira] = useState('');
-  const [secondImageUrlTerceira, setSecondImageUrlTerceira] = useState('');
-  const [thirdImageUrlTerceira, setThirdImageUrlTerceira] = useState('');
-  const [parallaxId, setParallaxId] = useState('');
-  const [secondParallaxId, setSecondParallaxId] = useState('');
-  const [thirdParallaxId, setThirdParallaxId] = useState('');
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const advogadoDocRef = doc(db, 'sites', 'advogado');
-      const parallaxCollectionRef = collection(advogadoDocRef, 'bannerparalax');
-      const parallaxSnapshot = await getDocs(parallaxCollectionRef);
-
-      let parallaxList = parallaxSnapshot.docs.map((doc) => {
-        const data = doc.data();
-
-        const parallax = {
-          id: doc.id,
-          imgUrl: data.imgUrl,
-        };
-
-        return parallax;
-      });
-
-      // ABOUT TEMPLATE 01
-      const randomIndex = Math.floor(Math.random() * parallaxList.length);
-      const randomParallax = parallaxList[randomIndex];
-      setImageUrlTerceira(randomParallax.imgUrl);
-      setParallaxId(randomParallax.id);
-
-      parallaxList = parallaxList.filter((_, index) => index !== randomIndex);
-
-      //ABOUT TEMPLATE 02
-      const secondRandomIndex = Math.floor(Math.random() * parallaxList.length);
-      const secondRandomParallax = parallaxList[secondRandomIndex];
-      setSecondImageUrlTerceira(secondRandomParallax.imgUrl);
-      setSecondParallaxId(secondRandomParallax.id);
-      localStorage.setItem('parallaxTemplate02', secondImageUrlTerceira);
-
-      parallaxList = parallaxList.filter(
-        (_, index) => index !== secondRandomIndex,
-      );
-
-      // ABOUT TEMPLATE 03
-      const thirdRandomIndex = Math.floor(Math.random() * parallaxList.length);
-      const thirdRandomParallax = parallaxList[thirdRandomIndex];
-      setThirdImageUrlTerceira(thirdRandomParallax.imgUrl);
-      setThirdParallaxId(thirdRandomParallax.id);
-
-      localStorage.setItem('parallaxTemplate03', thirdImageUrlTerceira);
-
-      setParallax(parallaxList);
-    };
-
-    fetchData();
-  }, []);
-
   const nomeEmpresa = "Seraphim Law Group"
+
+  // BANNER HEADER
+  const [imageUrlHeader, setImageUrlHeader] = useState('');
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const bannerTemplateHeader = localStorage.getItem('bannerTemplateHeaderTemplate02');
+
+      if (!bannerTemplateHeader) {
+        const advogadoDocRef = doc(db, 'sites', 'advogado');
+        const bannerCollectionRef = collection(advogadoDocRef, 'banner');
+        const bannerSnapshot = await getDocs(bannerCollectionRef);
+
+        let bannerList = bannerSnapshot.docs.map((doc) => {
+          const data = doc.data();
+          const banner = {
+            id: doc.id,
+            imgUrl: data.imgUrl,
+          };
+          return banner;
+        });
+
+        if (bannerList.length > 0) {
+          const randomIndex = Math.floor(Math.random() * bannerList.length);
+          const randomBanner = bannerList[randomIndex];
+          setImageUrlHeader(randomBanner.imgUrl);
+
+          localStorage.setItem('bannerTemplateHeaderTemplate02', randomBanner.imgUrl);
+        }
+      } else {
+        setImageUrlHeader(bannerTemplateHeader);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+
+  // BANNER ABOUT 
+  const [imageUrlAbout, setImageUrlAbout] = useState('');
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const bannerTemplateHeader = localStorage.getItem('bannerTemplateAboutTemplate02');
+
+      if (!bannerTemplateHeader) {
+        const advogadoDocRef = doc(db, 'sites', 'advogado');
+        const bannerCollectionRef = collection(advogadoDocRef, 'subtitulo');
+        const bannerSnapshot = await getDocs(bannerCollectionRef);
+
+        let bannerList = bannerSnapshot.docs.map((doc) => {
+          const data = doc.data();
+          const banner = {
+            id: doc.id,
+            imgUrl: data.imgUrl,
+          };
+          return banner;
+        });
+
+        if (bannerList.length > 0) {
+          const randomIndex = Math.floor(Math.random() * bannerList.length);
+          const randomBanner = bannerList[randomIndex];
+          setImageUrlAbout(randomBanner.imgUrl);
+
+          localStorage.setItem('bannerTemplateAboutTemplate02', randomBanner.imgUrl);
+        }
+      } else {
+        setImageUrlAbout(bannerTemplateHeader);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  // BANNER PARALALAX PRIMEIRA IMAGEM
+  const [imageUrlParallax, setImageUrlParallax] = useState('');
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const bannerTemplateHeader = localStorage.getItem('bannerTemplateParallax01Template02');
+
+      if (!bannerTemplateHeader) {
+        const advogadoDocRef = doc(db, 'sites', 'advogado');
+        const bannerCollectionRef = collection(advogadoDocRef, 'bannerparalax');
+        const bannerSnapshot = await getDocs(bannerCollectionRef);
+
+        let bannerList = bannerSnapshot.docs.map((doc) => {
+          const data = doc.data();
+          const banner = {
+            id: doc.id,
+            imgUrl: data.imgUrl,
+          };
+          return banner;
+        });
+
+        if (bannerList.length > 0) {
+          const randomIndex = Math.floor(Math.random() * bannerList.length);
+          const randomBanner = bannerList[randomIndex];
+          setImageUrlParallax(randomBanner.imgUrl);
+
+          localStorage.setItem('bannerTemplateParallax01Template02', randomBanner.imgUrl);
+        }
+      } else {
+        setImageUrlParallax(bannerTemplateHeader);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+
+  // BANER PARALLAX SEGUNDA IMAGEM 
+  const [imageUrlParallaxSegunda, setImageUrlParallaxSegunda] = useState('');
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const bannerTemplateHeader = localStorage.getItem('bannerTemplateParallax02Template02');
+
+      if (!bannerTemplateHeader) {
+        const advogadoDocRef = doc(db, 'sites', 'advogado');
+        const bannerCollectionRef = collection(advogadoDocRef, 'banner');
+        const bannerSnapshot = await getDocs(bannerCollectionRef);
+
+        let bannerList = bannerSnapshot.docs.map((doc) => {
+          const data = doc.data();
+          const banner = {
+            id: doc.id,
+            imgUrl: data.imgUrl,
+          };
+          return banner;
+        });
+
+        if (bannerList.length > 0) {
+          const randomIndex = Math.floor(Math.random() * bannerList.length);
+          const randomBanner = bannerList[randomIndex];
+          setImageUrlParallaxSegunda(randomBanner.imgUrl);
+
+          localStorage.setItem('bannerTemplateParallax02Template02', randomBanner.imgUrl);
+        }
+      } else {
+        setImageUrlParallaxSegunda(bannerTemplateHeader);
+      }
+    };
+
+    fetchData();
+  }, []);
+
 
 
 
@@ -264,10 +237,12 @@ function Template02({ isVisible02 }: Template02Props) {
   window.addEventListener('beforeunload', () => {
     localStorage.removeItem('loading2');
   });
+
+
   return (
     <Container>
       {loading ? <Loading /> : null}
-      <HeaderBlock bgImage={imageUrl}>
+      <HeaderBlock bgImage={imageUrlHeader}>
         <div className="container-block-header">
           <LineHeader></LineHeader>
           <span>A justiça é nosso compromisso, sua causa é nossa missão.</span>
@@ -299,9 +274,7 @@ function Template02({ isVisible02 }: Template02Props) {
         <SecondBlockAbout>
           <img
             src={
-              imageUrlTerceira
-                ? imageUrlSegunda
-                : ''
+              imageUrlAbout
             }
           ></img>
         </SecondBlockAbout>
@@ -351,7 +324,7 @@ function Template02({ isVisible02 }: Template02Props) {
           </Column>
         </div>
       </ServicesSection>
-      <WhyUs bgImage={imageUrlTerceira}>
+      <WhyUs bgImage={imageUrlParallax}>
         <div className="full-content-whyus">
           <div className="left-side-whyus">
             <div className="container-block-header">
