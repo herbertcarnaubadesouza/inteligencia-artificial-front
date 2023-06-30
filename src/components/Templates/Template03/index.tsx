@@ -125,7 +125,7 @@ function Template03({ isVisible03 }: Template03Props) {
           localStorage.setItem('bannerTemplateAboutTemplate03', randomBanner.imgUrl);
         }
       } else {
-        setImageUrlHeader(bannerTemplateHeader);
+        setImageUrlAbout(bannerTemplateHeader);
       }
     };
 
