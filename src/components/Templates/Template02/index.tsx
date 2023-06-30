@@ -239,6 +239,205 @@ function Template02({ isVisible02 }: Template02Props) {
   });
 
 
+  // TEXTOS 
+
+  // TITLES
+  const titleFirma = [
+    {
+      description: "Luxury Legal Solutions",
+    },
+    {
+      description: "Elite Advocates",
+    },
+    {
+      description: "Prestige Law Firm",
+    },
+    {
+      description: "Opulent Attorneys",
+    },
+    {
+      description: "Exclusive Legal Advisors",
+    },
+  ];
+  const randomTitleFirma = () => {
+    const randomIndex = Math.floor(Math.random() * titleFirma.length);
+    return titleFirma[randomIndex].description;
+  };
+
+  const [randomTitleFirmaText, setRandomTitleFirmaText] = useState('');
+
+  useEffect(() => {
+    const savedDescription = localStorage.getItem('randomTitleFirmaTemplate02');
+    if (savedDescription) {
+      setRandomTitleFirmaText(savedDescription);
+    } else {
+      const newRandomDescription = randomTitleFirma();
+      setRandomTitleFirmaText(newRandomDescription);
+      localStorage.setItem('randomTitleFirmaTemplate02', newRandomDescription);
+    }
+  }, []);
+
+
+  // ABOUT
+  const about = [
+    {
+      description: "Nossa firma de advocacia oferece soluções jurídicas especializadas e eficazes. Contamos com uma equipe experiente e dedicada, pronta para representar seus interesses com ética e profissionalismo. Priorizamos a excelência em cada caso, buscando resultados favoráveis para nossos clientes. Confie em nós para resolver suas questões legais com confiança e competência."
+    },
+    {
+      description: "Somos uma firma de advocacia comprometida em fornecer soluções jurídicas confiáveis e eficientes. Com uma equipe experiente e especializada, oferecemos serviços jurídicos personalizados para atender às necessidades dos nossos clientes. Nossa ética profissional e integridade são fundamentais em todas as nossas interações. Conte conosco para representar seus interesses legais com dedicação e excelência."
+    },
+    {
+      description: "Nossa firma de advocacia é especializada em oferecer soluções jurídicas eficazes e personalizadas para nossos clientes. Com uma equipe de advogados experientes e dedicados, estamos prontos para lidar com uma ampla gama de questões legais. Nosso compromisso com a excelência e a ética nos permite fornecer um serviço de qualidade, sempre buscando alcançar os melhores resultados para nossos clientes. Conte conosco para representar seus interesses e proteger seus direitos com dedicação e profissionalismo."
+    },
+    {
+      description: "Conte com nossa firma de advocacia para obter serviços jurídicos de qualidade. Nossa equipe de advogados altamente qualificados está comprometida em fornecer soluções eficientes e personalizadas. Com experiência em diversas áreas do direito, estamos preparados para lidar com casos complexos e proteger seus interesses. Oferecemos um atendimento dedicado e confidencial, garantindo a defesa de seus direitos com ética e competência."
+    },
+    {
+      description: "Na nossa firma de advocacia, acreditamos em uma abordagem personalizada para cada cliente. Compreendemos a importância de suas necessidades legais e nos dedicamos a fornecer soluções sob medida. Nossa equipe de advogados especializados está pronta para representá-lo com integridade e profissionalismo. Confie em nós para garantir seus direitos e encontrar as melhores estratégias jurídicas para seu caso."
+    }
+  ];
+  // RANDOM TEXTO ABOUT 
+  const randomTextoAbout = () => {
+    const randomIndex = Math.floor(Math.random() * about.length);
+    return about[randomIndex].description;
+  };
+
+  const [randomTextoAboutText, setRandomTextoAboutText] = useState('');
+
+  useEffect(() => {
+    const savedDescription = localStorage.getItem('randomTextoAboutTemplate02');
+    if (savedDescription) {
+      setRandomTextoAboutText(savedDescription);
+    } else {
+      const newRandomDescription = randomTextoAbout();
+      setRandomTextoAboutText(newRandomDescription);
+      localStorage.setItem('randomTextoAboutTemplate02', newRandomDescription);
+    }
+  }, []);
+
+  //PARALLAX
+  const parallax01 = [
+    {
+      description: "Nossa empresa de advocacia é a escolha certa para você, pois contamos com uma equipe de profissionais altamente qualificados e comprometidos em defender seus interesses com eficiência e agilidade."
+    },
+    {
+      description: "Somos uma empresa de advocacia dedicada a oferecer serviços jurídicos excepcionais. Nossa equipe de advogados talentosos e comprometidos está pronta para representá-lo e proteger seus interesses com dedicação e experiência."
+    },
+    {
+      description: "Se você precisa de serviços jurídicos de confiança, nossa empresa de advocacia é a resposta. Temos uma equipe experiente de advogados prontos para lutar por seus direitos e oferecer soluções jurídicas eficazes e personalizadas."
+    },
+    {
+      description: "Na nossa empresa de advocacia, acreditamos que cada caso é único. Por isso, nossa equipe dedicada está empenhada em fornecer a você um serviço jurídico personalizado, com foco em resultados e eficiência."
+    },
+    {
+      description: "Conte conosco, uma empresa de advocacia comprometida com a excelência e a defesa de seus interesses. Nossa equipe de advogados qualificados está pronta para oferecer soluções jurídicas estratégicas e proteger seus direitos de forma eficiente."
+    }
+  ];
+
+  const randomParallax01 = () => {
+    const randomIndex = Math.floor(Math.random() * parallax01.length);
+    return parallax01[randomIndex].description;
+  };
+
+  const [randomParallax01Text, setRandomParallax01Text] = useState('');
+
+  useEffect(() => {
+    const savedDescription = localStorage.getItem('randomParallax01Template02');
+    if (savedDescription) {
+      setRandomParallax01Text(savedDescription);
+    } else {
+      const newRandomDescription = randomParallax01();
+      setRandomParallax01Text(newRandomDescription);
+      localStorage.setItem('randomParallax01Template02', newRandomDescription);
+    }
+  }, []);
+
+  // SOBRE A FIRMA 
+  const aboutFirma = [
+    {
+      description: "Nossa firma de advocacia busca sempre a excelência em serviços, oferecendo atendimento personalizado e soluções jurídicas eficazes para nossos clientes.",
+    },
+    {
+      description: "Somos uma firma de advocacia comprometida em fornecer serviços jurídicos de alta qualidade. Nosso atendimento é personalizado, e buscamos sempre soluções eficazes para atender às necessidades dos nossos clientes.",
+    },
+    {
+      description: "Na nossa firma de advocacia, priorizamos a excelência em cada caso. Nossa equipe está empenhada em fornecer atendimento personalizado e soluções jurídicas eficazes, buscando sempre os melhores resultados para nossos clientes.",
+    },
+    {
+      description: "Conte com nossa firma de advocacia para receber um atendimento de qualidade e soluções jurídicas eficazes. Estamos comprometidos em oferecer serviços personalizados e buscar os melhores resultados para nossos clientes.",
+    },
+    {
+      description: "Nossa firma de advocacia se dedica a oferecer serviços de excelência. Valorizamos o atendimento personalizado e buscamos sempre soluções jurídicas eficazes para atender às demandas e necessidades dos nossos clientes.",
+    },
+  ];
+
+  const randomAboutFirma = () => {
+    const randomIndex = Math.floor(Math.random() * aboutFirma.length);
+    return aboutFirma[randomIndex].description;
+  };
+
+  const [randomAboutFirmaText, setRandomAboutFirmaText] = useState('');
+
+  useEffect(() => {
+    const savedDescription = localStorage.getItem('randomAboutFirmaTemplate02');
+    if (savedDescription) {
+      setRandomAboutFirmaText(savedDescription);
+    } else {
+      const newRandomDescription = randomAboutFirma();
+      setRandomAboutFirmaText(newRandomDescription);
+      localStorage.setItem('randomAboutFirmaTemplate02', newRandomDescription);
+    }
+  }, []);
+
+  //
+  const footer = [
+    {
+      description: "Fale com nossos advogados de defesa criminal hoje. Estamos aqui para ajudar você a alcançar seus objetivos de maneira legal e eficiente. Conte conosco para proteger seus direitos e liberdade.",
+    },
+    {
+      description: "Nossa firma de advocacia é especializada em defesa criminal. Nossos advogados experientes estão prontos para lutar em seu nome, garantindo que seus direitos sejam protegidos. Entre em contato conosco e tenha uma equipe confiável ao seu lado.",
+    },
+    {
+      description: "Se você está enfrentando acusações criminais, nossa equipe de advogados de defesa criminal está pronta para ajudar. Oferecemos representação legal experiente e eficiente, trabalhando incansavelmente para proteger seus direitos e liberdade.",
+    },
+    {
+      description: "Não enfrente acusações criminais sozinho. Nossa equipe de advogados de defesa criminal está aqui para você. Com uma abordagem legal sólida e estratégias eficazes, buscamos alcançar os melhores resultados para proteger seus direitos e liberdade.",
+    },
+    {
+      description: "Na nossa firma de advocacia, temos uma equipe de advogados especializados em defesa criminal prontos para ajudar. Com dedicação e habilidades jurídicas, trabalharemos em conjunto para garantir a melhor defesa possível, protegendo seus direitos e alcançando resultados favoráveis.",
+    },
+  ];
+
+  const randomFooter = () => {
+    const randomIndex = Math.floor(Math.random() * footer.length);
+    return footer[randomIndex].description;
+  };
+
+  const [randomFooterText, setRandomFooterText] = useState('');
+
+  useEffect(() => {
+    const savedDescription = localStorage.getItem('randomFooterTemplate02');
+    if (savedDescription) {
+      setRandomFooterText(savedDescription);
+    } else {
+      const newRandomDescription = randomFooter();
+      setRandomFooterText(newRandomDescription);
+      localStorage.setItem('randomFooterTemplate02', newRandomDescription);
+    }
+  }, []);
+
+
+
+
+
+
+
+
+
+
+
+
+
   return (
     <Container>
       {loading ? <Loading /> : null}
@@ -248,7 +447,7 @@ function Template02({ isVisible02 }: Template02Props) {
           <span>A justiça é nosso compromisso, sua causa é nossa missão.</span>
         </div>
         <h1>
-          {nomeEmpresa}
+          {randomTitleFirmaText}
         </h1>
         <LineHeaderBottom></LineHeaderBottom>
         <div className="container-header-footer-block">
@@ -268,7 +467,7 @@ function Template02({ isVisible02 }: Template02Props) {
             <span>Defendemos sua justiça com excelência!</span>
           </div>
           <h2>Você veio ao lugar certo</h2>
-          <p>A Seraphim Law Group é um escritório de advocacia comprometido em proporcionar soluções jurídicas cuidadosamente planejadas aos seus clientes. Com uma equipe de profissionais altamente qualificados e experientes, a firma se dedica a atender às necessidades jurídicas de indivíduos e empresas em diversas áreas do direito. A visão da Seraphim é ser uma referência em excelência, ética e inovação jurídica, estabelecendo uma relação de confiança e parceria com seus clientes.</p>
+          <p>{randomTextoAboutText}</p>
 
         </FirstBlockAbout>
         <SecondBlockAbout>

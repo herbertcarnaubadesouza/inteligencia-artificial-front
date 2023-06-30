@@ -87,7 +87,7 @@ export const HeaderBlock = styled.section<{ bgImage?: string }>`
   background-size: cover;
   padding-top: 10rem;
   padding-bottom: 7rem;
-  padding-inline: 6rem;
+  padding-inline: 2rem;
   gap: 2.5rem;
   margin: 0 auto;
   width:100%
@@ -152,7 +152,13 @@ export const AboutSection = styled.section`
    
     
   }
-
+  @media only screen and (max-width: 768px) {
+   
+    width: 95%;
+   
+   
+    
+  }
 
 `;
 export const LeftSideBlock = styled.div`

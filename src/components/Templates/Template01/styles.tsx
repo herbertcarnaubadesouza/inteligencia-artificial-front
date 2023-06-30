@@ -318,8 +318,10 @@ const Parallax = styled.div<{ bgImage?: string }>`
     background-color: ${(props: ThemeProps) => props.theme.headerFooterBgColor};
   }
 
-@media screen  and (min-width: 768px) {
-  background-attachment: none;
+@media screen  and (max-width: 768px) {
+  background-attachment: inherit;
+
+
 }
   
 
