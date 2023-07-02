@@ -31,7 +31,7 @@ function RightSide() {
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
-    setIsOpen(!isOpen);
+
   }
 
 
@@ -39,9 +39,9 @@ function RightSide() {
   return (
     <>
       {leftSide.jsx}
-      <div className='buttonContainer'>  <button onClick={toggleMenu}> <img src="./images/abrir.svg" alt="" /></button></div>
 
 
+      <div className='buttonContainer'>  <button onClick={toggleMenu}> <img src={isOpen ? './images/X.png' : './images/menu.png'} alt="" /></button></div>
       <div className={`template-rightside-container ${isOpen ? 'open' : ''}`} >
 
         <div className="template-top-container">
@@ -179,7 +179,9 @@ function RightSide() {
             </div>
           </div>
         </div>
+
       </div>
+
     </>
   );
 }

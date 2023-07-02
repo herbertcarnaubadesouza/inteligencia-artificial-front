@@ -498,12 +498,12 @@
   animation: blink 6s, typing 6s steps(35, end) forwards 2s;
 
   @media (max-width: 1440px) {
+    border-right: none;
     padding-left: 1.2rem;
     font-size: 12px;
     white-space: pre-wrap;
-    min-height: 40px;
-    max-height: 60px;
-    animation: blink 6s, typing 6s steps(10, end) forwards 2s;
+    width: 100%;
+    animation: none;
   }
 }
 

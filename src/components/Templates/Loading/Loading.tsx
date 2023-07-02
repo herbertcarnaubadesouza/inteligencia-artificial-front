@@ -40,9 +40,9 @@ const Loading = () => {
         <Lottie
 
           options={defaultOptions}
-          height={500}
-          width={500}
-          style={{ position: 'fixed', marginLeft: '290px', top: '45%', transform: 'translate(-50%, -50%)', zIndex: 10000 }}
+          height={300}
+          width={300}
+          style={{ position: 'fixed', marginLeft: '165px', top: '45%', transform: 'translate(-50%, -50%)', zIndex: 10000 }}
         />
         <div
           className="btn"

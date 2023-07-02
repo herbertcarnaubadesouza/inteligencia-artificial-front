@@ -1,14 +1,15 @@
 .template-side-container {
   width: 100%;
   height: 100vh;
- 
 }
-
+* {
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
 .template-side-container {
   overflow: auto;
   scrollbar-color: #88888800 #f4f4f400;
 }
-
 
 .template-side-container::-webkit-scrollbar {
   display: none;

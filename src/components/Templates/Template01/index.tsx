@@ -230,7 +230,7 @@ function Template01({ isVisible01 }: Template01Props) {
 
     const timeoutId = setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 300);
 
     return () => {
       clearTimeout(timeoutId);
