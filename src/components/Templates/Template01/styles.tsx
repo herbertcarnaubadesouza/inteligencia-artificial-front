@@ -477,7 +477,7 @@ const PracticeArea = styled.div`
   width: 100%;
 
   h1 {   
-    background-color:red;
+  
     font-size:28px;
     color: ${(props: ThemeProps) => props.theme.fontTitleColor};
   }
