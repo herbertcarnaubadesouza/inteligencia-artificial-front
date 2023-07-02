@@ -502,7 +502,7 @@ export const LeftAwardBlock = styled.div`
  @media screen and (max-width:1100px){
   margin:0;
   flex-direction:column;
-  width: 85%;
+  width: 95%;
   display: flex;
   align-items:center;
  justify-content:center;
@@ -510,10 +510,12 @@ export const LeftAwardBlock = styled.div`
   margin-right:25px;
   margin-bottom:25px;
 h2{
-  
-    font-size:28px;
+  text-align:center;
+  width:100%;
 
-margin:15px 0px;
+    font-size:26px;
+
+margin:10px 0px;
 }
   img {
     margin-top: 0px;
@@ -530,8 +532,9 @@ export const RigthAwardBlock = styled.div`
   width: 30%;
   height: 100%;
   gap: 10px;
-  margin-top:120px;
+  margin-top:0px;
 
+ 
 
 
 
@@ -540,14 +543,13 @@ export const RigthAwardBlock = styled.div`
     flex-direction: column;
     gap: 1rem;
     width:100%;
-    height:200px;
+    height:auto;
     
   
     @media only screen and (max-width: 1600px) {
      margin-bottom:8px;
-      height:310px;
+     height:auto;
   }
-    
 
 
     h2 {
@@ -572,15 +574,12 @@ export const RigthAwardBlock = styled.div`
     @media only screen and (max-width: 1100px) {
   
     width:100%;
-    height:250px;
-    padding-left:30px;
+    height:auto;
+   padding-inline:15px;
+   padding-block:15px;
+  
    
   }
-  }
-
-  
-  @media only screen and (max-width: 1600px) {
-  margin-top:10px;
   }
 
 
@@ -589,25 +588,18 @@ export const RigthAwardBlock = styled.div`
    margin: 0 auto;
   flex-direction: column;
   width: 95%;
-  height: 510px !important;
+  height: auto;
   align-items:center;
   justify-content:center;
   text-align:start;
   margin-top:0px;
+
  
  
  
   }
 
-  @media only screen and (max-width: 600px) {
-    
-  
-    height: 670px !important;
-   
-   
-   
-   
-    }
+ 
 `;
 
 export const HowWorksSection = styled.div`
@@ -641,6 +633,8 @@ export const HowWorksHeaderSection = styled.div`
     height: 50%;
     width: 90%;
     margin-bottom: 50px;
+    
+    
   ;
   }
   .containe-title {
@@ -654,6 +648,8 @@ export const HowWorksHeaderSection = styled.div`
       text-align: center;
       font-size: 45px;
       margin: 0 auto;
+      width:100%;
+     
      
      
     }
@@ -674,17 +670,19 @@ export const HowWorksHeaderSection = styled.div`
       
    
       h2 {
+        
     
       font-size: 30px;
       margin-bottom: 20px;
-     
+   
     }
     p {
      
     
       font-size: 18px;
       margin: 0 auto;
-      width: 95%;
+      width: 97%;
+      text-align:start;
      
 
      
@@ -700,25 +698,28 @@ export const HowWorksHeaderSection = styled.div`
     display: flex;
     align-items: center;
     gap: 15px;
+  
+
+ 
    
-    margin-bottom: 30px;
 
     .container-works {
       margin:0 auto;
       width: 32%;
-      height: 320px;
+      height: auto;
       background-color: ${(props: ThemeProps) =>
     mix(0.95, '#eeeeee', props.theme.headerFooterBgColor)};
       justify-content: space-a;
       display: flex;
       flex-direction: column;
       text-align: center;
-      border-radius: 7%;
+      border-radius: 10px;
+      padding-block: 10px;
 
       h1 {
         margin: 0 auto;
         margin-top: 20px;
-        height: 33%;
+        height: auto;
         width: 95%;
         text-align: center;
         font-size: 70px;
@@ -774,25 +775,27 @@ export const HowWorksHeaderSection = styled.div`
   @media screen and (max-width:1110px){
     .container-works-pai {
     margin: 0 auto;
-    height: 50%;
+    height: auto;
     width: 100%;
     display:flex;
     align-items:center;
     justify-content:center;
     flex-direction: column;
-    margin-bottom: 50px;
+    margin-bottom: 5px;
+  
+    
   
     .container-works {
       margin:0 auto;
-      width: 96%;
-      height: 320px;
+      width: 95%;
+      height: auto;
       background-color: ${(props: ThemeProps) =>
     mix(0.95, '#eeeeee', props.theme.headerFooterBgColor)};
       justify-content: space-around;
       display: flex;
       flex-direction: column;
       text-align: center;
-      border-radius: 7%;}
+      border-radius: 10px;}
   }
 
   
@@ -991,6 +994,11 @@ export const HowHelpSection = styled.div<{ bgImage?: string }>`
       font-size: 35px;
       font-weight: 400;
       margin-bottom: 35px;
+
+      @media screen  and (max-width:768px){
+        font-size: 26px;
+        margin-bottom: 20px;
+       }
     }
     p {
       text-align: center;
@@ -998,6 +1006,12 @@ export const HowHelpSection = styled.div<{ bgImage?: string }>`
       width: 70%;
       font-size: 18px;
       margin-bottom: 60px;
+
+      @media screen  and (max-width:768px){
+        font-size: 14px;
+        margin-bottom: 20px;
+       }
+    }
     }
     .btn {
       width: 340px;
@@ -1015,14 +1029,26 @@ export const HowHelpSection = styled.div<{ bgImage?: string }>`
       @media only screen and (max-width: 1620px) {
         width: 340px;
         font-size:18px;
+
+        
   }
+  
+  @media only screen and (max-width:768px) {
+        width: 180px;
+        font-size:14px;
+        height: 40px;
+
+  }
+
+
+
 
       &:hover {
       cursor: pointer;
         background-color: #f9c349;
       }
     }
-  }
+  
 `;
 
 export const Footer = styled.div`

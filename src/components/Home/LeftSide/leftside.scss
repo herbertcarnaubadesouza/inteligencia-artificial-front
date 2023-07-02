@@ -1,12 +1,8 @@
 .left-side-container {
   width: 25vw;
   height: 100%;
-  top: 10
- ;
-
+  top: 10;
 }
-
-
 
 .progressBar-container {
   height: 100%;
@@ -14,112 +10,96 @@
   align-items: center;
   gap: 10px;
   padding-left: 5rem;
- 
-
-  
-} 
+}
 
 .progress {
-
-
   &.style-one {
     background: #ffffff48;
-    background: linear-gradient(180deg,
-        #ffffff48 0%,
-        #ffffff48 90%,
-        #F77F00 100%,
-      );
+    background: linear-gradient(
+      180deg,
+      #ffffff48 0%,
+      #ffffff48 90%,
+      #f77f00 100%
+    );
     box-shadow: 0 2px 4px rgba(81, 69, 135, 0.24);
     border-radius: 50px;
     height: 100%;
     width: 8px;
     position: relative;
     overflow: hidden;
-    height: 86%;
+    height: 87.5%;
     opacity: 1;
-  
-  
   }
 
   &.style-two {
     transition: background 2s ease-in-out;
     background: rgb(255, 255, 255);
-    background: linear-gradient(180deg,
-        #ffffff48 0%,
-        #ffffff48 72%,
-        #F77F00 74%, );
+    background: linear-gradient(
+      180deg,
+      #ffffff48 0%,
+      #ffffff48 72%,
+      #f77f00 74%
+    );
     box-shadow: 0 2px 4px rgba(81, 69, 135, 0.24);
     border-radius: 50px;
     height: 100%;
     width: 8px;
     position: relative;
     overflow: hidden;
-  height: 86%;
-  
+    height: 87.5%;
   }
 
   &.style-tree {
     transition: background 2s ease-in-out;
     background: rgb(255, 255, 255);
-    background: linear-gradient(180deg,
-        #ffffff48 43%,
-        #ffffff48 20%,
-        #F77F00 25%, );
+    background: linear-gradient(
+      180deg,
+      #ffffff48 43%,
+      #ffffff48 20%,
+      #f77f00 25%
+    );
     box-shadow: 0 2px 4px rgba(81, 69, 135, 0.24);
     border-radius: 50px;
     height: 100%;
     width: 8px;
     position: relative;
     overflow: hidden;
-  height: 86%;
-  
+    height: 87.5%;
   }
 
   &.style-four {
     transition: background 2s ease-in-out;
     background: rgb(255, 255, 255);
-    background: linear-gradient(180deg,
-        #F77F00 0%,
-        #F77F00 16%,
-        #F77F00 18%, );
+    background: linear-gradient(180deg, #f77f00 0%, #f77f00 16%, #f77f00 18%);
     box-shadow: 0 2px 4px rgba(81, 69, 135, 0.24);
     border-radius: 50px;
     height: 100%;
     width: 8px;
     position: relative;
     overflow: hidden;
-   height: 86%;
-  
+    height: 87.5%;
   }
   &.style-five {
     transition: background 2s ease-in-out;
     background: rgb(255, 255, 255);
-    background: linear-gradient(180deg,
-        #F77F00 0%,
-        #F77F00 16%,
-        #F77F00 18%, );
+    background: linear-gradient(180deg, #f77f00 0%, #f77f00 16%, #f77f00 18%);
     box-shadow: 0 2px 4px rgba(81, 69, 135, 0.24);
     border-radius: 50px;
     height: 100%;
     width: 8px;
     position: relative;
     overflow: hidden;
-   height: 86%;
-  
+    height: 87.5%;
   }
-
-
 }
 
 .icons-container {
-  height:97%;
+  height: 97%;
   display: flex;
   flex-direction: column;
-  gap: 14.0rem;
+  gap: 14rem;
   margin-left: -2.8rem;
   z-index: 998;
-  
- 
 }
 
 .iconProgressOne {
@@ -130,28 +110,23 @@
   border-radius: 2rem;
   margin-top: 0rem;
   margin-bottom: 0rem;
-  
-
-
 
   &.style-one {
-    background-color: #F77F00;
+    background-color: #f77f00;
   }
 
   &.style-two {
-    background-color: #F77F00;
+    background-color: #f77f00;
   }
 
   &.style-tree {
-    background-color: #F77F00;
+    background-color: #f77f00;
   }
 
   &.style-four {
-    background-color: #F77F00;
+    background-color: #f77f00;
   }
 }
-
-
 
 .iconProgressTree {
   height: 64px;
@@ -163,14 +138,12 @@
   margin-bottom: -0.4rem;
 
   &.style-tree {
-    background-color: #F77F00;
+    background-color: #f77f00;
   }
   &.style-four {
-    background-color: #F77F00;
+    background-color: #f77f00;
   }
 }
-
-
 
 .iconProgressFour {
   height: 64px;
@@ -182,23 +155,21 @@
   margin-bottom: -0.9rem;
 
   &.style-four {
-    background-color: #F77F00;
+    background-color: #f77f00;
   }
   &.style-five {
-    background-color: #F77F00;
+    background-color: #f77f00;
   }
 }
-.block-image-left-side{
+.block-image-left-side {
   display: flex !important;
   flex-direction: row !important;
 
   width: 100%;
-  padding-block:13px;
-
+  padding-block: 13px;
 }
 
 .progressRocket {
-
   &.style-one {
     position: absolute;
     margin-left: -1.4rem;
@@ -232,256 +203,214 @@
 
 //
 
-.text-icon{
+.text-icon {
   margin-left: 1rem;
- color:#FFFFFF;
- font-family: Epilogue;
-font-size: 20px;
-font-weight: 600;
-line-height: 20px;
-letter-spacing: 0em;
-text-align: right;
-
+  color: #ffffff;
+  font-family: Epilogue;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: right;
 }
 
-
 @media (max-width: 1440px) {
-
   .left-side-container {
     padding-left: 0rem;
     width: 100vw;
     height: 15%;
     display: flex !important;
-      margin: 0 auto ;
-     .text-icon{
-     display: none;
-  }
-    
-  .progressBar-container {
-    margin: 0 auto !important;
-    height: 100%;
-    width: 80%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-    flex-direction: row;
-    gap: 1px;
- 
-  
-   
-  } 
+    margin: 0 auto;
+    .text-icon {
+      display: none;
+    }
 
+    .progressBar-container {
+      margin: 0 auto !important;
+      height: 100%;
+      width: 80%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+      flex-direction: row;
+      gap: 1px;
+    }
 
-.icons-container {
-
-  height: 75%;
-  width: 100%;
-   display: flex;
-   flex-direction: row-reverse;
-   gap: 25rem;
-   margin-left: 0rem;
-   z-index: 998;
-   margin: 0 auto;
-   padding: 0;
-   
- }
-
-
+    .icons-container {
+      height: 75%;
+      width: 100%;
+      display: flex;
+      flex-direction: row-reverse;
+      gap: 25rem;
+      margin-left: 0rem;
+      z-index: 998;
+      margin: 0 auto;
+      padding: 0;
+    }
   }
 
   .progress {
-    
-
-  &.style-one {
- 
-    background: #ffffff48;
-    background: linear-gradient(180deg,
+    &.style-one {
+      background: #ffffff48;
+      background: linear-gradient(
+        180deg,
         #ffffff48 0%,
         #ffffff48 90%,
-        #F77F00 100%,
+        #f77f00 100%
       );
-    box-shadow: 0 2px 4px rgba(81, 69, 135, 0.24);
-    border-radius: 50px;
-    height: 100%;
-    width: 8px;
-    position: absolute;
-    overflow: hidden;
-    height: 8px;
-    opacity: 1;
-    display: flex;
-    width: 75%;
- 
-  
-   
-  
-  
-  }
+      box-shadow: 0 2px 4px rgba(81, 69, 135, 0.24);
+      border-radius: 50px;
+      height: 100%;
+      width: 8px;
+      position: absolute;
+      overflow: hidden;
+      height: 8px;
+      opacity: 1;
+      display: flex;
+      width: 75%;
+    }
 
-  &.style-two {
-    transition: background 2s ease-in-out;
-    background: rgb(255, 255, 255);
-    background: linear-gradient(180deg,
+    &.style-two {
+      transition: background 2s ease-in-out;
+      background: rgb(255, 255, 255);
+      background: linear-gradient(
+        180deg,
         #ffffff48 0%,
         #ffffff48 72%,
-        #F77F00 74%, );
-    box-shadow: 0 2px 4px rgba(81, 69, 135, 0.24);
-    border-radius: 50px;
-    height: 100%;
-    width: 8px;
-    position: relative;
-    overflow: hidden;
-  height: 86%;
-  
-  }
+        #f77f00 74%
+      );
+      box-shadow: 0 2px 4px rgba(81, 69, 135, 0.24);
+      border-radius: 50px;
+      height: 100%;
+      width: 8px;
+      position: relative;
+      overflow: hidden;
+      height: 87.5%;
+    }
 
-  &.style-tree {
-    transition: background 2s ease-in-out;
-    background: rgb(255, 255, 255);
-    background: linear-gradient(180deg,
+    &.style-tree {
+      transition: background 2s ease-in-out;
+      background: rgb(255, 255, 255);
+      background: linear-gradient(
+        180deg,
         #ffffff48 50%,
         #ffffff48 10%,
-        #F77F00 50%, );
-    box-shadow: 0 2px 4px rgba(81, 69, 135, 0.24);
-    border-radius: 50px;
-    height: 100%;
-    width: 8px;
-    position: relative;
-    overflow: hidden;
-  height: 86%;
-  
+        #f77f00 50%
+      );
+      box-shadow: 0 2px 4px rgba(81, 69, 135, 0.24);
+      border-radius: 50px;
+      height: 100%;
+      width: 8px;
+      position: relative;
+      overflow: hidden;
+      height: 87.5%;
+    }
+
+    &.style-four {
+      transition: background 2s ease-in-out;
+      background: rgb(255, 255, 255);
+      background: linear-gradient(180deg, #f77f00 0%, #f77f00 16%, #f77f00 18%);
+      box-shadow: 0 2px 4px rgba(81, 69, 135, 0.24);
+      border-radius: 50px;
+      height: 100%;
+      width: 8px;
+      position: relative;
+      overflow: hidden;
+      height: 87.5%;
+    }
+    &.style-five {
+      transition: background 2s ease-in-out;
+      background: rgb(255, 255, 255);
+      background: linear-gradient(180deg, #f77f00 0%, #f77f00 16%, #f77f00 18%);
+      box-shadow: 0 2px 4px rgba(81, 69, 135, 0.24);
+      border-radius: 50px;
+      height: 100%;
+      width: 8px;
+      position: relative;
+      overflow: hidden;
+      height: 87.5%;
+    }
   }
 
-  &.style-four {
-    transition: background 2s ease-in-out;
-    background: rgb(255, 255, 255);
-    background: linear-gradient(180deg,
-        #F77F00 0%,
-        #F77F00 16%,
-        #F77F00 18%, );
-    box-shadow: 0 2px 4px rgba(81, 69, 135, 0.24);
-    border-radius: 50px;
-    height: 100%;
-    width: 8px;
-    position: relative;
-    overflow: hidden;
-   height: 86%;
-  
-  }
-  &.style-five {
-    transition: background 2s ease-in-out;
-    background: rgb(255, 255, 255);
-    background: linear-gradient(180deg,
-        #F77F00 0%,
-        #F77F00 16%,
-        #F77F00 18%, );
-    box-shadow: 0 2px 4px rgba(81, 69, 135, 0.24);
-    border-radius: 50px;
-    height: 100%;
-    width: 8px;
-    position: relative;
-    overflow: hidden;
-   height: 86%;
-  
+  .icons-container {
+    height: 97%;
+    display: flex;
+    flex-direction: row;
+    gap: rem;
+    margin-left: 0rem;
+
+    img {
+      object-fit: contain;
+    }
   }
 
+  .iconProgressOne {
+    height: 50px;
+    width: 100%;
+    background-color: #ffffff70;
+    padding: 0rem;
+    border-radius: 0rem;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
 
-}
-  
-.icons-container {
-  height:97%;
-  display: flex;
-  flex-direction: row;
-  gap: rem;
-  margin-left: 0rem;
-  
-  img {
-   object-fit: contain;
-  
-  }
-  
- 
-}
+    &.style-one {
+      background-color: #f77f00;
+    }
 
-.iconProgressOne {
-  height: 50px;
-  width: 100%;
-  background-color: #ffffff70;
-  padding: 0.0rem;
-  border-radius: 0rem;
-  margin-top: 0rem;
-  margin-bottom: 0rem;
-  
+    &.style-two {
+      background-color: #f77f00;
+    }
 
+    &.style-tree {
+      background-color: #f77f00;
+    }
 
-
-  &.style-one {
-    background-color: #F77F00;
+    &.style-four {
+      background-color: #f77f00;
+    }
   }
 
-  &.style-two {
-    background-color: #F77F00;
+  .iconProgressTree {
+    height: 64px;
+    width: 64px;
+    background-color: #ffffff70;
+    padding: 0.75rem;
+    border-radius: 2rem;
+    margin-top: -0.4rem;
+    margin-bottom: -0.4rem;
+
+    &.style-tree {
+      background-color: #f77f00;
+    }
+    &.style-four {
+      background-color: #f77f00;
+    }
   }
 
-  &.style-tree {
-    background-color: #F77F00;
+  .iconProgressFour {
+    height: 64px;
+    width: 64px;
+    background-color: #ffffff70;
+    padding: 0.75rem;
+    border-radius: 2rem;
+    margin-top: -0.7rem;
+    margin-bottom: -0.9rem;
+
+    &.style-four {
+      background-color: #f77f00;
+    }
+    &.style-five {
+      background-color: #f77f00;
+    }
   }
-
-  &.style-four {
-    background-color: #F77F00;
+  .block-image-left-side {
+    display: flex !important;
+    flex-direction: row !important;
+    width: 100%;
+    padding-block: 13px;
   }
-}
-
-
-
-.iconProgressTree {
-  height: 64px;
-  width: 64px;
-  background-color: #ffffff70;
-  padding: 0.75rem;
-  border-radius: 2rem;
-  margin-top: -0.4rem;
-  margin-bottom: -0.4rem;
-
-  &.style-tree {
-    background-color: #F77F00;
-  }
-  &.style-four {
-    background-color: #F77F00;
-  }
-}
-
-
-
-.iconProgressFour {
-  height: 64px;
-  width: 64px;
-  background-color: #ffffff70;
-  padding: 0.75rem;
-  border-radius: 2rem;
-  margin-top: -0.7rem;
-  margin-bottom: -0.9rem;
-
-  &.style-four {
-    background-color: #F77F00;
-  }
-  &.style-five {
-    background-color: #F77F00;
-  }
-}
-.block-image-left-side{
-  display: flex !important;
-  flex-direction: row !important;
-  width: 100%;
-  padding-block:13px;
-
-
-
-}
-
-  
- 
 }
 
 @media (max-width: 1400px) {

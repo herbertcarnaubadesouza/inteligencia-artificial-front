@@ -126,12 +126,12 @@ const HeaderFooter = styled.div<{ bgImage?: string }>`
         h2 {
         width: 330px;
        
-        font-size: 14px;
+        font-size: 10px;
         }
         
   button {
-    width: 250px;
-    font-size:17px;
+    width: 200px;
+    font-size:14px;
     padding-left: 0rem;
     padding-right: 0rem;
 
@@ -406,22 +406,25 @@ const ParallaxContent = styled.div`
   h3{
     margin:0 auto;
     width:90%;
-    font-size:20px;
+    font-size:18px;
     font-weight:700;
     margin-bottom: 20px;
   }
 
   a {
     background-color: #fff;
-    font-size: 18px;
+    font-size: 14px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 74px;
-    height: 74px;
+    width: 50px;
+    height: 50px;
+
 
     svg {
+      width: 20px;
+    height: 20px;
       fill: ${(props: ThemeProps) => props.theme.fontTitleColor};
     }
 
@@ -473,8 +476,9 @@ const PracticeArea = styled.div`
   padding-bottom: 5rem;
   width: 100%;
 
-  h1 {
-    
+  h1 {   
+    background-color:red;
+    font-size:28px;
     color: ${(props: ThemeProps) => props.theme.fontTitleColor};
   }
 
@@ -482,12 +486,13 @@ const PracticeArea = styled.div`
     color: ${(props: ThemeProps) => props.theme.fontTitleColor};
     margin-bottom: -1rem;
     font-weight: 300;
+ 
   }
 
   h4 {
    
-    text-align: center;
-    width: 70%;
+    text-align: start;
+    width: 90%;
     color: ${(props: ThemeProps) => props.theme.fontTitleColor};
     font-size:px;
   }
@@ -502,8 +507,8 @@ const PracticeArea = styled.div`
     padding-left: 3rem;
     padding-right: 3rem;
     border-radius: 2rem;
-    margin-top: 5rem;
-    margin-bottom: 3rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
     cursor: pointer;
     z-index: 999;
     border: none;
@@ -546,7 +551,7 @@ const PracticeAreaContent = styled.div`
   flex-wrap: wrap; /* Permite que os componentes quebrem para uma nova linha */
   justify-content: center;
   gap: 1rem;
-  width: 95%;
+  width: 100%;
   margin: 0 auto;
   flex-direction: column; /* Em telas menores, exibe os componentes em coluna */
   }
@@ -566,24 +571,23 @@ const PracticeContent = styled.div`
  
  text-align:start;
   width:33%;
-  height:350px;
+  height:auto;
   
 
  
   @media only screen and (max-width: 1000px) {
-    height:290px;
+    height:auto;
     display: flex;
-  padding: 2rem;
+  padding: 0.3;
   text-align: start;
   width: 98%;
+  
 
 
   }
    
   @media only screen and (max-width: 600px) {
-    height:370px;
- 
-
+    height:auto;
 
   }
   
@@ -598,7 +602,7 @@ const Contact = styled.div`
   gap: 2rem;
 
   h2 {
-    font-size: 30px;
+    font-size: 28px;
     max-width: 50rem;
     color: ${(props: ThemeProps) => props.theme.headerFooterTextColor};
     font-family: ${(props: ThemeProps) => props.theme.font.fontFamily};

@@ -390,19 +390,8 @@ function Template03({ isVisible03 }: Template03Props) {
   const footer = [
     {
       description: "Fale com nossos advogados hoje",
-    },
-    {
-      description: "Especialistas em defesa criminal",
-    },
-    {
-      description: "Representação legal experiente.",
-    },
-    {
-      description: "Não enfrente acusações criminais sozinho.",
-    },
-    {
-      description: "Defesa criminal especializada",
-    },
+    }
+
   ];
   ;
 
@@ -551,7 +540,7 @@ function Template03({ isVisible03 }: Template03Props) {
         <HowWorksHeaderSection>
           <div className="Header-How-Work">
             <div className="containe-title">
-              <h2>Nosso Compromisso com o Cliente</h2>
+              <h2>Nosso Compromisso</h2>
               <p>
                 {randomParallax01Text}
               </p>
@@ -666,9 +655,9 @@ function Template03({ isVisible03 }: Template03Props) {
           <LineAwardsSection></LineAwardsSection>
 
           <div className="container-inf">
-            <h1>{randomFooterText}</h1>
+            <h1>{randomFooterText} </h1>
             <p>
-              Soluções jurídicas eficientes. Consulte-nos!
+              Soluções jurídicas eficientes
             </p>
 
             <button className="btn">FALE CONOSCO</button>

@@ -173,9 +173,10 @@ export const HeaderBlock = styled.div<{ bgImage?: string }>`
    h1{
   margin-top:4rem;
   margin-bottom:7rem;
-    width: 320px;
-    font-size:33px;
+    width: 100%;
+    font-size:30px;
     text-align:center;
+   
    }
    
    
@@ -280,6 +281,13 @@ export const FirstBlockAbout = styled.div`
     width: 100%;
     margin-right:0rem;
    
+
+    h2 {
+      font-size:25px;
+    }
+    p{
+      font-size:16px;
+    }
   }
 
 
@@ -345,7 +353,7 @@ export const ServicesSection = styled.section`
   @media screen and (max-width: 768px) {
     h2 {
     text-align: center;
-    font-size:26px;
+    font-size:24px;
  
   }
   }
