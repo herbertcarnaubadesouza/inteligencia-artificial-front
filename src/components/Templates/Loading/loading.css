@@ -55,6 +55,28 @@
     sans-serif;
 }
 
+@media (max-width: 1430px) {
+  .loading-container {
+    margin: 0 auto;
+    width: 35%;
+    height: 30%;
+    padding-inline: 10psx;
+  }
+  .btn-2 {
+    text-align: center;
+    margin: 0 auto;
+    width: 80%;
+    font-size: 12px;
+  }
+  .btn-3 {
+    text-align: center;
+    margin: 0 auto;
+    width: 80%;
+    font-size: 10px;
+    margin-top: 0rem;
+  }
+}
+
 @media (max-width: 1000px) {
   .loading-container {
     margin: 0 auto;

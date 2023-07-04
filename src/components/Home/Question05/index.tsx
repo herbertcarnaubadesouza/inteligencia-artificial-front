@@ -119,8 +119,11 @@ function Question05(props: Question05Props) {
     const empresaSalva = localStorage.getItem('nomeEmpresa');
     if (empresaSalva) {
       setNomeEmpresa(empresaSalva);
+      console.log(nomeEmpresa);
     }
   }, []);
+
+
 
   const handleNomeEmpresaChange = () => {
     const inputElement = document.getElementById('name') as HTMLInputElement;
@@ -129,6 +132,13 @@ function Question05(props: Question05Props) {
 
     }
   };
+
+  const handleClickNomeEmpresa = (event: any) => {
+    const valorInput = event.target.value;
+    setNomeEmpresa(valorInput);
+    console.log(nomeEmpresa);
+    localStorage.setItem('nomeEmpresa', nomeEmpresa);
+  }
 
   useEffect(() => {
     localStorage.setItem('nomeEmpresa', nomeEmpresa);
@@ -193,7 +203,7 @@ function Question05(props: Question05Props) {
                         type="text"
                         placeholder="Escreva o nome da sua empresa aqui"
                         value={nomeEmpresa}
-                        onChange={handleNomeEmpresaChange}
+                        onChange={(e) => handleClickNomeEmpresa(e)}
                         autoComplete='off'
                       />
                     </div>

@@ -51,181 +51,15 @@ function Template01({ isVisible01 }: Template01Props) {
 
 
 
-  // BANNER HEADER
-  const [imageUrlHeader, setImageUrlHeader] = useState('');
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const bannerTemplateHeader = localStorage.getItem('bannerTemplateHeader');
-
-      if (!bannerTemplateHeader) {
-        const advogadoDocRef = doc(db, 'sites', 'advogado');
-        const bannerCollectionRef = collection(advogadoDocRef, 'banner');
-        const bannerSnapshot = await getDocs(bannerCollectionRef);
-
-        let bannerList = bannerSnapshot.docs.map((doc) => {
-          const data = doc.data();
-          const banner = {
-            id: doc.id,
-            imgUrl: data.imgUrl,
-          };
-          return banner;
-        });
-
-        if (bannerList.length > 0) {
-          const randomIndex = Math.floor(Math.random() * bannerList.length);
-          const randomBanner = bannerList[randomIndex];
-          setImageUrlHeader(randomBanner.imgUrl);
-
-          localStorage.setItem('bannerTemplateHeader', randomBanner.imgUrl);
-        }
-      } else {
-        setImageUrlHeader(bannerTemplateHeader);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    const handleBeforeUnload = () => {
-      localStorage.clear();
-    };
-
-    window.addEventListener('beforeunload', handleBeforeUnload);
-
-    return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
-    };
-  }, []);
-
-
-  // BANNER ABOUT 
-  const [imageUrlAbout, setImageUrlAbout] = useState('');
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const bannerTemplateHeader = localStorage.getItem('bannerTemplateAbout');
-
-      if (!bannerTemplateHeader) {
-        const advogadoDocRef = doc(db, 'sites', 'advogado');
-        const bannerCollectionRef = collection(advogadoDocRef, 'subtitulo');
-        const bannerSnapshot = await getDocs(bannerCollectionRef);
-
-        let bannerList = bannerSnapshot.docs.map((doc) => {
-          const data = doc.data();
-          const banner = {
-            id: doc.id,
-            imgUrl: data.imgUrl,
-          };
-          return banner;
-        });
-
-        if (bannerList.length > 0) {
-          const randomIndex = Math.floor(Math.random() * bannerList.length);
-          const randomBanner = bannerList[randomIndex];
-          setImageUrlAbout(randomBanner.imgUrl);
-
-          localStorage.setItem('bannerTemplateAbout', randomBanner.imgUrl);
-        }
-      } else {
-        setImageUrlAbout(bannerTemplateHeader);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  // BANNER PARALALAX PRIMEIRA IMAGEM
-  const [imageUrlParallax, setImageUrlParallax] = useState('');
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const bannerTemplateHeader = localStorage.getItem('bannerTemplateParallax01');
-
-      if (!bannerTemplateHeader) {
-        const advogadoDocRef = doc(db, 'sites', 'advogado');
-        const bannerCollectionRef = collection(advogadoDocRef, 'bannerparalax');
-        const bannerSnapshot = await getDocs(bannerCollectionRef);
-
-        let bannerList = bannerSnapshot.docs.map((doc) => {
-          const data = doc.data();
-          const banner = {
-            id: doc.id,
-            imgUrl: data.imgUrl,
-          };
-          return banner;
-        });
-
-        if (bannerList.length > 0) {
-          const randomIndex = Math.floor(Math.random() * bannerList.length);
-          const randomBanner = bannerList[randomIndex];
-          setImageUrlParallax(randomBanner.imgUrl);
-
-          localStorage.setItem('bannerTemplateParallax01', randomBanner.imgUrl);
-        }
-      } else {
-        setImageUrlParallax(bannerTemplateHeader);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-
-  // BANER PARALLAX SEGUNDA IMAGEM 
-  const [imageUrlParallaxSegunda, setImageUrlParallaxSegunda] = useState('');
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const bannerTemplateHeader = localStorage.getItem('bannerTemplateParallax02');
-
-      if (!bannerTemplateHeader) {
-        const advogadoDocRef = doc(db, 'sites', 'advogado');
-        const bannerCollectionRef = collection(advogadoDocRef, 'banner');
-        const bannerSnapshot = await getDocs(bannerCollectionRef);
-
-        let bannerList = bannerSnapshot.docs.map((doc) => {
-          const data = doc.data();
-          const banner = {
-            id: doc.id,
-            imgUrl: data.imgUrl,
-          };
-          return banner;
-        });
-
-        if (bannerList.length > 0) {
-          const randomIndex = Math.floor(Math.random() * bannerList.length);
-          const randomBanner = bannerList[randomIndex];
-          setImageUrlParallaxSegunda(randomBanner.imgUrl);
-
-          localStorage.setItem('bannerTemplateParallax02', randomBanner.imgUrl);
-        }
-      } else {
-        setImageUrlParallaxSegunda(bannerTemplateHeader);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-
-
-
-
   const localStorageValue = localStorage.getItem('loading');
+
   const [loading, setLoading] = useState(true);
 
-  // LOADING
+  // TELA LOADING
   useEffect(() => {
-
 
     if (localStorageValue !== null) {
       setLoading(localStorageValue === 'true');
-
-
-
-
     }
 
     const timeoutId = setTimeout(() => {
@@ -248,192 +82,184 @@ function Template01({ isVisible01 }: Template01Props) {
   });
 
 
-  // TEXTOS 
+  // ESTADOS TEMPLATE 
+  const temaTemplate = localStorage.getItem('textoClicado') // TEMA DO TEMPLATE
+  const endercoTemplate = localStorage.getItem('Endereco') // ENDEREÇO DO TEMPLATE
+  const nomeEmpresaTemplate = localStorage.getItem('nomeEmpresa') // NOME DA EMPRESA DO TEMPLATE
 
-  // TITLES
-  const titleFirma = [
-    {
-      description: "Luxury Legal Solutions",
-    },
-    {
-      description: "Elite Advocates",
-    },
-    {
-      description: "Prestige Law Firm",
-    },
-    {
-      description: "Opulent Attorneys",
-    },
-    {
-      description: "Exclusive Legal Advisors",
-    },
-  ];
-  const randomTitleFirma = () => {
-    const randomIndex = Math.floor(Math.random() * titleFirma.length);
-    return titleFirma[randomIndex].description;
-  };
+  const [imageUrlHeader, setImageUrlHeader] = useState(''); // IMAGEM HEADER
+  const [imageUrlAbout, setImageUrlAbout] = useState(''); // IMAGEM ABOUT
+  const [imageUrlParallax, setImageUrlParallax] = useState(''); // IMAGEM PARALLAX 
+  const [imageUrlParallaxSegunda, setImageUrlParallaxSegunda] = useState('');  //  SEGUNDA IMAGEM PARALLAX 
 
-  const [randomTitleFirmaText, setRandomTitleFirmaText] = useState('');
-
-  useEffect(() => {
-    const savedDescription = localStorage.getItem('randomTitleFirma');
-    if (savedDescription) {
-      setRandomTitleFirmaText(savedDescription);
-    } else {
-      const newRandomDescription = randomTitleFirma();
-      setRandomTitleFirmaText(newRandomDescription);
-      localStorage.setItem('randomTitleFirma', newRandomDescription);
-    }
-  }, []);
+  const [randomTitleFirmaText, setRandomTitleFirmaText] = useState(''); // TITULO
+  const [randomTextoAboutText, setRandomTextoAboutText] = useState(''); // ABOUT SOBRE
+  const [randomParallax01Text, setRandomParallax01Text] = useState(''); // TEXTO PARALLAX
+  const [randomAboutFirmaText, setRandomAboutFirmaText] = useState(''); // COMO A FIRMA TRABALHA
+  const [randomFooterText, setRandomFooterText] = useState(''); // TEXT FOOTER
 
 
-  // ABOUT
-  const about = [
-    {
-      description: "Nossa firma de advocacia oferece soluções jurídicas especializadas e eficazes. Contamos com uma equipe experiente e dedicada, pronta para representar seus interesses com ética e profissionalismo. Priorizamos a excelência em cada caso, buscando resultados favoráveis para nossos clientes. Confie em nós para resolver suas questões legais com confiança e competência."
-    },
-    {
-      description: "Somos uma firma de advocacia comprometida em fornecer soluções jurídicas confiáveis e eficientes. Com uma equipe experiente e especializada, oferecemos serviços jurídicos personalizados para atender às necessidades dos nossos clientes. Nossa ética profissional e integridade são fundamentais em todas as nossas interações. Conte conosco para representar seus interesses legais com dedicação e excelência."
-    },
-    {
-      description: "Nossa firma de advocacia é especializada em oferecer soluções jurídicas eficazes e personalizadas para nossos clientes. Com uma equipe de advogados experientes e dedicados, estamos prontos para lidar com uma ampla gama de questões legais. Nosso compromisso com a excelência e a ética nos permite fornecer um serviço de qualidade, sempre buscando alcançar os melhores resultados para nossos clientes. Conte conosco para representar seus interesses e proteger seus direitos com dedicação e profissionalismo."
-    },
-    {
-      description: "Conte com nossa firma de advocacia para obter serviços jurídicos de qualidade. Nossa equipe de advogados altamente qualificados está comprometida em fornecer soluções eficientes e personalizadas. Com experiência em diversas áreas do direito, estamos preparados para lidar com casos complexos e proteger seus interesses. Oferecemos um atendimento dedicado e confidencial, garantindo a defesa de seus direitos com ética e competência."
-    },
-    {
-      description: "Na nossa firma de advocacia, acreditamos em uma abordagem personalizada para cada cliente. Compreendemos a importância de suas necessidades legais e nos dedicamos a fornecer soluções sob medida. Nossa equipe de advogados especializados está pronta para representá-lo com integridade e profissionalismo. Confie em nós para garantir seus direitos e encontrar as melhores estratégias jurídicas para seu caso."
-    }
-  ];
-  // RANDOM TEXTO ABOUT 
-  const randomTextoAbout = () => {
-    const randomIndex = Math.floor(Math.random() * about.length);
-    return about[randomIndex].description;
-  };
 
-  const [randomTextoAboutText, setRandomTextoAboutText] = useState('');
 
-  useEffect(() => {
-    const savedDescription = localStorage.getItem('randomTextoAbout');
-    if (savedDescription) {
-      setRandomTextoAboutText(savedDescription);
-    } else {
-      const newRandomDescription = randomTextoAbout();
-      setRandomTextoAboutText(newRandomDescription);
-      localStorage.setItem('randomTextoAbout', newRandomDescription);
-    }
-  }, []);
+  if (temaTemplate === "Advogado") {
 
-  //PARALLAX
-  const parallax01 = [
-    {
-      description: "Nossa empresa de advocacia é a escolha certa para você, pois contamos com uma equipe de profissionais altamente qualificados e comprometidos em defender seus interesses com eficiência e agilidade."
-    },
-    {
-      description: "Somos uma empresa de advocacia dedicada a oferecer serviços jurídicos excepcionais. Nossa equipe de advogados talentosos e comprometidos está pronta para representá-lo e proteger seus interesses com dedicação e experiência."
-    },
-    {
-      description: "Se você precisa de serviços jurídicos de confiança, nossa empresa de advocacia é a resposta. Temos uma equipe experiente de advogados prontos para lutar por seus direitos e oferecer soluções jurídicas eficazes e personalizadas."
-    },
-    {
-      description: "Na nossa empresa de advocacia, acreditamos que cada caso é único. Por isso, nossa equipe dedicada está empenhada em fornecer a você um serviço jurídico personalizado, com foco em resultados e eficiência."
-    },
-    {
-      description: "Conte conosco, uma empresa de advocacia comprometida com a excelência e a defesa de seus interesses. Nossa equipe de advogados qualificados está pronta para oferecer soluções jurídicas estratégicas e proteger seus direitos de forma eficiente."
-    }
-  ];
+    // BANNER HEADER
 
-  const randomParallax01 = () => {
-    const randomIndex = Math.floor(Math.random() * parallax01.length);
-    return parallax01[randomIndex].description;
-  };
 
-  const [randomParallax01Text, setRandomParallax01Text] = useState('');
+    useEffect(() => {
+      const fetchData = async () => {
+        const bannerTemplateHeader = localStorage.getItem('bannerTemplateHeader');
 
-  useEffect(() => {
-    const savedDescription = localStorage.getItem('randomParallax01');
-    if (savedDescription) {
-      setRandomParallax01Text(savedDescription);
-    } else {
-      const newRandomDescription = randomParallax01();
-      setRandomParallax01Text(newRandomDescription);
-      localStorage.setItem('randomParallax01', newRandomDescription);
-    }
-  }, []);
+        if (!bannerTemplateHeader) {
+          const advogadoDocRef = doc(db, 'sites', 'advogado');
+          const bannerCollectionRef = collection(advogadoDocRef, 'banner');
+          const bannerSnapshot = await getDocs(bannerCollectionRef);
 
-  // SOBRE A FIRMA 
-  const aboutFirma = [
-    {
-      description: "Nossa firma de advocacia busca sempre a excelência em serviços, oferecendo atendimento personalizado e soluções jurídicas eficazes para nossos clientes.",
-    },
-    {
-      description: "Somos uma firma de advocacia comprometida em fornecer serviços jurídicos de alta qualidade. Nosso atendimento é personalizado, e buscamos sempre soluções eficazes para atender às necessidades dos nossos clientes.",
-    },
-    {
-      description: "Na nossa firma de advocacia, priorizamos a excelência em cada caso. Nossa equipe está empenhada em fornecer atendimento personalizado e soluções jurídicas eficazes, buscando sempre os melhores resultados para nossos clientes.",
-    },
-    {
-      description: "Conte com nossa firma de advocacia para receber um atendimento de qualidade e soluções jurídicas eficazes. Estamos comprometidos em oferecer serviços personalizados e buscar os melhores resultados para nossos clientes.",
-    },
-    {
-      description: "Nossa firma de advocacia se dedica a oferecer serviços de excelência. Valorizamos o atendimento personalizado e buscamos sempre soluções jurídicas eficazes para atender às demandas e necessidades dos nossos clientes.",
-    },
-  ];
+          let bannerList = bannerSnapshot.docs.map((doc) => {
+            const data = doc.data();
+            const banner = {
+              id: doc.id,
+              imgUrl: data.imgUrl,
+            };
+            return banner;
+          });
 
-  const randomAboutFirma = () => {
-    const randomIndex = Math.floor(Math.random() * aboutFirma.length);
-    return aboutFirma[randomIndex].description;
-  };
+          if (bannerList.length > 0) {
+            const randomIndex = Math.floor(Math.random() * bannerList.length);
+            const randomBanner = bannerList[randomIndex];
+            setImageUrlHeader(randomBanner.imgUrl);
 
-  const [randomAboutFirmaText, setRandomAboutFirmaText] = useState('');
+            localStorage.setItem('bannerTemplateHeader', randomBanner.imgUrl);
+          }
+        } else {
+          setImageUrlHeader(bannerTemplateHeader);
+        }
+      };
 
-  useEffect(() => {
-    const savedDescription = localStorage.getItem('randomAboutFirma');
-    if (savedDescription) {
-      setRandomAboutFirmaText(savedDescription);
-    } else {
-      const newRandomDescription = randomAboutFirma();
-      setRandomAboutFirmaText(newRandomDescription);
-      localStorage.setItem('randomAboutFirma', newRandomDescription);
-    }
-  }, []);
+      fetchData();
+    }, []);
 
-  //
-  const footer = [
-    {
-      description: "Fale com nossos advogados de defesa criminal hoje. Estamos aqui para ajudar você a alcançar seus objetivos de maneira legal e eficiente. Conte conosco para proteger seus direitos e liberdade.",
-    },
-    {
-      description: "Nossa firma de advocacia é especializada em defesa criminal. Nossos advogados experientes estão prontos para lutar em seu nome, garantindo que seus direitos sejam protegidos. Entre em contato conosco e tenha uma equipe confiável ao seu lado.",
-    },
-    {
-      description: "Se você está enfrentando acusações criminais, nossa equipe de advogados de defesa criminal está pronta para ajudar. Oferecemos representação legal experiente e eficiente, trabalhando incansavelmente para proteger seus direitos e liberdade.",
-    },
-    {
-      description: "Não enfrente acusações criminais sozinho. Nossa equipe de advogados de defesa criminal está aqui para você. Com uma abordagem legal sólida e estratégias eficazes, buscamos alcançar os melhores resultados para proteger seus direitos e liberdade.",
-    },
-    {
-      description: "Na nossa firma de advocacia, temos uma equipe de advogados especializados em defesa criminal prontos para ajudar. Com dedicação e habilidades jurídicas, trabalharemos em conjunto para garantir a melhor defesa possível, protegendo seus direitos e alcançando resultados favoráveis.",
-    },
-  ];
+    useEffect(() => {
+      const handleBeforeUnload = () => {
+        localStorage.clear();
+      };
 
-  const randomFooter = () => {
-    const randomIndex = Math.floor(Math.random() * footer.length);
-    return footer[randomIndex].description;
-  };
+      window.addEventListener('beforeunload', handleBeforeUnload);
 
-  const [randomFooterText, setRandomFooterText] = useState('');
+      return () => {
+        window.removeEventListener('beforeunload', handleBeforeUnload);
+      };
+    }, []);
 
-  useEffect(() => {
-    const savedDescription = localStorage.getItem('randomFooter');
-    if (savedDescription) {
-      setRandomFooterText(savedDescription);
-    } else {
-      const newRandomDescription = randomFooter();
-      setRandomFooterText(newRandomDescription);
-      localStorage.setItem('randomFooter', newRandomDescription);
-    }
-  }, []);
+
+    // BANNER ABOUT 
+
+
+    useEffect(() => {
+      const fetchData = async () => {
+        const bannerTemplateHeader = localStorage.getItem('bannerTemplateAbout');
+
+        if (!bannerTemplateHeader) {
+          const advogadoDocRef = doc(db, 'sites', 'advogado');
+          const bannerCollectionRef = collection(advogadoDocRef, 'subtitulo');
+          const bannerSnapshot = await getDocs(bannerCollectionRef);
+
+          let bannerList = bannerSnapshot.docs.map((doc) => {
+            const data = doc.data();
+            const banner = {
+              id: doc.id,
+              imgUrl: data.imgUrl,
+            };
+            return banner;
+          });
+
+          if (bannerList.length > 0) {
+            const randomIndex = Math.floor(Math.random() * bannerList.length);
+            const randomBanner = bannerList[randomIndex];
+            setImageUrlAbout(randomBanner.imgUrl);
+
+            localStorage.setItem('bannerTemplateAbout', randomBanner.imgUrl);
+          }
+        } else {
+          setImageUrlAbout(bannerTemplateHeader);
+        }
+      };
+
+      fetchData();
+    }, []);
+
+    // BANNER PARALALAX PRIMEIRA IMAGEM
+
+
+    useEffect(() => {
+      const fetchData = async () => {
+        const bannerTemplateHeader = localStorage.getItem('bannerTemplateParallax01');
+
+        if (!bannerTemplateHeader) {
+          const advogadoDocRef = doc(db, 'sites', 'advogado');
+          const bannerCollectionRef = collection(advogadoDocRef, 'bannerparalax');
+          const bannerSnapshot = await getDocs(bannerCollectionRef);
+
+          let bannerList = bannerSnapshot.docs.map((doc) => {
+            const data = doc.data();
+            const banner = {
+              id: doc.id,
+              imgUrl: data.imgUrl,
+            };
+            return banner;
+          });
+
+          if (bannerList.length > 0) {
+            const randomIndex = Math.floor(Math.random() * bannerList.length);
+            const randomBanner = bannerList[randomIndex];
+            setImageUrlParallax(randomBanner.imgUrl);
+
+            localStorage.setItem('bannerTemplateParallax01', randomBanner.imgUrl);
+          }
+        } else {
+          setImageUrlParallax(bannerTemplateHeader);
+        }
+      };
+
+      fetchData();
+    }, []);
+
+
+    // BANER PARALLAX SEGUNDA IMAGEM 
+
+
+    useEffect(() => {
+      const fetchData = async () => {
+        const bannerTemplateHeader = localStorage.getItem('bannerTemplateParallax02');
+
+        if (!bannerTemplateHeader) {
+          const advogadoDocRef = doc(db, 'sites', 'advogado');
+          const bannerCollectionRef = collection(advogadoDocRef, 'banner');
+          const bannerSnapshot = await getDocs(bannerCollectionRef);
+
+          let bannerList = bannerSnapshot.docs.map((doc) => {
+            const data = doc.data();
+            const banner = {
+              id: doc.id,
+              imgUrl: data.imgUrl,
+            };
+            return banner;
+          });
+
+          if (bannerList.length > 0) {
+            const randomIndex = Math.floor(Math.random() * bannerList.length);
+            const randomBanner = bannerList[randomIndex];
+            setImageUrlParallaxSegunda(randomBanner.imgUrl);
+
+            localStorage.setItem('bannerTemplateParallax02', randomBanner.imgUrl);
+          }
+        } else {
+          setImageUrlParallaxSegunda(bannerTemplateHeader);
+        }
+      };
+
+      fetchData();
+    }, []);
 
 
 
@@ -442,14 +268,546 @@ function Template01({ isVisible01 }: Template01Props) {
 
 
 
+    // TEXTOS 
 
+    // TITLES
+    const titleFirma = [
+      {
+        description: "Luxury Legal Solutions",
+      },
+      {
+        description: "Elite Advocates",
+      },
+      {
+        description: "Prestige Law Firm",
+      },
+      {
+        description: "Opulent Attorneys",
+      },
+      {
+        description: "Exclusive Legal Advisors",
+      },
+    ];
+    const randomTitleFirma = () => {
+      const randomIndex = Math.floor(Math.random() * titleFirma.length);
+      return titleFirma[randomIndex].description;
+    };
+
+
+
+    useEffect(() => {
+      const savedDescription = localStorage.getItem('randomTitleFirma');
+      if (savedDescription) {
+        setRandomTitleFirmaText(savedDescription);
+      } else {
+        const newRandomDescription = randomTitleFirma();
+        setRandomTitleFirmaText(newRandomDescription);
+        localStorage.setItem('randomTitleFirma', newRandomDescription);
+      }
+    }, []);
+
+
+    // ABOUT
+    const about = [
+      {
+        description: "Nossa firma de advocacia oferece soluções jurídicas especializadas e eficazes. Contamos com uma equipe experiente e dedicada, pronta para representar seus interesses com ética e profissionalismo. Priorizamos a excelência em cada caso, buscando resultados favoráveis para nossos clientes. Confie em nós para resolver suas questões legais com confiança e competência."
+      },
+      {
+        description: "Somos uma firma de advocacia comprometida em fornecer soluções jurídicas confiáveis e eficientes. Com uma equipe experiente e especializada, oferecemos serviços jurídicos personalizados para atender às necessidades dos nossos clientes. Nossa ética profissional e integridade são fundamentais em todas as nossas interações. Conte conosco para representar seus interesses legais com dedicação e excelência."
+      },
+      {
+        description: "Nossa firma de advocacia é especializada em oferecer soluções jurídicas eficazes e personalizadas para nossos clientes. Com uma equipe de advogados experientes e dedicados, estamos prontos para lidar com uma ampla gama de questões legais. Nosso compromisso com a excelência e a ética nos permite fornecer um serviço de qualidade, sempre buscando alcançar os melhores resultados para nossos clientes. Conte conosco para representar seus interesses e proteger seus direitos com dedicação e profissionalismo."
+      },
+      {
+        description: "Conte com nossa firma de advocacia para obter serviços jurídicos de qualidade. Nossa equipe de advogados altamente qualificados está comprometida em fornecer soluções eficientes e personalizadas. Com experiência em diversas áreas do direito, estamos preparados para lidar com casos complexos e proteger seus interesses. Oferecemos um atendimento dedicado e confidencial, garantindo a defesa de seus direitos com ética e competência."
+      },
+      {
+        description: "Na nossa firma de advocacia, acreditamos em uma abordagem personalizada para cada cliente. Compreendemos a importância de suas necessidades legais e nos dedicamos a fornecer soluções sob medida. Nossa equipe de advogados especializados está pronta para representá-lo com integridade e profissionalismo. Confie em nós para garantir seus direitos e encontrar as melhores estratégias jurídicas para seu caso."
+      }
+    ];
+    // RANDOM TEXTO ABOUT 
+    const randomTextoAbout = () => {
+      const randomIndex = Math.floor(Math.random() * about.length);
+      return about[randomIndex].description;
+    };
+
+
+
+    useEffect(() => {
+      const savedDescription = localStorage.getItem('randomTextoAbout');
+      if (savedDescription) {
+        setRandomTextoAboutText(savedDescription);
+      } else {
+        const newRandomDescription = randomTextoAbout();
+        setRandomTextoAboutText(newRandomDescription);
+        localStorage.setItem('randomTextoAbout', newRandomDescription);
+      }
+    }, []);
+
+    //PARALLAX
+    const parallax01 = [
+      {
+        description: "Nossa empresa de advocacia é a escolha certa para você, pois contamos com uma equipe de profissionais altamente qualificados e comprometidos em defender seus interesses com eficiência e agilidade."
+      },
+      {
+        description: "Somos uma empresa de advocacia dedicada a oferecer serviços jurídicos excepcionais. Nossa equipe de advogados talentosos e comprometidos está pronta para representá-lo e proteger seus interesses com dedicação e experiência."
+      },
+      {
+        description: "Se você precisa de serviços jurídicos de confiança, nossa empresa de advocacia é a resposta. Temos uma equipe experiente de advogados prontos para lutar por seus direitos e oferecer soluções jurídicas eficazes e personalizadas."
+      },
+      {
+        description: "Na nossa empresa de advocacia, acreditamos que cada caso é único. Por isso, nossa equipe dedicada está empenhada em fornecer a você um serviço jurídico personalizado, com foco em resultados e eficiência."
+      },
+      {
+        description: "Conte conosco, uma empresa de advocacia comprometida com a excelência e a defesa de seus interesses. Nossa equipe de advogados qualificados está pronta para oferecer soluções jurídicas estratégicas e proteger seus direitos de forma eficiente."
+      }
+    ];
+
+    const randomParallax01 = () => {
+      const randomIndex = Math.floor(Math.random() * parallax01.length);
+      return parallax01[randomIndex].description;
+    };
+
+
+
+    useEffect(() => {
+      const savedDescription = localStorage.getItem('randomParallax01');
+      if (savedDescription) {
+        setRandomParallax01Text(savedDescription);
+      } else {
+        const newRandomDescription = randomParallax01();
+        setRandomParallax01Text(newRandomDescription);
+        localStorage.setItem('randomParallax01', newRandomDescription);
+      }
+    }, []);
+
+    // SOBRE A FIRMA 
+    const aboutFirma = [
+      {
+        description: "Nossa firma de advocacia busca sempre a excelência em serviços, oferecendo atendimento personalizado e soluções jurídicas eficazes para nossos clientes.",
+      },
+      {
+        description: "Somos uma firma de advocacia comprometida em fornecer serviços jurídicos de alta qualidade. Nosso atendimento é personalizado, e buscamos sempre soluções eficazes para atender às necessidades dos nossos clientes.",
+      },
+      {
+        description: "Na nossa firma de advocacia, priorizamos a excelência em cada caso. Nossa equipe está empenhada em fornecer atendimento personalizado e soluções jurídicas eficazes, buscando sempre os melhores resultados para nossos clientes.",
+      },
+      {
+        description: "Conte com nossa firma de advocacia para receber um atendimento de qualidade e soluções jurídicas eficazes. Estamos comprometidos em oferecer serviços personalizados e buscar os melhores resultados para nossos clientes.",
+      },
+      {
+        description: "Nossa firma de advocacia se dedica a oferecer serviços de excelência. Valorizamos o atendimento personalizado e buscamos sempre soluções jurídicas eficazes para atender às demandas e necessidades dos nossos clientes.",
+      },
+    ];
+
+    const randomAboutFirma = () => {
+      const randomIndex = Math.floor(Math.random() * aboutFirma.length);
+      return aboutFirma[randomIndex].description;
+    };
+
+
+    useEffect(() => {
+      const savedDescription = localStorage.getItem('randomAboutFirma');
+      if (savedDescription) {
+        setRandomAboutFirmaText(savedDescription);
+      } else {
+        const newRandomDescription = randomAboutFirma();
+        setRandomAboutFirmaText(newRandomDescription);
+        localStorage.setItem('randomAboutFirma', newRandomDescription);
+      }
+    }, []);
+
+    //
+    const footer = [
+      {
+        description: "Fale com nossos advogados de defesa criminal hoje. Estamos aqui para ajudar você a alcançar seus objetivos de maneira legal e eficiente. Conte conosco para proteger seus direitos e liberdade.",
+      },
+      {
+        description: "Nossa firma de advocacia é especializada em defesa criminal. Nossos advogados experientes estão prontos para lutar em seu nome, garantindo que seus direitos sejam protegidos. Entre em contato conosco e tenha uma equipe confiável ao seu lado.",
+      },
+      {
+        description: "Se você está enfrentando acusações criminais, nossa equipe de advogados de defesa criminal está pronta para ajudar. Oferecemos representação legal experiente e eficiente, trabalhando incansavelmente para proteger seus direitos e liberdade.",
+      },
+      {
+        description: "Não enfrente acusações criminais sozinho. Nossa equipe de advogados de defesa criminal está aqui para você. Com uma abordagem legal sólida e estratégias eficazes, buscamos alcançar os melhores resultados para proteger seus direitos e liberdade.",
+      },
+      {
+        description: "Na nossa firma de advocacia, temos uma equipe de advogados especializados em defesa criminal prontos para ajudar. Com dedicação e habilidades jurídicas, trabalharemos em conjunto para garantir a melhor defesa possível, protegendo seus direitos e alcançando resultados favoráveis.",
+      },
+    ];
+
+    const randomFooter = () => {
+      const randomIndex = Math.floor(Math.random() * footer.length);
+      return footer[randomIndex].description;
+    };
+
+
+
+    useEffect(() => {
+      const savedDescription = localStorage.getItem('randomFooter');
+      if (savedDescription) {
+        setRandomFooterText(savedDescription);
+      } else {
+        const newRandomDescription = randomFooter();
+        setRandomFooterText(newRandomDescription);
+        localStorage.setItem('randomFooter', newRandomDescription);
+      }
+    }, []);
+
+  }
+
+
+  if (temaTemplate === "Doctor") {
+
+    // BANNER HEADER
+    useEffect(() => {
+      const fetchData = async () => {
+        const bannerTemplateHeader = localStorage.getItem('bannerTemplateHeader');
+
+        if (!bannerTemplateHeader) {
+          const advogadoDocRef = doc(db, 'sites', 'doctor');
+          const bannerCollectionRef = collection(advogadoDocRef, 'banner');
+          const bannerSnapshot = await getDocs(bannerCollectionRef);
+
+          let bannerList = bannerSnapshot.docs.map((doc) => {
+            const data = doc.data();
+            const banner = {
+              id: doc.id,
+              imgUrl: data.imgUrl,
+            };
+            return banner;
+          });
+
+          if (bannerList.length > 0) {
+            const randomIndex = Math.floor(Math.random() * bannerList.length);
+            const randomBanner = bannerList[randomIndex];
+            setImageUrlHeader(randomBanner.imgUrl);
+
+            localStorage.setItem('bannerTemplateHeader', randomBanner.imgUrl);
+          }
+        } else {
+          setImageUrlHeader(bannerTemplateHeader);
+        }
+      };
+
+      fetchData();
+    }, []);
+
+    // BANNER ABOUT 
+    useEffect(() => {
+      const fetchData = async () => {
+        const bannerTemplateHeader = localStorage.getItem('bannerTemplateAbout');
+
+        if (!bannerTemplateHeader) {
+          const advogadoDocRef = doc(db, 'sites', 'doctor');
+          const bannerCollectionRef = collection(advogadoDocRef, 'subtitulo');
+          const bannerSnapshot = await getDocs(bannerCollectionRef);
+
+          let bannerList = bannerSnapshot.docs.map((doc) => {
+            const data = doc.data();
+            const banner = {
+              id: doc.id,
+              imgUrl: data.imgUrl,
+            };
+            return banner;
+          });
+
+          if (bannerList.length > 0) {
+            const randomIndex = Math.floor(Math.random() * bannerList.length);
+            const randomBanner = bannerList[randomIndex];
+            setImageUrlAbout(randomBanner.imgUrl);
+
+            localStorage.setItem('bannerTemplateAbout', randomBanner.imgUrl);
+          }
+        } else {
+          setImageUrlAbout(bannerTemplateHeader);
+        }
+      };
+
+      fetchData();
+    }, []);
+    // BANNER PARALALAX PRIMEIRA IMAGEM
+    useEffect(() => {
+      const fetchData = async () => {
+        const bannerTemplateHeader = localStorage.getItem('bannerTemplateParallax01');
+
+        if (!bannerTemplateHeader) {
+          const advogadoDocRef = doc(db, 'sites', 'advogado');
+          const bannerCollectionRef = collection(advogadoDocRef, 'bannerparalax');
+          const bannerSnapshot = await getDocs(bannerCollectionRef);
+
+          let bannerList = bannerSnapshot.docs.map((doc) => {
+            const data = doc.data();
+            const banner = {
+              id: doc.id,
+              imgUrl: data.imgUrl,
+            };
+            return banner;
+          });
+
+          if (bannerList.length > 0) {
+            const randomIndex = Math.floor(Math.random() * bannerList.length);
+            const randomBanner = bannerList[randomIndex];
+            setImageUrlParallax(randomBanner.imgUrl);
+
+            localStorage.setItem('bannerTemplateParallax01', randomBanner.imgUrl);
+          }
+        } else {
+          setImageUrlParallax(bannerTemplateHeader);
+        }
+      };
+
+      fetchData();
+    }, []);
+    // BANER PARALLAX SEGUNDA IMAGEM 
+    useEffect(() => {
+      const fetchData = async () => {
+        const bannerTemplateHeader = localStorage.getItem('bannerTemplateParallax02');
+
+        if (!bannerTemplateHeader) {
+          const advogadoDocRef = doc(db, 'sites', 'advogado');
+          const bannerCollectionRef = collection(advogadoDocRef, 'banner');
+          const bannerSnapshot = await getDocs(bannerCollectionRef);
+
+          let bannerList = bannerSnapshot.docs.map((doc) => {
+            const data = doc.data();
+            const banner = {
+              id: doc.id,
+              imgUrl: data.imgUrl,
+            };
+            return banner;
+          });
+
+          if (bannerList.length > 0) {
+            const randomIndex = Math.floor(Math.random() * bannerList.length);
+            const randomBanner = bannerList[randomIndex];
+            setImageUrlParallaxSegunda(randomBanner.imgUrl);
+
+            localStorage.setItem('bannerTemplateParallax02', randomBanner.imgUrl);
+          }
+        } else {
+          setImageUrlParallaxSegunda(bannerTemplateHeader);
+        }
+      };
+
+      fetchData();
+    }, []);
+
+    // TEXTOS 
+
+    // TITLES
+    const titleFirma = [
+      {
+        description: "Luxury Legal Solutions",
+      },
+      {
+        description: "Elite Advocates",
+      },
+      {
+        description: "Prestige Law Firm",
+      },
+      {
+        description: "Opulent Attorneys",
+      },
+      {
+        description: "Exclusive Legal Advisors",
+      },
+    ];
+    const randomTitleFirma = () => {
+      const randomIndex = Math.floor(Math.random() * titleFirma.length);
+      return titleFirma[randomIndex].description;
+    };
+
+
+
+    useEffect(() => {
+      const savedDescription = localStorage.getItem('randomTitleFirma');
+      if (savedDescription) {
+        setRandomTitleFirmaText(savedDescription);
+      } else {
+        const newRandomDescription = randomTitleFirma();
+        setRandomTitleFirmaText(newRandomDescription);
+        localStorage.setItem('randomTitleFirma', newRandomDescription);
+      }
+    }, []);
+
+    // ABOUT
+    const about = [
+      {
+        description: "Nosso hospital oferece cuidados de saúde de alta qualidade e serviços especializados. Contamos com uma equipe médica experiente e dedicada, pronta para atender às necessidades dos nossos pacientes com profissionalismo e compaixão. Priorizamos a excelência em cada caso, buscando resultados positivos e a recuperação completa dos nossos pacientes. Confie em nós para fornecer cuidados de saúde confiáveis e eficientes."
+      },
+      {
+        description: "Somos um hospital comprometido em fornecer cuidados de saúde abrangentes e eficazes. Com uma equipe médica especializada e equipamentos de última geração, oferecemos serviços médicos personalizados para atender às necessidades individuais de cada paciente. Nossa ética profissional e compromisso com a qualidade são fundamentais em todas as nossas interações. Conte conosco para cuidar da sua saúde com dedicação e excelência."
+      },
+      {
+        description: "Nosso hospital é especializado em fornecer cuidados de saúde eficazes e personalizados para nossos pacientes. Com uma equipe médica experiente e dedicada, estamos preparados para lidar com uma ampla gama de condições médicas. Nosso compromisso com a excelência e a ética nos permite fornecer um serviço de qualidade, sempre buscando o bem-estar e a recuperação dos nossos pacientes. Conte conosco para cuidar da sua saúde com competência e profissionalismo."
+      },
+      {
+        description: "Confie em nosso hospital para receber cuidados de saúde de qualidade. Nossa equipe médica altamente qualificada está comprometida em fornecer serviços eficientes e personalizados. Com experiência em diversas áreas da medicina, estamos preparados para lidar com casos complexos e garantir o bem-estar dos nossos pacientes. Oferecemos um atendimento dedicado e confidencial, garantindo cuidados de saúde com ética e competência."
+      },
+      {
+        description: "No nosso hospital, acreditamos em uma abordagem personalizada para cada paciente. Compreendemos a importância da sua saúde e nos dedicamos a fornecer cuidados sob medida. Nossa equipe médica especializada está pronta para atendê-lo com integridade e profissionalismo. Confie em nós para cuidar da sua saúde e encontrar as melhores estratégias médicas para o seu caso."
+      }
+    ];
+
+
+
+    // RANDOM TEXTO ABOUT 
+    const randomTextoAbout = () => {
+      const randomIndex = Math.floor(Math.random() * about.length);
+      return about[randomIndex].description;
+    };
+    ''
+    useEffect(() => {
+      const savedDescription = localStorage.getItem('randomTextoAbout');
+      if (savedDescription) {
+        setRandomTextoAboutText(savedDescription);
+      } else {
+        const newRandomDescription = randomTextoAbout();
+        setRandomTextoAboutText(newRandomDescription);
+        localStorage.setItem('randomTextoAbout', newRandomDescription);
+      }
+    }, []);
+
+    //PARALLAX
+    const parallax01 = [
+      {
+        description: "Nossa empresa de advocacia é a escolha certa para você, pois contamos com uma equipe de profissionais altamente qualificados e comprometidos em defender seus interesses com eficiência e agilidade."
+      },
+      {
+        description: "Somos uma empresa de advocacia dedicada a oferecer serviços jurídicos excepcionais. Nossa equipe de advogados talentosos e comprometidos está pronta para representá-lo e proteger seus interesses com dedicação e experiência."
+      },
+      {
+        description: "Se você precisa de serviços jurídicos de confiança, nossa empresa de advocacia é a resposta. Temos uma equipe experiente de advogados prontos para lutar por seus direitos e oferecer soluções jurídicas eficazes e personalizadas."
+      },
+      {
+        description: "Na nossa empresa de advocacia, acreditamos que cada caso é único. Por isso, nossa equipe dedicada está empenhada em fornecer a você um serviço jurídico personalizado, com foco em resultados e eficiência."
+      },
+      {
+        description: "Conte conosco, uma empresa de advocacia comprometida com a excelência e a defesa de seus interesses. Nossa equipe de advogados qualificados está pronta para oferecer soluções jurídicas estratégicas e proteger seus direitos de forma eficiente."
+      }
+    ];
+    const randomParallax01 = () => {
+      const randomIndex = Math.floor(Math.random() * parallax01.length);
+      return parallax01[randomIndex].description;
+    };
+    useEffect(() => {
+      const savedDescription = localStorage.getItem('randomParallax01');
+      if (savedDescription) {
+        setRandomParallax01Text(savedDescription);
+      } else {
+        const newRandomDescription = randomParallax01();
+        setRandomParallax01Text(newRandomDescription);
+        localStorage.setItem('randomParallax01', newRandomDescription);
+      }
+    }, []);
+
+    // SOBRE A FIRMA 
+    const aboutFirma = [
+      {
+        description: "Nossa firma de advocacia busca sempre a excelência em serviços, oferecendo atendimento personalizado e soluções jurídicas eficazes para nossos clientes.",
+      },
+      {
+        description: "Somos uma firma de advocacia comprometida em fornecer serviços jurídicos de alta qualidade. Nosso atendimento é personalizado, e buscamos sempre soluções eficazes para atender às necessidades dos nossos clientes.",
+      },
+      {
+        description: "Na nossa firma de advocacia, priorizamos a excelência em cada caso. Nossa equipe está empenhada em fornecer atendimento personalizado e soluções jurídicas eficazes, buscando sempre os melhores resultados para nossos clientes.",
+      },
+      {
+        description: "Conte com nossa firma de advocacia para receber um atendimento de qualidade e soluções jurídicas eficazes. Estamos comprometidos em oferecer serviços personalizados e buscar os melhores resultados para nossos clientes.",
+      },
+      {
+        description: "Nossa firma de advocacia se dedica a oferecer serviços de excelência. Valorizamos o atendimento personalizado e buscamos sempre soluções jurídicas eficazes para atender às demandas e necessidades dos nossos clientes.",
+      },
+    ];
+    const randomAboutFirma = () => {
+      const randomIndex = Math.floor(Math.random() * aboutFirma.length);
+      return aboutFirma[randomIndex].description;
+    };
+
+    useEffect(() => {
+      const savedDescription = localStorage.getItem('randomAboutFirma');
+      if (savedDescription) {
+        setRandomAboutFirmaText(savedDescription);
+      } else {
+        const newRandomDescription = randomAboutFirma();
+        setRandomAboutFirmaText(newRandomDescription);
+        localStorage.setItem('randomAboutFirma', newRandomDescription);
+      }
+    }, []);
+
+    //
+    const footer = [
+      {
+        description: "Fale com nossos advogados de defesa criminal hoje. Estamos aqui para ajudar você a alcançar seus objetivos de maneira legal e eficiente. Conte conosco para proteger seus direitos e liberdade.",
+      },
+      {
+        description: "Nossa firma de advocacia é especializada em defesa criminal. Nossos advogados experientes estão prontos para lutar em seu nome, garantindo que seus direitos sejam protegidos. Entre em contato conosco e tenha uma equipe confiável ao seu lado.",
+      },
+      {
+        description: "Se você está enfrentando acusações criminais, nossa equipe de advogados de defesa criminal está pronta para ajudar. Oferecemos representação legal experiente e eficiente, trabalhando incansavelmente para proteger seus direitos e liberdade.",
+      },
+      {
+        description: "Não enfrente acusações criminais sozinho. Nossa equipe de advogados de defesa criminal está aqui para você. Com uma abordagem legal sólida e estratégias eficazes, buscamos alcançar os melhores resultados para proteger seus direitos e liberdade.",
+      },
+      {
+        description: "Na nossa firma de advocacia, temos uma equipe de advogados especializados em defesa criminal prontos para ajudar. Com dedicação e habilidades jurídicas, trabalharemos em conjunto para garantir a melhor defesa possível, protegendo seus direitos e alcançando resultados favoráveis.",
+      },
+    ];
+    const randomFooter = () => {
+      const randomIndex = Math.floor(Math.random() * footer.length);
+      return footer[randomIndex].description;
+    };
+
+    useEffect(() => {
+      const savedDescription = localStorage.getItem('randomFooter');
+      if (savedDescription) {
+        setRandomFooterText(savedDescription);
+      } else {
+        const newRandomDescription = randomFooter();
+        setRandomFooterText(newRandomDescription);
+        localStorage.setItem('randomFooter', newRandomDescription);
+      }
+    }, []);
+
+
+    useEffect(() => {
+      const handleBeforeUnload = () => {
+        const keysToKeep = ['textoClicado', 'nomeEmpresa', 'Endereco'];
+        const keysToRemove = [];
+
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i);
+          if (key !== null && !keysToKeep.includes(key)) {
+            keysToRemove.push(key);
+          }
+        }
+
+        keysToRemove.forEach(key => {
+          localStorage.removeItem(key);
+          console.log(key);
+        });
+      };
+
+      window.addEventListener('beforeunload', handleBeforeUnload);
+
+      return () => {
+        window.removeEventListener('beforeunload', handleBeforeUnload);
+      };
+    }, []);
+
+
+
+
+
+  }
 
 
   return (
     <Container>
       {loading ? <Loading /> : null}
       <HeaderFooter bgImage={imageUrlHeader} as="header">
-        <h1>{randomTitleFirmaText}</h1>
+        <h1>{nomeEmpresaTemplate}</h1>
         <Line></Line>
         <h2>
           Defendendo seus direitos, garantindo sua justiça

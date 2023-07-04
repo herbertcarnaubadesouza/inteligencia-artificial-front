@@ -166,19 +166,18 @@ margin-top:0 auto;
 
 
   .about{
-    width:95%;
+    width:90%;
     justify-content:center;
     display: flex;
     align-items:center;
-  
+
  
     @media only screen and (max-width: 1700px) {
-      width:95%;
+      width:85%;
   }
   }
 
   @media only screen and (max-width: 1000px) {
-   
     height:auto;
   }
   @media only screen and (max-width: 768px) {
@@ -189,7 +188,7 @@ margin-top:0 auto;
 .about-section{
   margin-top:0 auto;
   width:50%;
-  @media only screen and (max-width: 1000px) {
+  @media only screen and (max-width: 1200px) {
     
     width:95%;
     margin-top: 0 auto;
@@ -209,7 +208,7 @@ const LogoTemplate = styled.img`
   height: 495px;
   margin-right: 1.5rem;
   z-index: 999;
-  object-fit: cover;
+  object-fit: contain;
   
 
 
@@ -221,7 +220,7 @@ const LogoTemplate = styled.img`
     
 
   }
-  @media only screen and (max-width: 1000px) {
+  @media only screen and (max-width: 1200px) {
     width:100%;
     height: 495px; 
     margin:0rem;
@@ -242,7 +241,7 @@ const LogoTemplate = styled.img`
 const Info = styled.div`
   gap:20px;
   display: flex;
-  @media only screen and (max-width: 1000px) {
+  @media only screen and (max-width: 1200px) {
 
    flex-direction:column-reverse;
    align-items:center;
@@ -255,7 +254,7 @@ const Info = styled.div`
     display: flex;
     align-items:center;
     justify-content:end;
-    @media only screen and (max-width: 1000px) {
+    @media only screen and (max-width: 1200px) {
    
     height: 500px;
     width:95%;
@@ -523,7 +522,7 @@ const PracticeAreaContentAll = styled.div`
   width:100%;
   margin-top:70px;
 
-  @media only screen and (max-width: 1000px) {
+  @media only screen and (max-width: 1200px) {
     margin-top:0px;
     gap: 1rem; /* Em telas menores, exibe os componentes em coluna */
     }
