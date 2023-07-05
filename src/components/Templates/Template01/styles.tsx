@@ -47,14 +47,13 @@ const HeaderFooter = styled.div<{ bgImage?: string }>`
   justify-content: center;
   flex-direction: column;
   width: 100%;
-
   background-image: url(${(props) => props.bgImage ? props.bgImage : 'https://cdn.discordapp.com/attachments/1116206739373691010/1116573743058268180/ThomasiWilson1_A_successful_law_firms_executive_office_with_flo_acf05fba-84f6-4416-bf37-b27f5d02a190.png'});
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
   padding-top: 10rem;
   padding-bottom: 20rem;
- 
+
   text-align: center;
   background-position: center;
   background-repeat: no-repeat;
@@ -155,7 +154,7 @@ const Navigation = styled.div`
 `;
 
 const AboutSection = styled.section`
-width:100%;
+width:70%;
 margin-top:0 auto;
   justify-content:space-around;
   display: flex;
@@ -166,12 +165,11 @@ margin-top:0 auto;
 
 
   .about{
-    width:90%;
+    width:80%;
     justify-content:center;
     display: flex;
     align-items:center;
 
- 
     @media only screen and (max-width: 1700px) {
       width:85%;
   }
@@ -182,7 +180,15 @@ margin-top:0 auto;
   }
   @media only screen and (max-width: 768px) {
     height:auto;
-    padding-block:100px;
+    padding-block:70px;
+  }
+  @media only screen and (max-width: 1200px) {
+    width:80%;
+   
+  }
+  @media only screen and (max-width: 768px) {
+    width:95%;
+   
   }
 
 .about-section{
@@ -197,7 +203,7 @@ margin-top:0 auto;
    }
   
  
-    
+ 
 
 }
   
@@ -241,7 +247,7 @@ const LogoTemplate = styled.img`
 const Info = styled.div`
   gap:20px;
   display: flex;
-  @media only screen and (max-width: 1200px) {
+  @media only screen and (max-width: 650px) {
 
    flex-direction:column-reverse;
    align-items:center;
@@ -476,7 +482,7 @@ const PracticeArea = styled.div`
   width: 100%;
 
   h1 {   
-  
+
     font-size:28px;
     color: ${(props: ThemeProps) => props.theme.fontTitleColor};
   }
@@ -490,10 +496,14 @@ const PracticeArea = styled.div`
 
   h4 {
    
-    text-align: start;
+    text-align: center;
     width: 90%;
     color: ${(props: ThemeProps) => props.theme.fontTitleColor};
     font-size:px;
+
+    @media only screen and (max-width:  768px) {
+      text-align: start;
+    }
   }
 
   button {
