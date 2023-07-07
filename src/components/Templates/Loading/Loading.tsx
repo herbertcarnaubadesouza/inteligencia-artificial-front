@@ -4,7 +4,7 @@ import animationData from './foxy.json';
 import './loading.css';
 
 const Loading = () => {
-  const [timeRemaining, setTimeRemaining] = useState(30); // Tempo restante em segundos (30 segundos)
+  const [timeRemaining, setTimeRemaining] = useState(15); // Tempo restante em segundos (30 segundos)
 
   useEffect(() => {
     const timer = setInterval(() => {

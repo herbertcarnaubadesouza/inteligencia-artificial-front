@@ -87,7 +87,7 @@ const HeaderFooter = styled.div<{ bgImage?: string }>`
   }
 
   h2 {
-    font-size: 18px;
+    font-size: 22px;
     text-align: center;
     width: 800px;
     color: ${(props: ThemeProps) => props.theme.headerFooterTextColor};

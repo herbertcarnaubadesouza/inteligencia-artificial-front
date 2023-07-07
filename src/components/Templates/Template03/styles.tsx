@@ -138,27 +138,23 @@ export const AboutSection = styled.section`
   justify-content: space-between;
   background-color: #fff;
   padding-block: 100px;
-  width: 75%;
+  width: 85%;
   margin: 0 auto;
 
  
-  @media only screen and (max-width: 1200px) {
+ 
+  @media only screen and (max-width: 800px) {
     padding-left: 0rem;
     padding-right: 0rem;
-    width: 80%;
-    display:flex;
-    flex-direction:column-reverse;
-    padding-top: 5rem;
-   
-    
-  }
-  @media only screen and (max-width: 768px) {
-   
     width: 95%;
+    display:flex;
+    flex-direction:column;
+    padding-top: 0rem;
    
    
     
   }
+
 
 `;
 export const LeftSideBlock = styled.div`
@@ -166,14 +162,16 @@ export const LeftSideBlock = styled.div`
   flex-direction: column;
   gap: 2.5rem;
   width: 55%;
+  
 
   
  
 
   @media only screen and (max-width: 1200px) {
     margin: 0 auto;
-    width: 75%;
-    margin-top:5rem;
+    width: 95%;
+    margin-top:3rem;   margin-bottom:3rem;
+   
   
   }
   .title-about-section-block {
@@ -268,8 +266,8 @@ export const RightSideBlock = styled.div`
   @media only screen and (max-width: 1200px) {
  
     margin: 0 auto;
-    width: 75%;
-   
+    width: 90%;
+
     display: flex;
      justify-content:center;
     align-items:center;
@@ -280,6 +278,23 @@ export const RightSideBlock = styled.div`
     }
 
   }
+  @media only screen and (max-width: 800px) {
+ 
+
+  justify-content:center;
+
+
+
+}
+@media only screen and (max-width: 440px) {
+ 
+
+ justify-content:center;
+ margin-right:40px;
+
+
+
+}
 
 `;
 export const LineAboutSection = styled.div`
@@ -297,7 +312,7 @@ export const IconSection = styled.section`
     display: flex;
     flex-direction: row;
     justify-content: center;
-    gap: 5rem;
+    gap: 3rem;
    
     background-color: ${(props: ThemeProps) =>
     mix(0.9, '#ffffff', props.theme.headerFooterBgColor)};
@@ -335,6 +350,7 @@ export const IconSection = styled.section`
       gap: 2rem;
       padding: 0rem;
       padding-block: 2.5rem;
+      padding-inline: 1rem;
     }
     .meta-icons{
    
@@ -502,12 +518,12 @@ export const LeftAwardBlock = styled.div`
  @media screen and (max-width:1100px){
   margin:0;
   flex-direction:column;
-  width: 95%;
+  width: 100%;
   display: flex;
   align-items:center;
  justify-content:center;
   height:auto;
-  margin-right:25px;
+  margin-right:0px;
   margin-bottom:25px;
 h2{
   text-align:center;
@@ -544,11 +560,16 @@ export const RigthAwardBlock = styled.div`
     gap: 1rem;
     width:100%;
     height:auto;
-    
+    min-height:150px;
   
     @media only screen and (max-width: 1600px) {
      margin-bottom:8px;
      height:auto;
+     min-height:150px;
+    
+   
+  
+  
   }
 
 
@@ -575,8 +596,8 @@ export const RigthAwardBlock = styled.div`
   
     width:100%;
     height:auto;
-   padding-inline:15px;
-   padding-block:15px;
+    padding-inline:15px;
+    padding-block:15px;
   
    
   }
@@ -587,12 +608,13 @@ export const RigthAwardBlock = styled.div`
     
    margin: 0 auto;
   flex-direction: column;
-  width: 95%;
+  width: 99%;
   height: auto;
   align-items:center;
   justify-content:center;
   text-align:start;
   margin-top:0px;
+
 
  
  
@@ -632,7 +654,7 @@ export const HowWorksHeaderSection = styled.div`
     margin: 0 auto;
     height: 50%;
     width: 90%;
-    margin-bottom: 50px;
+    margin-bottom: 0px;
     
     
   ;
@@ -640,8 +662,8 @@ export const HowWorksHeaderSection = styled.div`
   .containe-title {
     width: 100%;
     height: auto;
-    margin-top: 10px;
-    padding-block:30px;
+    margin-top: 0px;
+    padding-block:20px;
 
 
     h2 {
@@ -681,7 +703,7 @@ export const HowWorksHeaderSection = styled.div`
     
       font-size: 18px;
       margin: 0 auto;
-      width: 97%;
+      width: 99%;
       text-align:start;
      
 
@@ -707,33 +729,43 @@ export const HowWorksHeaderSection = styled.div`
       margin:0 auto;
       width: 32%;
       height: auto;
+    
       background-color: ${(props: ThemeProps) =>
     mix(0.95, '#eeeeee', props.theme.headerFooterBgColor)};
-      justify-content: space-a;
+      justify-content: space-around;
       display: flex;
       flex-direction: column;
       text-align: center;
       border-radius: 10px;
-      padding-block: 10px;
+      padding-block: 20px;
+gap:3px;
+min-height: 320px;
 
+
+@media screen and (max-width: 1200px) {
+  min-height: 270px;
+
+  
+
+}
       h1 {
         margin: 0 auto;
-        margin-top: 20px;
         height: auto;
         width: 95%;
         text-align: center;
         font-size: 70px;
-        color: #b7bfc9;
+        color: #b7bfc9; 
       }
       h2 {
         margin: 0 auto;
         width: 95%;
-        height: 15%;
+        height: auto;
         font-size: 22px;
         color: #000000;
+        padding-bottom:5px;
       }
       p {
-        height: 40%;
+        height: auto;
         width: 85%;
         text-align: center;
         margin: 0 auto;
@@ -742,6 +774,8 @@ export const HowWorksHeaderSection = styled.div`
         color: ${(props: ThemeProps) =>
     mix(0.8, '#c9c7c7af', props.theme.headerFooterBgColor)};
       }
+
+      
     }
     
   }
@@ -772,7 +806,7 @@ export const HowWorksHeaderSection = styled.div`
     }
   }
 
-  @media screen and (max-width:1110px){
+  @media screen and (max-width:1300px){
     .container-works-pai {
     margin: 0 auto;
     height: auto;
@@ -783,11 +817,12 @@ export const HowWorksHeaderSection = styled.div`
     flex-direction: column;
     margin-bottom: 5px;
   
+  
     
   
     .container-works {
       margin:0 auto;
-      width: 95%;
+      width: 99%;
       height: auto;
       background-color: ${(props: ThemeProps) =>
     mix(0.95, '#eeeeee', props.theme.headerFooterBgColor)};
@@ -795,7 +830,9 @@ export const HowWorksHeaderSection = styled.div`
       display: flex;
       flex-direction: column;
       text-align: center;
-      border-radius: 10px;}
+      border-radius: 10px;
+    }
+   
   }
 
   

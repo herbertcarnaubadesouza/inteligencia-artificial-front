@@ -1,5 +1,5 @@
 // Arquivo Home.js ou Home.tsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import RightSide from '../components/Home/RightSide';
 
 function Home() {
@@ -14,6 +14,12 @@ function Home() {
   const exibirQuestion02 = () => {
     setIsQuestion02Visible(true);
   };
+
+  // Limpar Local 
+  useEffect(() => {
+    localStorage.clear();
+
+  }, []);
 
   return (
     <>

@@ -62,7 +62,7 @@ function Template01({ isVisible01 }: Template01Props) {
 
     const timeoutId = setTimeout(() => {
       setLoading(false);
-    }, 300);
+    }, 2000);
 
     return () => {
       clearTimeout(timeoutId);
@@ -1514,7 +1514,9 @@ function Template01({ isVisible01 }: Template01Props) {
             <div className='about-section' >
 
               <h2>Sobre Nós</h2>
+              <Line></Line>
               <p>{randomTextoAboutText}</p>
+
             </div>
           </Info>
         </section>

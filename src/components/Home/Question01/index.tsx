@@ -118,13 +118,24 @@ function Question01(props: Question01Props) {
   const [textoClicado, setTextoClicado] = useState('');
 
   const handleChoice = (choiceName: string) => {
-    setButtonStates((prevStates) => ({
-      ...prevStates,
-      [choiceName]: !prevStates[choiceName],
-    }));
+    setButtonStates((prevStates) => {
+      const updatedStates = { ...prevStates };
+
+      // Percorre todos os botões para desmarcar os outros
+      Object.keys(updatedStates).forEach((buttonName) => {
+        updatedStates[buttonName] = false;
+      });
+
+      // Marca o botão atual
+      updatedStates[choiceName] = true;
+
+      return updatedStates;
+    });
+
     setTextoClicado(choiceName);
     localStorage.setItem('textoClicado', choiceName);
   };
+
 
 
   const [searchTerm, setSearchTerm] = useState('');

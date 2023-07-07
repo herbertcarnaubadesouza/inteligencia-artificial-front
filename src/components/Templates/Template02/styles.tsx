@@ -39,6 +39,7 @@ width:100%;
     margin-top: 50px;
     margin-left: 5%;
     width:100%;
+
   }
   h2 {
     color: ${(props: ThemeProps) =>
@@ -68,6 +69,7 @@ width:100%;
     font-size: 14px;
 
 
+
   }
 
   p {
@@ -79,8 +81,10 @@ width:100%;
     justify-content: flex-start;
     width: 100%;
     align-items: baseline;
-    gap: 20px;
+    gap: 2px;
     position: relative;
+    margin-left:1rem;
+    
   }
   @media screen and (max-width:900px) {
 
@@ -128,6 +132,8 @@ export const HeaderBlock = styled.div<{ bgImage?: string }>`
     justify-content: start;
     width: 100%;
     z-index: 999;
+ 
+    margin-left: 1.5rem;
     
     @media only screen and (max-width: 500px) {
       justify-content: center;
@@ -145,6 +151,7 @@ export const HeaderBlock = styled.div<{ bgImage?: string }>`
     gap: 8px;
     width:100%;
     justify-content:center;
+  
    
  
   }
@@ -227,17 +234,21 @@ export const AboutSection = styled.section`
   @media only screen and (max-width: 1620px) {
     margin:0 auto;
     width:95%;
+  
   }
   .container-block-about {
    
     display: flex;
     align-items: baseline;
     position: relative;
+    
+    
+   
    
    
   }
 
-  @media only screen and (max-width: 1200px) {
+  @media only screen and (max-width: 800px) {
   display: flex;
   flex-direction: column;
   margin:0 auto;
@@ -250,7 +261,7 @@ export const LeftSideBlock = styled.div`
   
   width: 50%;
  
-  
+ 
   
   
 `;
@@ -275,11 +286,11 @@ export const LineAbout = styled.div`
 
 export const FirstBlockAbout = styled.div`
   width: 60%;
- 
+
   margin-right:2rem;
   @media only screen and (max-width: 1200px) {
     width: 100%;
-    margin-right:0rem;
+    margin-right:1rem;
    
 
     h2 {
@@ -301,7 +312,7 @@ export const SecondBlockAbout = styled.div`
   img {
     width: 100%;
     height:  100%;
-    object-fit: cover;
+    object-fit: contain;
     position: absolute;
   
   }
