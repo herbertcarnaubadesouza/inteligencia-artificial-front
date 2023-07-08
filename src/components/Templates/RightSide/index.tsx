@@ -39,9 +39,12 @@ function RightSide() {
   return (
     <>
       {leftSide.jsx}
-
-
-      <div className='buttonContainer'>  <button onClick={toggleMenu}> <img src={isOpen ? './images/X.png' : './images/menu.png'} alt="" /></button></div>
+      <div className={`${isOpen ? 'openEmbaçado' : 'none'}`} >
+      </div>
+      <div className='buttonContainer'>
+        <button onClick={toggleMenu}> <img src={isOpen ? './images/X.png' : './images/menu.png'} alt="" />
+        </button>
+      </div>
       <div className={`template-rightside-container ${isOpen ? 'open' : ''}`} >
 
         <div className="template-top-container">

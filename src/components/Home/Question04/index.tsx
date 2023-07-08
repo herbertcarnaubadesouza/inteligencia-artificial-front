@@ -335,7 +335,13 @@ function Question04(props: Question04Props) {
             <img className="button-back-icone" src="./images/back.svg" alt="" />
             <p className="button-back-texte">VOLTAR</p>
           </div>
-          <div className="button-continuee" onClick={goToPreview}>
+          <div className={`button-continuee ${address === "" ? 'disabled' : ''}`}
+            onClick={() => {
+              if (address !== "") {
+                goToPreview();
+              }
+            }}>
+
             <p className="button-continue-text">CONTINUAR</p>
           </div>
         </div>

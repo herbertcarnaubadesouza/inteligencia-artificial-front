@@ -298,8 +298,12 @@ function Question01(props: Question01Props) {
 
           <div className="right-nav-container">
 
-            <div className="button-continuee" onClick={props.ocultarQuestion}>
-              <p className="button-continue-text" >CONTINUAR</p>
+            <div className={`button-continuee ${textoClicado === "" ? 'disabled' : ''}`} onClick={() => {
+              if (textoClicado !== "") {
+                props.ocultarQuestion();
+              }
+            }}>
+              <p className={"button-continue-text"}>CONTINUAR</p>
             </div>
           </div>
         </div>

@@ -626,3 +626,9 @@ li.active:after {
   margin-top: 0.5em;
   margin-bottom: 0.75rem;
 }
+
+.disabled {
+  opacity: 0.5; /* Define a opacidade do texto para torná-lo visualmente desativado */
+  cursor: not-allowed; /* Altera o cursor do mouse para indicar que o elemento não está interativo */
+  /* Outros estilos desejados para o texto desativado */
+}

@@ -223,8 +223,12 @@ function Question05(props: Question05Props) {
             <img className="button-back-icone" src="./images/back.svg" alt="" />
             <p className="button-back-texte">VOLTAR</p>
           </div>
-          <div className="button-continuee" onClick={props.ocultarQuestion05}>
-            <p className="button-continue-text">CONTINUAR</p>
+          <div className={`button-continuee ${nomeEmpresa === "" ? 'disabled' : ''}`} onClick={() => {
+            if (nomeEmpresa !== "") {
+              props.ocultarQuestion05();
+            }
+          }}>
+            <p className={"button-continue-text"}>CONTINUAR</p>
           </div>
         </div>
       </div>
