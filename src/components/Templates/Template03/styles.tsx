@@ -312,7 +312,7 @@ export const IconSection = styled.section`
     display: flex;
     flex-direction: row;
     justify-content: center;
-    gap: 3rem;
+    gap: 4rem;
    
     background-color: ${(props: ThemeProps) =>
     mix(0.9, '#ffffff', props.theme.headerFooterBgColor)};
@@ -915,9 +915,10 @@ export const HowLocationSection = styled.div`
       background-color: ${(props: ThemeProps) =>
     mix(0.95, '#eeeeee', props.theme.headerFooterBgColor)};
       width: 33%;
-      height: 250px;
+      height: auto;
       border-radius: 30px;
       text-align: start;
+      padding-block:1rem;
 
       .container-icon {
         height: 50px;
@@ -936,9 +937,10 @@ export const HowLocationSection = styled.div`
         }
       }
       .container-p {
-        height: 120px;
+        height: auto;
         margin: 0 auto;
         width: 85%;
+        
 
         p {
           margin: 12px 0px;
@@ -983,7 +985,7 @@ export const HowLocationSection = styled.div`
       align-items:center;
 justify-content:center;
 flex-direction:column;
-      height: 250px;
+      height: auto;
   }
   
   }

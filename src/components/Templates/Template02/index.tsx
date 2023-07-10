@@ -1524,6 +1524,620 @@ function Template02({ isVisible02 }: Template02Props) {
 
   }
 
+  if (temaTemplateEscolhido === "Salão de beleza") {
+
+    useEffect(() => {
+      setFaleConoscoText("Agendar horário")
+      setFaleConoscoProfText("Agende seu horário hoje e realce sua beleza!");
+      setAreaAtuacaoOptions1Text("Cortes de cabelo e estilização")
+      setAreaAtuacaoOptions2Text("Coloração de cabelo")
+      setAreaAtuacaoOptions3Text("Tratamentos capilares")
+      setAreaAtuacaoOptions4Text("Manicure e pedicure")
+      setAreaAtuacaoOptions5Text("Estética facial")
+      setAreaAtuacaoOptions6Text("Coloração de cabelo")
+      setNumeroCellText("(85) 9 8972-8250")
+
+
+
+    }, [])
+
+    // BANNER HEADER
+
+    useEffect(() => {
+      const fetchData = async () => {
+        const bannerTemplateHeader = localStorage.getItem('bannerTemplateHeaderTemplate02');
+
+        if (!bannerTemplateHeader) {
+          const advogadoDocRef = doc(db, 'sites', 'salaDeBeleza');
+          const bannerCollectionRef = collection(advogadoDocRef, 'banner');
+          const bannerSnapshot = await getDocs(bannerCollectionRef);
+
+          let bannerList = bannerSnapshot.docs.map((doc) => {
+            const data = doc.data();
+            const banner = {
+              id: doc.id,
+              imgUrl: data.imgUrl,
+            };
+            return banner;
+          });
+
+          if (bannerList.length > 0) {
+            const randomIndex = Math.floor(Math.random() * bannerList.length);
+            const randomBanner = bannerList[randomIndex];
+            setImageUrlHeader(randomBanner.imgUrl);
+
+            localStorage.setItem('bannerTemplateHeaderTemplate02', randomBanner.imgUrl);
+          }
+        } else {
+          setImageUrlHeader(bannerTemplateHeader);
+        }
+      };
+
+      fetchData();
+    }, []);
+
+    // BANNER ABOUT 
+
+    useEffect(() => {
+      const fetchData = async () => {
+        const bannerTemplateHeader = localStorage.getItem('bannerTemplateAboutTemplate02');
+
+        if (!bannerTemplateHeader) {
+          const advogadoDocRef = doc(db, 'sites', 'salaDeBeleza');
+          const bannerCollectionRef = collection(advogadoDocRef, 'subtitulo');
+          const bannerSnapshot = await getDocs(bannerCollectionRef);
+
+          let bannerList = bannerSnapshot.docs.map((doc) => {
+            const data = doc.data();
+            const banner = {
+              id: doc.id,
+              imgUrl: data.imgUrl,
+            };
+            return banner;
+          });
+
+          if (bannerList.length > 0) {
+            const randomIndex = Math.floor(Math.random() * bannerList.length);
+            const randomBanner = bannerList[randomIndex];
+            setImageUrlAbout(randomBanner.imgUrl);
+
+            localStorage.setItem('bannerTemplateAboutTemplate02', randomBanner.imgUrl);
+          }
+        } else {
+          setImageUrlAbout(bannerTemplateHeader);
+        }
+      };
+
+      fetchData();
+    }, []);
+
+    // BANNER PARALALAX PRIMEIRA IMAGEM
+
+
+    useEffect(() => {
+      const fetchData = async () => {
+        const bannerTemplateHeader = localStorage.getItem('bannerTemplateParallax01Template02');
+
+        if (!bannerTemplateHeader) {
+          const advogadoDocRef = doc(db, 'sites', 'salaDeBeleza');
+          const bannerCollectionRef = collection(advogadoDocRef, 'bannerparalax');
+          const bannerSnapshot = await getDocs(bannerCollectionRef);
+
+          let bannerList = bannerSnapshot.docs.map((doc) => {
+            const data = doc.data();
+            const banner = {
+              id: doc.id,
+              imgUrl: data.imgUrl,
+            };
+            return banner;
+          });
+
+          if (bannerList.length > 0) {
+            const randomIndex = Math.floor(Math.random() * bannerList.length);
+            const randomBanner = bannerList[randomIndex];
+            setImageUrlParallax(randomBanner.imgUrl);
+
+            localStorage.setItem('bannerTemplateParallax01Template02', randomBanner.imgUrl);
+          }
+        } else {
+          setImageUrlParallax(bannerTemplateHeader);
+        }
+      };
+
+      fetchData();
+    }, []);
+
+    // BANER PARALLAX SEGUNDA IMAGEM 
+
+    useEffect(() => {
+      const fetchData = async () => {
+        const bannerTemplateHeader = localStorage.getItem('bannerTemplateParallax02Template02');
+
+        if (!bannerTemplateHeader) {
+          const advogadoDocRef = doc(db, 'sites', 'salaDeBeleza');
+          const bannerCollectionRef = collection(advogadoDocRef, 'banner');
+          const bannerSnapshot = await getDocs(bannerCollectionRef);
+
+          let bannerList = bannerSnapshot.docs.map((doc) => {
+            const data = doc.data();
+            const banner = {
+              id: doc.id,
+              imgUrl: data.imgUrl,
+            };
+            return banner;
+          });
+
+          if (bannerList.length > 0) {
+            const randomIndex = Math.floor(Math.random() * bannerList.length);
+            const randomBanner = bannerList[randomIndex];
+            setImageUrlParallaxSegunda(randomBanner.imgUrl);
+
+            localStorage.setItem('bannerTemplateParallax02Template02', randomBanner.imgUrl);
+          }
+        } else {
+          setImageUrlParallaxSegunda(bannerTemplateHeader);
+        }
+      };
+
+      fetchData();
+    }, []);
+
+
+    // TEXTOS 
+
+    // TITLES
+    const titleFirma = [
+      {
+        description: "Luxury Legal Solutions",
+      },
+      {
+        description: "Elite Advocates",
+      },
+      {
+        description: "Prestige Law Firm",
+      },
+      {
+        description: "Opulent Attorneys",
+      },
+      {
+        description: "Exclusive Legal Advisors",
+      },
+    ];
+    const randomTitleFirma = () => {
+      const randomIndex = Math.floor(Math.random() * titleFirma.length);
+      return titleFirma[randomIndex].description;
+    };
+    useEffect(() => {
+      const savedDescription = localStorage.getItem('randomTitleFirmaTemplate02');
+      if (savedDescription) {
+        setRandomTitleFirmaText(savedDescription);
+      } else {
+        const newRandomDescription = randomTitleFirma();
+        setRandomTitleFirmaText(newRandomDescription);
+        localStorage.setItem('randomTitleFirmaTemplate02', newRandomDescription);
+      }
+    }, []);
+
+    // SUB TITLES
+    const subTitleHeader = [
+      {
+        description: "Realçando sua beleza com excelência",
+      },
+      {
+        description: "Estilo e cuidado em cada serviço",
+      },
+      {
+        description: "Seus parceiros de beleza de confiança",
+      },
+      {
+        description: "Valorizando sua beleza",
+      },
+      {
+        description: "Navegando em tendências de beleza",
+      },
+    ];;
+
+    const randomSubTitleHeader = () => {
+      const randomIndex = Math.floor(Math.random() * subTitleHeader.length);
+      return subTitleHeader[randomIndex].description;
+    };
+
+    useEffect(() => {
+      const savedSlogan = localStorage.getItem('randomSubTitleHeaderTextTemplate02');
+      if (savedSlogan) {
+        setRandomSubTitleHeaderText(savedSlogan);
+      } else {
+        const newRandomSlogan = randomSubTitleHeader();
+        setRandomSubTitleHeaderText(newRandomSlogan);
+        localStorage.setItem('randomSubTitleHeaderTextTemplate02', newRandomSlogan);
+      }
+    }, []);
+
+    // ABOUT
+    const about = [
+      {
+        description: "Nosso salão de beleza oferece serviços especializados e eficazes. Contamos com uma equipe experiente e dedicada, pronta para realçar sua beleza com ética e profissionalismo. Priorizamos a excelência em cada serviço, buscando resultados favoráveis para nossos clientes. Confie em nós para cuidar da sua beleza com confiança e competência."
+      },
+      {
+        description: "Somos um salão de beleza comprometido em fornecer serviços confiáveis e eficientes. Com uma equipe experiente e especializada, oferecemos serviços personalizados para atender às necessidades dos nossos clientes. Nossa ética profissional e integridade são fundamentais em todas as nossas interações. Conte conosco para realçar sua beleza com dedicação e excelência."
+      },
+      {
+        description: "Nosso salão de beleza é especializado em oferecer serviços eficazes e personalizados para nossos clientes. Com uma equipe de profissionais experientes e dedicados, estamos prontos para atender uma ampla gama de necessidades de beleza. Nosso compromisso com a excelência e a ética nos permite fornecer um serviço de qualidade, sempre buscando alcançar os melhores resultados para nossos clientes. Conte conosco para realçar sua beleza com dedicação e profissionalismo."
+      },
+      {
+        description: "Conte com nosso salão de beleza para obter serviços de qualidade. Nossa equipe altamente qualificada está comprometida em fornecer soluções eficientes e personalizadas para realçar sua beleza. Com experiência em diversas áreas da beleza, estamos preparados para oferecer um atendimento dedicado e confidencial, garantindo que você se sinta linda e confiante. Garantimos o cuidado da sua beleza com ética e competência."
+      },
+      {
+        description: "No nosso salão de beleza, acreditamos em uma abordagem personalizada para cada cliente. Compreendemos a importância das suas necessidades de beleza e nos dedicamos a fornecer serviços sob medida. Nossa equipe de profissionais especializados está pronta para realçar sua beleza com integridade e profissionalismo. Confie em nós para garantir que você se sinta linda e confiante, encontrando as melhores estratégias de beleza para você."
+      }
+    ];
+
+    // RANDOM TEXTO ABOUT 
+    const randomTextoAbout = () => {
+      const randomIndex = Math.floor(Math.random() * about.length);
+      return about[randomIndex].description;
+    };
+
+    useEffect(() => {
+      const savedDescription = localStorage.getItem('randomTextoAboutTemplate02');
+      if (savedDescription) {
+        setRandomTextoAboutText(savedDescription);
+      } else {
+        const newRandomDescription = randomTextoAbout();
+        setRandomTextoAboutText(newRandomDescription);
+        localStorage.setItem('randomTextoAboutTemplate02', newRandomDescription);
+      }
+    }, []);
+
+    // PARALLAX SLOGAN 
+    const sloganParallaxText = [
+      {
+        description: "REALÇAMOS SUA BELEZA COM SOLUÇÕES EFICIENTES",
+      },
+      {
+        description: "SERVIÇOS DE ALTA QUALIDADE PARA SUA SEGURANÇA",
+      },
+      {
+        description: "COMPROMETIDOS COM A BELEZA E RESULTADOS POSITIVOS",
+      },
+      {
+        description: "ATUAÇÃO DEDICADA PARA VALORIZAR SUA BELEZA",
+      },
+    ];;
+
+
+    const randomSloganParallaxText = () => {
+      const randomIndex = Math.floor(Math.random() * sloganParallaxText.length);
+      return sloganParallaxText[randomIndex].description;
+    };
+
+    useEffect(() => {
+      const savedSlogan = localStorage.getItem('randomSloganParallaxTextTemplate02');
+      if (savedSlogan) {
+        setRandomSloganParallaxText(savedSlogan);
+      } else {
+        const newRandomSlogan = randomSloganParallaxText();
+        setRandomSloganParallaxText(newRandomSlogan);
+        localStorage.setItem('randomSloganParallaxTextTemplate02', newRandomSlogan);
+      }
+    }, []);
+
+
+
+
+
+    //PARALLAX
+    const parallax01 = [
+      {
+        description: "Nosso salão de beleza é a escolha certa para você, pois contamos com uma equipe de profissionais altamente qualificados e comprometidos em realçar sua beleza com eficiência e agilidade."
+      },
+      {
+        description: "Somos um salão de beleza dedicado a oferecer serviços excepcionais. Nossa equipe de profissionais talentosos e comprometidos está pronta para cuidar de você e valorizar sua beleza com dedicação e experiência."
+      },
+      {
+        description: "Se você precisa de serviços de beleza de confiança, nosso salão é a resposta. Temos uma equipe experiente de profissionais prontos para realçar sua beleza e oferecer soluções personalizadas e eficazes."
+      },
+      {
+        description: "No nosso salão de beleza, acreditamos que cada cliente é único. Por isso, nossa equipe dedicada está empenhada em fornecer a você um serviço personalizado, com foco em resultados e eficiência para realçar sua beleza."
+      },
+      {
+        description: "Conte conosco, um salão de beleza comprometido com a excelência e a valorização da sua beleza. Nossa equipe de profissionais qualificados está pronta para oferecer serviços estratégicos e realçar sua beleza de forma eficiente."
+      }
+    ];
+
+    const randomParallax01 = () => {
+      const randomIndex = Math.floor(Math.random() * parallax01.length);
+      return parallax01[randomIndex].description;
+    };
+
+    useEffect(() => {
+      const savedDescription = localStorage.getItem('randomParallax01Template02');
+      if (savedDescription) {
+        setRandomParallax01Text(savedDescription);
+      } else {
+        const newRandomDescription = randomParallax01();
+        setRandomParallax01Text(newRandomDescription);
+        localStorage.setItem('randomParallax01Template02', newRandomDescription);
+      }
+    }, []);
+
+
+
+    // SOBRE A FIRMA 
+    const aboutFirma = [
+      {
+        description: "Nosso salão de beleza busca sempre a excelência em serviços, oferecendo atendimento personalizado e soluções estéticas eficazes para nossos clientes.",
+      },
+      {
+        description: "Somos um salão de beleza comprometido em fornecer serviços de alta qualidade. Nosso atendimento é personalizado, e buscamos sempre soluções estéticas eficazes para atender às necessidades dos nossos clientes.",
+      },
+      {
+        description: "No nosso salão de beleza, priorizamos a excelência em cada caso. Nossa equipe está empenhada em fornecer atendimento personalizado e soluções estéticas eficazes, buscando sempre os melhores resultados para nossos clientes.",
+      },
+      {
+        description: "Conte com nosso salão de beleza para receber um atendimento de qualidade e soluções estéticas eficazes. Estamos comprometidos em oferecer serviços personalizados e buscar os melhores resultados para nossos clientes.",
+      },
+      {
+        description: "Nosso salão de beleza se dedica a oferecer serviços de excelência. Valorizamos o atendimento personalizado e buscamos sempre soluções estéticas eficazes para atender às demandas e necessidades dos nossos clientes.",
+      },
+    ];
+
+
+    const randomAboutFirma = () => {
+      const randomIndex = Math.floor(Math.random() * aboutFirma.length);
+      return aboutFirma[randomIndex].description;
+    };
+    useEffect(() => {
+      const savedDescription = localStorage.getItem('randomAboutFirmaTemplate02');
+      if (savedDescription) {
+        setRandomAboutFirmaText(savedDescription);
+      } else {
+        const newRandomDescription = randomAboutFirma();
+        setRandomAboutFirmaText(newRandomDescription);
+        localStorage.setItem('randomAboutFirmaTemplate02', newRandomDescription);
+      }
+    }, []);
+
+    // TEXTO 1
+    const assaltoDomestico = [
+      {
+        description: "Nossos cabeleireiros especializados oferecem cortes de cabelo personalizados, garantindo que você saia do salão com um visual único e deslumbrante.",
+      },
+      {
+        description: "Oferecemos uma ampla variedade de estilos e técnicas de estilização para criar o corte de cabelo perfeito que combine com o seu estilo e personalidade.",
+      },
+      {
+        description: "Nossos profissionais são especialistas em cortes modernos e clássicos, proporcionando a você uma experiência de corte de cabelo excepcional e resultados impecáveis.",
+      },
+      {
+        description: "Combinamos habilidade técnica e criatividade para criar cortes de cabelo que realcem a sua beleza e expressem sua individualidade.",
+      },
+      {
+        description: "Nosso time de cabeleireiros talentosos está atualizado com as últimas tendências, oferecendo cortes inovadores e estilos únicos para você.",
+      },
+      {
+        description: "Trabalhamos com cuidado e precisão, garantindo cortes de cabelo que se adaptem perfeitamente às suas características e desejos.",
+      }
+    ];
+
+
+    const randomAssaltoDomestico = () => {
+      const randomIndex = Math.floor(Math.random() * assaltoDomestico.length);
+      return assaltoDomestico[randomIndex].description;
+    };
+
+    useEffect(() => {
+      const savedDescription = localStorage.getItem('randomAreaAtuacaoOptions1TextTemplate02');
+      if (savedDescription) {
+        setRandomAreaAtuacaoOptions1Text(savedDescription);
+      } else {
+        const newRandomDescription = randomAssaltoDomestico();
+        setRandomAreaAtuacaoOptions1Text(newRandomDescription);
+        localStorage.setItem('randomAreaAtuacaoOptions1TextTemplate02', newRandomDescription);
+      }
+    }, []);
+
+    // TEXTO 2
+    const crimeDeArmas = [
+      {
+        description: "Nossos especialistas em coloração de cabelo criam resultados deslumbrantes, oferecendo uma ampla gama de opções de cores e técnicas personalizadas.",
+      },
+      {
+        description: "Trabalhamos com produtos de alta qualidade para garantir uma coloração duradoura, vibrante e que preserve a saúde do seu cabelo.",
+      },
+      {
+        description: "Oferecemos serviços de mechas, destaques, tinturas completas e técnicas de coloração sob medida para atender às suas preferências e estilo.",
+      },
+      {
+        description: "Nossos profissionais são especialistas em tendências de coloração, proporcionando opções modernas, como ombré hair, balayage e coloração fantasia.",
+      },
+      {
+        description: "Criamos looks personalizados para cada cliente, levando em consideração sua tonalidade de pele, cor dos olhos e estilo pessoal.",
+      },
+      {
+        description: "Realizamos uma consulta detalhada para entender suas preferências e recomendar a coloração de cabelo perfeita para realçar sua beleza natural.",
+      }
+    ];
+    const randomCrimeDeArmas = () => {
+      const randomIndex = Math.floor(Math.random() * crimeDeArmas.length);
+      return crimeDeArmas[randomIndex].description;
+    };
+
+    useEffect(() => {
+      const savedDescription = localStorage.getItem('randomAreaAtuacaoOptions2TextTemplate02');
+      if (savedDescription) {
+        setRandomAreaAtuacaoOptions2Text(savedDescription);
+      } else {
+        const newRandomDescription = randomCrimeDeArmas();
+        setRandomAreaAtuacaoOptions2Text(newRandomDescription);
+        localStorage.setItem('randomAreaAtuacaoOptions2TextTemplate02', newRandomDescription);
+      }
+    }, []);
+
+    // TEXT 3
+    const crimeDeDrogas = [
+      {
+        description: "Nossos tratamentos capilares de alta qualidade incluem hidratação profunda, reconstrução e terapias para promover a saúde e o brilho dos cabelos.",
+      },
+      {
+        description: "Utilizamos produtos e técnicas avançadas para tratar problemas capilares, como cabelos danificados, secos, com frizz ou pontas duplas.",
+      },
+      {
+        description: "Oferecemos serviços de cauterização, queratinização e botox capilar para restaurar e fortalecer os fios, deixando-os macios, sedosos e saudáveis.",
+      },
+      {
+        description: "Nossos especialistas avaliam cuidadosamente suas necessidades capilares e recomendam o tratamento ideal para revitalizar seus cabelos.",
+      },
+      {
+        description: "Trabalhamos com produtos de marcas reconhecidas, proporcionando resultados eficazes e duradouros em todos os tratamentos capilares.",
+      },
+      {
+        description: "Nossos tratamentos capilares personalizados são projetados para atender às necessidades individuais de cada cliente, garantindo resultados excepcionais.",
+      }
+    ];
+
+    const randomCrimeDeDrogas = () => {
+      const randomIndex = Math.floor(Math.random() * crimeDeDrogas.length);
+      return crimeDeDrogas[randomIndex].description;
+    };
+
+
+
+    useEffect(() => {
+      const savedDescription = localStorage.getItem('randomAreaAtuacaoOptions3TextTemplate02');
+      if (savedDescription) {
+        setRandomAreaAtuacaoOptions3Text(savedDescription);
+      } else {
+        const newRandomDescription = randomCrimeDeDrogas();
+        setRandomAreaAtuacaoOptions3Text(newRandomDescription);
+        localStorage.setItem('randomAreaAtuacaoOptions3TextTemplate02', newRandomDescription);
+      }
+    }, []);
+
+    // TEXT 4 
+    const crimeDePessoais = [
+      {
+        description: "Nossos serviços de manicure e pedicure oferecem cuidados minuciosos para deixar suas unhas impecáveis e bem cuidadas.",
+      },
+      {
+        description: "Utilizamos produtos de qualidade e técnicas precisas para realizar manicures e pedicures, garantindo resultados duradouros e de alta estética.",
+      },
+      {
+        description: "Oferecemos uma ampla gama de opções de esmaltes, desde cores clássicas até as mais recentes tendências da moda.",
+      },
+      {
+        description: "Nossos profissionais são habilidosos em nail art, proporcionando designs criativos e personalizados para unhas decoradas.",
+      },
+      {
+        description: "Além da beleza estética, nos preocupamos com a saúde das suas unhas, realizando cuidados de cutículas e tratamentos para fortalecimento.",
+      },
+      {
+        description: "Proporcionamos um ambiente relaxante para que você desfrute de uma experiência de manicure e pedicure completa e rejuvenescedora.",
+      }
+    ];
+    const randomCrimeDePessoais = () => {
+      const randomIndex = Math.floor(Math.random() * crimeDePessoais.length);
+      return crimeDePessoais[randomIndex].description;
+    };
+
+
+
+    useEffect(() => {
+      const savedDescription = localStorage.getItem('randomAreaAtuacaoOptions4TextTemplate02');
+      if (savedDescription) {
+        setRandomAreaAtuacaoOptions4Text(savedDescription);
+      } else {
+        const newRandomDescription = randomCrimeDePessoais();
+        setRandomAreaAtuacaoOptions4Text(newRandomDescription);
+        localStorage.setItem('randomAreaAtuacaoOptions4TextTemplate02', newRandomDescription);
+      }
+    }, []);
+
+
+
+
+
+
+    // TEXT 5
+    const crimeDeAssedio = [
+      {
+        description: "Nossos serviços de estética facial incluem limpeza de pele profunda, garantindo uma pele saudável, radiante e livre de impurezas.",
+      },
+      {
+        description: "Utilizamos técnicas avançadas e produtos de qualidade para oferecer tratamentos de rejuvenescimento facial eficazes e resultados visíveis.",
+      },
+      {
+        description: "Realizamos terapias de relaxamento facial, proporcionando um momento de cuidado e bem-estar para revigorar sua pele e sua mente.",
+      },
+      {
+        description: "Oferecemos máscaras faciais personalizadas para atender às necessidades específicas da sua pele, como hidratação, clareamento ou controle de oleosidade.",
+      },
+      {
+        description: "Nossos profissionais estão atualizados com as mais recentes tendências em estética facial, garantindo serviços de alta qualidade e resultados excepcionais.",
+      },
+      {
+        description: "Realizamos uma análise detalhada da sua pele para oferecer recomendações personalizadas e criar um plano de tratamento facial sob medida para você.",
+      }
+    ];
+
+    const randomCrimeDeAssedio = () => {
+      const randomIndex = Math.floor(Math.random() * crimeDeAssedio.length);
+      return crimeDeAssedio[randomIndex].description;
+    };
+
+
+
+    useEffect(() => {
+      const savedDescription = localStorage.getItem('randomAreaAtuacaoOptions5TextTemplate02');
+      if (savedDescription) {
+        setRandomAreaAtuacaoOptions5Text(savedDescription);
+      } else {
+        const newRandomDescription = randomCrimeDeAssedio();
+        setRandomAreaAtuacaoOptions5Text(newRandomDescription);
+        localStorage.setItem('randomAreaAtuacaoOptions5TextTemplate02', newRandomDescription);
+      }
+    }, []);
+
+
+    // TEXT 6
+
+    const divorcio = [
+      {
+        description: "Nossos especialistas em coloração de cabelo criam resultados deslumbrantes, oferecendo uma ampla gama de opções de cores e técnicas personalizadas.",
+      },
+      {
+        description: "Trabalhamos com produtos de alta qualidade para garantir uma coloração duradoura, vibrante e que preserve a saúde do seu cabelo.",
+      },
+      {
+        description: "Oferecemos serviços de mechas, destaques, tinturas completas e técnicas de coloração sob medida para atender às suas preferências e estilo.",
+      },
+      {
+        description: "Nossos profissionais são especialistas em tendências de coloração, proporcionando opções modernas, como ombré hair, balayage e coloração fantasia.",
+      },
+      {
+        description: "Criamos looks personalizados para cada cliente, levando em consideração sua tonalidade de pele, cor dos olhos e estilo pessoal.",
+      },
+      {
+        description: "Realizamos uma consulta detalhada para entender suas preferências e recomendar a coloração de cabelo perfeita para realçar sua beleza natural.",
+      }
+    ];
+    const randomDivórcio = () => {
+      const randomIndex = Math.floor(Math.random() * divorcio.length);
+      return divorcio[randomIndex].description;
+    };
+
+
+
+    useEffect(() => {
+      const savedDescription = localStorage.getItem('randomAreaAtuacaoOptions6TextTemplate02');
+      if (savedDescription) {
+        setRandomAreaAtuacaoOptions6Text(savedDescription);
+      } else {
+        const newRandomDescription = randomDivórcio();
+        setRandomAreaAtuacaoOptions6Text(newRandomDescription);
+        localStorage.setItem('randomAreaAtuacaoOptions6TextTemplate02', newRandomDescription);
+      }
+    }, []);
 
 
 
@@ -1532,7 +2146,76 @@ function Template02({ isVisible02 }: Template02Props) {
 
 
 
+    //
+    const footer = [
+      {
+        description: "Agende uma consulta com nossos especialistas em beleza hoje mesmo. Estamos aqui para ajudar você a alcançar seus objetivos de maneira eficiente e estilosa. Conte conosco para cuidar da sua beleza e garantir sua satisfação.",
+      },
+      {
+        description: "Nosso salão de beleza é especializado em serviços de alta qualidade. Nossos profissionais experientes estão prontos para transformar seu visual, garantindo que você saia satisfeito e confiante. Entre em contato conosco e tenha uma equipe confiável ao seu lado.",
+      },
+      {
+        description: "Se você está em busca de serviços de beleza, nossa equipe de profissionais está pronta para ajudar. Oferecemos uma variedade de tratamentos e cuidados estéticos, trabalhando incansavelmente para realçar sua beleza e garantir sua satisfação.",
+      },
+      {
+        description: "Não deixe de cuidar da sua beleza. Nossa equipe de profissionais está aqui para você. Com uma abordagem personalizada e técnicas eficazes, buscamos alcançar os melhores resultados para realçar sua beleza e aumentar sua autoestima.",
+      },
+      {
+        description: "No nosso salão de beleza, temos uma equipe de profissionais especializados prontos para ajudar. Com dedicação e habilidades estéticas, trabalharemos em conjunto para garantir a melhor experiência possível, cuidando da sua beleza e garantindo sua satisfação.",
+      },
+    ];
 
+    const randomFooter = () => {
+      const randomIndex = Math.floor(Math.random() * footer.length);
+      return footer[randomIndex].description;
+    };
+
+
+
+    useEffect(() => {
+      const savedDescription = localStorage.getItem('randomFooterTemplate02');
+      if (savedDescription) {
+        setRandomFooterText(savedDescription);
+      } else {
+        const newRandomDescription = randomFooter();
+        setRandomFooterText(newRandomDescription);
+        localStorage.setItem('randomFooterTemplate02', newRandomDescription);
+      }
+    }, []);
+
+    const handleBeforeUnload = () => {
+      const keysToKeep = ['textoClicado', 'nomeEmpresa', 'Endereco'];
+      const keysToRemove = [];
+
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key !== null && !keysToKeep.includes(key)) {
+          keysToRemove.push(key);
+        }
+      }
+
+      keysToRemove.forEach((key) => {
+        localStorage.removeItem(key);
+        console.log(key);
+      });
+    };
+
+    const handlePopState = () => {
+      handleBeforeUnload();
+    };
+
+    useEffect(() => {
+      window.addEventListener('beforeunload', handleBeforeUnload);
+      window.addEventListener('popstate', handlePopState);
+
+      return () => {
+        window.removeEventListener('beforeunload', handleBeforeUnload);
+        window.removeEventListener('popstate', handlePopState);
+      };
+    }, []);
+
+
+  }
 
 
 
@@ -1628,7 +2311,7 @@ function Template02({ isVisible02 }: Template02Props) {
             <div className="container-block-header">
               <LineHeader></LineHeader>
             </div>
-            <h2>Por que escolher nossa empresa</h2>
+            <h2>Por que nos escolher </h2>
             <div className="block-whyus">
               <div className="wrap-block-whyus">
                 <h5>01</h5>
@@ -1672,7 +2355,7 @@ function Template02({ isVisible02 }: Template02Props) {
               <div className="row-div-block">
 
                 <h2>99%</h2>
-                <span>Casos de Sucesso</span>
+                <span>Satisfação</span>
               </div>
             </div>
           </RightSideWhyUs>

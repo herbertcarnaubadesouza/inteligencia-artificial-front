@@ -75,32 +75,25 @@ function Question04(props: Question04Props) {
   );
   const [textoClicadoDois, setTextoClicadoQuatro] = useState<string[]>([]);
 
-  const handleChoice = (texto: string) => {
-    setButtonStates((prevStates) => {
-      const updatedStates = { ...prevStates };
+  type ButtonStates = {
+    [key: string]: boolean;
+  };
 
-      if (updatedStates[texto]) {
-        delete updatedStates[texto];
+  const handleChoice = (texto: string): void => {
+    setButtonStates((prevStates: ButtonStates) => {
+      const updatedStates: ButtonStates = {};
 
-        setTextoClicadoQuatro((prevTextos) =>
-          prevTextos.filter((t) => t !== texto),
-        );
-      } else {
+      if (!prevStates[texto]) {
         updatedStates[texto] = true;
-
-        setTextoClicadoQuatro((prevTextos) => [...prevTextos, texto]);
       }
 
-      const lista04 = Object.keys(updatedStates).filter(
-        (key) => updatedStates[key],
-      );
-
-      setTextoClicadoQuatro(lista04);
-      localStorage.setItem('escolha04', lista04.join(', '));
+      setTextoClicadoQuatro(Object.keys(updatedStates));
+      localStorage.setItem('escolha04', Object.keys(updatedStates).join(', '));
 
       return updatedStates;
     });
   };
+
 
   const isPhysicalCompanySelected = buttonStates['Empresa física'];
   const isServiceAreaSelected = buttonStates['Área de serviço'];
@@ -139,6 +132,9 @@ function Question04(props: Question04Props) {
   useEffect(() => {
     localStorage.setItem('Endereco', address);
   }, [address]);
+
+
+
 
   return (
     <>
@@ -291,13 +287,12 @@ function Question04(props: Question04Props) {
                               className="searche"
                               type="text"
                               {...getInputProps({
-                                placeholder:
-                                  'N° da casa, Cidade, Estado, CEP, País',
+                                placeholder: 'N° da casa, Cidade, Estado, CEP, País',
                               })}
                             />
 
                             <div className="autocomplete-dropdown-containere">
-                              {loading && <div className='carregando'>Carregando...</div>}
+                              {loading && <div className="carregando">Carregando...</div>}
                               {suggestions.map((suggestion, index) => {
                                 const className = suggestion.active
                                   ? 'suggestion-item--activee'
@@ -310,6 +305,9 @@ function Question04(props: Question04Props) {
                                     })}
                                     key={index}
                                     className={className}
+                                    onClick={() => {
+                                      setAddress(suggestion.description); // Define o valor do endereço selecionado
+                                    }}
                                   >
                                     <span>{suggestion.description}</span>
                                   </div>
