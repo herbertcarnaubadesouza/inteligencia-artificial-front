@@ -20,6 +20,12 @@ import {
   PracticeAreaContentAll,
   PracticeContent,
 } from './styles';
+import {
+  Pen,
+  X,
+
+
+} from '@phosphor-icons/react';
 
 import axios from 'axios';
 import { useEffect, useState } from 'react';
@@ -83,7 +89,9 @@ function Template01({ isVisible01 }: Template01Props) {
   // ESTADOS TEMPLATE 
   const temaTemplateEscolhido = localStorage.getItem('textoClicado') // TEMA DO TEMPLATE
   const endercoTemplate = localStorage.getItem('Endereco') // ENDEREÇO DO TEMPLATE
-  const nomeEmpresaTemplate = localStorage.getItem('nomeEmpresa') // NOME DA EMPRESA DO TEMPLATE
+  const [nomeEmpresaTemplate, setNomeEmpresaTemplate] = useState(localStorage.getItem('nomeEmpresa') || "")
+  // NOME DA EMPRESA DO TEMPLATE
+
 
   const [imageUrlHeader, setImageUrlHeader] = useState(''); // IMAGEM HEADER
   const [imageUrlAbout, setImageUrlAbout] = useState(''); // IMAGEM ABOUT
@@ -2177,23 +2185,218 @@ function Template01({ isVisible01 }: Template01Props) {
 
 
   }
+  const [modalOpen, setModalOpen] = useState(false)
+  const modalEditTexto = () => {
+
+    setModalOpen(!modalOpen)
 
 
+  }
+
+  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      const imageUrl = reader.result;
+      setImageUrlHeader(imageUrl as string);
+
+      localStorage.setItem('bannerTemplateHeader', imageUrl as string);
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+
+    }
+  };
+
+  const handleImageChangeAbout = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      const imageUrlAbout = reader.result;
+      setImageUrlAbout(imageUrlAbout as string);
+
+      localStorage.setItem('bannerTemplateHeader', imageUrlAbout as string);
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+
+    }
+  };
 
 
   return (
     <Container>
       {loading ? <Loading /> : null}
       <HeaderFooter bgImage={imageUrlHeader} as="header">
+        <button
+          className="buttonEdit"
+          onClick={modalEditTexto}
+        >
+          Editar Seção
+          {modalOpen ? <X size={22} weight="fill" className='closeX' /> : <Pen size={22} weight="fill" />}
+
+        </button>
         <h1>{nomeEmpresaTemplate}</h1>
         <Line></Line>
         <h2>
           {randomSubTitleHeaderText}
         </h2>
         <button>{faleConoscoText}</button>
+
+        <div className={`${modalOpen ? "openModal" : "closeModal"}`}>
+          <div className='scrolY'>
+            <div className='container-secao'>
+              <h1>Editar secão 01</h1>
+              <label>Alterar nome da Empresa</label>
+              <input
+                type="text"
+                value={nomeEmpresaTemplate}
+                onChange={(e) => setNomeEmpresaTemplate(e.target.value)}
+              />
+              <label>Alterar Slogan</label>
+              <input
+                type="text"
+                value={randomSubTitleHeaderText}
+                onChange={(e) => setRandomSubTitleHeaderText(e.target.value)}
+              />
+              <label htmlFor="imageInput">Alterar Banner</label>
+              <input
+                type="file"
+                id="imageInput"
+                onChange={handleImageChange}
+              />
+            </div>
+            <div className='container-secao'>
+              <h1>Editar secão 02</h1>
+              <label>Alterar sobre a empresa</label>
+              <input
+                type="textarea"
+                value={randomTextoAboutText}
+                onChange={(e) => setRandomTextoAboutText(e.target.value)}
+              />
+              <label htmlFor="imageInput">Alterar Banner</label>
+              <input
+                type="file"
+                id="imageInput"
+                onChange={handleImageChangeAbout}
+              />
+            </div>
+            <div className='container-secao'>
+              <h1>Editar secão 03</h1>
+              <label>Alterar Slogan</label>
+              <input
+                type="textarea"
+                value={randomTextoAboutText}
+                onChange={(e) => setRandomTextoAboutText(e.target.value)}
+              />
+              <label>Alterar Descritivo</label>
+              <input
+                type="textarea"
+                value={randomTextoAboutText}
+                onChange={(e) => setRandomTextoAboutText(e.target.value)}
+              />
+            </div>
+            <div className='container-secao'>
+              <h1>Editar secão 04</h1>
+
+              <label>Alterar descrisao Áreas de atuação</label>
+              <input
+                type="textarea"
+                value={randomAboutFirmaText}
+                onChange={(e) => setRandomAboutFirmaText(e.target.value)}
+              />
+
+              <h3>Editar especialidades</h3>
+              <label htmlFor="imageInput">01</label>
+              <input
+                type="textarea"
+                value={areaAtuacaoOptions1Text}
+                onChange={(e) => setAreaAtuacaoOptions1Text(e.target.value)}
+              />
+              <label htmlFor="imageInput">02</label>
+              <input
+                type="textarea"
+                value={areaAtuacaoOptions2Text}
+                onChange={(e) => setAreaAtuacaoOptions2Text(e.target.value)}
+              />
+              <label htmlFor="imageInput">03</label>
+              <input
+                type="textarea"
+                value={areaAtuacaoOptions3Text}
+                onChange={(e) => setAreaAtuacaoOptions3Text(e.target.value)}
+              />
+              <label htmlFor="imageInput">04</label>
+              <input
+                type="textarea"
+                value={areaAtuacaoOptions4Text}
+                onChange={(e) => setAreaAtuacaoOptions4Text(e.target.value)}
+              />
+              <label htmlFor="imageInput">05</label>
+              <input
+                type="textarea"
+                value={areaAtuacaoOptions5Text}
+                onChange={(e) => setAreaAtuacaoOptions5Text(e.target.value)}
+              />
+              <label htmlFor="imageInput">06</label>
+              <input
+                type="textarea"
+                value={areaAtuacaoOptions6Text}
+                onChange={(e) => setAreaAtuacaoOptions6Text(e.target.value)}
+              />
+
+
+              <h3>Editar Descriçoes</h3>
+              <label htmlFor="imageInput">01</label>
+              <input
+                type="textarea"
+                value={randomAreaAtuacaoOptions1Text}
+                onChange={(e) => setRandomAreaAtuacaoOptions1Text(e.target.value)}
+              />
+
+              <label htmlFor="imageInput">02</label>
+              <input
+                type="textarea"
+                value={randomAreaAtuacaoOptions2Text}
+                onChange={(e) => setRandomAreaAtuacaoOptions2Text(e.target.value)}
+              />
+              <label htmlFor="imageInput">03</label>
+              <input
+                type="textarea"
+                value={randomAreaAtuacaoOptions3Text}
+                onChange={(e) => setRandomAreaAtuacaoOptions3Text(e.target.value)}
+              />
+              <label htmlFor="imageInput">04</label>
+              <input
+                type="textarea"
+                value={randomAreaAtuacaoOptions4Text}
+                onChange={(e) => setRandomAreaAtuacaoOptions4Text(e.target.value)}
+              />
+              <label htmlFor="imageInput">05</label>
+              <input
+                type="textarea"
+                value={randomAreaAtuacaoOptions5Text}
+                onChange={(e) => setRandomAreaAtuacaoOptions5Text(e.target.value)}
+              />
+              <label htmlFor="imageInput">06</label>
+              <input
+                type="textarea"
+                value={randomAreaAtuacaoOptions6Text}
+                onChange={(e) => setRandomAreaAtuacaoOptions6Text(e.target.value)}
+              />
+
+
+            </div>
+          </div>
+        </div>
+
       </HeaderFooter>
 
       <AboutSection>
+
         <section className="about" >
           <Info>
             <div className='about-section ' id='about-section'>
@@ -2213,6 +2416,8 @@ function Template01({ isVisible01 }: Template01Props) {
             </div>
           </Info>
         </section>
+
+
       </AboutSection>
       <Parallax bgImage={imageUrlParallax}>
         <ParallaxContent>

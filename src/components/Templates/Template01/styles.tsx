@@ -38,6 +38,188 @@ const Container = styled.div`
     color: ${(props: ThemeProps) => props.theme.fontBodyColor};
     font-family: ${(props: ThemeProps) => props.theme.font.fontFamily};
   }
+
+
+
+
+
+  .openModal {
+   
+    background: #f78000e9;
+    border-radius: 9.43079px;
+    position: relative;
+    width: 30%;
+    height: 50%;
+    border-radius: 1rem;
+    display: flex;
+    text-align:center;
+    flex-direction: column;
+    justify-content: space-between;
+    backdrop-filter: blur(100px);
+    z-index:99139;
+    position: fixed;
+    top: 10%;
+    left: 1%;
+   
+
+ 
+    .scrolY {
+      padding-inline:1rem;
+      padding-block:1rem;
+      width: 100%;
+      height: 100%;
+      max-height: 70vh; /* Ajuste a altura máxima conforme necessário */
+      overflow-y: auto;
+     
+  
+}
+     
+.scrolY::-webkit-scrollbar {
+  width: 0;
+
+}
+
+.scrolY::-webkit-scrollbar-track {
+  background-color: #f4f4f469;
+}
+
+.scrolY::-webkit-scrollbar-thumb {
+  background-color: #888888;
+}
+
+
+   .container-secao{
+    margin-bottom:1rem;
+    width: 100%;
+    height: auto;
+    border-radius: 9.43079px;
+    border: 3px solid white;
+    padding-inline:1rem;
+    padding-block:1rem;
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+ 
+    input {
+      width:100%;
+    padding: 0.8rem;
+    border-radius: 1.5rem;
+    background-color: #ffffff;
+    align-items: center;
+    display: flex;
+    border: none;
+    margin-right: 1px;
+    margin-bottom: 1rem;
+    border: none !important;
+    caret-color: rgb(0, 0, 0);
+    color: #000000;
+    font-size: 16px;
+    font-weight: 300;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    text-align:start;
+
+  &::placeholder {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 300;
+    margin-top: -0.5rem;
+    text-align:start;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+
+    }
+
+
+   }
+    
+   label {
+    text-align:start;
+      width:100%;
+    font-size: 18px;
+    margin-left:2%;
+    margin-bottom:0.3rem;
+     color:white;
+     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+
+       }
+
+
+    h1 {
+      width: 100%;
+      text-align:center;
+      margin-top:0;
+      padding-top:0;
+      font-size:22px;
+      font-weight:600;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+      
+    }
+    }
+
+
+    .closeModal {
+     display: none;
+    }
+    .buttonEdit{
+      cursor: pointer;
+      margin:0;
+      padding:0;
+      display: flex;
+      align-items:center;
+      justify-content:center;
+      width: 170px;
+      height: 50px;
+      gap:10px;
+      position:fixed;
+      top: 1%;
+      font-size:16px;
+      left: 1%; 
+      color:white; 
+      background: #f77f00;
+      backdrop-filter: blur(6.77838px);
+     border-radius: 9.43079px;
+     font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 12px;
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+
+     &:hover {
+    cursor: pointer;
+    background: #f77f00;
+    backdrop-filter: blur(6.77838px);
+    border-radius: 9.43079px;
+  }
+      
+      
+    }
+
+
+
+
+
+
+
+
+
+
+
 `;
 
 const HeaderFooter = styled.div<{ bgImage?: string }>`
@@ -113,6 +295,8 @@ const HeaderFooter = styled.div<{ bgImage?: string }>`
 
  
    
+
+ 
   }
 
 
@@ -136,6 +320,9 @@ const HeaderFooter = styled.div<{ bgImage?: string }>`
 
   }
   }
+
+
+ 
 `;
 
 const Navigation = styled.div`
@@ -709,6 +896,40 @@ const FooterRight = styled.div`
  
 `;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export {
   Container,
   HeaderFooter,
@@ -731,3 +952,4 @@ export {
   FooterContent,
   FooterRight,
 };
+
