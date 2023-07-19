@@ -20,13 +20,16 @@ import {
   PracticeAreaContentAll,
   PracticeContent,
 } from './styles';
+
+
 import {
   Pen,
   X,
 
 
 } from '@phosphor-icons/react';
-
+import { TemplateContext } from '../useContext/TemplateContext';
+import React, { useContext } from 'react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
@@ -54,6 +57,7 @@ import Loading from '../Loading/Loading';
 const apiKey = process.env.REACT_APP_API_KEY;
 
 function Template01({ isVisible01 }: Template01Props) {
+
 
 
   const localStorageValue = localStorage.getItem('loading');
@@ -86,43 +90,75 @@ function Template01({ isVisible01 }: Template01Props) {
   });
 
 
-  // ESTADOS TEMPLATE 
-  const temaTemplateEscolhido = localStorage.getItem('textoClicado') // TEMA DO TEMPLATE
-  const endercoTemplate = localStorage.getItem('Endereco') // ENDEREÇO DO TEMPLATE
-  const [nomeEmpresaTemplate, setNomeEmpresaTemplate] = useState(localStorage.getItem('nomeEmpresa') || "")
-  // NOME DA EMPRESA DO TEMPLATE
+  const {
+    temaTemplateEscolhido,
+    setTemaTemplateEscolhido,
+    endercoTemplate,
+    setEndercoTemplate,
+    nomeEmpresaTemplate,
+    setNomeEmpresaTemplate,
+    imageUrlHeader,
+    setImageUrlHeader,
+    imageUrlAbout,
+    setImageUrlAbout,
+    imageUrlParallax,
+    setImageUrlParallax,
+    imageUrlParallaxSegunda,
+    setImageUrlParallaxSegunda,
+    randomTitleFirmaText,
+    setRandomTitleFirmaText,
+    randomSubTitleHeaderText,
+    setRandomSubTitleHeaderText,
+    randomTextoAboutText,
+    setRandomTextoAboutText,
+    randomSloganParallaxText,
+    setRandomSloganParallaxText,
+    randomParallax01Text,
+    setRandomParallax01Text,
+    randomAboutFirmaText,
+    setRandomAboutFirmaText,
+    randomAreaAtuacaoOptions1Text,
+    setRandomAreaAtuacaoOptions1Text,
+    randomAreaAtuacaoOptions2Text,
+    setRandomAreaAtuacaoOptions2Text,
+    randomAreaAtuacaoOptions3Text,
+    setRandomAreaAtuacaoOptions3Text,
+    randomAreaAtuacaoOptions4Text,
+    setRandomAreaAtuacaoOptions4Text,
+    randomAreaAtuacaoOptions5Text,
+    setRandomAreaAtuacaoOptions5Text,
+    randomAreaAtuacaoOptions6Text,
+    setRandomAreaAtuacaoOptions6Text,
+    randomFooterText,
+    setRandomFooterText,
+    faleConoscoText,
+    setFaleConoscoText,
+    faleConoscoProfText,
+    setFaleConoscoProfText,
+    areaAtuacaoOptions1Text,
+    setAreaAtuacaoOptions1Text,
+    areaAtuacaoOptions2Text,
+    setAreaAtuacaoOptions2Text,
+    areaAtuacaoOptions3Text,
+    setAreaAtuacaoOptions3Text,
+    areaAtuacaoOptions4Text,
+    setAreaAtuacaoOptions4Text,
+    areaAtuacaoOptions5Text,
+    setAreaAtuacaoOptions5Text,
+    areaAtuacaoOptions6Text,
+    setAreaAtuacaoOptions6Text,
+    numeroCellText,
+    setNumeroCellText,
+    modalOpen,
+    modalOpen01,
+    modalOpen02,
+    modalOpen03,
+    modalOpen04,
+    modalOpen05,
+  } = useContext(TemplateContext);
 
 
-  const [imageUrlHeader, setImageUrlHeader] = useState(''); // IMAGEM HEADER
-  const [imageUrlAbout, setImageUrlAbout] = useState(''); // IMAGEM ABOUT
-  const [imageUrlParallax, setImageUrlParallax] = useState(''); // IMAGEM PARALLAX 
-  const [imageUrlParallaxSegunda, setImageUrlParallaxSegunda] = useState('');  //  SEGUNDA IMAGEM PARALLAX 
 
-  const [randomTitleFirmaText, setRandomTitleFirmaText] = useState(''); // TITULO
-  const [randomSubTitleHeaderText, setRandomSubTitleHeaderText] = useState(''); // SUB TITULO
-  const [randomTextoAboutText, setRandomTextoAboutText] = useState(''); // ABOUT SOBRE
-  const [randomSloganParallaxTex, setRandomSloganParallaxText] = useState(''); // ABOUT PARALLAX
-  const [randomParallax01Text, setRandomParallax01Text] = useState(''); // TEXTO PARALLAX
-  const [randomAboutFirmaText, setRandomAboutFirmaText] = useState(''); // COMO A FIRMA TRABALHA
-  const [randomAreaAtuacaoOptions1Text, setRandomAreaAtuacaoOptions1Text] = useState(''); // TEXTO 1
-  const [randomAreaAtuacaoOptions2Text, setRandomAreaAtuacaoOptions2Text] = useState(''); // TEXTO 2
-  const [randomAreaAtuacaoOptions3Text, setRandomAreaAtuacaoOptions3Text] = useState(''); // TEXTO 3
-  const [randomAreaAtuacaoOptions4Text, setRandomAreaAtuacaoOptions4Text] = useState(''); // TEXTO 4
-  const [randomAreaAtuacaoOptions5Text, setRandomAreaAtuacaoOptions5Text] = useState(''); // TEXTO 5
-  const [randomAreaAtuacaoOptions6Text, setRandomAreaAtuacaoOptions6Text] = useState(''); // TEXTO 6
-  const [randomFooterText, setRandomFooterText] = useState(''); // TEXT FOOTER 
-
-
-  // ESTADOS STATICOS
-  const [faleConoscoText, setFaleConoscoText] = useState("");
-  const [faleConoscoProfText, setFaleConoscoProfText] = useState("");
-  const [areaAtuacaoOptions1Text, setAreaAtuacaoOptions1Text] = useState("");
-  const [areaAtuacaoOptions2Text, setAreaAtuacaoOptions2Text] = useState("");
-  const [areaAtuacaoOptions3Text, setAreaAtuacaoOptions3Text] = useState("");
-  const [areaAtuacaoOptions4Text, setAreaAtuacaoOptions4Text] = useState("");
-  const [areaAtuacaoOptions5Text, setAreaAtuacaoOptions5Text] = useState("");
-  const [areaAtuacaoOptions6Text, setAreaAtuacaoOptions6Text] = useState("");
-  const [numeroCellText, setNumeroCellText] = useState("");
 
 
 
@@ -135,21 +171,87 @@ function Template01({ isVisible01 }: Template01Props) {
   // TEAMPLATE DOCTOR 
   if (temaTemplateEscolhido === "Doctor") {
 
-
     useEffect(() => {
-      setFaleConoscoText("Agendar consulta")
-      setFaleConoscoProfText("Fale com nossos médicos hoje!")
-      setAreaAtuacaoOptions1Text("Clínica Geral")
-      setAreaAtuacaoOptions2Text("Pediatria")
-      setAreaAtuacaoOptions3Text("Ginecologia e Obstetrícia")
-      setAreaAtuacaoOptions4Text("Ortopedia")
-      setAreaAtuacaoOptions5Text("Dermatologia")
-      setAreaAtuacaoOptions6Text("Otorrinolaringologia")
-      setNumeroCellText("(85) 9 8972-8250")
+      const faleConoscoTextLocal = localStorage.getItem("faleConoscoText");
+      const faleConoscoProfTextLocal = localStorage.getItem("faleConoscoProfText");
+      const areaAtuacaoOptions1TextLocal = localStorage.getItem("areaAtuacaoOptions1Text");
+      const areaAtuacaoOptions2TextLocal = localStorage.getItem("areaAtuacaoOptions2Text");
+      const areaAtuacaoOptions3TextLocal = localStorage.getItem("areaAtuacaoOptions3Text");
+      const areaAtuacaoOptions4TextLocal = localStorage.getItem("areaAtuacaoOptions4Text");
+      const areaAtuacaoOptions5TextLocal = localStorage.getItem("areaAtuacaoOptions5Text");
+      const areaAtuacaoOptions6TextLocal = localStorage.getItem("areaAtuacaoOptions6Text");
+      const numeroCellTextLocal = localStorage.getItem("numeroCellText");
+
+      if (!faleConoscoTextLocal) {
+        setFaleConoscoText("Agende sua consulta!");
+        localStorage.setItem("faleConoscoText", "Agende sua consulta!");
+      } else {
+        setFaleConoscoText(faleConoscoTextLocal);
+      }
+
+      if (!faleConoscoProfTextLocal) {
+        setFaleConoscoProfText("Fale com nossos médicos hoje!");
+        localStorage.setItem("faleConoscoProfText", "Fale com nossos médicos hoje!");
+      } else {
+        setFaleConoscoProfText(faleConoscoProfTextLocal);
+      }
+
+      if (!areaAtuacaoOptions1TextLocal) {
+        setAreaAtuacaoOptions1Text("Clínica Geral");
+        localStorage.setItem("areaAtuacaoOptions1Text", "Clínica Geral");
+      } else {
+        setAreaAtuacaoOptions1Text(areaAtuacaoOptions1TextLocal);
+      }
+
+      if (!areaAtuacaoOptions2TextLocal) {
+        setAreaAtuacaoOptions2Text("Pediatria");
+        localStorage.setItem("areaAtuacaoOptions2Text", "Pediatria");
+      } else {
+        setAreaAtuacaoOptions2Text(areaAtuacaoOptions2TextLocal);
+      }
+
+      if (!areaAtuacaoOptions3TextLocal) {
+        setAreaAtuacaoOptions3Text("Ginecologia e Obstetrícia");
+        localStorage.setItem("areaAtuacaoOptions3Text", "Ginecologia e Obstetrícia");
+      } else {
+        setAreaAtuacaoOptions3Text(areaAtuacaoOptions3TextLocal);
+      }
+
+      if (!areaAtuacaoOptions4TextLocal) {
+        setAreaAtuacaoOptions4Text("Ortopedia");
+        localStorage.setItem("areaAtuacaoOptions4Text", "Ortopedia");
+      } else {
+        setAreaAtuacaoOptions4Text(areaAtuacaoOptions4TextLocal);
+      }
+
+      if (!areaAtuacaoOptions5TextLocal) {
+        setAreaAtuacaoOptions5Text("Dermatologia");
+        localStorage.setItem("areaAtuacaoOptions5Text", "Dermatologia");
+      } else {
+        setAreaAtuacaoOptions5Text(areaAtuacaoOptions5TextLocal);
+      }
+
+      if (!areaAtuacaoOptions6TextLocal) {
+        setAreaAtuacaoOptions6Text("Otorrinolaringologia");
+        localStorage.setItem("areaAtuacaoOptions6Text", "Otorrinolaringologia");
+      } else {
+        setAreaAtuacaoOptions6Text(areaAtuacaoOptions6TextLocal);
+      }
+
+      if (!numeroCellTextLocal) {
+        setNumeroCellText("(85) 9 8972-8250");
+        localStorage.setItem("numeroCellText", "(85) 9 8972-8250");
+      } else {
+        setNumeroCellText(numeroCellTextLocal);
+      }
+    }, []);
 
 
 
-    }, [])
+
+
+
+
 
     // BANNER HEADER
 
@@ -2185,61 +2287,18 @@ function Template01({ isVisible01 }: Template01Props) {
 
 
   }
-  const [modalOpen, setModalOpen] = useState(false)
-  const modalEditTexto = () => {
-
-    setModalOpen(!modalOpen)
 
 
-  }
 
-  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    const reader = new FileReader();
 
-    reader.onload = () => {
-      const imageUrl = reader.result;
-      setImageUrlHeader(imageUrl as string);
-
-      localStorage.setItem('bannerTemplateHeader', imageUrl as string);
-    };
-
-    if (file) {
-      reader.readAsDataURL(file);
-
-    }
-  };
-
-  const handleImageChangeAbout = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    const reader = new FileReader();
-
-    reader.onload = () => {
-      const imageUrlAbout = reader.result;
-      setImageUrlAbout(imageUrlAbout as string);
-
-      localStorage.setItem('bannerTemplateHeader', imageUrlAbout as string);
-    };
-
-    if (file) {
-      reader.readAsDataURL(file);
-
-    }
-  };
 
 
   return (
     <Container>
       {loading ? <Loading /> : null}
       <HeaderFooter bgImage={imageUrlHeader} as="header">
-        <button
-          className="buttonEdit"
-          onClick={modalEditTexto}
-        >
-          Editar Seção
-          {modalOpen ? <X size={22} weight="fill" className='closeX' /> : <Pen size={22} weight="fill" />}
 
-        </button>
+
         <h1>{nomeEmpresaTemplate}</h1>
         <Line></Line>
         <h2>
@@ -2247,181 +2306,41 @@ function Template01({ isVisible01 }: Template01Props) {
         </h2>
         <button>{faleConoscoText}</button>
 
-        <div className={`${modalOpen ? "openModal" : "closeModal"}`}>
-          <div className='scrolY'>
-            <div className='container-secao'>
-              <h1>Editar secão 01</h1>
-              <label>Alterar nome da Empresa</label>
-              <input
-                type="text"
-                value={nomeEmpresaTemplate}
-                onChange={(e) => setNomeEmpresaTemplate(e.target.value)}
-              />
-              <label>Alterar Slogan</label>
-              <input
-                type="text"
-                value={randomSubTitleHeaderText}
-                onChange={(e) => setRandomSubTitleHeaderText(e.target.value)}
-              />
-              <label htmlFor="imageInput">Alterar Banner</label>
-              <input
-                type="file"
-                id="imageInput"
-                onChange={handleImageChange}
-              />
-            </div>
-            <div className='container-secao'>
-              <h1>Editar secão 02</h1>
-              <label>Alterar sobre a empresa</label>
-              <input
-                type="textarea"
-                value={randomTextoAboutText}
-                onChange={(e) => setRandomTextoAboutText(e.target.value)}
-              />
-              <label htmlFor="imageInput">Alterar Banner</label>
-              <input
-                type="file"
-                id="imageInput"
-                onChange={handleImageChangeAbout}
-              />
-            </div>
-            <div className='container-secao'>
-              <h1>Editar secão 03</h1>
-              <label>Alterar Slogan</label>
-              <input
-                type="textarea"
-                value={randomTextoAboutText}
-                onChange={(e) => setRandomTextoAboutText(e.target.value)}
-              />
-              <label>Alterar Descritivo</label>
-              <input
-                type="textarea"
-                value={randomTextoAboutText}
-                onChange={(e) => setRandomTextoAboutText(e.target.value)}
-              />
-            </div>
-            <div className='container-secao'>
-              <h1>Editar secão 04</h1>
-
-              <label>Alterar descrisao Áreas de atuação</label>
-              <input
-                type="textarea"
-                value={randomAboutFirmaText}
-                onChange={(e) => setRandomAboutFirmaText(e.target.value)}
-              />
-
-              <h3>Editar especialidades</h3>
-              <label htmlFor="imageInput">01</label>
-              <input
-                type="textarea"
-                value={areaAtuacaoOptions1Text}
-                onChange={(e) => setAreaAtuacaoOptions1Text(e.target.value)}
-              />
-              <label htmlFor="imageInput">02</label>
-              <input
-                type="textarea"
-                value={areaAtuacaoOptions2Text}
-                onChange={(e) => setAreaAtuacaoOptions2Text(e.target.value)}
-              />
-              <label htmlFor="imageInput">03</label>
-              <input
-                type="textarea"
-                value={areaAtuacaoOptions3Text}
-                onChange={(e) => setAreaAtuacaoOptions3Text(e.target.value)}
-              />
-              <label htmlFor="imageInput">04</label>
-              <input
-                type="textarea"
-                value={areaAtuacaoOptions4Text}
-                onChange={(e) => setAreaAtuacaoOptions4Text(e.target.value)}
-              />
-              <label htmlFor="imageInput">05</label>
-              <input
-                type="textarea"
-                value={areaAtuacaoOptions5Text}
-                onChange={(e) => setAreaAtuacaoOptions5Text(e.target.value)}
-              />
-              <label htmlFor="imageInput">06</label>
-              <input
-                type="textarea"
-                value={areaAtuacaoOptions6Text}
-                onChange={(e) => setAreaAtuacaoOptions6Text(e.target.value)}
-              />
 
 
-              <h3>Editar Descriçoes</h3>
-              <label htmlFor="imageInput">01</label>
-              <input
-                type="textarea"
-                value={randomAreaAtuacaoOptions1Text}
-                onChange={(e) => setRandomAreaAtuacaoOptions1Text(e.target.value)}
-              />
-
-              <label htmlFor="imageInput">02</label>
-              <input
-                type="textarea"
-                value={randomAreaAtuacaoOptions2Text}
-                onChange={(e) => setRandomAreaAtuacaoOptions2Text(e.target.value)}
-              />
-              <label htmlFor="imageInput">03</label>
-              <input
-                type="textarea"
-                value={randomAreaAtuacaoOptions3Text}
-                onChange={(e) => setRandomAreaAtuacaoOptions3Text(e.target.value)}
-              />
-              <label htmlFor="imageInput">04</label>
-              <input
-                type="textarea"
-                value={randomAreaAtuacaoOptions4Text}
-                onChange={(e) => setRandomAreaAtuacaoOptions4Text(e.target.value)}
-              />
-              <label htmlFor="imageInput">05</label>
-              <input
-                type="textarea"
-                value={randomAreaAtuacaoOptions5Text}
-                onChange={(e) => setRandomAreaAtuacaoOptions5Text(e.target.value)}
-              />
-              <label htmlFor="imageInput">06</label>
-              <input
-                type="textarea"
-                value={randomAreaAtuacaoOptions6Text}
-                onChange={(e) => setRandomAreaAtuacaoOptions6Text(e.target.value)}
-              />
 
 
-            </div>
-          </div>
-        </div>
 
       </HeaderFooter>
 
-      <AboutSection>
+      <AboutSection >
+        <div id='hover-pontilhado'>
+          <section className="about"  >
+            <Info>
+              <div className='about-section ' id='about-section'>
+                <LogoTemplate
+                  src={
+                    imageUrlAbout
+                  }
+                  alt="Carregando imagem ... "
+                />
+              </div>
+              <div className='about-section' >
 
-        <section className="about" >
-          <Info>
-            <div className='about-section ' id='about-section'>
-              <LogoTemplate
-                src={
-                  imageUrlAbout
-                }
-                alt="Carregando imagem ... "
-              />
-            </div>
-            <div className='about-section' >
+                <h2 >Sobre Nós</h2>
+                <Line></Line>
+                <p>{randomTextoAboutText}</p>
 
-              <h2>Sobre Nós</h2>
-              <Line></Line>
-              <p>{randomTextoAboutText}</p>
-
-            </div>
-          </Info>
-        </section>
+              </div>
+            </Info>
+          </section>
+        </div>
 
 
       </AboutSection>
       <Parallax bgImage={imageUrlParallax}>
         <ParallaxContent>
-          <h4>{randomSloganParallaxTex}</h4>
+          <h4>{randomSloganParallaxText}</h4>
           <LineParallax></LineParallax>
           <h2>{randomParallax01Text}</h2>
           <a>
@@ -2430,13 +2349,13 @@ function Template01({ isVisible01 }: Template01Props) {
         </ParallaxContent>
       </Parallax>
       <PracticeArea>
-        <h1>Áreas de atuação</h1>
+        <h1 >Áreas de atuação </h1>
         <h4>
           {randomAboutFirmaText}
         </h4>
         <button>{faleConoscoText}</button>
 
-        <PracticeAreaContentAll>
+        <PracticeAreaContentAll >
           <PracticeAreaContent>
             <PracticeContent>
               <h3>01</h3>
@@ -2483,9 +2402,9 @@ function Template01({ isVisible01 }: Template01Props) {
       </PracticeArea>
       <ParallaxContact bgImage={imageUrlParallaxSegunda}>
         <ParallaxContent>
-          <h4>{randomSloganParallaxTex}</h4>
+          <h4>{randomSloganParallaxText}</h4>
           <LineParallax></LineParallax>
-          <h2>{faleConoscoProfText}</h2>
+          <h2 >{faleConoscoProfText}</h2>
           <h3>
             {randomFooterText}
           </h3>

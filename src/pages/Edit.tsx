@@ -1,9 +1,8 @@
 // Arquivo Home.js ou Home.tsx
 import React, { useEffect, useState } from 'react';
-import RightSide from '../components/Templates/RightSide';
-
+import RightSideTextEdit from '../components/Templates/RightSideTextEdit';
+import EditText from '../components/Templates/ComponentEditText';
 import { TemplateProvider } from '../components/Templates/useContext/TemplateContext';
-
 function Preview() {
   const [isQuestionVisible, setIsQuestionVisible] = useState(true);
   const [isQuestion02Visible, setIsQuestion02Visible] = useState(false);
@@ -25,8 +24,9 @@ function Preview() {
       <div className="main-container">
         <TemplateProvider>
 
-          <RightSide
+          <RightSideTextEdit
           />
+          <EditText />
         </TemplateProvider>
 
       </div>

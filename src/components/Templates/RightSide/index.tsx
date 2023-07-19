@@ -1,7 +1,8 @@
 import './rightside.scss';
-
+import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useLeftSide } from '../LeftSide';
+import { Link } from 'react-router-dom';
 import {
   FontFour,
   FontOne,
@@ -21,11 +22,17 @@ function RightSide() {
   const handlePaletteClick = (palette: any) => {
     leftSide.setCurrentPalette(palette);
     setCurrentPaletteName(palette.name);
+    localStorage.setItem("currentPalette", JSON.stringify(palette));
+
+
   };
+
 
   const handleFontClick = (font: any) => {
     leftSide.setCurrentFont(font);
     setCurrentFontName(font.name);
+    localStorage.setItem("currentFont", JSON.stringify(font));
+
   };
   const [isOpen, setIsOpen] = useState(true);
 
@@ -33,6 +40,8 @@ function RightSide() {
     setIsOpen(!isOpen);
 
   }
+
+
 
 
 
@@ -95,7 +104,13 @@ function RightSide() {
                 id="palette-two"
                 className={`template-button-cores ${currentPaletteName === 'palette-two' ? 'clicked' : ''
                   }`}
-                onClick={() => handlePaletteClick(PaletteTwo)}
+                onClick={() => {
+
+                  handlePaletteClick(PaletteTwo)
+
+
+                }
+                }
               >
                 <img src="./images/palette2.png" alt="" className="pallette" />
               </div>
@@ -178,7 +193,7 @@ function RightSide() {
               <p className="button-back-text-donw">Voltar</p>
             </div>
             <div className="button-continue-donw">
-              <p className="button-continue-text-donw">Continuar</p>
+              <p className="button-continue-text-donw"> <Link to="/Edit">Continuar</Link></p>
             </div>
           </div>
         </div>

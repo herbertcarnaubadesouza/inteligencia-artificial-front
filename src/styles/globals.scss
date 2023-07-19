@@ -21,3 +21,10 @@ code {
   flex-direction: row;
   overflow-x: hidden;
 }
+
+* {
+  a {
+    text-decoration: none;
+    color: white;
+  }
+}

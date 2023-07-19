@@ -9,20 +9,47 @@ import Template03 from '../Template03';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
+import { useContext } from 'react';
+import { TemplateContext } from '../useContext/TemplateContext';
+
 export function useLeftSide() {
-  const [isVisible01, setIsVisible01] = useState(true);
+
+  const { TemplateEscolhido,
+    setTemplateEscolhido,
+  } = useContext(TemplateContext);
+
+
+
+
+  const [isVisible01, setIsVisible01] = useState(false);
   const [isVisible02, setIsVisible02] = useState(false);
   const [isVisible03, setIsVisible03] = useState(false);
   const [currentPalette, setCurrentPalette] = useState(PaletteOne);
   const [currentFont, setCurrentFont] = useState(FontOne);
 
+
   const showTemplate01 = () => {
     setIsVisible01(true);
     setIsVisible02(false);
     setIsVisible03(false);
-    setCurrentPalette(PaletteOne);
-    setCurrentFont(FontOne);
+
+    const lastClickedFont = localStorage.getItem("currentFont");
+    if (lastClickedFont) {
+      setCurrentFont(JSON.parse(lastClickedFont));
+    }
+
+    // Recuperar a última paleta clicada do localStorage
+    const lastClickedPalette = localStorage.getItem("currentPalette");
+    if (lastClickedPalette) {
+      setCurrentPalette(JSON.parse(lastClickedPalette));
+    }
+
+    localStorage.setItem("TemplateEscolhido", "TEMPLATE01");
+    const TemplateEscolhidoLocal = localStorage.getItem("TemplateEscolhido");
+    setTemplateEscolhido(TemplateEscolhidoLocal);
   };
+  ;
+
 
   const showTemplate02 = () => {
     setIsVisible01(false);
@@ -30,6 +57,20 @@ export function useLeftSide() {
     setIsVisible03(false);
     setCurrentPalette(PaletteOne);
     setCurrentFont(FontTwo);
+
+    const lastClickedFont = localStorage.getItem("currentFont");
+    if (lastClickedFont) {
+      setCurrentFont(JSON.parse(lastClickedFont));
+    }
+
+    // Recuperar a última paleta clicada do localStorage
+    const lastClickedPalette = localStorage.getItem("currentPalette");
+    if (lastClickedPalette) {
+      setCurrentPalette(JSON.parse(lastClickedPalette));
+    }
+    localStorage.setItem("TemplateEscolhido", "TEMPLATE02");
+    const TemplateEscolhidoLocal = localStorage.getItem("TemplateEscolhido");
+    setTemplateEscolhido(TemplateEscolhidoLocal);
   };
 
   const showTemplate03 = () => {
@@ -38,9 +79,35 @@ export function useLeftSide() {
     setIsVisible03(true);
     setCurrentPalette(PaletteOne);
     setCurrentFont(FontThree);
+
+    const lastClickedFont = localStorage.getItem("currentFont");
+    if (lastClickedFont) {
+      setCurrentFont(JSON.parse(lastClickedFont));
+    }
+
+    // Recuperar a última paleta clicada do localStorage
+    const lastClickedPalette = localStorage.getItem("currentPalette");
+    if (lastClickedPalette) {
+      setCurrentPalette(JSON.parse(lastClickedPalette));
+    }
+
+    localStorage.setItem("TemplateEscolhido", "TEMPLATE03");
+    const TemplateEscolhidoLocal = localStorage.getItem("TemplateEscolhido");
+    setTemplateEscolhido(TemplateEscolhidoLocal);
   };
 
 
+  useEffect(() => {
+    if (TemplateEscolhido === "TEMPLATE01" || !TemplateEscolhido) {
+      setIsVisible01(true);
+    }
+    if (TemplateEscolhido === "TEMPLATE02") {
+      setIsVisible02(true);
+    }
+    if (TemplateEscolhido === "TEMPLATE03") {
+      setIsVisible03(true);
+    }
+  }, []);
 
 
   const jsx = (
@@ -52,6 +119,7 @@ export function useLeftSide() {
       </div>
     </ThemeProvider>
   );
+
 
   return {
     jsx,
