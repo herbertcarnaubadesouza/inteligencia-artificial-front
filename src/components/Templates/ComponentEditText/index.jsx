@@ -151,6 +151,7 @@ function EditText() {
     localStorage.setItem('nomeEmpresaTemplate', nomeEmpresaTemplate);
     localStorage.setItem('randomSubTitleHeaderText', randomSubTitleHeaderText);
     localStorage.setItem('faleConoscoText', faleConoscoText);
+    localStorage.setItem('bannerTemplateHeader', imageUrlHeader);
   };
   const [isOpen, setIsOpen] = useState(true);
 
