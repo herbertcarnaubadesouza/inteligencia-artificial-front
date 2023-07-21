@@ -37,6 +37,8 @@ background-color: ${(props: ThemeProps) => props.theme.containerBgColor};
   }
 
   p {
+    white-space: pre-wrap;
+    flex-wrap:wrap;
     color: ${(props: ThemeProps) => props.theme.fontBodyColor};
     font-family: ${(props: ThemeProps) => props.theme.font.fontFamily};
   }
@@ -203,6 +205,7 @@ margin-top:0 auto;
   flex-direction: row;
   height:auto;
   padding-block:80px;
+   
 
 
   .about{
@@ -210,6 +213,7 @@ margin-top:0 auto;
     justify-content:center;
     display: flex;
     align-items:center;
+   
 
     @media only screen and (max-width: 1700px) {
       width:85%;
@@ -224,7 +228,7 @@ margin-top:0 auto;
     padding-block:70px;
   }
   @media only screen and (max-width: 1200px) {
-    width:80%;
+    width:100%;
    
   }
   @media only screen and (max-width: 768px) {
@@ -235,11 +239,13 @@ margin-top:0 auto;
 .about-section{
   margin-top:0 auto;
   width:50%;
+;
+
   @media only screen and (max-width: 1200px) {
     
     width:95%;
     margin-top: 0 auto;
-
+    
  
    }
   
@@ -288,6 +294,7 @@ const LogoTemplate = styled.img`
 const Info = styled.div`
   gap:20px;
   display: flex;
+
   @media only screen and (max-width: 650px) {
 
    flex-direction:column-reverse;

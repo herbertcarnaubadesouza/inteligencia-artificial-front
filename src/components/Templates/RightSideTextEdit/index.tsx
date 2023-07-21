@@ -13,13 +13,18 @@ import {
   PaletteTwo,
 } from '../Theme'; // Importe o caminho correto para o seu arquivo Theme.ts
 
-
-
+import { TemplateContext } from '../useContext/TemplateContext';
+import { useContext } from 'react';
 
 function RightSideTextEdit() {
   const leftSide = useLeftSide();
   const [currentPaletteName, setCurrentPaletteName] = useState('');
   const [currentFontName, setCurrentFontName] = useState('');
+
+
+  const { TemplateEscolhido,
+    setTemplateEscolhido,
+  } = useContext(TemplateContext);
 
 
   const [isOpen, setIsOpen] = useState(true);
@@ -33,6 +38,14 @@ function RightSideTextEdit() {
     // Buscar do localStorage ao montar o componente
     const storedPalette = localStorage.getItem('currentPalette');
     const storedFont = localStorage.getItem('currentFont');
+    const storedTemplate = localStorage.getItem('TemplateEscolhido');
+
+
+    if (storedTemplate) {
+      setTemplateEscolhido(storedTemplate);
+      console.log(TemplateEscolhido)
+
+    }
 
     if (storedPalette) {
       leftSide.setCurrentPalette(JSON.parse(storedPalette));

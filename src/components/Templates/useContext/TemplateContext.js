@@ -35,7 +35,9 @@ export const TemplateProvider = ({ children }) => {
   const [randomAreaAtuacaoOptions6Text, setRandomAreaAtuacaoOptions6Text] =
     useState('');
   const [randomFooterText, setRandomFooterText] = useState('');
-  const [faleConoscoText, setFaleConoscoText] = useState('');
+  const [faleConoscoText, setFaleConoscoText] = useState(
+    'Agende sua Consulta Conosco!',
+  );
   const [faleConoscoProfText, setFaleConoscoProfText] = useState('');
   const [areaAtuacaoOptions1Text, setAreaAtuacaoOptions1Text] = useState('');
   const [areaAtuacaoOptions2Text, setAreaAtuacaoOptions2Text] = useState('');
@@ -51,8 +53,59 @@ export const TemplateProvider = ({ children }) => {
   const [modalOpen04, setModalOpen04] = useState(true);
   const [modalOpen05, setModalOpen05] = useState(true);
 
+  const [whyChooseUs, setWhyChooseUs] = useState('Porque nos escolher');
+
+  const [whyChooseUsOption01, setWhyChooseUsOption01] = useState(
+    'Experiência e especialização',
+  );
+  const [whyChooseUsOption02, setWhyChooseUsOption02] = useState(
+    'Equipe altamente capacitada',
+  );
+  const [whyChooseUsOption03, setWhyChooseUsOption03] = useState(
+    'Inovação e tecnologia',
+  );
+
+  const [numbers01, setNumbers01] = useState('2000+');
+
+  const [numbers02, setNumbers02] = useState('10+');
+  const [numbers03, setNumbers03] = useState('150+');
+  const [numbers04, setNumbers04] = useState('99%');
+
+  const [randomSubTitleHeaderText2, setRandomSubTitleHeaderText2] =
+    useState('');
+
   const [TemplateEscolhido, setTemplateEscolhido] = useState(
     localStorage.getItem('TemplateEscolhido') || '',
+  );
+
+  const [compromissoOption1Text, setCompromissoOption1Text] = useState(
+    'Atendimento humanizado',
+  );
+  const [
+    compromissoOption1TextDescripition1,
+    setCompromissoOption1TextDescripition1,
+  ] = useState(
+    'Comprometemo-nos a fornecer um atendimento atencioso, caloroso e personalizado, colocando o bem-estar dos pacientes em primeiro lugar.',
+  );
+
+  const [compromissoOption2Text, setCompromissoOption2Text] = useState(
+    'Atendimento humanizado',
+  );
+  const [
+    compromissoOption2TextDescripition2,
+    setCompromissoOption2TextDescripition2,
+  ] = useState(
+    'Comprometemo-nos a fornecer um atendimento atencioso, caloroso e personalizado, colocando o bem-estar dos pacientes em primeiro lugar.',
+  );
+
+  const [compromissoOption3Text, setCompromissoOption3Text] = useState(
+    'Atendimento humanizado',
+  );
+  const [
+    compromissoOption3TextDescripition3,
+    setCompromissoOption3TextDescripition3,
+  ] = useState(
+    'Comprometemo-nos a fornecer um atendimento atencioso, caloroso e personalizado, colocando o bem-estar dos pacientes em primeiro lugar.',
   );
 
   const templateState = {
@@ -128,6 +181,36 @@ export const TemplateProvider = ({ children }) => {
     setModalOpen05,
     TemplateEscolhido,
     setTemplateEscolhido,
+    randomSubTitleHeaderText2,
+    setRandomSubTitleHeaderText2,
+    whyChooseUs,
+    whyChooseUsOption01,
+    whyChooseUsOption02,
+    whyChooseUsOption03,
+    setWhyChooseUs,
+    setWhyChooseUsOption01,
+    setWhyChooseUsOption02,
+    setWhyChooseUsOption03,
+    numbers01,
+    numbers02,
+    numbers03,
+    numbers04,
+    setNumbers01,
+    setNumbers02,
+    setNumbers03,
+    setNumbers04,
+    compromissoOption1TextDescripition1,
+    compromissoOption2TextDescripition2,
+    compromissoOption3TextDescripition3,
+    compromissoOption1Text,
+    compromissoOption2Text,
+    compromissoOption3Text,
+    setCompromissoOption1Text,
+    setCompromissoOption2Text,
+    setCompromissoOption3Text,
+    setCompromissoOption1TextDescripition1,
+    setCompromissoOption2TextDescripition2,
+    setCompromissoOption3TextDescripition3,
   };
 
   return (

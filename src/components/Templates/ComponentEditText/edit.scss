@@ -18,6 +18,42 @@
   justify-content: center;
   z-index: 1000;
   font-family: 'Raleway', sans-serif;
+  border-radius: 0;
+
+  button {
+    width: 100%;
+    height: 45px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(6.77838px);
+    border-radius: 9.43079px;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 12px;
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    border: none;
+
+    &:hover {
+      cursor: pointer;
+      background: #f77f00;
+      backdrop-filter: blur(6.77838px);
+      border-radius: 9.43079px;
+    }
+  }
 }
 
 .openModal {
@@ -34,7 +70,7 @@
     padding-block: 0.5rem;
     width: auto;
     height: auto;
-    max-height: 100%;
+    max-height: auto;
     overflow-y: auto;
     margin-bottom: 20px;
   }
@@ -48,6 +84,18 @@
   }
 
   .scrolY::-webkit-scrollbar-thumb {
+    background-color: #888888;
+  }
+
+  #textarea::-webkit-scrollbar {
+    width: 0%;
+  }
+
+  #textarea::-webkit-scrollbar-track {
+    background-color: #f4f4f469;
+  }
+
+  #textarea::-webkit-scrollbar-thumb {
     background-color: #888888;
   }
 
@@ -68,29 +116,28 @@
     justify-content: center;
     gap: 7px;
 
-    #sobre {
+    #textarea {
       width: 100%;
-      min-height: 300px;
+      min-height: 200px;
+      overflow-y: auto;
+      max-height: 1000px;
       height: auto;
-      display: flex;
       padding: 0.5rem;
-      flex-wrap: wrap;
       justify-content: center;
       border-radius: 0.5rem;
       align-items: center;
-      display: flex;
       border: none;
       margin-right: 1px;
       margin-bottom: 1rem;
-      border: none !important;
       caret-color: rgb(255, 255, 255);
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 200;
       text-align: start;
       background: rgba(255, 255, 255, 0.3);
       backdrop-filter: blur(6.77838px);
       font-family: 'Poppins';
       color: #fff;
+      white-space: pre-wrap;
     }
 
     input {
@@ -104,7 +151,7 @@
       margin-bottom: 1rem;
       border: none !important;
       caret-color: rgb(255, 255, 255);
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 200;
       text-align: start;
       background: rgba(255, 255, 255, 0.3);
@@ -134,11 +181,11 @@
     margin-bottom: -0.3rem;
     color: white;
     font-weight: 400;
+    font-family: 'Raleway';
   }
 
   h1 {
     text-shadow: 3px 2px 2px rgba(0, 0, 0, 0.27);
-
     width: 100%;
     text-align: center;
     margin-top: 0;
@@ -146,8 +193,19 @@
     padding: 0.5rem 0;
     font-size: 20px;
     font-weight: 700;
-    font-family: 'Epilogue';
+    font-family: 'Raleway';
     color: #f77f00;
+  }
+
+  h3 {
+    text-align: center;
+    width: 100%;
+    font-size: 15px;
+    margin-left: 1%;
+    margin-bottom: -0.3rem;
+    color: white;
+    font-weight: 400;
+    font-family: 'Raleway';
   }
 }
 

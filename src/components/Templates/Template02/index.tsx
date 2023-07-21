@@ -56,6 +56,9 @@ interface ApiResponse {
 import Loading from '../Loading/Loading';
 const apiKey = process.env.REACT_APP_API_KEY;
 
+import { TemplateContext } from '../useContext/TemplateContext';
+import React, { useContext } from 'react';
+
 function Template02({ isVisible02 }: Template02Props) {
 
 
@@ -87,44 +90,94 @@ function Template02({ isVisible02 }: Template02Props) {
   window.addEventListener('beforeunload', () => {
     localStorage.removeItem('loading');
   });
+  const {
+    temaTemplateEscolhido,
+    setTemaTemplateEscolhido,
+    endercoTemplate,
+    setEndercoTemplate,
+    nomeEmpresaTemplate,
+    setNomeEmpresaTemplate,
+    imageUrlHeader,
+    setImageUrlHeader,
+    imageUrlAbout,
+    setImageUrlAbout,
+    imageUrlParallax,
+    setImageUrlParallax,
+    imageUrlParallaxSegunda,
+    setImageUrlParallaxSegunda,
+    randomTitleFirmaText,
+    setRandomTitleFirmaText,
+    randomSubTitleHeaderText,
+    setRandomSubTitleHeaderText,
+    randomTextoAboutText,
+    setRandomTextoAboutText,
+    randomSloganParallaxText,
+    setRandomSloganParallaxText,
+    randomParallax01Text,
+    setRandomParallax01Text,
+    randomAboutFirmaText,
+    setRandomAboutFirmaText,
+    randomAreaAtuacaoOptions1Text,
+    setRandomAreaAtuacaoOptions1Text,
+    randomAreaAtuacaoOptions2Text,
+    setRandomAreaAtuacaoOptions2Text,
+    randomAreaAtuacaoOptions3Text,
+    setRandomAreaAtuacaoOptions3Text,
+    randomAreaAtuacaoOptions4Text,
+    setRandomAreaAtuacaoOptions4Text,
+    randomAreaAtuacaoOptions5Text,
+    setRandomAreaAtuacaoOptions5Text,
+    randomAreaAtuacaoOptions6Text,
+    setRandomAreaAtuacaoOptions6Text,
+    randomFooterText,
+    setRandomFooterText,
+    faleConoscoText,
+    setFaleConoscoText,
+    faleConoscoProfText,
+    setFaleConoscoProfText,
+    areaAtuacaoOptions1Text,
+    setAreaAtuacaoOptions1Text,
+    areaAtuacaoOptions2Text,
+    setAreaAtuacaoOptions2Text,
+    areaAtuacaoOptions3Text,
+    setAreaAtuacaoOptions3Text,
+    areaAtuacaoOptions4Text,
+    setAreaAtuacaoOptions4Text,
+    areaAtuacaoOptions5Text,
+    setAreaAtuacaoOptions5Text,
+    areaAtuacaoOptions6Text,
+    setAreaAtuacaoOptions6Text,
+    numeroCellText,
+    setNumeroCellText,
+    modalOpen,
+    modalOpen01,
+    modalOpen02,
+    modalOpen03,
+    modalOpen04,
+    modalOpen05,
+    randomSubTitleHeaderText2,
+    setRandomSubTitleHeaderText2,
+    whyChooseUs,
+    whyChooseUsOption01,
+    whyChooseUsOption02,
+    whyChooseUsOption03,
+    setWhyChooseUs,
+    setWhyChooseUsOption01,
+    setWhyChooseUsOption02,
+    setWhyChooseUsOption03,
+    numbers01,
+    numbers02,
+    numbers03,
+    numbers04,
+    setNumbers01,
+    setNumbers02,
+    setNumbers03,
+    setNumbers04,
+
+  } = useContext(TemplateContext);
 
 
-  // ESTADOS TEMPLATE 
-  const temaTemplateEscolhido = localStorage.getItem('textoClicado') // TEMA DO TEMPLATE
-  const endercoTemplate = localStorage.getItem('Endereco') // ENDEREÇO DO TEMPLATE
-  const nomeEmpresaTemplate = localStorage.getItem('nomeEmpresa') // NOME DA EMPRESA DO TEMPLATE
 
-  const [imageUrlHeader, setImageUrlHeader] = useState(''); // IMAGEM HEADER
-  const [imageUrlAbout, setImageUrlAbout] = useState(''); // IMAGEM ABOUT
-  const [imageUrlParallax, setImageUrlParallax] = useState(''); // IMAGEM PARALLAX 
-  const [imageUrlParallaxSegunda, setImageUrlParallaxSegunda] = useState('');  //  SEGUNDA IMAGEM PARALLAX 
-
-  const [randomTitleFirmaText, setRandomTitleFirmaText] = useState(''); // TITULO
-  const [randomSubTitleHeaderText2, setRandomSubTitleHeaderText2] = useState(''); // SUB TITULO
-  const [randomSubTitleHeaderText, setRandomSubTitleHeaderText] = useState(''); // SUB TITULO
-  const [randomTextoAboutText, setRandomTextoAboutText] = useState(''); // ABOUT SOBRE
-  const [randomSloganParallaxTex, setRandomSloganParallaxText] = useState(''); // ABOUT PARALLAX
-  const [randomParallax01Text, setRandomParallax01Text] = useState(''); // TEXTO PARALLAX
-  const [randomAboutFirmaText, setRandomAboutFirmaText] = useState(''); // COMO A FIRMA TRABALHA
-  const [randomAreaAtuacaoOptions1Text, setRandomAreaAtuacaoOptions1Text] = useState(''); // TEXTO 1
-  const [randomAreaAtuacaoOptions2Text, setRandomAreaAtuacaoOptions2Text] = useState(''); // TEXTO 2
-  const [randomAreaAtuacaoOptions3Text, setRandomAreaAtuacaoOptions3Text] = useState(''); // TEXTO 3
-  const [randomAreaAtuacaoOptions4Text, setRandomAreaAtuacaoOptions4Text] = useState(''); // TEXTO 4
-  const [randomAreaAtuacaoOptions5Text, setRandomAreaAtuacaoOptions5Text] = useState(''); // TEXTO 5
-  const [randomAreaAtuacaoOptions6Text, setRandomAreaAtuacaoOptions6Text] = useState(''); // TEXTO 6
-  const [randomFooterText, setRandomFooterText] = useState(''); // TEXT FOOTER 
-
-
-  // ESTADOS STATICOS
-  const [faleConoscoText, setFaleConoscoText] = useState("");
-  const [faleConoscoProfText, setFaleConoscoProfText] = useState("");
-  const [areaAtuacaoOptions1Text, setAreaAtuacaoOptions1Text] = useState("");
-  const [areaAtuacaoOptions2Text, setAreaAtuacaoOptions2Text] = useState("");
-  const [areaAtuacaoOptions3Text, setAreaAtuacaoOptions3Text] = useState("");
-  const [areaAtuacaoOptions4Text, setAreaAtuacaoOptions4Text] = useState("");
-  const [areaAtuacaoOptions5Text, setAreaAtuacaoOptions5Text] = useState("");
-  const [areaAtuacaoOptions6Text, setAreaAtuacaoOptions6Text] = useState("");
-  const [numeroCellText, setNumeroCellText] = useState("");
 
 
 
@@ -137,21 +190,171 @@ function Template02({ isVisible02 }: Template02Props) {
   // TEAMPLATE DOCTOR 
   if (temaTemplateEscolhido === "Doctor") {
 
-
     useEffect(() => {
-      setFaleConoscoText("AGENDAR CONSULTA")
-      setFaleConoscoProfText("Fale com nossos médicos hoje!")
-      setAreaAtuacaoOptions1Text("Clínica Geral")
-      setAreaAtuacaoOptions2Text("Pediatria")
-      setAreaAtuacaoOptions3Text("Ginecologia e Obstetrícia")
-      setAreaAtuacaoOptions4Text("Ortopedia")
-      setAreaAtuacaoOptions5Text("Dermatologia")
-      setAreaAtuacaoOptions6Text("Otorrinolaringologia")
-      setNumeroCellText("(85) 9 8972-8250")
+      const faleConoscoTextLocal = localStorage.getItem('faleConoscoText');
+      const faleConoscoProfTextLocal = localStorage.getItem(
+        'faleConoscoProfText',
+      );
+
+      const areaAtuacaoOptions1TextLocal = localStorage.getItem(
+        'areaAtuacaoOptions1Text',
+      );
+      const areaAtuacaoOptions2TextLocal = localStorage.getItem(
+        'areaAtuacaoOptions2Text',
+      );
+      const areaAtuacaoOptions3TextLocal = localStorage.getItem(
+        'areaAtuacaoOptions3Text',
+      );
+      const areaAtuacaoOptions4TextLocal = localStorage.getItem(
+        'areaAtuacaoOptions4Text',
+      );
+      const areaAtuacaoOptions5TextLocal = localStorage.getItem(
+        'areaAtuacaoOptions5Text',
+      );
+      const areaAtuacaoOptions6TextLocal = localStorage.getItem(
+        'areaAtuacaoOptions6Text',
+      );
+      const numeroCellTextLocal = localStorage.getItem('numeroCellText');
+
+
+      const whyChooseUsLocal = localStorage.getItem('whyChooseUs');
+      const whyChooseUsOption01Local = localStorage.getItem('whyChooseUsOption01');
+      const whyChooseUsOption02Local = localStorage.getItem('whyChooseUsOption02');
+      const whyChooseUsOption03Local = localStorage.getItem('whyChooseUsOption03');
+
+      const numbers01Local = localStorage.getItem('numbers01');
+      const numbers02Local = localStorage.getItem('numbers02');
+      const numbers03Local = localStorage.getItem('numbers03');
+      const numbers04Local = localStorage.getItem('numbers04');
+
+      if (!whyChooseUsLocal) {
+        setWhyChooseUs(whyChooseUs);
+        localStorage.setItem('whyChooseUs', whyChooseUs);
+      } else {
+        setWhyChooseUs(whyChooseUsLocal);
+      }
+
+      if (!whyChooseUsOption01Local) {
+        setWhyChooseUsOption01(whyChooseUsOption01);
+        localStorage.setItem('whyChooseUsOption01', whyChooseUsOption01);
+      } else {
+        setWhyChooseUsOption01(whyChooseUsOption01Local);
+      }
+
+      if (!whyChooseUsOption02Local) {
+        setWhyChooseUsOption02(whyChooseUsOption02);
+        localStorage.setItem('whyChooseUsOption02', whyChooseUsOption02);
+      } else {
+        setWhyChooseUsOption02(whyChooseUsOption02Local);
+      }
+
+      if (!whyChooseUsOption03Local) {
+        setWhyChooseUsOption03(whyChooseUsOption03);
+        localStorage.setItem('whyChooseUsOption03', whyChooseUsOption03);
+      } else {
+        setWhyChooseUsOption03(whyChooseUsOption03Local);
+      }
+
+      if (!numbers01Local) {
+        setNumbers01(numbers01);
+        localStorage.setItem('numbers01', numbers01);
+      } else {
+        setNumbers01(numbers01Local);
+      }
+
+      if (!numbers02Local) {
+        setNumbers02(numbers02);
+        localStorage.setItem('numbers02', numbers02);
+      } else {
+        setNumbers02(numbers02Local);
+      }
+
+      if (!numbers03Local) {
+        setNumbers03(numbers03);
+        localStorage.setItem('numbers03', numbers03);
+      } else {
+        setNumbers03(numbers03Local);
+      }
+
+      if (!numbers04Local) {
+        setNumbers04(numbers04);
+        localStorage.setItem('numbers04', numbers04);
+      } else {
+        setNumbers04(numbers04Local);
+      }
 
 
 
-    }, [])
+      if (!faleConoscoTextLocal) {
+        setFaleConoscoText('Agende sua consulta!');
+        localStorage.setItem('faleConoscoText', 'Agende sua consulta!');
+      } else {
+        setFaleConoscoText(faleConoscoTextLocal);
+      }
+
+      if (!faleConoscoProfTextLocal) {
+        setFaleConoscoProfText('Fale com nossos médicos hoje!');
+        localStorage.setItem(
+          'faleConoscoProfText',
+          'Fale com nossos médicos hoje!',
+        );
+      } else {
+        setFaleConoscoProfText(faleConoscoProfTextLocal);
+      }
+
+      if (!areaAtuacaoOptions1TextLocal) {
+        setAreaAtuacaoOptions1Text('Clínica Geral');
+        localStorage.setItem('areaAtuacaoOptions1Text', 'Clínica Geral');
+      } else {
+        setAreaAtuacaoOptions1Text(areaAtuacaoOptions1TextLocal);
+      }
+
+      if (!areaAtuacaoOptions2TextLocal) {
+        setAreaAtuacaoOptions2Text('Pediatria');
+        localStorage.setItem('areaAtuacaoOptions2Text', 'Pediatria');
+      } else {
+        setAreaAtuacaoOptions2Text(areaAtuacaoOptions2TextLocal);
+      }
+
+      if (!areaAtuacaoOptions3TextLocal) {
+        setAreaAtuacaoOptions3Text('Ginecologia e Obstetrícia');
+        localStorage.setItem(
+          'areaAtuacaoOptions3Text',
+          'Ginecologia e Obstetrícia',
+        );
+      } else {
+        setAreaAtuacaoOptions3Text(areaAtuacaoOptions3TextLocal);
+      }
+
+      if (!areaAtuacaoOptions4TextLocal) {
+        setAreaAtuacaoOptions4Text('Ortopedia');
+        localStorage.setItem('areaAtuacaoOptions4Text', 'Ortopedia');
+      } else {
+        setAreaAtuacaoOptions4Text(areaAtuacaoOptions4TextLocal);
+      }
+
+      if (!areaAtuacaoOptions5TextLocal) {
+        setAreaAtuacaoOptions5Text('Dermatologia');
+        localStorage.setItem('areaAtuacaoOptions5Text', 'Dermatologia');
+      } else {
+        setAreaAtuacaoOptions5Text(areaAtuacaoOptions5TextLocal);
+      }
+
+      if (!areaAtuacaoOptions6TextLocal) {
+        setAreaAtuacaoOptions6Text('Otorrinolaringologia');
+        localStorage.setItem('areaAtuacaoOptions6Text', 'Otorrinolaringologia');
+      } else {
+        setAreaAtuacaoOptions6Text(areaAtuacaoOptions6TextLocal);
+      }
+
+      if (!numeroCellTextLocal) {
+        setNumeroCellText('(85) 9 8972-8250');
+        localStorage.setItem('numeroCellText', '(85) 9 89721-8250');
+      } else {
+        setNumeroCellText(numeroCellTextLocal);
+      }
+    }, []);
+
 
     // BANNER HEADER
 
@@ -361,7 +564,7 @@ function Template02({ isVisible02 }: Template02Props) {
       } else {
         const newRandomSlogan = randomSubTitleHeader();
         setRandomSubTitleHeaderText2(newRandomSlogan);
-        localStorage.setItem('randomSubTitleHeaderText2template02', newRandomSlogan);
+        localStorage.setItem('randomSubTitleHeaderText', newRandomSlogan);
       }
     }, []);
 
@@ -807,30 +1010,7 @@ function Template02({ isVisible02 }: Template02Props) {
       }
     }, []);
 
-    useEffect(() => {
-      const handleBeforeUnload = () => {
-        const keysToKeep = ['textoClicado', 'nomeEmpresa', 'Endereco'];
-        const keysToRemove = [];
 
-        for (let i = 0; i < localStorage.length; i++) {
-          const key = localStorage.key(i);
-          if (key !== null && !keysToKeep.includes(key)) {
-            keysToRemove.push(key);
-          }
-        }
-
-        keysToRemove.forEach(key => {
-          localStorage.removeItem(key);
-          console.log(key);
-        });
-      };
-
-      window.addEventListener('beforeunload', handleBeforeUnload);
-
-      return () => {
-        window.removeEventListener('beforeunload', handleBeforeUnload);
-      };
-    }, []);
 
 
   }
@@ -838,19 +1018,151 @@ function Template02({ isVisible02 }: Template02Props) {
   if (temaTemplateEscolhido === "Advogado") {
 
     useEffect(() => {
-      setFaleConoscoText("Fale conosco agora")
-      setFaleConoscoProfText("Fale com nossos advogados hoje!")
-      setAreaAtuacaoOptions1Text("Assalto doméstico")
-      setAreaAtuacaoOptions2Text("Crimes de armas")
-      setAreaAtuacaoOptions3Text("Crimes de drogas")
-      setAreaAtuacaoOptions4Text("Crimes de pessoais")
-      setAreaAtuacaoOptions5Text("Crimes de assedio")
-      setAreaAtuacaoOptions6Text("Crimes de Divorcios")
-      setNumeroCellText("(85) 9 8972-8250")
+      const faleConoscoTextLocal = localStorage.getItem('faleConoscoText');
+      const faleConoscoProfTextLocal = localStorage.getItem('faleConoscoProfText');
+      const areaAtuacaoOptions1TextLocal = localStorage.getItem('areaAtuacaoOptions1Text');
+      const areaAtuacaoOptions2TextLocal = localStorage.getItem('areaAtuacaoOptions2Text');
+      const areaAtuacaoOptions3TextLocal = localStorage.getItem('areaAtuacaoOptions3Text');
+      const areaAtuacaoOptions4TextLocal = localStorage.getItem('areaAtuacaoOptions4Text');
+      const areaAtuacaoOptions5TextLocal = localStorage.getItem('areaAtuacaoOptions5Text');
+      const areaAtuacaoOptions6TextLocal = localStorage.getItem('areaAtuacaoOptions6Text');
+      const numeroCellTextLocal = localStorage.getItem('numeroCellText');
 
 
 
-    }, [])
+
+
+
+      const whyChooseUsLocal = localStorage.getItem('whyChooseUs');
+      const whyChooseUsOption01Local = localStorage.getItem('whyChooseUsOption01');
+      const whyChooseUsOption02Local = localStorage.getItem('whyChooseUsOption02');
+      const whyChooseUsOption03Local = localStorage.getItem('whyChooseUsOption03');
+
+      const numbers01Local = localStorage.getItem('numbers01');
+      const numbers02Local = localStorage.getItem('numbers02');
+      const numbers03Local = localStorage.getItem('numbers03');
+      const numbers04Local = localStorage.getItem('numbers04');
+
+      if (!whyChooseUsLocal) {
+        setWhyChooseUs(whyChooseUs);
+        localStorage.setItem('whyChooseUs', whyChooseUs);
+      } else {
+        setWhyChooseUs(whyChooseUsLocal);
+      }
+
+      if (!whyChooseUsOption01Local) {
+        setWhyChooseUsOption01(whyChooseUsOption01);
+        localStorage.setItem('whyChooseUsOption01', whyChooseUsOption01);
+      } else {
+        setWhyChooseUsOption01(whyChooseUsOption01Local);
+      }
+
+      if (!whyChooseUsOption02Local) {
+        setWhyChooseUsOption02(whyChooseUsOption02);
+        localStorage.setItem('whyChooseUsOption02', whyChooseUsOption02);
+      } else {
+        setWhyChooseUsOption02(whyChooseUsOption02Local);
+      }
+
+      if (!whyChooseUsOption03Local) {
+        setWhyChooseUsOption03(whyChooseUsOption03);
+        localStorage.setItem('whyChooseUsOption03', whyChooseUsOption03);
+      } else {
+        setWhyChooseUsOption03(whyChooseUsOption03Local);
+      }
+
+      if (!numbers01Local) {
+        setNumbers01(numbers01);
+        localStorage.setItem('numbers01', numbers01);
+      } else {
+        setNumbers01(numbers01Local);
+      }
+
+      if (!numbers02Local) {
+        setNumbers02(numbers02);
+        localStorage.setItem('numbers02', numbers02);
+      } else {
+        setNumbers02(numbers02Local);
+      }
+
+      if (!numbers03Local) {
+        setNumbers03(numbers03);
+        localStorage.setItem('numbers03', numbers03);
+      } else {
+        setNumbers03(numbers03Local);
+      }
+
+      if (!numbers04Local) {
+        setNumbers04(numbers04);
+        localStorage.setItem('numbers04', numbers04);
+      } else {
+        setNumbers04(numbers04Local);
+      }
+
+      if (!faleConoscoTextLocal) {
+        setFaleConoscoText('Fale conosco agora');
+        localStorage.setItem('faleConoscoText', 'Fale conosco agora');
+      } else {
+        setFaleConoscoText(faleConoscoTextLocal);
+      }
+
+      if (!faleConoscoProfTextLocal) {
+        setFaleConoscoProfText('Fale com nossos advogados hoje!');
+        localStorage.setItem('faleConoscoProfText', 'Fale com nossos advogados hoje!');
+      } else {
+        setFaleConoscoProfText(faleConoscoProfTextLocal);
+      }
+
+      if (!areaAtuacaoOptions1TextLocal) {
+        setAreaAtuacaoOptions1Text('Assalto doméstico');
+        localStorage.setItem('areaAtuacaoOptions1Text', 'Assalto doméstico');
+      } else {
+        setAreaAtuacaoOptions1Text(areaAtuacaoOptions1TextLocal);
+      }
+
+      if (!areaAtuacaoOptions2TextLocal) {
+        setAreaAtuacaoOptions2Text('Crimes de armas');
+        localStorage.setItem('areaAtuacaoOptions2Text', 'Crimes de armas');
+      } else {
+        setAreaAtuacaoOptions2Text(areaAtuacaoOptions2TextLocal);
+      }
+
+      if (!areaAtuacaoOptions3TextLocal) {
+        setAreaAtuacaoOptions3Text('Crimes de drogas');
+        localStorage.setItem('areaAtuacaoOptions3Text', 'Crimes de drogas');
+      } else {
+        setAreaAtuacaoOptions3Text(areaAtuacaoOptions3TextLocal);
+      }
+
+      if (!areaAtuacaoOptions4TextLocal) {
+        setAreaAtuacaoOptions4Text('Crimes de pessoais');
+        localStorage.setItem('areaAtuacaoOptions4Text', 'Crimes de pessoais');
+      } else {
+        setAreaAtuacaoOptions4Text(areaAtuacaoOptions4TextLocal);
+      }
+
+      if (!areaAtuacaoOptions5TextLocal) {
+        setAreaAtuacaoOptions5Text('Crimes de assedio');
+        localStorage.setItem('areaAtuacaoOptions5Text', 'Crimes de assedio');
+      } else {
+        setAreaAtuacaoOptions5Text(areaAtuacaoOptions5TextLocal);
+      }
+
+      if (!areaAtuacaoOptions6TextLocal) {
+        setAreaAtuacaoOptions6Text('Crimes de Divorcios');
+        localStorage.setItem('areaAtuacaoOptions6Text', 'Crimes de Divorcios');
+      } else {
+        setAreaAtuacaoOptions6Text(areaAtuacaoOptions6TextLocal);
+      }
+
+      if (!numeroCellTextLocal) {
+        setNumeroCellText('(85) 9 8972-8250');
+        localStorage.setItem('numeroCellText', '(85) 9 8972-8250');
+      } else {
+        setNumeroCellText(numeroCellTextLocal);
+      }
+    }, []);
+
 
     // BANNER HEADER
 
@@ -1490,36 +1802,6 @@ function Template02({ isVisible02 }: Template02Props) {
       }
     }, []);
 
-    const handleBeforeUnload = () => {
-      const keysToKeep = ['textoClicado', 'nomeEmpresa', 'Endereco'];
-      const keysToRemove = [];
-
-      for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        if (key !== null && !keysToKeep.includes(key)) {
-          keysToRemove.push(key);
-        }
-      }
-
-      keysToRemove.forEach((key) => {
-        localStorage.removeItem(key);
-        console.log(key);
-      });
-    };
-
-    const handlePopState = () => {
-      handleBeforeUnload();
-    };
-
-    useEffect(() => {
-      window.addEventListener('beforeunload', handleBeforeUnload);
-      window.addEventListener('popstate', handlePopState);
-
-      return () => {
-        window.removeEventListener('beforeunload', handleBeforeUnload);
-        window.removeEventListener('popstate', handlePopState);
-      };
-    }, []);
 
 
   }
@@ -1527,19 +1809,157 @@ function Template02({ isVisible02 }: Template02Props) {
   if (temaTemplateEscolhido === "Salão de beleza") {
 
     useEffect(() => {
-      setFaleConoscoText("Agendar horário")
-      setFaleConoscoProfText("Agende seu horário hoje e realce sua beleza!");
-      setAreaAtuacaoOptions1Text("Cortes de cabelo e estilização")
-      setAreaAtuacaoOptions2Text("Coloração de cabelo")
-      setAreaAtuacaoOptions3Text("Tratamentos capilares")
-      setAreaAtuacaoOptions4Text("Manicure e pedicure")
-      setAreaAtuacaoOptions5Text("Estética facial")
-      setAreaAtuacaoOptions6Text("Coloração de cabelo")
-      setNumeroCellText("(85) 9 8972-8250")
+      const carregarLocalStorage = () => {
+        const faleConoscoTextLocal = localStorage.getItem('faleConoscoText');
+        const faleConoscoProfTextLocal = localStorage.getItem('faleConoscoProfText');
+        const areaAtuacaoOptions1TextLocal = localStorage.getItem('areaAtuacaoOptions1Text');
+        const areaAtuacaoOptions2TextLocal = localStorage.getItem('areaAtuacaoOptions2Text');
+        const areaAtuacaoOptions3TextLocal = localStorage.getItem('areaAtuacaoOptions3Text');
+        const areaAtuacaoOptions4TextLocal = localStorage.getItem('areaAtuacaoOptions4Text');
+        const areaAtuacaoOptions5TextLocal = localStorage.getItem('areaAtuacaoOptions5Text');
+        const areaAtuacaoOptions6TextLocal = localStorage.getItem('areaAtuacaoOptions6Text');
+        const numeroCellTextLocal = localStorage.getItem('numeroCellText');
 
 
 
-    }, [])
+
+
+        const whyChooseUsLocal = localStorage.getItem('whyChooseUs');
+        const whyChooseUsOption01Local = localStorage.getItem('whyChooseUsOption01');
+        const whyChooseUsOption02Local = localStorage.getItem('whyChooseUsOption02');
+        const whyChooseUsOption03Local = localStorage.getItem('whyChooseUsOption03');
+
+        const numbers01Local = localStorage.getItem('numbers01');
+        const numbers02Local = localStorage.getItem('numbers02');
+        const numbers03Local = localStorage.getItem('numbers03');
+        const numbers04Local = localStorage.getItem('numbers04');
+
+        if (!whyChooseUsLocal) {
+          setWhyChooseUs(whyChooseUs);
+          localStorage.setItem('whyChooseUs', whyChooseUs);
+        } else {
+          setWhyChooseUs(whyChooseUsLocal);
+        }
+
+        if (!whyChooseUsOption01Local) {
+          setWhyChooseUsOption01(whyChooseUsOption01);
+          localStorage.setItem('whyChooseUsOption01', whyChooseUsOption01);
+        } else {
+          setWhyChooseUsOption01(whyChooseUsOption01Local);
+        }
+
+        if (!whyChooseUsOption02Local) {
+          setWhyChooseUsOption02(whyChooseUsOption02);
+          localStorage.setItem('whyChooseUsOption02', whyChooseUsOption02);
+        } else {
+          setWhyChooseUsOption02(whyChooseUsOption02Local);
+        }
+
+        if (!whyChooseUsOption03Local) {
+          setWhyChooseUsOption03(whyChooseUsOption03);
+          localStorage.setItem('whyChooseUsOption03', whyChooseUsOption03);
+        } else {
+          setWhyChooseUsOption03(whyChooseUsOption03Local);
+        }
+
+        if (!numbers01Local) {
+          setNumbers01(numbers01);
+          localStorage.setItem('numbers01', numbers01);
+        } else {
+          setNumbers01(numbers01Local);
+        }
+
+        if (!numbers02Local) {
+          setNumbers02(numbers02);
+          localStorage.setItem('numbers02', numbers02);
+        } else {
+          setNumbers02(numbers02Local);
+        }
+
+        if (!numbers03Local) {
+          setNumbers03(numbers03);
+          localStorage.setItem('numbers03', numbers03);
+        } else {
+          setNumbers03(numbers03Local);
+        }
+
+        if (!numbers04Local) {
+          setNumbers04(numbers04);
+          localStorage.setItem('numbers04', numbers04);
+        } else {
+          setNumbers04(numbers04Local);
+        }
+
+
+        if (!faleConoscoTextLocal) {
+          setFaleConoscoText('Fale conosco agora');
+          localStorage.setItem('faleConoscoText', 'Fale conosco agora');
+        } else {
+          setFaleConoscoText(faleConoscoTextLocal);
+        }
+
+        if (!faleConoscoProfTextLocal) {
+          setFaleConoscoProfText('Agende seu horário hoje e realce sua beleza!');
+          localStorage.setItem(
+            'faleConoscoProfText',
+            'Agende seu horário hoje e realce sua beleza!',
+          );
+        } else {
+          setFaleConoscoProfText(faleConoscoProfTextLocal);
+        }
+
+        if (!areaAtuacaoOptions1TextLocal) {
+          setAreaAtuacaoOptions1Text('Cortes de cabelo e estilização');
+          localStorage.setItem('areaAtuacaoOptions1Text', 'Cortes de cabelo e estilização');
+        } else {
+          setAreaAtuacaoOptions1Text(areaAtuacaoOptions1TextLocal);
+        }
+
+        if (!areaAtuacaoOptions2TextLocal) {
+          setAreaAtuacaoOptions2Text('Coloração de cabelo');
+          localStorage.setItem('areaAtuacaoOptions2Text', 'Coloração de cabelo');
+        } else {
+          setAreaAtuacaoOptions2Text(areaAtuacaoOptions2TextLocal);
+        }
+
+        if (!areaAtuacaoOptions3TextLocal) {
+          setAreaAtuacaoOptions3Text('Tratamentos capilares');
+          localStorage.setItem('areaAtuacaoOptions3Text', 'Tratamentos capilares');
+        } else {
+          setAreaAtuacaoOptions3Text(areaAtuacaoOptions3TextLocal);
+        }
+
+        if (!areaAtuacaoOptions4TextLocal) {
+          setAreaAtuacaoOptions4Text('Manicure e pedicure');
+          localStorage.setItem('areaAtuacaoOptions4Text', 'Manicure e pedicure');
+        } else {
+          setAreaAtuacaoOptions4Text(areaAtuacaoOptions4TextLocal);
+        }
+
+        if (!areaAtuacaoOptions5TextLocal) {
+          setAreaAtuacaoOptions5Text('Estética facial');
+          localStorage.setItem('areaAtuacaoOptions5Text', 'Estética facial');
+        } else {
+          setAreaAtuacaoOptions5Text(areaAtuacaoOptions5TextLocal);
+        }
+
+        if (!areaAtuacaoOptions6TextLocal) {
+          setAreaAtuacaoOptions6Text('Coloração de cabelo');
+          localStorage.setItem('areaAtuacaoOptions6Text', 'Coloração de cabelo');
+        } else {
+          setAreaAtuacaoOptions6Text(areaAtuacaoOptions6TextLocal);
+        }
+
+        if (!numeroCellTextLocal) {
+          setNumeroCellText('(85) 9 8972-8250');
+          localStorage.setItem('numeroCellText', '(85) 9 8972-8250');
+        } else {
+          setNumeroCellText(numeroCellTextLocal);
+        }
+      };
+
+      carregarLocalStorage();
+    }, []);
 
     // BANNER HEADER
 
@@ -2183,36 +2603,7 @@ function Template02({ isVisible02 }: Template02Props) {
       }
     }, []);
 
-    const handleBeforeUnload = () => {
-      const keysToKeep = ['textoClicado', 'nomeEmpresa', 'Endereco'];
-      const keysToRemove = [];
 
-      for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        if (key !== null && !keysToKeep.includes(key)) {
-          keysToRemove.push(key);
-        }
-      }
-
-      keysToRemove.forEach((key) => {
-        localStorage.removeItem(key);
-        console.log(key);
-      });
-    };
-
-    const handlePopState = () => {
-      handleBeforeUnload();
-    };
-
-    useEffect(() => {
-      window.addEventListener('beforeunload', handleBeforeUnload);
-      window.addEventListener('popstate', handlePopState);
-
-      return () => {
-        window.removeEventListener('beforeunload', handleBeforeUnload);
-        window.removeEventListener('popstate', handlePopState);
-      };
-    }, []);
 
 
   }
@@ -2226,7 +2617,7 @@ function Template02({ isVisible02 }: Template02Props) {
       <HeaderBlock bgImage={imageUrlHeader}>
         <div className="container-block-header">
           <LineHeader></LineHeader>
-          <span> {randomSubTitleHeaderText}</span>
+
         </div>
         <h1>
           {nomeEmpresaTemplate}
@@ -2311,26 +2702,26 @@ function Template02({ isVisible02 }: Template02Props) {
             <div className="container-block-header">
               <LineHeader></LineHeader>
             </div>
-            <h2>Por que nos escolher </h2>
+            <h2>{whyChooseUs}</h2>
             <div className="block-whyus">
               <div className="wrap-block-whyus">
                 <h5>01</h5>
                 <div className="block-whyus-p">
-                  <h4>Experiência e especialização</h4>
+                  <h4>{whyChooseUsOption01}</h4>
 
                 </div>
               </div>
               <div className="wrap-block-whyus">
                 <h5>02</h5>
                 <div className="block-whyus-p">
-                  <h4>Equipe altamente capacitada</h4>
+                  <h4>{whyChooseUsOption02}</h4>
 
                 </div>
               </div>
               <div className="wrap-block-whyus">
                 <h5>03</h5>
                 <div className="block-whyus-p">
-                  <h4>Inovação e tecnologia</h4>
+                  <h4>{whyChooseUsOption03}</h4>
 
                 </div>
               </div>
@@ -2339,22 +2730,22 @@ function Template02({ isVisible02 }: Template02Props) {
           <RightSideWhyUs>
             <div className="rows-block">
               <div className="row-div-block">
-                <h2>2000+</h2>
+                <h2>{numbers01}</h2>
                 <span>Clientes satisfeitos</span>
               </div>
               <div className="row-div-block">
-                <h2>10+</h2>
+                <h2>{numbers02}</h2>
                 <span>Anos no Mercado</span>
               </div>
             </div>
             <div className="rows-block">
               <div className="row-div-block">
-                <h2>150+</h2>
+                <h2>{numbers03}</h2>
                 <span>Profissionais</span>
               </div>
               <div className="row-div-block">
 
-                <h2>99%</h2>
+                <h2>{numbers04}</h2>
                 <span>Satisfação</span>
               </div>
             </div>

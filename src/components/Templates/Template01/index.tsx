@@ -947,17 +947,82 @@ function Template01({ isVisible01 }: Template01Props) {
   }
 
   if (temaTemplateEscolhido === 'Advogado') {
+
     useEffect(() => {
-      setFaleConoscoText('Fale conosco agora');
-      setFaleConoscoProfText('Fale com nossos advogados hoje!');
-      setAreaAtuacaoOptions1Text('Assalto doméstico');
-      setAreaAtuacaoOptions2Text('Crimes de armas');
-      setAreaAtuacaoOptions3Text('Crimes de drogas');
-      setAreaAtuacaoOptions4Text('Crimes de pessoais');
-      setAreaAtuacaoOptions5Text('Crimes de assedio');
-      setAreaAtuacaoOptions6Text('Crimes de Divorcios');
-      setNumeroCellText('(85) 9 8972-8250');
+      const faleConoscoTextLocal = localStorage.getItem('faleConoscoText');
+      const faleConoscoProfTextLocal = localStorage.getItem('faleConoscoProfText');
+      const areaAtuacaoOptions1TextLocal = localStorage.getItem('areaAtuacaoOptions1Text');
+      const areaAtuacaoOptions2TextLocal = localStorage.getItem('areaAtuacaoOptions2Text');
+      const areaAtuacaoOptions3TextLocal = localStorage.getItem('areaAtuacaoOptions3Text');
+      const areaAtuacaoOptions4TextLocal = localStorage.getItem('areaAtuacaoOptions4Text');
+      const areaAtuacaoOptions5TextLocal = localStorage.getItem('areaAtuacaoOptions5Text');
+      const areaAtuacaoOptions6TextLocal = localStorage.getItem('areaAtuacaoOptions6Text');
+      const numeroCellTextLocal = localStorage.getItem('numeroCellText');
+
+      if (!faleConoscoTextLocal) {
+        setFaleConoscoText('Fale conosco agora');
+        localStorage.setItem('faleConoscoText', 'Fale conosco agora');
+      } else {
+        setFaleConoscoText(faleConoscoTextLocal);
+      }
+
+      if (!faleConoscoProfTextLocal) {
+        setFaleConoscoProfText('Fale com nossos advogados hoje!');
+        localStorage.setItem('faleConoscoProfText', 'Fale com nossos advogados hoje!');
+      } else {
+        setFaleConoscoProfText(faleConoscoProfTextLocal);
+      }
+
+      if (!areaAtuacaoOptions1TextLocal) {
+        setAreaAtuacaoOptions1Text('Assalto doméstico');
+        localStorage.setItem('areaAtuacaoOptions1Text', 'Assalto doméstico');
+      } else {
+        setAreaAtuacaoOptions1Text(areaAtuacaoOptions1TextLocal);
+      }
+
+      if (!areaAtuacaoOptions2TextLocal) {
+        setAreaAtuacaoOptions2Text('Crimes de armas');
+        localStorage.setItem('areaAtuacaoOptions2Text', 'Crimes de armas');
+      } else {
+        setAreaAtuacaoOptions2Text(areaAtuacaoOptions2TextLocal);
+      }
+
+      if (!areaAtuacaoOptions3TextLocal) {
+        setAreaAtuacaoOptions3Text('Crimes de drogas');
+        localStorage.setItem('areaAtuacaoOptions3Text', 'Crimes de drogas');
+      } else {
+        setAreaAtuacaoOptions3Text(areaAtuacaoOptions3TextLocal);
+      }
+
+      if (!areaAtuacaoOptions4TextLocal) {
+        setAreaAtuacaoOptions4Text('Crimes de pessoais');
+        localStorage.setItem('areaAtuacaoOptions4Text', 'Crimes de pessoais');
+      } else {
+        setAreaAtuacaoOptions4Text(areaAtuacaoOptions4TextLocal);
+      }
+
+      if (!areaAtuacaoOptions5TextLocal) {
+        setAreaAtuacaoOptions5Text('Crimes de assedio');
+        localStorage.setItem('areaAtuacaoOptions5Text', 'Crimes de assedio');
+      } else {
+        setAreaAtuacaoOptions5Text(areaAtuacaoOptions5TextLocal);
+      }
+
+      if (!areaAtuacaoOptions6TextLocal) {
+        setAreaAtuacaoOptions6Text('Crimes de Divorcios');
+        localStorage.setItem('areaAtuacaoOptions6Text', 'Crimes de Divorcios');
+      } else {
+        setAreaAtuacaoOptions6Text(areaAtuacaoOptions6TextLocal);
+      }
+
+      if (!numeroCellTextLocal) {
+        setNumeroCellText('(85) 9 8972-8250');
+        localStorage.setItem('numeroCellText', '(85) 9 8972-8250');
+      } else {
+        setNumeroCellText(numeroCellTextLocal);
+      }
     }, []);
+
 
     // BANNER HEADER
 
@@ -1650,50 +1715,92 @@ function Template01({ isVisible01 }: Template01Props) {
       }
     }, []);
 
-    const handleBeforeUnload = () => {
-      const keysToKeep = ['textoClicado', 'nomeEmpresa', 'Endereco'];
-      const keysToRemove = [];
 
-      for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        if (key !== null && !keysToKeep.includes(key)) {
-          keysToRemove.push(key);
-        }
-      }
-
-      keysToRemove.forEach((key) => {
-        localStorage.removeItem(key);
-        console.log(key);
-      });
-    };
-
-    const handlePopState = () => {
-      handleBeforeUnload();
-    };
-
-    useEffect(() => {
-      window.addEventListener('beforeunload', handleBeforeUnload);
-      window.addEventListener('popstate', handlePopState);
-
-      return () => {
-        window.removeEventListener('beforeunload', handleBeforeUnload);
-        window.removeEventListener('popstate', handlePopState);
-      };
-    }, []);
   }
 
   if (temaTemplateEscolhido === 'Salão de beleza') {
     useEffect(() => {
-      setFaleConoscoText('Fale conosco agora');
-      setFaleConoscoProfText('Agende seu horário hoje e realce sua beleza!');
-      setAreaAtuacaoOptions1Text('Cortes de cabelo e estilização');
-      setAreaAtuacaoOptions2Text('Coloração de cabelo');
-      setAreaAtuacaoOptions3Text('Tratamentos capilares');
-      setAreaAtuacaoOptions4Text('Manicure e pedicure');
-      setAreaAtuacaoOptions5Text('Estética facial');
-      setAreaAtuacaoOptions6Text('Coloração de cabelo');
-      setNumeroCellText('(85) 9 8972-8250');
+      const carregarLocalStorage = () => {
+        const faleConoscoTextLocal = localStorage.getItem('faleConoscoText');
+        const faleConoscoProfTextLocal = localStorage.getItem('faleConoscoProfText');
+        const areaAtuacaoOptions1TextLocal = localStorage.getItem('areaAtuacaoOptions1Text');
+        const areaAtuacaoOptions2TextLocal = localStorage.getItem('areaAtuacaoOptions2Text');
+        const areaAtuacaoOptions3TextLocal = localStorage.getItem('areaAtuacaoOptions3Text');
+        const areaAtuacaoOptions4TextLocal = localStorage.getItem('areaAtuacaoOptions4Text');
+        const areaAtuacaoOptions5TextLocal = localStorage.getItem('areaAtuacaoOptions5Text');
+        const areaAtuacaoOptions6TextLocal = localStorage.getItem('areaAtuacaoOptions6Text');
+        const numeroCellTextLocal = localStorage.getItem('numeroCellText');
+
+        if (!faleConoscoTextLocal) {
+          setFaleConoscoText('Fale conosco agora');
+          localStorage.setItem('faleConoscoText', 'Fale conosco agora');
+        } else {
+          setFaleConoscoText(faleConoscoTextLocal);
+        }
+
+        if (!faleConoscoProfTextLocal) {
+          setFaleConoscoProfText('Agende seu horário hoje e realce sua beleza!');
+          localStorage.setItem(
+            'faleConoscoProfText',
+            'Agende seu horário hoje e realce sua beleza!',
+          );
+        } else {
+          setFaleConoscoProfText(faleConoscoProfTextLocal);
+        }
+
+        if (!areaAtuacaoOptions1TextLocal) {
+          setAreaAtuacaoOptions1Text('Cortes de cabelo e estilização');
+          localStorage.setItem('areaAtuacaoOptions1Text', 'Cortes de cabelo e estilização');
+        } else {
+          setAreaAtuacaoOptions1Text(areaAtuacaoOptions1TextLocal);
+        }
+
+        if (!areaAtuacaoOptions2TextLocal) {
+          setAreaAtuacaoOptions2Text('Coloração de cabelo');
+          localStorage.setItem('areaAtuacaoOptions2Text', 'Coloração de cabelo');
+        } else {
+          setAreaAtuacaoOptions2Text(areaAtuacaoOptions2TextLocal);
+        }
+
+        if (!areaAtuacaoOptions3TextLocal) {
+          setAreaAtuacaoOptions3Text('Tratamentos capilares');
+          localStorage.setItem('areaAtuacaoOptions3Text', 'Tratamentos capilares');
+        } else {
+          setAreaAtuacaoOptions3Text(areaAtuacaoOptions3TextLocal);
+        }
+
+        if (!areaAtuacaoOptions4TextLocal) {
+          setAreaAtuacaoOptions4Text('Manicure e pedicure');
+          localStorage.setItem('areaAtuacaoOptions4Text', 'Manicure e pedicure');
+        } else {
+          setAreaAtuacaoOptions4Text(areaAtuacaoOptions4TextLocal);
+        }
+
+        if (!areaAtuacaoOptions5TextLocal) {
+          setAreaAtuacaoOptions5Text('Estética facial');
+          localStorage.setItem('areaAtuacaoOptions5Text', 'Estética facial');
+        } else {
+          setAreaAtuacaoOptions5Text(areaAtuacaoOptions5TextLocal);
+        }
+
+        if (!areaAtuacaoOptions6TextLocal) {
+          setAreaAtuacaoOptions6Text('Coloração de cabelo');
+          localStorage.setItem('areaAtuacaoOptions6Text', 'Coloração de cabelo');
+        } else {
+          setAreaAtuacaoOptions6Text(areaAtuacaoOptions6TextLocal);
+        }
+
+        if (!numeroCellTextLocal) {
+          setNumeroCellText('(85) 9 8972-8250');
+          localStorage.setItem('numeroCellText', '(85) 9 8972-8250');
+        } else {
+          setNumeroCellText(numeroCellTextLocal);
+        }
+      };
+
+      carregarLocalStorage();
     }, []);
+
 
     // BANNER HEADER
 
@@ -2406,36 +2513,7 @@ function Template01({ isVisible01 }: Template01Props) {
       }
     }, []);
 
-    const handleBeforeUnload = () => {
-      const keysToKeep = ['textoClicado', 'nomeEmpresa', 'Endereco'];
-      const keysToRemove = [];
 
-      for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        if (key !== null && !keysToKeep.includes(key)) {
-          keysToRemove.push(key);
-        }
-      }
-
-      keysToRemove.forEach((key) => {
-        localStorage.removeItem(key);
-        console.log(key);
-      });
-    };
-
-    const handlePopState = () => {
-      handleBeforeUnload();
-    };
-
-    useEffect(() => {
-      window.addEventListener('beforeunload', handleBeforeUnload);
-      window.addEventListener('popstate', handlePopState);
-
-      return () => {
-        window.removeEventListener('beforeunload', handleBeforeUnload);
-        window.removeEventListener('popstate', handlePopState);
-      };
-    }, []);
   }
 
   return (
@@ -2449,23 +2527,23 @@ function Template01({ isVisible01 }: Template01Props) {
       </HeaderFooter>
 
       <AboutSection>
-        <div id="hover-pontilhado">
-          <section className="about">
-            <Info>
-              <div className="about-section " id="about-section">
-                <LogoTemplate
-                  src={imageUrlAbout}
-                  alt="Carregando imagem ... "
-                />
-              </div>
-              <div className="about-section">
-                <h2>Sobre Nós</h2>
-                <Line></Line>
-                <p>{randomTextoAboutText}</p>
-              </div>
-            </Info>
-          </section>
-        </div>
+
+        <section className="about">
+          <Info>
+            <div className="about-section " id="about-section">
+              <LogoTemplate
+                src={imageUrlAbout}
+                alt="Carregando imagem ... "
+              />
+            </div>
+            <div className="about-section">
+              <h2>Sobre Nós</h2>
+              <Line></Line>
+              <p>{randomTextoAboutText}</p>
+            </div>
+          </Info>
+        </section>
+
       </AboutSection>
       <Parallax bgImage={imageUrlParallax}>
         <ParallaxContent>
