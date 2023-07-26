@@ -22,6 +22,7 @@ interface ThemeProps {
 
 
 const Container = styled.div`
+position:relative;
  width: 100%;
 display: flex; 
 flex-direction: column;
@@ -67,7 +68,17 @@ background-color: ${(props: ThemeProps) => props.theme.containerBgColor};
 
 
 
+.active01, .active02, .active03, .active04, .active05,
+.active06, .active07, .active08, .active09, .active10,
+.active11, .active12, .active13, .active14, .active15,
+.active16, .active17, .active18, .active19, .active20,
+.active21, .active22, .active23, .active24, .active25,
+.active26 {
 
+  border: 3px dashed wheat;
+  position: relative;
+
+}
 
 `;
 
@@ -131,7 +142,9 @@ const HeaderFooter = styled.div<{ bgImage?: string }>`
     color: ${(props: ThemeProps) => props.theme.headerFooterTextColor};
     font-family: ${(props: ThemeProps) => props.theme.font.fontFamily};
     z-index: 999;
+    position:relative;
   }
+
 
   button {
     width: 300px;
@@ -195,65 +208,40 @@ const Navigation = styled.div`
     }
   }
 `;
-
 const AboutSection = styled.section`
-width:70%;
-margin-top:0 auto;
-  justify-content:space-around;
   display: flex;
-  align-items:center;
-  flex-direction: row;
-  height:auto;
-  padding-block:80px;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 1.5rem;
+  padding-block: 4rem;
+  width:90%;
+  margin:0 auto;
+ 
+
+  @media only screen and (max-width: 1620px) {
+    margin:0 auto;
+    width:95%;
+  
+  }
+  .container-block-about {
    
-
-
-  .about{
-    width:80%;
-    justify-content:center;
     display: flex;
-    align-items:center;
-   
-
-    @media only screen and (max-width: 1700px) {
-      width:85%;
-  }
-  }
-
-  @media only screen and (max-width: 1000px) {
-    height:auto;
-  }
-  @media only screen and (max-width: 768px) {
-    height:auto;
-    padding-block:70px;
-  }
-  @media only screen and (max-width: 1200px) {
-    width:100%;
-   
-  }
-  @media only screen and (max-width: 768px) {
-    width:95%;
-   
-  }
-
-.about-section{
-  margin-top:0 auto;
-  width:50%;
-;
-
-  @media only screen and (max-width: 1200px) {
+    align-items: baseline;
+    position: relative;
     
-    width:95%;
-    margin-top: 0 auto;
     
- 
-   }
-  
- 
- 
+   
+   
+   
+  }
 
-}
-  
+  @media only screen and (max-width: 800px) {
+  display: flex;
+  flex-direction: column;
+  margin:0 auto;
+  width:90%;
+   
+  }
 `;
 const LogoTemplate = styled.img`
  margin:0 auto ;
@@ -785,10 +773,68 @@ const FooterRight = styled.div`
 
 
 
+export const LineAbout = styled.div`
+  height: 1.1px;
+  width: 3rem;
+  background-color: ${(props: ThemeProps) => props.theme.fontTitleColor};
+  border: none;
+  z-index: 999;
+  position: absolute;
+  left: -60px;
+  bottom: 8px;
+  
+`;
+
+export const FirstBlockAbout = styled.div`
+  width: 60%;
+
+  margin-right:2rem;
+  @media only screen and (max-width: 1200px) {
+    width: 100%;
+    margin-right:1rem;
+   
+
+    h2 {
+      font-size:25px;
+    }
+    p{
+      font-size:16px;
+    }
+  }
 
 
+  
+`;
+export const SecondBlockAbout = styled.div`
+ 
+  position: relative;
+  width: 50%;
+  height: 585px;
+  img {
+    width: 100%;
+    height:  100%;
+    object-fit: contain;
+    position: absolute;
+  
+  }
+  @media only screen and (max-width: 1200px) {
+    height: 650px;
+    margin-top:1.5rem;
+    width: 80%;
+
+   
+  }
+  @media only screen and (max-width: 670px) {
+    height: 600px;
+    margin-top:2rem;
+    width: 100%;
+
+   
+  }
+  
 
 
+`;
 
 
 export {
@@ -812,5 +858,7 @@ export {
   Footer,
   FooterContent,
   FooterRight,
+
+
 };
 

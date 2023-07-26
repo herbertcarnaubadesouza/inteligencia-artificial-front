@@ -10,15 +10,20 @@
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  width: 30%;
+  width: 25%;
   height: 100vh;
-  padding-block: 0.3rem;
+  padding-top: 2rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  z-index: 1000;
-  font-family: 'Raleway', sans-serif;
-  border-radius: 0;
+  justify-content: space-between;
+  z-index: 1050;
+  box-shadow: -9px 1px 12px -4px rgba(115, 115, 115, 1);
+  -webkit-box-shadow: -9px 1px 12px -4px rgba(115, 115, 115, 1);
+  -moz-box-shadow: -9px 1px 12px -4px rgba(115, 115, 115, 1);
+  border-left: 2px solid rgba(255, 255, 255, 0.732);
+  border-radius: 0px;
 
   button {
     width: 100%;
@@ -138,6 +143,8 @@
       font-family: 'Poppins';
       color: #fff;
       white-space: pre-wrap;
+      border: none !important;
+      outline: none;
     }
 
     input {
@@ -344,4 +351,50 @@
 }
 .none {
   display: none;
+}
+.PrintContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  border: dashed 2px #888990;
+  border-radius: 10px;
+  margin-top: 2px;
+  gap: 1rem;
+  padding: 1rem;
+
+  .LabelUpload {
+    font-size: 13px;
+    font-weight: 100;
+    font-family: 'Outfit', sans-serif;
+    color: #ffffff;
+    text-align: center;
+  }
+  .UploadButtone {
+    color: #ffffff;
+    border: solid 2px;
+
+    background: rgba(255, 255, 255, 0.3);
+    width: 20rem;
+    height: 2rem;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Outfit', sans-serif;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+      color: #ffffff;
+      border: solid 2px;
+      background: #f77f00;
+      width: 20rem;
+      height: 2rem;
+      font-size: 14px;
+      font-weight: 600;
+      font-family: 'Outfit', sans-serif;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
 }

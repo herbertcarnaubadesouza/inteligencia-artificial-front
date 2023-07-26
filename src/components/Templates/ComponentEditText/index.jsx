@@ -99,6 +99,70 @@ function EditText() {
     setNumbers02,
     setNumbers03,
     setNumbers04,
+    compromissoOption1TextDescripition1,
+    compromissoOption2TextDescripition2,
+    compromissoOption3TextDescripition3,
+    compromissoOption1Text,
+    compromissoOption2Text,
+    compromissoOption3Text,
+    setCompromissoOption1Text,
+    setCompromissoOption2Text,
+    setCompromissoOption3Text,
+    setCompromissoOption1TextDescripition1,
+    setCompromissoOption2TextDescripition2,
+    setCompromissoOption3TextDescripition3,
+    handleInputFocus01,
+    handleInputBlur01,
+    handleInputFocus02,
+    handleInputBlur02,
+    handleInputFocus03,
+    handleInputBlur03,
+    handleInputFocus04,
+    handleInputBlur04,
+    handleInputFocus05,
+    handleInputBlur05,
+    handleInputFocus06,
+    handleInputBlur06,
+    handleInputFocus07,
+    handleInputBlur07,
+    handleInputFocus08,
+    handleInputBlur08,
+    handleInputFocus09,
+    handleInputBlur09,
+    handleInputFocus10,
+    handleInputBlur10,
+    handleInputFocus11,
+    handleInputBlur11,
+    handleInputFocus12,
+    handleInputBlur12,
+    handleInputFocus13,
+    handleInputBlur13,
+    handleInputFocus14,
+    handleInputBlur14,
+    handleInputFocus15,
+    handleInputBlur15,
+    handleInputFocus16,
+    handleInputBlur16,
+    handleInputFocus17,
+    handleInputBlur17,
+    handleInputFocus18,
+    handleInputBlur18,
+    handleInputFocus19,
+    handleInputBlur19,
+    handleInputFocus20,
+    handleInputBlur20,
+    handleInputFocus21,
+    handleInputBlur21,
+    handleInputFocus22,
+    handleInputBlur22,
+    handleInputFocus23,
+    handleInputBlur23,
+    handleInputFocus24,
+    handleInputBlur24,
+    handleInputFocus25,
+    handleInputBlur25,
+    handleInputFocus26,
+    handleInputBlur26,
   } = useContext(TemplateContext);
 
   const handleImageChange = (event) => {
@@ -173,7 +237,10 @@ function EditText() {
     localStorage.setItem('bannerTemplateHeader', imageUrlHeader);
     localStorage.setItem('bannerTemplateHeadertemplate02', imageUrlHeader);
     localStorage.setItem('bannerTemplateHeaderTemplate03', imageUrlHeader);
-
+    localStorage.setItem(
+      'randomSubTitleHeaderTexttemplate02',
+      randomSubTitleHeaderText,
+    );
     localStorage.setItem('randomSubTitleHeaderText', randomSubTitleHeaderText);
   };
 
@@ -190,6 +257,7 @@ function EditText() {
     localStorage.setItem('bannerTemplateAbout', imageUrlAbout);
     localStorage.setItem('bannerTemplateAbouttemplate02', imageUrlAbout);
     localStorage.setItem('bannerTemplateAboutTemplate03', imageUrlAbout);
+    localStorage.setItem('randomTextoAbouttemplate02', randomTextoAboutText);
   };
 
   const handleSaveSection03 = () => {
@@ -273,12 +341,53 @@ function EditText() {
     localStorage.setItem('randomFooter', randomFooterText);
     localStorage.setItem('bannerTemplateParallax02', imageUrlParallaxSegunda);
     localStorage.setItem('numeroCellText', numeroCellText);
+    localStorage.setItem('randomAboutFirmatemplate02', randomAboutFirmaText);
+
+    localStorage.setItem('randomAboutFirmatemplate02', randomAboutFirmaText);
+
+    localStorage.setItem('randomAboutFirmatemplate02', randomAboutFirmaText);
   };
 
   const [isOpen, setIsOpen] = useState(true);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+  const handleFileChange = (event) => {
+    const file = event.target.files?.[0];
+    setSelectedFile(file || null);
+
+    if (file) {
+      setIsFileSelected(true);
+    }
+  };
+
+  const handleClick = () => {
+    const fileInput = document.getElementById('fileInput');
+    if (fileInput) {
+      fileInput.click();
+    }
+  };
+
+  const fileInputAbout = () => {
+    const fileInputAbout = document.getElementById('fileInputAbout');
+    if (fileInputAbout) {
+      fileInputAbout.click();
+    }
+  };
+
+  const fileInputFooter = () => {
+    const fileInputFooter = document.getElementById('fileInputFooter');
+    if (fileInputFooter) {
+      fileInputFooter.click();
+    }
+  };
+
+  const fileInputParralax = () => {
+    const fileInputParralax = document.getElementById('fileInputParralax');
+    if (fileInputParralax) {
+      fileInputParralax.click();
+    }
   };
   return (
     <>
@@ -304,6 +413,8 @@ function EditText() {
                     type="text"
                     value={nomeEmpresaTemplate}
                     onChange={(e) => setNomeEmpresaTemplate(e.target.value)}
+                    onFocus={handleInputFocus01}
+                    onBlur={handleInputBlur01}
                   />
                   <label>Mensagem distintiva</label>
                   <input
@@ -312,19 +423,38 @@ function EditText() {
                     onChange={(e) =>
                       setRandomSubTitleHeaderText(e.target.value)
                     }
+                    onFocus={handleInputFocus02}
+                    onBlur={handleInputBlur02}
                   />
                   <label>Personalizar texto do botão</label>
                   <input
                     type="text"
                     value={faleConoscoText}
                     onChange={(e) => setFaleConoscoText(e.target.value)}
+                    onFocus={handleInputFocus03}
+                    onBlur={handleInputBlur03}
                   />
                   <label>Personalizar imagem de fundo</label>
-                  <input
-                    type="file"
-                    id="imageInput"
-                    onChange={handleImageChange}
-                  />
+
+                  <div className="PrintContainer">
+                    <label htmlFor="fileInput" className="LabelUpload">
+                      Arraste e jogue seu anexo aqui
+                    </label>
+                    <input
+                      type="file"
+                      accept=".pdf, .jpeg, .jpg, .png"
+                      onChange={handleImageChange}
+                      id="fileInput"
+                      style={{ display: 'none' }}
+                    />
+                    <button className="UploadButtone" onClick={handleClick}>
+                      Escolher arquivo
+                    </button>
+
+                    <p className="UploadInfo">
+                      Formatos aceitos PDF, JPEG e PNG
+                    </p>
+                  </div>
                   <button onClick={handleSaveSection01}>Salvar</button>
                 </div>
                 <div className={'container-secao02'}>
@@ -334,13 +464,30 @@ function EditText() {
                     id="textarea"
                     value={randomTextoAboutText}
                     onChange={(e) => setRandomTextoAboutText(e.target.value)}
+                    onFocus={handleInputFocus04}
+                    onBlur={handleInputBlur04}
                   ></textarea>
                   <label>Personalizar imagem de fundo</label>
-                  <input
-                    type="file"
-                    id="imageInput"
-                    onChange={handleImageChangeAbout}
-                  />
+
+                  <div className="PrintContainer">
+                    <label htmlFor="fileInput" className="LabelUpload">
+                      Arraste e jogue seu anexo aqui
+                    </label>
+                    <input
+                      type="file"
+                      accept=".pdf, .jpeg, .jpg, .png"
+                      onChange={handleImageChangeAbout}
+                      id="fileInputAbout"
+                      style={{ display: 'none' }}
+                    />
+                    <button className="UploadButtone" onClick={fileInputAbout}>
+                      Escolher arquivo
+                    </button>
+
+                    <p className="UploadInfo">
+                      Formatos aceitos PDF, JPEG e PNG
+                    </p>
+                  </div>
                   <button onClick={handleSaveSection02}>Salvar</button>
                 </div>
                 <div className={'container-secao03'}>
@@ -352,6 +499,8 @@ function EditText() {
                     onChange={(e) =>
                       setRandomSloganParallaxText(e.target.value)
                     }
+                    onFocus={handleInputFocus06}
+                    onBlur={handleInputBlur06}
                   />
                   <label>Personalizar texto de destaque</label>
                   <textarea
@@ -359,13 +508,33 @@ function EditText() {
                     type="textarea"
                     value={randomParallax01Text}
                     onChange={(e) => setRandomParallax01Text(e.target.value)}
+                    onFocus={handleInputFocus07}
+                    onBlur={handleInputBlur07}
                   />
                   <label>Personalizar imagem de fundo</label>
-                  <input
-                    type="file"
-                    id="imageInput"
-                    onChange={handleImageChangeParallax}
-                  />
+
+                  <div className="PrintContainer">
+                    <label htmlFor="fileInput" className="LabelUpload">
+                      Arraste e jogue seu anexo aqui
+                    </label>
+                    <input
+                      type="file"
+                      accept=".pdf, .jpeg, .jpg, .png"
+                      onChange={handleImageChangeParallax}
+                      id="fileInputParralax"
+                      style={{ display: 'none' }}
+                    />
+                    <button
+                      className="UploadButtone"
+                      onClick={fileInputParralax}
+                    >
+                      Escolher arquivo
+                    </button>
+
+                    <p className="UploadInfo">
+                      Formatos aceitos PDF, JPEG e PNG
+                    </p>
+                  </div>
                   <button onClick={handleSaveSection03}>Salvar</button>
                 </div>
                 <div className={'container-secao04'}>
@@ -376,6 +545,8 @@ function EditText() {
                     type="textarea"
                     value={randomAboutFirmaText}
                     onChange={(e) => setRandomAboutFirmaText(e.target.value)}
+                    onFocus={handleInputFocus08}
+                    onBlur={handleInputBlur08}
                   />
 
                   <h3>Titulo especialidades</h3>
@@ -384,36 +555,48 @@ function EditText() {
                     type="textarea"
                     value={areaAtuacaoOptions1Text}
                     onChange={(e) => setAreaAtuacaoOptions1Text(e.target.value)}
+                    onFocus={handleInputFocus10}
+                    onBlur={handleInputBlur10}
                   />
                   <label htmlFor="imageInput">02</label>
                   <input
                     type="textarea"
                     value={areaAtuacaoOptions2Text}
                     onChange={(e) => setAreaAtuacaoOptions2Text(e.target.value)}
+                    onFocus={handleInputFocus12}
+                    onBlur={handleInputBlur12}
                   />
                   <label htmlFor="imageInput">03</label>
                   <input
                     type="textarea"
                     value={areaAtuacaoOptions3Text}
                     onChange={(e) => setAreaAtuacaoOptions3Text(e.target.value)}
+                    onFocus={handleInputFocus14}
+                    onBlur={handleInputBlur14}
                   />
                   <label htmlFor="imageInput">04</label>
                   <input
                     type="textarea"
                     value={areaAtuacaoOptions4Text}
                     onChange={(e) => setAreaAtuacaoOptions4Text(e.target.value)}
+                    onFocus={handleInputFocus16}
+                    onBlur={handleInputBlur16}
                   />
                   <label htmlFor="imageInput">05</label>
                   <input
                     type="textarea"
                     value={areaAtuacaoOptions5Text}
                     onChange={(e) => setAreaAtuacaoOptions5Text(e.target.value)}
+                    onFocus={handleInputFocus18}
+                    onBlur={handleInputBlur18}
                   />
                   <label htmlFor="imageInput">06</label>
                   <input
                     type="textarea"
                     value={areaAtuacaoOptions6Text}
                     onChange={(e) => setAreaAtuacaoOptions6Text(e.target.value)}
+                    onFocus={handleInputFocus20}
+                    onBlur={handleInputBlur20}
                   />
 
                   <h3>Descriçoes especialidades</h3>
@@ -425,6 +608,8 @@ function EditText() {
                     onChange={(e) =>
                       setRandomAreaAtuacaoOptions1Text(e.target.value)
                     }
+                    onFocus={handleInputFocus11}
+                    onBlur={handleInputBlur11}
                   />
 
                   <label htmlFor="imageInput">02</label>
@@ -435,6 +620,8 @@ function EditText() {
                     onChange={(e) =>
                       setRandomAreaAtuacaoOptions2Text(e.target.value)
                     }
+                    onFocus={handleInputFocus13}
+                    onBlur={handleInputBlur13}
                   />
                   <label htmlFor="imageInput">03</label>
                   <textarea
@@ -444,6 +631,8 @@ function EditText() {
                     onChange={(e) =>
                       setRandomAreaAtuacaoOptions3Text(e.target.value)
                     }
+                    onFocus={handleInputFocus15}
+                    onBlur={handleInputBlur15}
                   />
                   <label htmlFor="imageInput">04</label>
                   <textarea
@@ -453,6 +642,8 @@ function EditText() {
                     onChange={(e) =>
                       setRandomAreaAtuacaoOptions4Text(e.target.value)
                     }
+                    onFocus={handleInputFocus17}
+                    onBlur={handleInputBlur17}
                   />
                   <label htmlFor="imageInput">05</label>
                   <textarea
@@ -462,6 +653,8 @@ function EditText() {
                     onChange={(e) =>
                       setRandomAreaAtuacaoOptions5Text(e.target.value)
                     }
+                    onFocus={handleInputFocus19}
+                    onBlur={handleInputBlur19}
                   />
                   <label htmlFor="imageInput">06</label>
                   <textarea
@@ -471,6 +664,8 @@ function EditText() {
                     onChange={(e) =>
                       setRandomAreaAtuacaoOptions6Text(e.target.value)
                     }
+                    onFocus={handleInputFocus21}
+                    onBlur={handleInputBlur21}
                   />
                   <button onClick={handleSaveSection04}>Salvar</button>
                 </div>
@@ -481,13 +676,18 @@ function EditText() {
                     type="text"
                     value={faleConoscoProfText}
                     onChange={(e) => setFaleConoscoProfText(e.target.value)}
+                    onFocus={handleInputFocus23}
+                    onBlur={handleInputBlur23}
                   />
+
                   <label>Texto descritivo</label>
                   <textarea
                     id="textarea"
                     type="text"
                     value={randomFooterText}
                     onChange={(e) => setRandomFooterText(e.target.value)}
+                    onFocus={handleInputFocus24}
+                    onBlur={handleInputBlur24}
                   />
                   <label>Numero de Contato</label>
                   <input
@@ -497,16 +697,32 @@ function EditText() {
                       const formattedValue = e.target.value.replace(/\D/g, ''); // Remove tudo que não é dígito (número)
                       setNumeroCellText(formattedValue);
                     }}
+                    onFocus={handleInputFocus25}
+                    onBlur={handleInputBlur25}
                     pattern="\(\d{2}\) \d{1} \d{4}-\d{4}"
                     title="Insira um número de telefone válido (XX) X XXXX-XXXX"
                   />
 
                   <label>Personalizar imagem de fundo</label>
-                  <input
-                    type="file"
-                    id="imageInput"
-                    onChange={handleImageChangeFooter}
-                  />
+                  <div className="PrintContainer">
+                    <label htmlFor="fileInput" className="LabelUpload">
+                      Arraste e jogue seu anexo aqui
+                    </label>
+                    <input
+                      type="file"
+                      accept=".pdf, .jpeg, .jpg, .png"
+                      onChange={handleImageChangeFooter}
+                      id="fileInputFooter"
+                      style={{ display: 'none' }}
+                    />
+                    <button className="UploadButtone" onClick={fileInputFooter}>
+                      Escolher arquivo
+                    </button>
+
+                    <p className="UploadInfo">
+                      Formatos aceitos PDF, JPEG e PNG
+                    </p>
+                  </div>
                   <button onClick={handleSaveSection05}>Salvar</button>
                 </div>
               </>
@@ -520,6 +736,8 @@ function EditText() {
                     type="text"
                     value={nomeEmpresaTemplate}
                     onChange={(e) => setNomeEmpresaTemplate(e.target.value)}
+                    onFocus={handleInputFocus01}
+                    onBlur={handleInputBlur01}
                   />
 
                   <label>Numero de Contato</label>
@@ -532,13 +750,29 @@ function EditText() {
                     }}
                     pattern="\(\d{2}\) \d{1} \d{4}-\d{4}"
                     title="Insira um número de telefone válido (XX) X XXXX-XXXX"
+                    onFocus={handleInputFocus02}
+                    onBlur={handleInputBlur02}
                   />
                   <label>Personalizar imagem de fundo</label>
-                  <input
-                    type="file"
-                    id="imageInput"
-                    onChange={handleImageChange}
-                  />
+                  <div className="PrintContainer">
+                    <label htmlFor="fileInput" className="LabelUpload">
+                      Arraste e jogue seu anexo aqui
+                    </label>
+                    <input
+                      type="file"
+                      accept=".pdf, .jpeg, .jpg, .png"
+                      onChange={handleImageChange}
+                      id="fileInput"
+                      style={{ display: 'none' }}
+                    />
+                    <button className="UploadButtone" onClick={handleClick}>
+                      Escolher arquivo
+                    </button>
+
+                    <p className="UploadInfo">
+                      Formatos aceitos PDF, JPEG e PNG
+                    </p>
+                  </div>
                   <button onClick={handleSaveSection01}>Salvar</button>
                 </div>
                 <div className={'container-secao02'}>
@@ -548,6 +782,8 @@ function EditText() {
                     id="textarea"
                     value={randomTextoAboutText}
                     onChange={(e) => setRandomTextoAboutText(e.target.value)}
+                    onFocus={handleInputFocus03}
+                    onBlur={handleInputBlur03}
                   ></textarea>
                   <label>Mensagem distintiva</label>
                   <input
@@ -556,13 +792,30 @@ function EditText() {
                     onChange={(e) =>
                       setRandomSubTitleHeaderText2(e.target.value)
                     }
+                    onFocus={handleInputFocus04}
+                    onBlur={handleInputBlur04}
                   />
                   <label>Personalizar imagem de fundo</label>
-                  <input
-                    type="file"
-                    id="imageInput"
-                    onChange={handleImageChangeAbout}
-                  />
+
+                  <div className="PrintContainer">
+                    <label htmlFor="fileInput" className="LabelUpload">
+                      Arraste e jogue seu anexo aqui
+                    </label>
+                    <input
+                      type="file"
+                      accept=".pdf, .jpeg, .jpg, .png"
+                      onChange={handleImageChangeAbout}
+                      id="fileInputAbout"
+                      style={{ display: 'none' }}
+                    />
+                    <button className="UploadButtone" onClick={fileInputAbout}>
+                      Escolher arquivo
+                    </button>
+
+                    <p className="UploadInfo">
+                      Formatos aceitos PDF, JPEG e PNG
+                    </p>
+                  </div>
                   <button onClick={handleSaveSection02}>Salvar</button>
                 </div>
 
@@ -575,36 +828,48 @@ function EditText() {
                     type="textarea"
                     value={areaAtuacaoOptions1Text}
                     onChange={(e) => setAreaAtuacaoOptions1Text(e.target.value)}
+                    onFocus={handleInputFocus05}
+                    onBlur={handleInputBlur05}
                   />
                   <label htmlFor="imageInput">02</label>
                   <input
                     type="textarea"
                     value={areaAtuacaoOptions2Text}
                     onChange={(e) => setAreaAtuacaoOptions2Text(e.target.value)}
+                    onFocus={handleInputFocus06}
+                    onBlur={handleInputBlur06}
                   />
                   <label htmlFor="imageInput">03</label>
                   <input
                     type="textarea"
                     value={areaAtuacaoOptions3Text}
                     onChange={(e) => setAreaAtuacaoOptions3Text(e.target.value)}
+                    onFocus={handleInputFocus07}
+                    onBlur={handleInputBlur07}
                   />
                   <label htmlFor="imageInput">04</label>
                   <input
                     type="textarea"
                     value={areaAtuacaoOptions4Text}
                     onChange={(e) => setAreaAtuacaoOptions4Text(e.target.value)}
+                    onFocus={handleInputFocus08}
+                    onBlur={handleInputBlur08}
                   />
                   <label htmlFor="imageInput">05</label>
                   <input
                     type="textarea"
                     value={areaAtuacaoOptions5Text}
                     onChange={(e) => setAreaAtuacaoOptions5Text(e.target.value)}
+                    onFocus={handleInputFocus09}
+                    onBlur={handleInputBlur09}
                   />
                   <label htmlFor="imageInput">06</label>
                   <input
                     type="textarea"
                     value={areaAtuacaoOptions6Text}
                     onChange={(e) => setAreaAtuacaoOptions6Text(e.target.value)}
+                    onFocus={handleInputFocus10}
+                    onBlur={handleInputBlur10}
                   />
 
                   <h3>Descriçoes especialidades</h3>
@@ -616,6 +881,8 @@ function EditText() {
                     onChange={(e) =>
                       setRandomAreaAtuacaoOptions1Text(e.target.value)
                     }
+                    onFocus={handleInputFocus11}
+                    onBlur={handleInputBlur11}
                   />
 
                   <label htmlFor="imageInput">02</label>
@@ -626,6 +893,8 @@ function EditText() {
                     onChange={(e) =>
                       setRandomAreaAtuacaoOptions2Text(e.target.value)
                     }
+                    onFocus={handleInputFocus12}
+                    onBlur={handleInputBlur12}
                   />
                   <label htmlFor="imageInput">03</label>
                   <textarea
@@ -635,6 +904,8 @@ function EditText() {
                     onChange={(e) =>
                       setRandomAreaAtuacaoOptions3Text(e.target.value)
                     }
+                    onFocus={handleInputFocus13}
+                    onBlur={handleInputBlur13}
                   />
                   <label htmlFor="imageInput">04</label>
                   <textarea
@@ -644,6 +915,8 @@ function EditText() {
                     onChange={(e) =>
                       setRandomAreaAtuacaoOptions4Text(e.target.value)
                     }
+                    onFocus={handleInputFocus14}
+                    onBlur={handleInputBlur14}
                   />
                   <label htmlFor="imageInput">05</label>
                   <textarea
@@ -653,6 +926,8 @@ function EditText() {
                     onChange={(e) =>
                       setRandomAreaAtuacaoOptions5Text(e.target.value)
                     }
+                    onFocus={handleInputFocus15}
+                    onBlur={handleInputBlur15}
                   />
                   <label htmlFor="imageInput">06</label>
                   <textarea
@@ -662,6 +937,8 @@ function EditText() {
                     onChange={(e) =>
                       setRandomAreaAtuacaoOptions6Text(e.target.value)
                     }
+                    onFocus={handleInputFocus16}
+                    onBlur={handleInputBlur16}
                   />
                   <button onClick={handleSaveSection04}>Salvar</button>
                 </div>
@@ -672,24 +949,32 @@ function EditText() {
                     type="text"
                     value={whyChooseUs}
                     onChange={(e) => setWhyChooseUs(e.target.value)}
+                    onFocus={handleInputFocus17}
+                    onBlur={handleInputBlur17}
                   />
                   <label>Personalizar Habilidades e Expertise 01 </label>
                   <input
                     type="text"
                     value={whyChooseUsOption01}
                     onChange={(e) => setWhyChooseUsOption01(e.target.value)}
+                    onFocus={handleInputFocus18}
+                    onBlur={handleInputBlur18}
                   />
                   <label>Personalizar Habilidades e Expertise 02 </label>
                   <input
                     type="text"
                     value={whyChooseUsOption02}
                     onChange={(e) => setWhyChooseUsOption02(e.target.value)}
+                    onFocus={handleInputFocus19}
+                    onBlur={handleInputBlur19}
                   />
                   <label>Personalizar Habilidades e Expertise 03 </label>
                   <input
                     type="text"
                     value={whyChooseUsOption03}
                     onChange={(e) => setWhyChooseUsOption03(e.target.value)}
+                    onFocus={handleInputFocus20}
+                    onBlur={handleInputBlur20}
                   />
 
                   <label>Personalizar números de Clientes </label>
@@ -697,32 +982,57 @@ function EditText() {
                     type="text"
                     value={numbers01}
                     onChange={(e) => setNumbers01(e.target.value)}
+                    onFocus={handleInputFocus21}
+                    onBlur={handleInputBlur21}
                   />
                   <label>Personalizar Anos no Mercado </label>
                   <input
                     type="text"
                     value={numbers02}
                     onChange={(e) => setNumbers02(e.target.value)}
+                    onFocus={handleInputFocus22}
+                    onBlur={handleInputBlur22}
                   />
                   <label>Personalizar números de Profissionais</label>
                   <input
                     type="text"
                     value={numbers03}
                     onChange={(e) => setNumbers03(e.target.value)}
+                    onFocus={handleInputFocus23}
+                    onBlur={handleInputBlur23}
                   />
                   <label>Personalizar % de Satisfação</label>
                   <input
                     type="text"
                     value={numbers04}
                     onChange={(e) => setNumbers04(e.target.value)}
+                    onFocus={handleInputFocus24}
+                    onBlur={handleInputBlur24}
                   />
 
                   <label>Personalizar imagem de fundo</label>
-                  <input
-                    type="file"
-                    id="imageInput"
-                    onChange={handleImageChangeFooter}
-                  />
+                  <div className="PrintContainer">
+                    <label htmlFor="fileInput" className="LabelUpload">
+                      Arraste e jogue seu anexo aqui
+                    </label>
+                    <input
+                      type="file"
+                      accept=".pdf, .jpeg, .jpg, .png"
+                      onChange={handleImageChangeParallax}
+                      id="fileInputParralax"
+                      style={{ display: 'none' }}
+                    />
+                    <button
+                      className="UploadButtone"
+                      onClick={fileInputParralax}
+                    >
+                      Escolher arquivo
+                    </button>
+
+                    <p className="UploadInfo">
+                      Formatos aceitos PDF, JPEG e PNG
+                    </p>
+                  </div>
                   <button onClick={handleSaveSection04}>Salvar</button>
                 </div>
                 <div className={'container-secao05'}>
@@ -732,6 +1042,8 @@ function EditText() {
                     type="text"
                     value={faleConoscoText}
                     onChange={(e) => setFaleConoscoText(e.target.value)}
+                    onFocus={handleInputFocus25}
+                    onBlur={handleInputBlur25}
                   />
 
                   <button onClick={handleSaveSection01}>Salvar</button>
@@ -747,25 +1059,48 @@ function EditText() {
                     type="text"
                     value={nomeEmpresaTemplate}
                     onChange={(e) => setNomeEmpresaTemplate(e.target.value)}
+                    onFocus={handleInputFocus01}
+                    onBlur={handleInputBlur01}
                   />
-
-                  <label>Numero de Contato</label>
+                  <label>Mensagem distintiva</label>
                   <input
                     type="text"
-                    value={numeroCellText}
-                    onChange={(e) => {
-                      const formattedValue = e.target.value.replace(/\D/g, ''); // Remove tudo que não é dígito (número)
-                      setNumeroCellText(formattedValue);
-                    }}
-                    pattern="\(\d{2}\) \d{1} \d{4}-\d{4}"
-                    title="Insira um número de telefone válido (XX) X XXXX-XXXX"
+                    value={randomSubTitleHeaderText}
+                    onChange={(e) =>
+                      setRandomSubTitleHeaderText(e.target.value)
+                    }
+                    onFocus={handleInputFocus02}
+                    onBlur={handleInputBlur02}
                   />
-                  <label>Personalizar imagem de fundo</label>
+                  <label>Personalizar texto do botão</label>
                   <input
-                    type="file"
-                    id="imageInput"
-                    onChange={handleImageChange}
+                    type="text"
+                    value={faleConoscoText}
+                    onChange={(e) => setFaleConoscoText(e.target.value)}
+                    onFocus={handleInputFocus03}
+                    onBlur={handleInputBlur03}
                   />
+
+                  <label>Personalizar imagem de fundo</label>
+                  <div className="PrintContainer">
+                    <label htmlFor="fileInput" className="LabelUpload">
+                      Arraste e jogue seu anexo aqui
+                    </label>
+                    <input
+                      type="file"
+                      accept=".pdf, .jpeg, .jpg, .png"
+                      onChange={handleImageChange}
+                      id="fileInput"
+                      style={{ display: 'none' }}
+                    />
+                    <button className="UploadButtone" onClick={handleClick}>
+                      Escolher arquivo
+                    </button>
+
+                    <p className="UploadInfo">
+                      Formatos aceitos PDF, JPEG e PNG
+                    </p>
+                  </div>
                   <button onClick={handleSaveSection01}>Salvar</button>
                 </div>
                 <div className={'container-secao02'}>
@@ -775,26 +1110,73 @@ function EditText() {
                     id="textarea"
                     value={randomTextoAboutText}
                     onChange={(e) => setRandomTextoAboutText(e.target.value)}
+                    onFocus={handleInputFocus04}
+                    onBlur={handleInputBlur04}
                   ></textarea>
-                  <label>Mensagem distintiva</label>
-                  <input
-                    type="text"
-                    value={randomSubTitleHeaderText2}
-                    onChange={(e) =>
-                      setRandomSubTitleHeaderText2(e.target.value)
-                    }
-                  />
+
                   <label>Personalizar imagem de fundo</label>
-                  <input
-                    type="file"
-                    id="imageInput"
-                    onChange={handleImageChangeAbout}
-                  />
+                  <div className="PrintContainer">
+                    <label htmlFor="fileInput" className="LabelUpload">
+                      Arraste e jogue seu anexo aqui
+                    </label>
+                    <input
+                      type="file"
+                      accept=".pdf, .jpeg, .jpg, .png"
+                      onChange={handleImageChangeAbout}
+                      id="fileInputAbout"
+                      style={{ display: 'none' }}
+                    />
+                    <button className="UploadButtone" onClick={fileInputAbout}>
+                      Escolher arquivo
+                    </button>
+
+                    <p className="UploadInfo">
+                      Formatos aceitos PDF, JPEG e PNG
+                    </p>
+                  </div>
                   <button onClick={handleSaveSection02}>Salvar</button>
                 </div>
-
                 <div className={'container-secao03'}>
                   <h1>Editar secão 03</h1>
+
+                  <label>Personalizar números de Clientes </label>
+                  <input
+                    type="text"
+                    value={numbers01}
+                    onChange={(e) => setNumbers01(e.target.value)}
+                    onFocus={handleInputFocus05}
+                    onBlur={handleInputBlur05}
+                  />
+                  <label>Personalizar Anos no Mercado </label>
+                  <input
+                    type="text"
+                    value={numbers02}
+                    onChange={(e) => setNumbers02(e.target.value)}
+                    onFocus={handleInputFocus06}
+                    onBlur={handleInputBlur06}
+                  />
+                  <label>Personalizar números de Empreendimentos</label>
+                  <input
+                    type="text"
+                    value={numbers03}
+                    onChange={(e) => setNumbers03(e.target.value)}
+                    onFocus={handleInputFocus07}
+                    onBlur={handleInputBlur07}
+                  />
+                  <label>Personalizar % de Satisfação</label>
+                  <input
+                    type="text"
+                    value={numbers04}
+                    onChange={(e) => setNumbers04(e.target.value)}
+                    onFocus={handleInputFocus08}
+                    onBlur={handleInputBlur08}
+                  />
+
+                  <button onClick={handleSaveSection04}>Salvar</button>
+                </div>
+
+                <div className={'container-secao04'}>
+                  <h1>Editar secão 04</h1>
 
                   <h3>Titulo especialidades</h3>
                   <label htmlFor="imageInput">01</label>
@@ -802,36 +1184,48 @@ function EditText() {
                     type="textarea"
                     value={areaAtuacaoOptions1Text}
                     onChange={(e) => setAreaAtuacaoOptions1Text(e.target.value)}
+                    onFocus={handleInputFocus09}
+                    onBlur={handleInputBlur09}
                   />
                   <label htmlFor="imageInput">02</label>
                   <input
                     type="textarea"
                     value={areaAtuacaoOptions2Text}
                     onChange={(e) => setAreaAtuacaoOptions2Text(e.target.value)}
+                    onFocus={handleInputFocus10}
+                    onBlur={handleInputBlur10}
                   />
                   <label htmlFor="imageInput">03</label>
                   <input
                     type="textarea"
                     value={areaAtuacaoOptions3Text}
                     onChange={(e) => setAreaAtuacaoOptions3Text(e.target.value)}
+                    onFocus={handleInputFocus11}
+                    onBlur={handleInputBlur11}
                   />
                   <label htmlFor="imageInput">04</label>
                   <input
                     type="textarea"
                     value={areaAtuacaoOptions4Text}
                     onChange={(e) => setAreaAtuacaoOptions4Text(e.target.value)}
+                    onFocus={handleInputFocus12}
+                    onBlur={handleInputBlur12}
                   />
                   <label htmlFor="imageInput">05</label>
                   <input
                     type="textarea"
                     value={areaAtuacaoOptions5Text}
                     onChange={(e) => setAreaAtuacaoOptions5Text(e.target.value)}
+                    onFocus={handleInputFocus13}
+                    onBlur={handleInputBlur13}
                   />
                   <label htmlFor="imageInput">06</label>
                   <input
                     type="textarea"
                     value={areaAtuacaoOptions6Text}
                     onChange={(e) => setAreaAtuacaoOptions6Text(e.target.value)}
+                    onFocus={handleInputFocus14}
+                    onBlur={handleInputBlur14}
                   />
 
                   <h3>Descriçoes especialidades</h3>
@@ -843,6 +1237,8 @@ function EditText() {
                     onChange={(e) =>
                       setRandomAreaAtuacaoOptions1Text(e.target.value)
                     }
+                    onFocus={handleInputFocus15}
+                    onBlur={handleInputBlur15}
                   />
 
                   <label htmlFor="imageInput">02</label>
@@ -853,6 +1249,8 @@ function EditText() {
                     onChange={(e) =>
                       setRandomAreaAtuacaoOptions2Text(e.target.value)
                     }
+                    onFocus={handleInputFocus16}
+                    onBlur={handleInputBlur16}
                   />
                   <label htmlFor="imageInput">03</label>
                   <textarea
@@ -862,6 +1260,8 @@ function EditText() {
                     onChange={(e) =>
                       setRandomAreaAtuacaoOptions3Text(e.target.value)
                     }
+                    onFocus={handleInputFocus17}
+                    onBlur={handleInputBlur17}
                   />
                   <label htmlFor="imageInput">04</label>
                   <textarea
@@ -871,6 +1271,8 @@ function EditText() {
                     onChange={(e) =>
                       setRandomAreaAtuacaoOptions4Text(e.target.value)
                     }
+                    onFocus={handleInputFocus18}
+                    onBlur={handleInputBlur18}
                   />
                   <label htmlFor="imageInput">05</label>
                   <textarea
@@ -880,6 +1282,8 @@ function EditText() {
                     onChange={(e) =>
                       setRandomAreaAtuacaoOptions5Text(e.target.value)
                     }
+                    onFocus={handleInputFocus19}
+                    onBlur={handleInputBlur19}
                   />
                   <label htmlFor="imageInput">06</label>
                   <textarea
@@ -889,102 +1293,67 @@ function EditText() {
                     onChange={(e) =>
                       setRandomAreaAtuacaoOptions6Text(e.target.value)
                     }
+                    onFocus={handleInputFocus20}
+                    onBlur={handleInputBlur20}
                   />
+                  <div className="PrintContainer">
+                    <label htmlFor="fileInput" className="LabelUpload">
+                      Arraste e jogue seu anexo aqui
+                    </label>
+                    <input
+                      type="file"
+                      accept=".pdf, .jpeg, .jpg, .png"
+                      onChange={handleImageChangeParallax}
+                      id="fileInputParralax"
+                      style={{ display: 'none' }}
+                    />
+                    <button
+                      className="UploadButtone"
+                      onClick={fileInputParralax}
+                    >
+                      Escolher arquivo
+                    </button>
+
+                    <p className="UploadInfo">
+                      Formatos aceitos PDF, JPEG e PNG
+                    </p>
+                  </div>
                   <button onClick={handleSaveSection04}>Salvar</button>
                 </div>
-                <div className={'container-secao04'}>
-                  <h1>Editar secão 04</h1>
-                  <label>Personalizar Titulo</label>
-                  <input
-                    type="text"
-                    value={whyChooseUs}
-                    onChange={(e) => setWhyChooseUs(e.target.value)}
-                  />
-                  <label>Personalizar Habilidades e Expertise 01 </label>
-                  <input
-                    type="text"
-                    value={whyChooseUsOption01}
-                    onChange={(e) => setWhyChooseUsOption01(e.target.value)}
-                  />
-                  <label>Personalizar Habilidades e Expertise 02 </label>
-                  <input
-                    type="text"
-                    value={whyChooseUsOption02}
-                    onChange={(e) => setWhyChooseUsOption02(e.target.value)}
-                  />
-                  <label>Personalizar Habilidades e Expertise 03 </label>
-                  <input
-                    type="text"
-                    value={whyChooseUsOption03}
-                    onChange={(e) => setWhyChooseUsOption03(e.target.value)}
-                  />
 
-                  <label>Personalizar números de Clientes </label>
-                  <input
-                    type="text"
-                    value={numbers01}
-                    onChange={(e) => setNumbers01(e.target.value)}
-                  />
-                  <label>Personalizar Anos no Mercado </label>
-                  <input
-                    type="text"
-                    value={numbers02}
-                    onChange={(e) => setNumbers02(e.target.value)}
-                  />
-                  <label>Personalizar números de Profissionais</label>
-                  <input
-                    type="text"
-                    value={numbers03}
-                    onChange={(e) => setNumbers03(e.target.value)}
-                  />
-                  <label>Personalizar % de Satisfação</label>
-                  <input
-                    type="text"
-                    value={numbers04}
-                    onChange={(e) => setNumbers04(e.target.value)}
-                  />
-
-                  <label>Personalizar imagem de fundo</label>
-                  <input
-                    type="file"
-                    id="imageInput"
-                    onChange={handleImageChangeFooter}
-                  />
-                  <button onClick={handleSaveSection04}>Salvar</button>
-                </div>
-                <div className={'container-secao05'}>
+                <div className={'container-secao01'}>
                   <h1>Personalizar seção 05 </h1>
-                  <label>Personalizar texto do botão</label>
-                  <input
+                  <label>Texto chamativo</label>
+                  <textarea
+                    id="textarea"
                     type="text"
-                    value={faleConoscoText}
-                    onChange={(e) => setFaleConoscoText(e.target.value)}
+                    value={randomFooterText}
+                    onChange={(e) => setRandomFooterText(e.target.value)}
+                    onFocus={handleInputFocus21}
+                    onBlur={handleInputBlur21}
                   />
 
-                  <button onClick={handleSaveSection01}>Salvar</button>
+                  <button onClick={handleSaveSection05}>Salvar</button>
                 </div>
               </>
             ) : null}
           </div>
         </div>
-        <div className="down-container">
-          <div className="nav-container-donw">
-            <div className="button-back-donw">
-              <img
-                className="button-back-icon-donw"
-                src="./images/back.svg"
-                alt=""
-              />
-              <p className="button-back-text-donw">
-                {' '}
-                <Link to="/preview">Continuar</Link>
-              </p>
-            </div>
-            <div className="button-continue-donw">
-              <p className="button-continue-text-donw">
-                <Link to="/Edit">Continuar</Link>
-              </p>
-            </div>
+        <div className="nav-container-donwe">
+          <div className="button-continue-donw">
+            <img
+              className="button-back-icon-donw"
+              src="./images/back.svg"
+              alt=""
+            />
+            <Link to="/preview">
+              <p className="button-continue-text-donw">Voltar</p>
+            </Link>
+          </div>
+          <div className="button-continue-donw">
+            <Link to="/Edit">
+              <p className="button-continue-text-donw">Continuar</p>
+            </Link>
           </div>
         </div>
       </div>

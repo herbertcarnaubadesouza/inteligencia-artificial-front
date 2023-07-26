@@ -38,7 +38,7 @@ width:100%;
     margin-bottom: 10rem;
     margin-top: 50px;
     margin-left: 5%;
-    width:100%;
+    width:80%;
 
   }
   h2 {
@@ -92,6 +92,20 @@ width:100%;
     font-size:12px;
     margin-left:5px;
   }
+
+}
+
+
+
+.active01, .active02, .active03, .active04, .active05,
+.active06, .active07, .active08, .active09, .active10,
+.active11, .active12, .active13, .active14, .active15,
+.active16, .active17, .active18, .active19, .active20,
+.active21, .active22, .active23, .active24, .active25,
+.active26 {
+
+  border: 3px dashed wheat;
+  position: relative;
 
 }
 `;

@@ -19,6 +19,10 @@ import {
   PracticeAreaContent,
   PracticeAreaContentAll,
   PracticeContent,
+  FirstBlockAbout,
+
+  LineAbout,
+  SecondBlockAbout
 } from './styles';
 
 import { Pen, X } from '@phosphor-icons/react';
@@ -47,37 +51,12 @@ interface ApiResponse {
   }[];
 }
 
-import Loading from '../Loading/Loading';
+
+import { NULL } from 'sass';
 const apiKey = process.env.REACT_APP_API_KEY;
 
 function Template01({ isVisible01 }: Template01Props) {
-  const localStorageValue = localStorage.getItem('loading');
-  const [loading, setLoading] = useState(true);
 
-  // TELA LOADING
-  useEffect(() => {
-    if (localStorageValue !== null) {
-      setLoading(localStorageValue === 'true');
-    }
-
-    const timeoutId = setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  }, []);
-
-  // Salvar o estado no localStorage
-  useEffect(() => {
-    localStorage.setItem('loading', loading.toString());
-  }, [loading]);
-
-  // Limpar o estado do localStorage ao encerrar o navegador
-  window.addEventListener('beforeunload', () => {
-    localStorage.removeItem('loading');
-  });
 
   const {
     temaTemplateEscolhido,
@@ -144,6 +123,34 @@ function Template01({ isVisible01 }: Template01Props) {
     modalOpen03,
     modalOpen04,
     modalOpen05,
+    handleInputFocus,
+    handleInputBlur,
+    isInputFocused01,
+    isInputFocused02,
+    isInputFocused03,
+    isInputFocused04,
+    isInputFocused05,
+    isInputFocused06,
+    isInputFocused07,
+    isInputFocused08,
+    isInputFocused09,
+    isInputFocused10,
+    isInputFocused11,
+    isInputFocused12,
+    isInputFocused13,
+    isInputFocused14,
+    isInputFocused15,
+    isInputFocused16,
+    isInputFocused17,
+    isInputFocused18,
+    isInputFocused19,
+    isInputFocused20,
+    isInputFocused21,
+    isInputFocused22,
+    isInputFocused23,
+    isInputFocused24,
+    isInputFocused25,
+    isInputFocused26,
   } = useContext(TemplateContext);
 
   useEffect(() => {
@@ -178,8 +185,8 @@ function Template01({ isVisible01 }: Template01Props) {
       const numeroCellTextLocal = localStorage.getItem('numeroCellText');
 
       if (!faleConoscoTextLocal) {
-        setFaleConoscoText('Agende sua consulta!');
-        localStorage.setItem('faleConoscoText', 'Agende sua consulta!');
+        setFaleConoscoText('Fale Conosco');
+        localStorage.setItem('faleConoscoText', 'Fale Conosco');
       } else {
         setFaleConoscoText(faleConoscoTextLocal);
       }
@@ -1732,8 +1739,8 @@ function Template01({ isVisible01 }: Template01Props) {
         const numeroCellTextLocal = localStorage.getItem('numeroCellText');
 
         if (!faleConoscoTextLocal) {
-          setFaleConoscoText('Fale conosco agora');
-          localStorage.setItem('faleConoscoText', 'Fale conosco agora');
+          setFaleConoscoText('Fale conosco ');
+          localStorage.setItem('faleConoscoText', 'Fale conosco');
         } else {
           setFaleConoscoText(faleConoscoTextLocal);
         }
@@ -2518,38 +2525,46 @@ function Template01({ isVisible01 }: Template01Props) {
 
   return (
     <Container>
-      {loading ? <Loading /> : null}
-      <HeaderFooter bgImage={imageUrlHeader} as="header">
-        <h1>{nomeEmpresaTemplate}</h1>
+
+
+      <HeaderFooter bgImage={imageUrlHeader} as="header" id="01">
+        <h1 className={isInputFocused01 ? "active01" : ""} id="02" >{nomeEmpresaTemplate}</h1>
         <Line></Line>
-        <h2>{randomSubTitleHeaderText}</h2>
-        <button>{faleConoscoText}</button>
+        <h2 className={isInputFocused02 ? "active02" : ""} id="03" >{randomSubTitleHeaderText}</h2>
+        <button className={isInputFocused03 ? "active03" : ""} >{faleConoscoText}</button>
       </HeaderFooter>
 
       <AboutSection>
 
-        <section className="about">
-          <Info>
-            <div className="about-section " id="about-section">
-              <LogoTemplate
-                src={imageUrlAbout}
-                alt="Carregando imagem ... "
-              />
-            </div>
-            <div className="about-section">
-              <h2>Sobre Nós</h2>
-              <Line></Line>
-              <p>{randomTextoAboutText}</p>
-            </div>
-          </Info>
-        </section>
 
-      </AboutSection>
-      <Parallax bgImage={imageUrlParallax}>
+
+        <FirstBlockAbout>
+          <div className="container-block-about" id="04">
+            <LineAbout></LineAbout>
+
+          </div>
+          <h2>Sobre nos
+
+          </h2>
+          <p className={isInputFocused04 ? "active04" : ""} >{randomTextoAboutText}</p>
+
+        </FirstBlockAbout>
+        <SecondBlockAbout>
+          <img
+            className={isInputFocused05 ? "active04" : ""}
+            id="06"
+            src={
+              imageUrlAbout
+            }
+          ></img>
+        </SecondBlockAbout >
+
+      </AboutSection >
+      <Parallax bgImage={imageUrlParallax} >
         <ParallaxContent>
-          <h4>{randomSloganParallaxText}</h4>
+          <h4 className={isInputFocused06 ? "active06" : ""} id="07">{randomSloganParallaxText}</h4>
           <LineParallax></LineParallax>
-          <h2>{randomParallax01Text}</h2>
+          <h2 className={isInputFocused07 ? "active07" : ""} id="08">{randomParallax01Text}</h2>
           <a>
             <Play size={32} weight="fill" />
           </a>
@@ -2557,28 +2572,28 @@ function Template01({ isVisible01 }: Template01Props) {
       </Parallax>
       <PracticeArea>
         <h1>Áreas de atuação </h1>
-        <h4>{randomAboutFirmaText}</h4>
-        <button>{faleConoscoText}</button>
+        <h4 className={isInputFocused08 ? "active08" : ""} id="09">{randomAboutFirmaText}</h4>
+        <button className={isInputFocused09 ? "active09" : ""} id="10" >{faleConoscoText}</button>
 
         <PracticeAreaContentAll>
           <PracticeAreaContent>
             <PracticeContent>
               <h3>01</h3>
-              <h2>{areaAtuacaoOptions1Text}</h2>
+              <h2 className={isInputFocused10 ? "active10" : ""} id="11" >{areaAtuacaoOptions1Text}</h2>
               <LineSmall></LineSmall>
-              <p>{randomAreaAtuacaoOptions1Text}</p>
+              <p className={isInputFocused11 ? "active11" : ""} id="12">{randomAreaAtuacaoOptions1Text}</p>
             </PracticeContent>
             <PracticeContent>
               <h3>02</h3>
-              <h2>{areaAtuacaoOptions2Text}</h2>
+              <h2 className={isInputFocused12 ? "active12" : ""} id="13" >{areaAtuacaoOptions2Text}</h2>
               <LineSmall></LineSmall>
-              <p>{randomAreaAtuacaoOptions2Text}</p>
+              <p className={isInputFocused13 ? "active13" : ""} id="14">{randomAreaAtuacaoOptions2Text}</p>
             </PracticeContent>
             <PracticeContent>
               <h3>03</h3>
-              <h2>{areaAtuacaoOptions3Text}</h2>
+              <h2 className={isInputFocused14 ? "active14" : ""} id="15">{areaAtuacaoOptions3Text}</h2>
               <LineSmall></LineSmall>
-              <p>{randomAreaAtuacaoOptions3Text}</p>
+              <p className={isInputFocused15 ? "active15" : ""} id="16">{randomAreaAtuacaoOptions3Text}</p>
             </PracticeContent>
           </PracticeAreaContent>
         </PracticeAreaContentAll>
@@ -2586,36 +2601,36 @@ function Template01({ isVisible01 }: Template01Props) {
           <PracticeAreaContent>
             <PracticeContent>
               <h3>04</h3>
-              <h2>{areaAtuacaoOptions4Text}</h2>
+              <h2 className={isInputFocused16 ? "active16" : ""} id="17">{areaAtuacaoOptions4Text}</h2>
               <LineSmall></LineSmall>
-              <p>{randomAreaAtuacaoOptions4Text}</p>
+              <p className={isInputFocused17 ? "active17" : ""} id="18">{randomAreaAtuacaoOptions4Text}</p>
             </PracticeContent>
             <PracticeContent>
               <h3>05</h3>
-              <h2>{areaAtuacaoOptions5Text}</h2>
+              <h2 className={isInputFocused18 ? "active18" : ""} id="19">{areaAtuacaoOptions5Text}</h2>
               <LineSmall></LineSmall>
-              <p>{randomAreaAtuacaoOptions5Text}</p>
+              <p className={isInputFocused19 ? "active19" : ""} id="20">{randomAreaAtuacaoOptions5Text}</p>
             </PracticeContent>
             <PracticeContent>
               <h3>06</h3>
-              <h2>{areaAtuacaoOptions6Text}</h2>
+              <h2 className={isInputFocused20 ? "active20" : ""} id="21" >{areaAtuacaoOptions6Text}</h2>
               <LineSmall></LineSmall>
-              <p>{randomAreaAtuacaoOptions6Text}</p>
+              <p className={isInputFocused21 ? "active21" : ""} >{randomAreaAtuacaoOptions6Text}</p>
             </PracticeContent>
           </PracticeAreaContent>
         </PracticeAreaContentAll>
       </PracticeArea>
       <ParallaxContact bgImage={imageUrlParallaxSegunda}>
         <ParallaxContent>
-          <h4>{randomSloganParallaxText}</h4>
+          <h4 className={isInputFocused22 ? "active22" : ""} id="22">{randomSloganParallaxText}</h4>
           <LineParallax></LineParallax>
-          <h2>{faleConoscoProfText}</h2>
-          <h3>{randomFooterText}</h3>
+          <h2 className={isInputFocused23 ? "active23" : ""} id="23">{faleConoscoProfText}</h2>
+          <h3 className={isInputFocused24 ? "active24" : ""} id="24">{randomFooterText}</h3>
           <Contact>
             <a>
               <Phone size={28} weight="fill" />
             </a>
-            <h2>{numeroCellText}</h2>
+            <h2 className={isInputFocused25 ? "active25" : ""} id="25">{numeroCellText}</h2>
           </Contact>
         </ParallaxContent>
       </ParallaxContact>

@@ -1,19 +1,22 @@
 // Theme.ts
 export const FontOne = {
-  fontFamily: 'Montserrat, sans-serif'
+  fontFamily: 'Montserrat, sans-serif',
+  name: 'font-one',
 };
 
 export const FontTwo = {
-  fontFamily: 'Roboto, sans-serif'
+  fontFamily: 'Roboto, sans-serif',
+  name: 'font-two',
 };
 
 export const FontThree = {
-  fontFamily: 'Source Serif Pro, serif'
+  fontFamily: 'Source Serif Pro, serif',
+  name: 'font-three',
 };
 
-
 export const FontFour = {
-  fontFamily: 'Sora, sans-serif'
+  fontFamily: 'Sora, sans-serif',
+  name: 'font-four',
 };
 
 export const PaletteOne = {
@@ -23,6 +26,7 @@ export const PaletteOne = {
   navigationBgColor: '#00DFA7',
   fontBodyColor: '#000',
   fontTitleColor: '#00A0FC',
+  name: 'palette-one',
 };
 
 export const PaletteTwo = {
@@ -32,6 +36,7 @@ export const PaletteTwo = {
   navigationBgColor: '#F0122D',
   fontBodyColor: '#000',
   fontTitleColor: '#F0122D',
+  name: 'palette-two',
 };
 
 export const PaletteTree = {
@@ -41,6 +46,7 @@ export const PaletteTree = {
   navigationBgColor: '#04BA00',
   fontBodyColor: '#000',
   fontTitleColor: '#04BA00',
+  name: 'palette-tree',
 };
 
 export const PaletteFour = {
@@ -50,8 +56,5 @@ export const PaletteFour = {
   navigationBgColor: '#D4A439',
   fontBodyColor: '#000',
   fontTitleColor: '#D4A439',
+  name: 'palette-four',
 };
-
-
-
-

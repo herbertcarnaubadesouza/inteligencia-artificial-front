@@ -186,6 +186,33 @@ function Template03({ isVisible03 }: Template03Props) {
     setCompromissoOption1TextDescripition1,
     setCompromissoOption2TextDescripition2,
     setCompromissoOption3TextDescripition3,
+    isInputFocused01,
+    isInputFocused02,
+    isInputFocused03,
+    isInputFocused04,
+    isInputFocused05,
+    isInputFocused06,
+    isInputFocused07,
+    isInputFocused08,
+    isInputFocused09,
+    isInputFocused10,
+    isInputFocused11,
+    isInputFocused12,
+    isInputFocused13,
+    isInputFocused14,
+    isInputFocused15,
+    isInputFocused16,
+    isInputFocused17,
+    isInputFocused18,
+    isInputFocused19,
+    isInputFocused20,
+    isInputFocused21,
+    isInputFocused22,
+    isInputFocused23,
+    isInputFocused24,
+    isInputFocused25,
+    isInputFocused26,
+
 
   } = useContext(TemplateContext);
 
@@ -299,8 +326,8 @@ function Template03({ isVisible03 }: Template03Props) {
 
 
       if (!faleConoscoTextLocal) {
-        setFaleConoscoText('Agende sua Consulta');
-        localStorage.setItem('faleConoscoText', 'Agende sua Consulta');
+        setFaleConoscoText('Fale Conosco');
+        localStorage.setItem('faleConoscoText', 'Fale Conosco');
       } else {
         setFaleConoscoText(faleConoscoTextLocal);
       }
@@ -1042,6 +1069,13 @@ function Template03({ isVisible03 }: Template03Props) {
       const numeroCellTextLocal = localStorage.getItem('numeroCellText');
 
 
+      const compromissoOption1TextLocal = localStorage.getItem('compromissoOption1Text')
+      const compromissoOption2TextLocal = localStorage.getItem('compromissoOption2Text')
+      const compromissoOption3TextLocal = localStorage.getItem('compromissoOption3Text')
+      const compromissoOption1TextDescripition1Local = localStorage.getItem('compromissoOption1TextDescripition1')
+      const compromissoOption2TextDescripition2Local = localStorage.getItem('compromissoOption1TextDescripition1')
+      const compromissoOption3TextDescripition3Local = localStorage.getItem('compromissoOption1TextDescripition1')
+
 
 
 
@@ -1113,8 +1147,8 @@ function Template03({ isVisible03 }: Template03Props) {
       }
 
       if (!faleConoscoTextLocal) {
-        setFaleConoscoText('Fale conosco agora');
-        localStorage.setItem('faleConoscoText', 'Fale conosco agora');
+        setFaleConoscoText('Fale Conosco');
+        localStorage.setItem('faleConoscoText', 'Fale Conosco');
       } else {
         setFaleConoscoText(faleConoscoTextLocal);
       }
@@ -1905,8 +1939,8 @@ function Template03({ isVisible03 }: Template03Props) {
 
 
         if (!faleConoscoTextLocal) {
-          setFaleConoscoText('Fale conosco agora');
-          localStorage.setItem('faleConoscoText', 'Fale conosco agora');
+          setFaleConoscoText('Fale Conosco');
+          localStorage.setItem('faleConoscoText', 'Fale Conosco');
         } else {
           setFaleConoscoText(faleConoscoTextLocal);
         }
@@ -2627,27 +2661,28 @@ function Template03({ isVisible03 }: Template03Props) {
 
   return (
     <Container>
-      {loading ? <Loading /> : null}
-      <HeaderBlock bgImage={imageUrlHeader}>
+
+
+      <HeaderBlock bgImage={imageUrlHeader} id="01">
         <span></span>
-        <h1>
+        <h1 className={isInputFocused01 ? "active01" : ""} id="02">
           {nomeEmpresaTemplate}
         </h1>
-        <p>
+        <p className={isInputFocused02 ? "active02" : ""} id="03">
           {randomSubTitleHeaderText}
         </p>
-        <button>{faleConoscoText}</button>
+        <button className={isInputFocused03 ? "active03" : ""}>{faleConoscoText}</button>
       </HeaderBlock>
       <AboutSection>
-        <LeftSideBlock>
+        <LeftSideBlock >
           <div>
             <LineAboutSection></LineAboutSection>
             <div className="title-about-section-block">
-              <h2>Sobre nós</h2>
-              <h3>{randomTextoAboutText}</h3>
+              <h2 id="04">Sobre nós</h2>
+              <h3 className={isInputFocused04 ? "active04" : ""}>{randomTextoAboutText}</h3>
             </div>
           </div>
-          <p>{randomSubTitleHeaderText2}</p>
+
 
           <button>{faleConoscoText}</button>
         </LeftSideBlock>
@@ -2663,27 +2698,27 @@ function Template03({ isVisible03 }: Template03Props) {
       <IconSection>
         <div className="Container-blocks">
           <div className="meta-icons">
-            <Person size={35} weight="fill" />
-            <h3>1230+</h3>
+            <Person size={35} weight="fill" id="05" />
+            <h3 className={isInputFocused05 ? "active05" : ""}>{numbers01}</h3>
             <p>Clientes Satisfeitos</p>
           </div>
 
           <div className="meta-icons">
-            <HourglassMedium size={35} weight="fill" />
-            <h3>12+</h3>
+            <HourglassMedium size={35} weight="fill" id="06" />
+            <h3 className={isInputFocused06 ? "active06" : ""}>{numbers02}</h3>
             <p>Anos mercado </p>
           </div>
 
           <div className="meta-icons">
-            <Buildings size={35} weight="fill" />
-            <h3>3</h3>
+            <Buildings size={35} weight="fill" id="07" />
+            <h3 className={isInputFocused07 ? "active07" : ""}>{numbers03}</h3>
             <p>Empreendimentos</p>
           </div>
 
           <div className="meta-icons">
-            <BagSimple size={35} weight="fill" />
-            <h3>500+</h3>
-            <p>Funcionários </p>
+            <BagSimple size={35} weight="fill" id="08" />
+            <h3 className={isInputFocused08 ? "active08" : ""}>{numbers04}</h3>
+            <p>Satisfação</p>
           </div>
         </div>
       </IconSection>
@@ -2706,168 +2741,54 @@ function Template03({ isVisible03 }: Template03Props) {
         </LeftAwardBlock>
 
         <RigthAwardBlock>
-          <div className="Areas-block">
-            <h3>{areaAtuacaoOptions1Text}</h3>
-            <p>{randomAreaAtuacaoOptions1Text}</p>
+          <div className="Areas-block" id="09">
+            <h3 className={isInputFocused09 ? "active09" : ""} id="15">{areaAtuacaoOptions1Text}</h3>
+            <p className={isInputFocused15 ? "active15" : ""}>{randomAreaAtuacaoOptions1Text}</p>
           </div>
 
-          <div className="Areas-block">
-            <h3>{areaAtuacaoOptions2Text}</h3>
-            <p>{randomAreaAtuacaoOptions2Text}</p>
+          <div className="Areas-block" id="10">
+            <h3 className={isInputFocused10 ? "active10" : ""} id="16">{areaAtuacaoOptions2Text}</h3>
+            <p className={isInputFocused16 ? "active16" : ""}>{randomAreaAtuacaoOptions2Text}</p>
           </div>
 
-          <div className="Areas-block">
-            <h3>{areaAtuacaoOptions3Text}</h3>
-            <p>{randomAreaAtuacaoOptions3Text}</p>
+          <div className="Areas-block" id="11">
+            <h3 className={isInputFocused11 ? "active11" : ""} id="17">{areaAtuacaoOptions3Text}</h3>
+            <p className={isInputFocused17 ? "active17" : ""}>{randomAreaAtuacaoOptions3Text}</p>
           </div>
 
 
         </RigthAwardBlock>
 
         <RigthAwardBlock>
-          <div className="Areas-block">
-            <h3>{areaAtuacaoOptions4Text}</h3>
-            <p>{randomAreaAtuacaoOptions4Text}</p>
+          <div className="Areas-block" id="12">
+            <h3 className={isInputFocused12 ? "active12" : ""} id="18">{areaAtuacaoOptions4Text}</h3>
+            <p className={isInputFocused18 ? "active18" : ""}>{randomAreaAtuacaoOptions4Text}</p>
           </div>
 
-          <div className="Areas-block">
-            <h3>{areaAtuacaoOptions5Text}</h3>
-            <p>{randomAreaAtuacaoOptions5Text}</p>
+          <div className="Areas-block" id="13">
+            <h3 className={isInputFocused13 ? "active13" : ""} id="19">{areaAtuacaoOptions5Text}</h3>
+            <p className={isInputFocused19 ? "active19" : ""}>{randomAreaAtuacaoOptions5Text}</p>
           </div>
 
-          <div className="Areas-block">
-            <h3>{areaAtuacaoOptions6Text}</h3>
-            <p>{randomAreaAtuacaoOptions6Text}</p>
+          <div className="Areas-block" id="14">
+            <h3 className={isInputFocused14 ? "active14" : ""} id="20">{areaAtuacaoOptions6Text}</h3>
+            <p className={isInputFocused20 ? "active20" : ""}>{randomAreaAtuacaoOptions6Text}</p>
           </div>
 
 
         </RigthAwardBlock>
       </PraticaceSection>
 
-      <HowWorksSection>
-        <LineAwardsSection></LineAwardsSection>
-        <HowWorksHeaderSection>
-          <div className="Header-How-Work">
-            <div className="containe-title">
-              <h2>Nosso Compromisso</h2>
-              <p>
-                {randomAboutFirmaText}
-              </p>
-            </div>
-          </div>
-          <div className="Header-How-Work">
-            <div className="container-works-pai">
-              <div className="container-works">
-                <h1>01</h1>
-                <h2>{compromissoOption1Text}</h2>
-                <p>
-                  {compromissoOption1TextDescripition1}
-                </p>
-              </div>
-              <div className="container-works">
-                <h1>02</h1>
-                <h2>{compromissoOption2Text}</h2>
-                <p>
-                  {compromissoOption2TextDescripition2}
-                </p>
-              </div>
-              <div className="container-works">
-                <h1>03</h1>
-                <h2>{compromissoOption3Text}</h2>
-                <p>
-                  {compromissoOption3TextDescripition3}
-                </p>
-              </div>
-            </div>
-            <div className="container-btn">
-              <button className="btn"> {faleConoscoText}</button>
 
 
-            </div>
-          </div>
 
-        </HowWorksHeaderSection>
-
-      </HowWorksSection>
-      <HowLocationSection>
-        <div className="container-location">
-          <div className="container-title">
-            <h1> Nossos escritórios</h1>
-            <p>
-
-            </p>
-          </div>
-          <div className="container-modalLocation">
-            <div className="modalLocation">
-              <div className="container-icon">
-
-                <h3>
-                  {nomeEmpresaTemplate}
-                </h3>
-              </div>
-
-              <div className="container-p">
-                <p>{endercoTemplate}</p>
-
-                <p>  {numeroCellText}</p>
-              </div>
-              <div className="container-ping">
-                <p>
-                  <MapPin size={20} weight="fill" />
-                  <span>Localização</span>
-                </p>
-              </div>
-            </div>
-            <div className="modalLocation">
-              <div className="container-icon">
-
-                <h3>
-                  {nomeEmpresaTemplate}
-                </h3>
-              </div>
-
-              <div className="container-p">
-                <p>{endercoTemplate}</p>
-
-                <p>  {numeroCellText}</p>
-              </div>
-              <div className="container-ping">
-                <p>
-                  <MapPin size={20} weight="fill" />
-                  <span>Localização</span>
-                </p>
-              </div>
-            </div>
-            <div className="modalLocation">
-              <div className="container-icon">
-
-                <h3>
-                  {nomeEmpresaTemplate}
-                </h3>
-              </div>
-
-              <div className="container-p">
-                <p>{endercoTemplate}</p>
-
-                <p>  {numeroCellText}</p>
-              </div>
-              <div className="container-ping">
-                <p>
-                  <MapPin size={20} weight="fill" />
-                  <span>Localização</span>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </HowLocationSection>
 
       <HowHelpSection bgImage={imageUrlParallaxSegunda}>
-        <div className="container-help">
+        <div className="container-help" id="21">
           <LineAwardsSection></LineAwardsSection>
 
           <div className="container-inf">
-            <h1>{randomFooterText} </h1>
+            <h1 className={isInputFocused21 ? "active21" : ""}>{randomFooterText} </h1>
             <p>
 
             </p>

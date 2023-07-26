@@ -25,6 +25,7 @@ function RightSide() {
     localStorage.setItem("currentPalette", JSON.stringify(palette));
 
 
+
   };
 
 
@@ -182,23 +183,27 @@ function RightSide() {
           </div>
         </div>
 
-        <div className="down-container">
-          <div className="nav-container-donw">
-            <div className="button-back-donw">
-              <img
-                className="button-back-icon-donw"
-                src="./images/back.svg"
-                alt=""
-              />
-              <p className="button-back-text-donw">Voltar</p>
-            </div>
-            <div className="button-continue-donw">
-              <p className="button-continue-text-donw"> <Link to="/Edit">Continuar</Link></p>
-            </div>
+
+        <div className="nav-container-donwe">
+
+          <div className="button-continue-donw">
+
+            <img
+              className="button-back-icon-donw"
+              src="./images/back.svg"
+              alt=""
+            />
+            <p className="button-continue-text-donw">Voltar</p>
+          </div>
+          <div className="button-continue-donw">
+
+
+            <Link to="/Edit"><p className="button-continue-text-donw">Continuar</p></Link>
           </div>
         </div>
-
       </div>
+
+
 
     </>
   );

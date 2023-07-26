@@ -39,7 +39,7 @@ export const Container = styled.div`
     margin-block: 0;
     margin-right: 1%;
     line-height: 1.4em;
-    width: 100%;
+    width: 70%;
   }
   h2 {
     color: ${(props: ThemeProps) =>
@@ -75,6 +75,19 @@ export const Container = styled.div`
     color: #ffffffd5;
     font-family: ${(props: ThemeProps) => props.theme.font.fontFamily};
   }
+
+
+  .active01, .active02, .active03, .active04, .active05,
+.active06, .active07, .active08, .active09, .active10,
+.active11, .active12, .active13, .active14, .active15,
+.active16, .active17, .active18, .active19, .active20,
+.active21, .active22, .active23, .active24, .active25,
+.active26 {
+
+  border: 3px dashed wheat;
+  position: relative;
+
+}
 `;
 export const HeaderBlock = styled.section<{ bgImage?: string }>`
   display: flex;
@@ -480,6 +493,7 @@ export const PraticaceSection = styled.div`
   margin: 0 auto;
   height:auto;
   gap:50px;
+  padding-block:150px;
 
  @media screen and (max-width:1100px){
   flex-direction:column;

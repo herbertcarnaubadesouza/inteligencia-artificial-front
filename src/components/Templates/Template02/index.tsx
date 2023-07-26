@@ -173,6 +173,32 @@ function Template02({ isVisible02 }: Template02Props) {
     setNumbers02,
     setNumbers03,
     setNumbers04,
+    isInputFocused01,
+    isInputFocused02,
+    isInputFocused03,
+    isInputFocused04,
+    isInputFocused05,
+    isInputFocused06,
+    isInputFocused07,
+    isInputFocused08,
+    isInputFocused09,
+    isInputFocused10,
+    isInputFocused11,
+    isInputFocused12,
+    isInputFocused13,
+    isInputFocused14,
+    isInputFocused15,
+    isInputFocused16,
+    isInputFocused17,
+    isInputFocused18,
+    isInputFocused19,
+    isInputFocused20,
+    isInputFocused21,
+    isInputFocused22,
+    isInputFocused23,
+    isInputFocused24,
+    isInputFocused25,
+    isInputFocused26,
 
   } = useContext(TemplateContext);
 
@@ -286,8 +312,8 @@ function Template02({ isVisible02 }: Template02Props) {
 
 
       if (!faleConoscoTextLocal) {
-        setFaleConoscoText('Agende sua consulta!');
-        localStorage.setItem('faleConoscoText', 'Agende sua consulta!');
+        setFaleConoscoText('Fale Conosco');
+        localStorage.setItem('faleConoscoText', 'Fale Conosco');
       } else {
         setFaleConoscoText(faleConoscoTextLocal);
       }
@@ -1100,8 +1126,8 @@ function Template02({ isVisible02 }: Template02Props) {
       }
 
       if (!faleConoscoTextLocal) {
-        setFaleConoscoText('Fale conosco agora');
-        localStorage.setItem('faleConoscoText', 'Fale conosco agora');
+        setFaleConoscoText('Fale Conosco');
+        localStorage.setItem('faleConoscoText', 'Fale Conosco');
       } else {
         setFaleConoscoText(faleConoscoTextLocal);
       }
@@ -1892,8 +1918,8 @@ function Template02({ isVisible02 }: Template02Props) {
 
 
         if (!faleConoscoTextLocal) {
-          setFaleConoscoText('Fale conosco agora');
-          localStorage.setItem('faleConoscoText', 'Fale conosco agora');
+          setFaleConoscoText('Fale Conosco');
+          localStorage.setItem('faleConoscoText', 'Fale Conosco');
         } else {
           setFaleConoscoText(faleConoscoTextLocal);
         }
@@ -2613,13 +2639,13 @@ function Template02({ isVisible02 }: Template02Props) {
 
   return (
     <Container>
-      {loading ? <Loading /> : null}
-      <HeaderBlock bgImage={imageUrlHeader}>
+
+      <HeaderBlock bgImage={imageUrlHeader} id="01">
         <div className="container-block-header">
           <LineHeader></LineHeader>
 
         </div>
-        <h1>
+        <h1 className={isInputFocused01 ? "active01" : ""} id="02">
           {nomeEmpresaTemplate}
         </h1>
         <LineHeaderBottom></LineHeaderBottom>
@@ -2629,18 +2655,18 @@ function Template02({ isVisible02 }: Template02Props) {
               <PhoneCall size={16} weight="fill" />
               <span>Entre em contato</span>
             </div>
-            <h4>{numeroCellText}</h4>
+            <h4 className={isInputFocused02 ? "active02" : ""}>{numeroCellText}</h4>
           </div>
         </div>
       </HeaderBlock>
-      <AboutSection>
-        <FirstBlockAbout>
+      <AboutSection id="04">
+        <FirstBlockAbout id="03">
           <div className="container-block-about">
-            <LineAbout></LineAbout>
-            <span>{randomSubTitleHeaderText2} </span>
+            <LineAbout > </LineAbout>
+            <span className={isInputFocused04 ? "active04" : ""}>{randomSubTitleHeaderText2} </span>
           </div>
           <h2>Você veio ao lugar certo</h2>
-          <p>{randomTextoAboutText}</p>
+          <p className={isInputFocused03 ? "active03" : ""}>{randomTextoAboutText}</p>
 
         </FirstBlockAbout>
         <SecondBlockAbout>
@@ -2656,38 +2682,38 @@ function Template02({ isVisible02 }: Template02Props) {
           <h2>Nossas Áreas de Atuação</h2>
           <Column>
             <Row>
-              <div className="content-block-atuacao">
-                <LinkSimpleBreak size={32} weight="bold" />
-                <h3>{areaAtuacaoOptions1Text}</h3>
-                <p>{randomAreaAtuacaoOptions1Text}</p>
+              <div className="content-block-atuacao" id="05">
+                <LinkSimpleBreak size={32} weight="bold" id="11" />
+                <h3 className={isInputFocused05 ? "active05" : ""}>{areaAtuacaoOptions1Text}</h3>
+                <p className={isInputFocused11 ? "active11" : ""}>{randomAreaAtuacaoOptions1Text}</p>
               </div>
-              <div className="content-block-atuacao">
-                <NotePencil size={32} weight="bold" />
-                <h3>{areaAtuacaoOptions2Text}</h3>
-                <p>{randomAreaAtuacaoOptions2Text}</p>
+              <div className="content-block-atuacao" id="06">
+                <NotePencil size={32} weight="bold" id="12" />
+                <h3 className={isInputFocused06 ? "active06" : ""}>{areaAtuacaoOptions2Text}</h3>
+                <p className={isInputFocused12 ? "active12" : ""}>{randomAreaAtuacaoOptions2Text}</p>
               </div>
-              <div className="content-block-atuacao">
-                <Handshake size={32} weight="bold" />
-                <h3>{areaAtuacaoOptions3Text}</h3>
-                <p>{randomAreaAtuacaoOptions3Text}</p>
+              <div className="content-block-atuacao" id="07">
+                <Handshake size={32} weight="bold" id="13" />
+                <h3 className={isInputFocused07 ? "active07" : ""}>{areaAtuacaoOptions3Text}</h3>
+                <p className={isInputFocused13 ? "active13" : ""}>{randomAreaAtuacaoOptions3Text}</p>
               </div>
 
             </Row>
             <Row>
-              <div className="content-block-atuacao">
-                <Heart size={32} weight="bold" />
-                <h3>{areaAtuacaoOptions4Text}</h3>
-                <p>{randomAreaAtuacaoOptions4Text}</p>
+              <div className="content-block-atuacao" id="08">
+                <Heart size={32} weight="bold" id="14" />
+                <h3 className={isInputFocused08 ? "active08" : ""}>{areaAtuacaoOptions4Text}</h3>
+                <p className={isInputFocused14 ? "active14" : ""}>{randomAreaAtuacaoOptions4Text}</p>
               </div>
-              <div className="content-block-atuacao">
-                <User size={32} weight="bold" />
-                <h3>{areaAtuacaoOptions5Text}</h3>
-                <p>{randomAreaAtuacaoOptions5Text}</p>
+              <div className="content-block-atuacao" id="09">
+                <User size={32} weight="bold" id="15" />
+                <h3 className={isInputFocused09 ? "active09" : ""}>{areaAtuacaoOptions5Text}</h3>
+                <p className={isInputFocused15 ? "active15" : ""}>{randomAreaAtuacaoOptions5Text}</p>
               </div>
-              <div className="content-block-atuacao">
-                <Scroll size={32} weight="bold" />
-                <h3>{areaAtuacaoOptions6Text}</h3>
-                <p>{randomAreaAtuacaoOptions6Text}</p>
+              <div className="content-block-atuacao" id="10">
+                <Scroll size={32} weight="bold" id="16" />
+                <h3 className={isInputFocused10 ? "active10" : ""}>{areaAtuacaoOptions6Text}</h3>
+                <p className={isInputFocused16 ? "active16" : ""}>{randomAreaAtuacaoOptions6Text}</p>
               </div>
 
 
@@ -2697,31 +2723,31 @@ function Template02({ isVisible02 }: Template02Props) {
         </div>
       </ServicesSection>
       <WhyUs bgImage={imageUrlParallax}>
-        <div className="full-content-whyus">
+        <div className="full-content-whyus" id="17">
           <div className="left-side-whyus">
             <div className="container-block-header">
               <LineHeader></LineHeader>
             </div>
-            <h2>{whyChooseUs}</h2>
-            <div className="block-whyus">
+            <h2 className={isInputFocused17 ? "active17" : ""}>{whyChooseUs}</h2>
+            <div className="block-whyus" id="18">
               <div className="wrap-block-whyus">
                 <h5>01</h5>
                 <div className="block-whyus-p">
-                  <h4>{whyChooseUsOption01}</h4>
+                  <h4 className={isInputFocused18 ? "active18" : ""}>{whyChooseUsOption01}</h4>
 
                 </div>
               </div>
-              <div className="wrap-block-whyus">
+              <div className="wrap-block-whyus" id="18">
                 <h5>02</h5>
                 <div className="block-whyus-p">
-                  <h4>{whyChooseUsOption02}</h4>
+                  <h4 className={isInputFocused19 ? "active19" : ""}>{whyChooseUsOption02}</h4>
 
                 </div>
               </div>
-              <div className="wrap-block-whyus">
+              <div className="wrap-block-whyus" id="19">
                 <h5>03</h5>
                 <div className="block-whyus-p">
-                  <h4>{whyChooseUsOption03}</h4>
+                  <h4 className={isInputFocused20 ? "active20" : ""}>{whyChooseUsOption03}</h4>
 
                 </div>
               </div>
@@ -2729,23 +2755,23 @@ function Template02({ isVisible02 }: Template02Props) {
           </div>
           <RightSideWhyUs>
             <div className="rows-block">
-              <div className="row-div-block">
-                <h2>{numbers01}</h2>
+              <div className="row-div-block" id="21">
+                <h2 className={isInputFocused21 ? "active21" : ""}>{numbers01}</h2>
                 <span>Clientes satisfeitos</span>
               </div>
-              <div className="row-div-block">
-                <h2>{numbers02}</h2>
+              <div className="row-div-block" id="22">
+                <h2 className={isInputFocused22 ? "active22" : ""}>{numbers02}</h2>
                 <span>Anos no Mercado</span>
               </div>
             </div>
             <div className="rows-block">
-              <div className="row-div-block">
-                <h2>{numbers03}</h2>
+              <div className="row-div-block" id="23">
+                <h2 className={isInputFocused23 ? "active23" : ""}>{numbers03}</h2>
                 <span>Profissionais</span>
               </div>
-              <div className="row-div-block">
+              <div className="row-div-block" id="24">
 
-                <h2>{numbers04}</h2>
+                <h2 className={isInputFocused24 ? "active24" : ""}>{numbers04}</h2>
                 <span>Satisfação</span>
               </div>
             </div>
@@ -2755,13 +2781,13 @@ function Template02({ isVisible02 }: Template02Props) {
       <ContactSection>
         <h4>Ligue para nós</h4>
         <h3>{numeroCellText}</h3>
-        <div className="separator-section">
+        <div className="separator-section" id="25">
           <LineDivisorLeft></LineDivisorLeft>
           <p>OU</p>
           <LineDivisorRight></LineDivisorRight>
         </div>
         <h2>{faleConoscoProfText}</h2>
-        <button>{faleConoscoText}</button>
+        <button className={isInputFocused25 ? "active25" : ""}>{faleConoscoText}</button>
       </ContactSection>
       <Footer>
         <div className="content-footer">
