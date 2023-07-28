@@ -574,7 +574,7 @@ export const RigthAwardBlock = styled.div`
     gap: 1rem;
     width:100%;
     height:auto;
-    min-height:150px;
+    min-height:230px;
   
     @media only screen and (max-width: 1600px) {
      margin-bottom:8px;

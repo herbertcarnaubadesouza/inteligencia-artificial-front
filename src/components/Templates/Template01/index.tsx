@@ -151,6 +151,12 @@ function Template01({ isVisible01 }: Template01Props) {
     isInputFocused24,
     isInputFocused25,
     isInputFocused26,
+    handleInputFocus01, handleInputBlur01
+    , inputEdit,
+    setInputEdit,
+    handleclickh1,
+    handleclickh1Close
+
   } = useContext(TemplateContext);
 
   useEffect(() => {
@@ -2523,12 +2529,37 @@ function Template01({ isVisible01 }: Template01Props) {
 
   }
 
+
+
   return (
-    <Container>
+    <Container >
 
 
-      <HeaderFooter bgImage={imageUrlHeader} as="header" id="01">
-        <h1 className={isInputFocused01 ? "active01" : ""} id="02" >{nomeEmpresaTemplate}</h1>
+      <HeaderFooter bgImage={imageUrlHeader} as="header" id="01" >
+        <h1
+          className={isInputFocused01 ? "active01" : ""}
+          id="02"
+          onBlur={handleclickh1Close}
+          onClick={handleclickh1}
+        >
+          {inputEdit ? (
+            <input
+              type="text"
+              value={nomeEmpresaTemplate}
+              onChange={(e) => setNomeEmpresaTemplate(e.target.value)}
+              onFocus={handleInputFocus01}
+              onBlur={handleInputBlur01}
+            />
+          ) : (
+            nomeEmpresaTemplate
+          )}
+
+
+        </h1>
+        {inputEdit && <button onClick={handleclickh1Close}>FECHAR INPUT</button>}
+
+
+
         <Line></Line>
         <h2 className={isInputFocused02 ? "active02" : ""} id="03" >{randomSubTitleHeaderText}</h2>
         <button className={isInputFocused03 ? "active03" : ""} >{faleConoscoText}</button>

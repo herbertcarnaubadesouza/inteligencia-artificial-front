@@ -6,6 +6,7 @@ import { Pen, X } from '@phosphor-icons/react';
 import Template01 from '../Template01/index';
 import { useContext } from 'react';
 import { TemplateContext } from '../useContext/TemplateContext';
+import { useNavigate } from 'react-router-dom';
 
 function EditText() {
   const {
@@ -388,6 +389,11 @@ function EditText() {
     if (fileInputParralax) {
       fileInputParralax.click();
     }
+  };
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate('/preview');
   };
   return (
     <>
@@ -1332,6 +1338,25 @@ function EditText() {
                     onFocus={handleInputFocus21}
                     onBlur={handleInputBlur21}
                   />
+                  <div className="PrintContainer">
+                    <label htmlFor="fileInput" className="LabelUpload">
+                      Arraste e jogue seu anexo aqui
+                    </label>
+                    <input
+                      type="file"
+                      accept=".pdf, .jpeg, .jpg, .png"
+                      onChange={handleImageChangeFooter}
+                      id="fileInputFooter"
+                      style={{ display: 'none' }}
+                    />
+                    <button className="UploadButtone" onClick={fileInputFooter}>
+                      Escolher arquivo
+                    </button>
+
+                    <p className="UploadInfo">
+                      Formatos aceitos PDF, JPEG e PNG
+                    </p>
+                  </div>
 
                   <button onClick={handleSaveSection05}>Salvar</button>
                 </div>
@@ -1340,15 +1365,14 @@ function EditText() {
           </div>
         </div>
         <div className="nav-container-donwe">
-          <div className="button-continue-donw">
+          <div className="button-continue-donw" onClick={handleNavigate}>
             <img
               className="button-back-icon-donw"
               src="./images/back.svg"
               alt=""
             />
-            <Link to="/preview">
-              <p className="button-continue-text-donw">Voltar</p>
-            </Link>
+
+            <p className="button-continue-text-donw">Voltar</p>
           </div>
           <div className="button-continue-donw">
             <Link to="/Edit">

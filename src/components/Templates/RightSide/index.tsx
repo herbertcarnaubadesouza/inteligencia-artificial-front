@@ -14,6 +14,9 @@ import {
   PaletteTwo,
 } from '../Theme'; // Importe o caminho correto para o seu arquivo Theme.ts
 
+
+
+
 function RightSide() {
   const leftSide = useLeftSide();
   const [currentPaletteName, setCurrentPaletteName] = useState('');
@@ -43,8 +46,12 @@ function RightSide() {
   }
 
 
+  const navigate = useNavigate();
 
+  const handleNavigate = () => {
 
+    navigate('/Edit');
+  };
 
   return (
     <>
@@ -195,10 +202,9 @@ function RightSide() {
             />
             <p className="button-continue-text-donw">Voltar</p>
           </div>
-          <div className="button-continue-donw">
+          <div className="button-continue-donw" onClick={handleNavigate}>
 
-
-            <Link to="/Edit"><p className="button-continue-text-donw">Continuar</p></Link>
+            <p className="button-continue-text-donw">Continuar</p>
           </div>
         </div>
       </div>

@@ -9,7 +9,7 @@ const Loading = ({ children }) => {
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeRemaining((prevTime) => prevTime - 1);
-    }, 15000);
+    }, 1000); // Alterado para 1000 milissegundos (1 segundo)
 
     return () => {
       clearInterval(timer);

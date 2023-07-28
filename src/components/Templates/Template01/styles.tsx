@@ -78,8 +78,46 @@ background-color: ${(props: ThemeProps) => props.theme.containerBgColor};
   border: 3px dashed wheat;
   position: relative;
 
+
 }
 
+
+input {
+      width: 100%;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      align-items: center;
+      display: flex;
+      border: none;
+      margin-right: 1px;
+      margin-bottom: 1rem;
+      border: none !important;
+      caret-color: rgb(255, 255, 255);
+      font-size: 14px;
+      font-weight: 400;
+      text-align: start;
+      background: rgba(255, 255, 255, 0.918);
+      backdrop-filter: blur(6.77838px);
+      font-family: 'Poppins';
+      color: #000000;
+
+      &::placeholder {
+        color: #fff;
+        font-size: 14px;
+        font-weight: 300;
+        margin-top: -0.5rem;
+        text-align: start;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+
+.x-margin{
+  margin-bottom:2%;
+}
 `;
 
 const HeaderFooter = styled.div<{ bgImage?: string }>`
@@ -128,6 +166,7 @@ const HeaderFooter = styled.div<{ bgImage?: string }>`
     color: ${(props: ThemeProps) => props.theme.headerFooterTextColor};
     z-index: 999;
     padding-block:10px;
+    
 
     align-items: center;
   justify-content: center;
@@ -617,6 +656,7 @@ const PracticeContent = styled.div`
  text-align:start;
   width:33%;
   height:auto;
+  min-height:300px;
   
 
  
@@ -626,14 +666,14 @@ const PracticeContent = styled.div`
   padding: 0.3;
   text-align: start;
   width: 98%;
-  
+ 
 
 
   }
    
   @media only screen and (max-width: 600px) {
     height:auto;
-
+    min-height:280px;
   }
   
 

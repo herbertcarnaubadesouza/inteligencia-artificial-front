@@ -1,4 +1,5 @@
 import React, { createContext, useState } from 'react';
+import EditText from '../ComponentEditText';
 
 export const TemplateContext = createContext();
 
@@ -132,6 +133,7 @@ export const TemplateProvider = ({ children }) => {
   const [isInputFocused24, setIsInputFocused24] = useState(false);
   const [isInputFocused25, setIsInputFocused25] = useState(false);
   const [isInputFocused26, setIsInputFocused26] = useState(false);
+  const [inputEdit, setInputEdit] = useState(false);
 
   const handleInputFocus01 = () => {
     setIsInputFocused01(true);
@@ -156,6 +158,7 @@ export const TemplateProvider = ({ children }) => {
 
   const handleInputBlur02 = () => {
     setIsInputFocused02(false);
+    setInputEdit(false);
   };
 
   const handleInputFocus03 = () => {
@@ -445,6 +448,13 @@ export const TemplateProvider = ({ children }) => {
   const handleInputBlur26 = () => {
     setIsInputFocused26(false);
   };
+  function handleclickh1() {
+    setInputEdit(true);
+  }
+
+  function handleclickh1Close() {
+    setInputEdit(false);
+  }
 
   const templateState = {
     temaTemplateEscolhido,
@@ -628,6 +638,10 @@ export const TemplateProvider = ({ children }) => {
     isInputFocused24,
     isInputFocused25,
     isInputFocused26,
+    inputEdit,
+    setInputEdit,
+    handleclickh1,
+    handleclickh1Close,
   };
 
   return (

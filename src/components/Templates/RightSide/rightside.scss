@@ -366,16 +366,16 @@
 }
 
 .button-continue-donw {
-  width: 46%;
+  width: 44%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  height: 55px;
+  height: 50px;
   background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10.479px);
   border-radius: 16px;
-  gap: 10px;
+  gap: 7px;
 
   &:hover {
     cursor: pointer;
@@ -386,7 +386,7 @@
     font-family: 'Epilogue';
     font-style: normal;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 70%;
     display: flex;
     text-transform: uppercase;
     color: #ffffff;
@@ -476,21 +476,6 @@
     .button-back-donw {
       width: 30%;
       font-size: 14px;
-    }
-
-    .button-continue-donw {
-      padding: 25px 50px;
-
-      height: 1px;
-
-      &:hover {
-        cursor: pointer;
-        background: #f77f00;
-      }
-
-      .button-continue-text-donw {
-        font-size: 14px;
-      }
     }
   }
 }
