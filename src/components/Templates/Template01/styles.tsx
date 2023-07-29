@@ -75,7 +75,7 @@ background-color: ${(props: ThemeProps) => props.theme.containerBgColor};
 .active21, .active22, .active23, .active24, .active25,
 .active26 {
 
-  border: 3px dashed wheat;
+  border: 2px dashed #f77f00;
   position: relative;
 
 
@@ -92,32 +92,66 @@ input {
       margin-right: 1px;
       margin-bottom: 1rem;
       border: none !important;
-      caret-color: rgb(255, 255, 255);
-      font-size: 14px;
-      font-weight: 400;
+      caret-color: rgb(0, 0, 0);
+      font-size: 16px;
+      font-weight: 500;
       text-align: start;
-      background: rgba(255, 255, 255, 0.918);
-      backdrop-filter: blur(6.77838px);
+      background: rgba(255, 255, 255, 0);
       font-family: 'Poppins';
       color: #000000;
-
-      &::placeholder {
-        color: #fff;
-        font-size: 14px;
-        font-weight: 300;
-        margin-top: -0.5rem;
-        text-align: start;
-      }
+      text-align: center;
+      white-space: pre-wrap;
 
       &:focus {
         outline: none;
       }
+
+     
     }
 
 
 .x-margin{
   margin-bottom:2%;
 }
+
+      .white-text{
+        color: #ffffff;
+        font-size: 48px;
+        white-space: pre-wrap;
+      }
+
+      .white-text-fonte{
+        color: #ffffff;
+        font-size:20px;
+        width:100vw;
+        white-space: pre-wrap;
+        text-align:start;
+      }
+
+      .white-text-fonte-center{
+        color: #ffffff;
+        font-size:20px;
+        width:100vw;
+        white-space: pre-wrap;
+        text-align:start;
+      }
+
+      
+      .white-text-fonte-c{
+        color: #ffffff;
+        font-size:20px;
+    
+        white-space: pre-wrap;
+        text-align:center;
+      }
+      .white-text-black{
+        
+        height:auto;
+        color: #000000;
+        font-size: 18px;
+        min-height:100px;
+        white-space: pre-wrap;
+      }
 `;
 
 const HeaderFooter = styled.div<{ bgImage?: string }>`

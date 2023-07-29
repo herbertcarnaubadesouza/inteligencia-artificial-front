@@ -46,6 +46,10 @@ function Preview() {
     localStorage.removeItem('loading');
   });
 
+  useEffect(() => {
+    localStorage.removeItem("editLocal");
+  }, []);
+
   return (
     <>
 

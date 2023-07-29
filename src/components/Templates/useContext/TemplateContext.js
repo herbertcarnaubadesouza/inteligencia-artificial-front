@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 import EditText from '../ComponentEditText';
 
 export const TemplateContext = createContext();
@@ -133,7 +133,6 @@ export const TemplateProvider = ({ children }) => {
   const [isInputFocused24, setIsInputFocused24] = useState(false);
   const [isInputFocused25, setIsInputFocused25] = useState(false);
   const [isInputFocused26, setIsInputFocused26] = useState(false);
-  const [inputEdit, setInputEdit] = useState(false);
 
   const handleInputFocus01 = () => {
     setIsInputFocused01(true);
@@ -158,7 +157,6 @@ export const TemplateProvider = ({ children }) => {
 
   const handleInputBlur02 = () => {
     setIsInputFocused02(false);
-    setInputEdit(false);
   };
 
   const handleInputFocus03 = () => {
@@ -448,12 +446,304 @@ export const TemplateProvider = ({ children }) => {
   const handleInputBlur26 = () => {
     setIsInputFocused26(false);
   };
-  function handleclickh1() {
-    setInputEdit(true);
+
+  // LOCAL EDIT
+
+  const editLocalTemplate = localStorage.getItem('editLocal');
+
+  const [inputEdit01, setInputEdit01] = useState(false);
+  const [inputEdit02, setInputEdit02] = useState(false);
+  const [inputEdit03, setInputEdit03] = useState(false);
+  const [inputEdit04, setInputEdit04] = useState(false);
+  const [inputEdit05, setInputEdit05] = useState(false);
+  const [inputEdit06, setInputEdit06] = useState(false);
+  const [inputEdit07, setInputEdit07] = useState(false);
+  const [inputEdit08, setInputEdit08] = useState(false);
+  const [inputEdit09, setInputEdit09] = useState(false);
+  const [inputEdit10, setInputEdit10] = useState(false);
+  const [inputEdit11, setInputEdit11] = useState(false);
+  const [inputEdit12, setInputEdit12] = useState(false);
+  const [inputEdit13, setInputEdit13] = useState(false);
+  const [inputEdit14, setInputEdit14] = useState(false);
+  const [inputEdit15, setInputEdit15] = useState(false);
+  const [inputEdit16, setInputEdit16] = useState(false);
+  const [inputEdit17, setInputEdit17] = useState(false);
+  const [inputEdit18, setInputEdit18] = useState(false);
+  const [inputEdit19, setInputEdit19] = useState(false);
+  const [inputEdit20, setInputEdit20] = useState(false);
+  const [inputEdit21, setInputEdit21] = useState(false);
+  const [inputEdit22, setInputEdit22] = useState(false);
+  const [inputEdit23, setInputEdit23] = useState(false);
+  const [inputEdit24, setInputEdit24] = useState(false);
+  const [inputEdit25, setInputEdit25] = useState(false);
+  const [inputEdit26, setInputEdit26] = useState(false);
+  function handleCickFocus01() {
+    setInputEdit01(true);
+    handleInputFocus01();
   }
 
-  function handleclickh1Close() {
-    setInputEdit(false);
+  function handleCickBlur01() {
+    setInputEdit01(false);
+  }
+
+  // 1
+  function handleCickFocus01() {
+    setInputEdit01(true);
+    handleInputFocus01();
+  }
+
+  function handleCickBlur01() {
+    setInputEdit01(false);
+  }
+
+  // 2
+  function handleCickFocus02() {
+    setInputEdit02(true);
+    handleInputFocus02();
+  }
+
+  function handleCickBlur02() {
+    setInputEdit02(false);
+  }
+
+  // 3
+  function handleCickFocus03() {
+    setInputEdit03(true);
+    handleInputFocus03();
+  }
+
+  function handleCickBlur03() {
+    setInputEdit03(false);
+  }
+
+  // 4
+  function handleCickFocus04() {
+    setInputEdit04(true);
+    handleInputFocus04();
+  }
+
+  function handleCickBlur04() {
+    setInputEdit04(false);
+  }
+
+  // 5
+  function handleCickFocus05() {
+    setInputEdit05(true);
+    handleInputFocus05();
+  }
+
+  function handleCickBlur05() {
+    setInputEdit05(false);
+  }
+
+  // 6
+  function handleCickFocus06() {
+    setInputEdit06(true);
+    handleInputFocus06();
+  }
+
+  function handleCickBlur06() {
+    setInputEdit06(false);
+  }
+
+  // 7
+  function handleCickFocus07() {
+    setInputEdit07(true);
+    handleInputFocus07();
+  }
+
+  function handleCickBlur07() {
+    setInputEdit07(false);
+  }
+
+  // 8
+  function handleCickFocus08() {
+    setInputEdit08(true);
+    handleInputFocus08();
+  }
+
+  function handleCickBlur08() {
+    setInputEdit08(false);
+  }
+
+  // 9
+  function handleCickFocus09() {
+    setInputEdit09(true);
+    handleInputFocus09();
+  }
+
+  function handleCickBlur09() {
+    setInputEdit09(false);
+  }
+
+  // 10
+  function handleCickFocus10() {
+    setInputEdit10(true);
+    handleInputFocus10();
+  }
+
+  function handleCickBlur10() {
+    setInputEdit10(false);
+  }
+
+  // 11
+  function handleCickFocus11() {
+    setInputEdit11(true);
+    handleInputFocus11();
+  }
+
+  function handleCickBlur11() {
+    setInputEdit11(false);
+  }
+
+  // 12
+  function handleCickFocus12() {
+    setInputEdit12(true);
+    handleInputFocus12();
+  }
+
+  function handleCickBlur12() {
+    setInputEdit12(false);
+  }
+
+  // 13
+  function handleCickFocus13() {
+    setInputEdit13(true);
+    handleInputFocus13();
+  }
+
+  function handleCickBlur13() {
+    setInputEdit13(false);
+  }
+
+  // 14
+  function handleCickFocus14() {
+    setInputEdit14(true);
+    handleInputFocus14();
+  }
+
+  function handleCickBlur14() {
+    setInputEdit14(false);
+  }
+
+  // 15
+  function handleCickFocus15() {
+    setInputEdit15(true);
+    handleInputFocus15();
+  }
+
+  function handleCickBlur15() {
+    setInputEdit15(false);
+  }
+
+  // 16
+  function handleCickFocus16() {
+    setInputEdit16(true);
+    handleInputFocus16();
+  }
+
+  function handleCickBlur16() {
+    setInputEdit16(false);
+  }
+
+  // 17
+  function handleCickFocus17() {
+    setInputEdit17(true);
+    handleInputFocus17();
+  }
+
+  function handleCickBlur17() {
+    setInputEdit17(false);
+  }
+
+  // 18
+  function handleCickFocus18() {
+    setInputEdit18(true);
+    handleInputFocus18();
+  }
+
+  function handleCickBlur18() {
+    setInputEdit18(false);
+  }
+
+  // 19
+  function handleCickFocus19() {
+    setInputEdit19(true);
+    handleInputFocus19();
+  }
+
+  function handleCickBlur19() {
+    setInputEdit19(false);
+  }
+
+  // 20
+  function handleCickFocus20() {
+    setInputEdit20(true);
+    handleInputFocus20();
+  }
+
+  function handleCickBlur20() {
+    setInputEdit20(false);
+  }
+
+  // 21
+  function handleCickFocus21() {
+    setInputEdit21(true);
+    handleInputFocus21();
+  }
+
+  function handleCickBlur21() {
+    setInputEdit21(false);
+  }
+
+  // 22
+  function handleCickFocus22() {
+    setInputEdit22(true);
+    handleInputFocus22();
+  }
+
+  function handleCickBlur22() {
+    setInputEdit22(false);
+  }
+
+  // 23
+  function handleCickFocus23() {
+    setInputEdit23(true);
+    handleInputFocus23();
+  }
+
+  function handleCickBlur23() {
+    setInputEdit23(false);
+  }
+
+  // 24
+  function handleCickFocus24() {
+    setInputEdit24(true);
+    handleInputFocus24();
+  }
+
+  function handleCickBlur24() {
+    setInputEdit24(false);
+  }
+
+  // 25
+  function handleCickFocus25() {
+    setInputEdit25(true);
+    handleInputFocus25();
+  }
+
+  function handleCickBlur25() {
+    setInputEdit25(false);
+  }
+
+  // 26
+  function handleCickFocus26() {
+    setInputEdit26(true);
+    handleInputFocus26();
+  }
+
+  function handleCickBlur26() {
+    setInputEdit26(false);
   }
 
   const templateState = {
@@ -638,10 +928,89 @@ export const TemplateProvider = ({ children }) => {
     isInputFocused24,
     isInputFocused25,
     isInputFocused26,
-    inputEdit,
-    setInputEdit,
-    handleclickh1,
-    handleclickh1Close,
+    inputEdit01,
+    setInputEdit01,
+    handleCickFocus01,
+    handleCickBlur01,
+    editLocalTemplate,
+    handleCickFocus01,
+    handleCickBlur01,
+    handleCickFocus02,
+    handleCickBlur02,
+    handleCickFocus03,
+    handleCickBlur03,
+    handleCickFocus04,
+    handleCickBlur04,
+    handleCickFocus05,
+    handleCickBlur05,
+    handleCickFocus06,
+    handleCickBlur06,
+    handleCickFocus07,
+    handleCickBlur07,
+    handleCickFocus08,
+    handleCickBlur08,
+    handleCickFocus09,
+    handleCickBlur09,
+    handleCickFocus10,
+    handleCickBlur10,
+    handleCickFocus11,
+    handleCickBlur11,
+    handleCickFocus12,
+    handleCickBlur12,
+    handleCickFocus13,
+    handleCickBlur13,
+    handleCickFocus14,
+    handleCickBlur14,
+    handleCickFocus15,
+    handleCickBlur15,
+    handleCickFocus16,
+    handleCickBlur16,
+    handleCickFocus17,
+    handleCickBlur17,
+    handleCickFocus18,
+    handleCickBlur18,
+    handleCickFocus19,
+    handleCickBlur19,
+    handleCickFocus20,
+    handleCickBlur20,
+    handleCickFocus21,
+    handleCickBlur21,
+    handleCickFocus22,
+    handleCickBlur22,
+    handleCickFocus23,
+    handleCickBlur23,
+    handleCickFocus24,
+    handleCickBlur24,
+    handleCickFocus25,
+    handleCickBlur25,
+    handleCickFocus26,
+    handleCickBlur26,
+    inputEdit01,
+    inputEdit02,
+    inputEdit03,
+    inputEdit04,
+    inputEdit05,
+    inputEdit06,
+    inputEdit07,
+    inputEdit08,
+    inputEdit09,
+    inputEdit10,
+    inputEdit11,
+    inputEdit12,
+    inputEdit13,
+    inputEdit14,
+    inputEdit15,
+    inputEdit16,
+    inputEdit17,
+    inputEdit18,
+    inputEdit19,
+    inputEdit20,
+    inputEdit21,
+    inputEdit22,
+    inputEdit23,
+    inputEdit24,
+    inputEdit25,
+    inputEdit26,
   };
 
   return (

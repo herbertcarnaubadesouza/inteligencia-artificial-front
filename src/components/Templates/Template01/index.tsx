@@ -125,6 +125,60 @@ function Template01({ isVisible01 }: Template01Props) {
     modalOpen05,
     handleInputFocus,
     handleInputBlur,
+
+
+    handleInputFocus01,
+    handleInputBlur01,
+    handleInputFocus02,
+    handleInputBlur02,
+    handleInputFocus03,
+    handleInputBlur03,
+    handleInputFocus04,
+    handleInputBlur04,
+    handleInputFocus05,
+    handleInputBlur05,
+    handleInputFocus06,
+    handleInputBlur06,
+    handleInputFocus07,
+    handleInputBlur07,
+    handleInputFocus08,
+    handleInputBlur08,
+    handleInputFocus09,
+    handleInputBlur09,
+    handleInputFocus10,
+    handleInputBlur10,
+    handleInputFocus11,
+    handleInputBlur11,
+    handleInputFocus12,
+    handleInputBlur12,
+    handleInputFocus13,
+    handleInputBlur13,
+    handleInputFocus14,
+    handleInputBlur14,
+    handleInputFocus15,
+    handleInputBlur15,
+    handleInputFocus16,
+    handleInputBlur16,
+    handleInputFocus17,
+    handleInputBlur17,
+    handleInputFocus18,
+    handleInputBlur18,
+    handleInputFocus19,
+    handleInputBlur19,
+    handleInputFocus20,
+    handleInputBlur20,
+    handleInputFocus21,
+    handleInputBlur21,
+    handleInputFocus22,
+    handleInputBlur22,
+    handleInputFocus23,
+    handleInputBlur23,
+    handleInputFocus24,
+    handleInputBlur24,
+    handleInputFocus25,
+    handleInputBlur25,
+    handleInputFocus26,
+    handleInputBlur26,
     isInputFocused01,
     isInputFocused02,
     isInputFocused03,
@@ -151,11 +205,87 @@ function Template01({ isVisible01 }: Template01Props) {
     isInputFocused24,
     isInputFocused25,
     isInputFocused26,
-    handleInputFocus01, handleInputBlur01
-    , inputEdit,
-    setInputEdit,
-    handleclickh1,
-    handleclickh1Close
+
+    setInputEdit01,
+    handleCickFocus01,
+    handleCickBlur01,
+    editLocalTemplate,
+    handleCickFocus02,
+    handleCickBlur02,
+    handleCickFocus03,
+    handleCickBlur03,
+    handleCickFocus04,
+    handleCickBlur04,
+    handleCickFocus05,
+    handleCickBlur05,
+    handleCickFocus06,
+    handleCickBlur06,
+    handleCickFocus07,
+    handleCickBlur07,
+    handleCickFocus08,
+    handleCickBlur08,
+    handleCickFocus09,
+    handleCickBlur09,
+    handleCickFocus10,
+    handleCickBlur10,
+    handleCickFocus11,
+    handleCickBlur11,
+    handleCickFocus12,
+    handleCickBlur12,
+    handleCickFocus13,
+    handleCickBlur13,
+    handleCickFocus14,
+    handleCickBlur14,
+    handleCickFocus15,
+    handleCickBlur15,
+    handleCickFocus16,
+    handleCickBlur16,
+    handleCickFocus17,
+    handleCickBlur17,
+    handleCickFocus18,
+    handleCickBlur18,
+    handleCickFocus19,
+    handleCickBlur19,
+    handleCickFocus20,
+    handleCickBlur20,
+    handleCickFocus21,
+    handleCickBlur21,
+    handleCickFocus22,
+    handleCickBlur22,
+    handleCickFocus23,
+    handleCickBlur23,
+    handleCickFocus24,
+    handleCickBlur24,
+    handleCickFocus25,
+    handleCickBlur25,
+    handleCickFocus26,
+    handleCickBlur26,
+    inputEdit01,
+    inputEdit02,
+    inputEdit03,
+    inputEdit04,
+    inputEdit05,
+    inputEdit06,
+    inputEdit07,
+    inputEdit08,
+    inputEdit09,
+    inputEdit10,
+    inputEdit11,
+    inputEdit12,
+    inputEdit13,
+    inputEdit14,
+    inputEdit15,
+    inputEdit16,
+    inputEdit17,
+    inputEdit18,
+    inputEdit19,
+    inputEdit20,
+    inputEdit21,
+    inputEdit22,
+    inputEdit23,
+    inputEdit24,
+    inputEdit25,
+    inputEdit26,
 
   } = useContext(TemplateContext);
 
@@ -2531,6 +2661,7 @@ function Template01({ isVisible01 }: Template01Props) {
 
 
 
+
   return (
     <Container >
 
@@ -2539,30 +2670,62 @@ function Template01({ isVisible01 }: Template01Props) {
         <h1
           className={isInputFocused01 ? "active01" : ""}
           id="02"
-          onBlur={handleclickh1Close}
-          onClick={handleclickh1}
+          onBlur={handleCickBlur01}
+          onClick={editLocalTemplate ? handleCickFocus01 : null}
         >
-          {inputEdit ? (
+          {inputEdit01 ? (
             <input
               type="text"
               value={nomeEmpresaTemplate}
               onChange={(e) => setNomeEmpresaTemplate(e.target.value)}
               onFocus={handleInputFocus01}
               onBlur={handleInputBlur01}
+              className="white-text"
             />
           ) : (
             nomeEmpresaTemplate
           )}
-
-
         </h1>
-        {inputEdit && <button onClick={handleclickh1Close}>FECHAR INPUT</button>}
+
 
 
 
         <Line></Line>
-        <h2 className={isInputFocused02 ? "active02" : ""} id="03" >{randomSubTitleHeaderText}</h2>
-        <button className={isInputFocused03 ? "active03" : ""} >{faleConoscoText}</button>
+        <h2 className={isInputFocused02 ? "active02" : ""} id="03"
+
+          onBlur={handleCickBlur02}
+          onClick={editLocalTemplate ? handleCickFocus02 : null}>
+
+
+          {inputEdit02 ? (
+            <input
+              type="text"
+              value={randomSubTitleHeaderText}
+              onChange={(e) => setRandomSubTitleHeaderText(e.target.value)}
+              onFocus={handleInputFocus02}
+              onBlur={handleInputBlur02}
+              className="white-text-fonte"
+            />
+          ) : (
+            randomSubTitleHeaderText
+          )}
+
+
+
+
+
+
+
+        </h2>
+        <button className={isInputFocused03 ? "active03" : ""}
+          onBlur={handleCickBlur03}
+          onClick={editLocalTemplate ? handleCickFocus03 : null}>
+
+
+
+
+
+          {faleConoscoText}</button>
       </HeaderFooter>
 
       <AboutSection>
@@ -2577,13 +2740,33 @@ function Template01({ isVisible01 }: Template01Props) {
           <h2>Sobre nos
 
           </h2>
-          <p className={isInputFocused04 ? "active04" : ""} >{randomTextoAboutText}</p>
+          <p className={isInputFocused04 ? "active04" : ""}
+            onBlur={handleCickBlur04}
+            onClick={editLocalTemplate ? handleCickFocus04 : null}
+
+
+
+          >
+            {inputEdit04 ? (
+              <input
+                type="text"
+                value={randomTextoAboutText}
+                onChange={(e) => setRandomTextoAboutText(e.target.value)}
+                onFocus={handleInputFocus04}
+                onBlur={handleInputBlur04}
+                className="white-text-black"
+              />
+            ) : (
+              randomTextoAboutText
+            )}
+
+          </p>
 
         </FirstBlockAbout>
         <SecondBlockAbout>
           <img
             className={isInputFocused05 ? "active04" : ""}
-            id="06"
+
             src={
               imageUrlAbout
             }
@@ -2591,11 +2774,48 @@ function Template01({ isVisible01 }: Template01Props) {
         </SecondBlockAbout >
 
       </AboutSection >
-      <Parallax bgImage={imageUrlParallax} >
+      <Parallax bgImage={imageUrlParallax} id="06" >
         <ParallaxContent>
-          <h4 className={isInputFocused06 ? "active06" : ""} id="07">{randomSloganParallaxText}</h4>
+          <h4 className={isInputFocused06 ? "active06" : ""} id="07"
+            onBlur={handleCickBlur06}
+            onClick={editLocalTemplate ? handleCickFocus06 : null}
+
+          >
+            {inputEdit06 ? (
+              <input
+                type="text"
+                value={randomSloganParallaxText}
+                onChange={(e) => setRandomSloganParallaxText(e.target.value)}
+                onFocus={handleInputFocus06}
+                onBlur={handleInputBlur06}
+                className="white-text-fonte"
+              />
+            ) : (
+              randomSloganParallaxText
+            )}
+
+
+          </h4>
           <LineParallax></LineParallax>
-          <h2 className={isInputFocused07 ? "active07" : ""} id="08">{randomParallax01Text}</h2>
+          <h2 className={isInputFocused07 ? "active07" : ""} id="08"
+
+            onBlur={handleCickBlur07}
+            onClick={editLocalTemplate ? handleCickFocus07 : null}
+          >
+            {inputEdit07 ? (
+              <input
+                type="text"
+                value={randomParallax01Text}
+                onChange={(e) => setRandomParallax01Text(e.target.value)}
+                onFocus={handleInputFocus07}
+                onBlur={handleInputBlur07}
+                className="white-text-fonte"
+              />
+            ) : (
+              randomParallax01Text
+            )}
+
+          </h2>
           <a>
             <Play size={32} weight="fill" />
           </a>
@@ -2603,28 +2823,185 @@ function Template01({ isVisible01 }: Template01Props) {
       </Parallax>
       <PracticeArea>
         <h1>Áreas de atuação </h1>
-        <h4 className={isInputFocused08 ? "active08" : ""} id="09">{randomAboutFirmaText}</h4>
-        <button className={isInputFocused09 ? "active09" : ""} id="10" >{faleConoscoText}</button>
+        <h4 className={isInputFocused08 ? "active08" : ""} id="09"
+
+          onBlur={handleCickBlur08}
+          onClick={editLocalTemplate ? handleCickFocus08 : null}
+
+        >
+          {inputEdit08 ? (
+            <input
+              type="text"
+              value={randomAboutFirmaText}
+              onChange={(e) => setRandomAboutFirmaText(e.target.value)}
+              onFocus={handleInputFocus08}
+              onBlur={handleInputBlur08}
+              className="white-text-black"
+            />
+          ) : (
+            randomAboutFirmaText
+          )}
+
+
+
+
+
+
+        </h4>
+        <button className={isInputFocused09 ? "active09" : ""} id="10">
+          {faleConoscoText}
+
+        </button>
 
         <PracticeAreaContentAll>
           <PracticeAreaContent>
             <PracticeContent>
               <h3>01</h3>
-              <h2 className={isInputFocused10 ? "active10" : ""} id="11" >{areaAtuacaoOptions1Text}</h2>
+              <h2 className={isInputFocused10 ? "active10" : ""} id="11"
+
+                onBlur={handleCickBlur10}
+                onClick={editLocalTemplate ? handleCickFocus10 : null}
+
+              >
+                {inputEdit10 ? (
+                  <input
+                    type="text"
+                    value={areaAtuacaoOptions1Text}
+                    onChange={(e) => setAreaAtuacaoOptions1Text(e.target.value)}
+                    onFocus={handleInputFocus10}
+                    onBlur={handleInputBlur10}
+
+                  />
+                ) : (
+                  areaAtuacaoOptions1Text
+                )}
+
+              </h2>
               <LineSmall></LineSmall>
-              <p className={isInputFocused11 ? "active11" : ""} id="12">{randomAreaAtuacaoOptions1Text}</p>
+              <p className={isInputFocused11 ? "active11" : ""} id="12"
+
+                onBlur={handleCickBlur11}
+                onClick={editLocalTemplate ? handleCickFocus11 : null}
+
+              >
+                {inputEdit11 ? (
+                  <input
+                    type="text"
+                    value={randomAreaAtuacaoOptions1Text}
+                    onChange={(e) => setRandomAreaAtuacaoOptions1Text(e.target.value)}
+                    onFocus={handleInputFocus11}
+                    onBlur={handleInputBlur11}
+
+                  />
+                ) : (
+                  randomAreaAtuacaoOptions1Text
+                )}
+
+
+
+
+
+
+              </p>
             </PracticeContent>
             <PracticeContent>
               <h3>02</h3>
-              <h2 className={isInputFocused12 ? "active12" : ""} id="13" >{areaAtuacaoOptions2Text}</h2>
+              <h2 className={isInputFocused12 ? "active12" : ""} id="13"
+
+                onBlur={handleCickBlur12}
+                onClick={editLocalTemplate ? handleCickFocus12 : null}
+
+
+              >
+                {inputEdit12 ? (
+                  <input
+                    type="text"
+                    value={areaAtuacaoOptions2Text}
+                    onChange={(e) => setAreaAtuacaoOptions2Text(e.target.value)}
+                    onFocus={handleInputFocus12}
+                    onBlur={handleInputBlur12}
+
+                  />
+                ) : (
+                  areaAtuacaoOptions2Text
+                )}
+
+
+
+
+
+              </h2>
               <LineSmall></LineSmall>
-              <p className={isInputFocused13 ? "active13" : ""} id="14">{randomAreaAtuacaoOptions2Text}</p>
+              <p className={isInputFocused13 ? "active13" : ""} id="14"
+
+
+                onBlur={handleCickBlur13}
+                onClick={editLocalTemplate ? handleCickFocus13 : null}
+
+              >
+                {inputEdit13 ? (
+                  <input
+                    type="text"
+                    value={randomAreaAtuacaoOptions2Text}
+                    onChange={(e) => setRandomAreaAtuacaoOptions2Text(e.target.value)}
+                    onFocus={handleInputFocus13}
+                    onBlur={handleInputBlur13}
+
+                  />
+                ) : (
+                  randomAreaAtuacaoOptions2Text
+                )}
+
+              </p>
             </PracticeContent>
             <PracticeContent>
               <h3>03</h3>
-              <h2 className={isInputFocused14 ? "active14" : ""} id="15">{areaAtuacaoOptions3Text}</h2>
+              <h2 className={isInputFocused14 ? "active14" : ""} id="15"
+
+
+                onBlur={handleCickBlur14}
+                onClick={editLocalTemplate ? handleCickFocus14 : null}
+
+
+              >
+                {inputEdit14 ? (
+                  <input
+                    type="text"
+                    value={areaAtuacaoOptions3Text}
+                    onChange={(e) => setAreaAtuacaoOptions3Text(e.target.value)}
+                    onFocus={handleInputFocus14}
+                    onBlur={handleInputBlur14}
+
+                  />
+                ) : (
+                  areaAtuacaoOptions3Text
+                )}
+
+              </h2>
               <LineSmall></LineSmall>
-              <p className={isInputFocused15 ? "active15" : ""} id="16">{randomAreaAtuacaoOptions3Text}</p>
+              <p className={isInputFocused15 ? "active15" : ""} id="16"
+
+                onBlur={handleCickBlur15}
+                onClick={editLocalTemplate ? handleCickFocus15 : null}
+
+              >
+                {inputEdit15 ? (
+                  <input
+                    type="text"
+                    value={randomAreaAtuacaoOptions3Text}
+                    onChange={(e) => setRandomAreaAtuacaoOptions3Text(e.target.value)}
+                    onFocus={handleInputFocus15}
+                    onBlur={handleInputBlur15}
+
+                  />
+                ) : (
+                  randomAreaAtuacaoOptions3Text
+                )}
+
+
+
+
+              </p>
             </PracticeContent>
           </PracticeAreaContent>
         </PracticeAreaContentAll>
@@ -2632,21 +3009,160 @@ function Template01({ isVisible01 }: Template01Props) {
           <PracticeAreaContent>
             <PracticeContent>
               <h3>04</h3>
-              <h2 className={isInputFocused16 ? "active16" : ""} id="17">{areaAtuacaoOptions4Text}</h2>
+              <h2 className={isInputFocused16 ? "active16" : ""} id="17"
+
+                onBlur={handleCickBlur16}
+                onClick={editLocalTemplate ? handleCickFocus16 : null}
+
+              >
+
+                {inputEdit16 ? (
+                  <input
+                    type="text"
+                    value={areaAtuacaoOptions4Text}
+                    onChange={(e) => setAreaAtuacaoOptions4Text(e.target.value)}
+                    onFocus={handleInputFocus16}
+                    onBlur={handleInputBlur16}
+
+                  />
+                ) : (
+                  areaAtuacaoOptions4Text
+                )}
+
+
+              </h2>
               <LineSmall></LineSmall>
-              <p className={isInputFocused17 ? "active17" : ""} id="18">{randomAreaAtuacaoOptions4Text}</p>
+              <p className={isInputFocused17 ? "active17" : ""} id="18"
+
+                onBlur={handleCickBlur17}
+                onClick={editLocalTemplate ? handleCickFocus17 : null}
+
+
+
+              >
+
+                {inputEdit17 ? (
+                  <input
+                    type="text"
+                    value={randomAreaAtuacaoOptions4Text}
+                    onChange={(e) => setRandomAreaAtuacaoOptions4Text(e.target.value)}
+                    onFocus={handleInputFocus17}
+                    onBlur={handleInputBlur17}
+
+                  />
+                ) : (
+                  randomAreaAtuacaoOptions4Text
+                )}
+
+
+
+              </p>
             </PracticeContent>
             <PracticeContent>
               <h3>05</h3>
-              <h2 className={isInputFocused18 ? "active18" : ""} id="19">{areaAtuacaoOptions5Text}</h2>
+              <h2 className={isInputFocused18 ? "active18" : ""} id="19"
+
+                onBlur={handleCickBlur18}
+                onClick={editLocalTemplate ? handleCickFocus18 : null}
+
+              >
+
+                {inputEdit18 ? (
+                  <input
+                    type="text"
+                    value={areaAtuacaoOptions5Text}
+                    onChange={(e) => setAreaAtuacaoOptions5Text(e.target.value)}
+                    onFocus={handleInputFocus18}
+                    onBlur={handleInputBlur18}
+
+                  />
+                ) : (
+                  areaAtuacaoOptions5Text
+                )}
+
+
+
+              </h2>
               <LineSmall></LineSmall>
-              <p className={isInputFocused19 ? "active19" : ""} id="20">{randomAreaAtuacaoOptions5Text}</p>
+              <p className={isInputFocused19 ? "active19" : ""} id="20"
+
+                onBlur={handleCickBlur19}
+                onClick={editLocalTemplate ? handleCickFocus19 : null}
+
+
+              >
+
+
+                {inputEdit19 ? (
+                  <input
+                    type="text"
+                    value={randomAreaAtuacaoOptions5Text}
+                    onChange={(e) => setRandomAreaAtuacaoOptions5Text(e.target.value)}
+                    onFocus={handleInputFocus19}
+                    onBlur={handleInputBlur19}
+
+                  />
+                ) : (
+                  randomAreaAtuacaoOptions5Text
+                )}
+
+              </p>
             </PracticeContent>
             <PracticeContent>
               <h3>06</h3>
-              <h2 className={isInputFocused20 ? "active20" : ""} id="21" >{areaAtuacaoOptions6Text}</h2>
+              <h2 className={isInputFocused20 ? "active20" : ""} id="21"
+
+                onBlur={handleCickBlur20}
+                onClick={editLocalTemplate ? handleCickFocus20 : null}
+
+
+              >
+
+                {inputEdit20 ? (
+                  <input
+                    type="text"
+                    value={areaAtuacaoOptions6Text}
+                    onChange={(e) => setAreaAtuacaoOptions6Text(e.target.value)}
+                    onFocus={handleInputFocus20}
+                    onBlur={handleInputBlur20}
+
+                  />
+                ) : (
+                  areaAtuacaoOptions6Text
+                )}
+
+
+
+
+              </h2>
               <LineSmall></LineSmall>
-              <p className={isInputFocused21 ? "active21" : ""} >{randomAreaAtuacaoOptions6Text}</p>
+              <p className={isInputFocused21 ? "active21" : ""}
+
+
+                onBlur={handleCickBlur21}
+                onClick={editLocalTemplate ? handleCickFocus21 : null}
+
+
+              >
+
+                {inputEdit21 ? (
+                  <input
+                    type="text"
+                    value={randomAreaAtuacaoOptions6Text}
+                    onChange={(e) => setRandomAreaAtuacaoOptions6Text(e.target.value)}
+                    onFocus={handleInputFocus21}
+                    onBlur={handleInputBlur21}
+
+                  />
+                ) : (
+                  randomAreaAtuacaoOptions6Text
+                )}
+
+
+
+
+
+              </p>
             </PracticeContent>
           </PracticeAreaContent>
         </PracticeAreaContentAll>
@@ -2655,13 +3171,89 @@ function Template01({ isVisible01 }: Template01Props) {
         <ParallaxContent>
           <h4 className={isInputFocused22 ? "active22" : ""} id="22">{randomSloganParallaxText}</h4>
           <LineParallax></LineParallax>
-          <h2 className={isInputFocused23 ? "active23" : ""} id="23">{faleConoscoProfText}</h2>
-          <h3 className={isInputFocused24 ? "active24" : ""} id="24">{randomFooterText}</h3>
+          <h2 className={isInputFocused23 ? "active23" : ""} id="23"
+
+            onBlur={handleCickBlur23}
+            onClick={editLocalTemplate ? handleCickFocus23 : null}
+
+          >
+
+            {inputEdit23 ? (
+              <input
+                type="text"
+                value={faleConoscoProfText}
+                onChange={(e) => setFaleConoscoProfText(e.target.value)}
+                onFocus={handleInputFocus23}
+                onBlur={handleInputBlur23}
+                className='white-text-fonte'
+
+              />
+            ) : (
+              faleConoscoProfText
+            )}
+
+
+
+
+
+
+
+          </h2>
+          <h3 className={isInputFocused24 ? "active24" : ""} id="24"
+
+            onBlur={handleCickBlur24}
+            onClick={editLocalTemplate ? handleCickFocus24 : null}
+
+
+          >
+            {inputEdit24 ? (
+              <input
+                type="text"
+                value={randomFooterText}
+                onChange={(e) => setRandomFooterText(e.target.value)}
+                onFocus={handleInputFocus24}
+                onBlur={handleInputBlur24}
+                className='white-text-fonte-center'
+
+              />
+            ) : (
+              randomFooterText
+            )}
+
+
+
+          </h3>
           <Contact>
             <a>
               <Phone size={28} weight="fill" />
             </a>
-            <h2 className={isInputFocused25 ? "active25" : ""} id="25">{numeroCellText}</h2>
+            <h2 className={isInputFocused25 ? "active25" : ""} id="25"
+
+
+
+
+              onBlur={handleCickBlur25}
+              onClick={editLocalTemplate ? handleCickFocus25 : null}
+
+
+
+            >
+
+              {inputEdit25 ? (
+                <input
+                  type="text"
+                  value={numeroCellText}
+                  onChange={(e) => setNumeroCellText(e.target.value)}
+                  onFocus={handleInputFocus25}
+                  onBlur={handleInputBlur25}
+                  className='white-text-fonte-c'
+
+                />
+              ) : (
+                numeroCellText
+              )}
+
+            </h2>
           </Contact>
         </ParallaxContent>
       </ParallaxContact>

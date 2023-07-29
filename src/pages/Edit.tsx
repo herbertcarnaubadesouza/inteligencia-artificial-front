@@ -8,6 +8,12 @@ function Preview() {
   const [isQuestionVisible, setIsQuestionVisible] = useState(true);
   const [isQuestion02Visible, setIsQuestion02Visible] = useState(false);
 
+
+  useEffect(() => {
+
+    const editLocal = localStorage.setItem("editLocal", "editLocal")
+  }, [])
+
   const ocultarQuestion = () => {
     setIsQuestionVisible(false);
     setIsQuestion02Visible(true);
