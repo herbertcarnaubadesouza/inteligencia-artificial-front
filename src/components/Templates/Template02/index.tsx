@@ -155,6 +155,14 @@ function Template02({ isVisible02 }: Template02Props) {
     modalOpen03,
     modalOpen04,
     modalOpen05,
+    setModalOpen,
+    setModalOpen01,
+    setModalOpen02,
+    setModalOpen03,
+    setModalOpen04,
+    setModalOpen05,
+    TemplateEscolhido,
+    setTemplateEscolhido,
     randomSubTitleHeaderText2,
     setRandomSubTitleHeaderText2,
     whyChooseUs,
@@ -173,6 +181,71 @@ function Template02({ isVisible02 }: Template02Props) {
     setNumbers02,
     setNumbers03,
     setNumbers04,
+    compromissoOption1TextDescripition1,
+    compromissoOption2TextDescripition2,
+    compromissoOption3TextDescripition3,
+    compromissoOption1Text,
+    compromissoOption2Text,
+    compromissoOption3Text,
+    setCompromissoOption1Text,
+    setCompromissoOption2Text,
+    setCompromissoOption3Text,
+    setCompromissoOption1TextDescripition1,
+    setCompromissoOption2TextDescripition2,
+    setCompromissoOption3TextDescripition3,
+
+    handleInputFocus01,
+    handleInputBlur01,
+    handleInputFocus02,
+    handleInputBlur02,
+    handleInputFocus03,
+    handleInputBlur03,
+    handleInputFocus04,
+    handleInputBlur04,
+    handleInputFocus05,
+    handleInputBlur05,
+    handleInputFocus06,
+    handleInputBlur06,
+    handleInputFocus07,
+    handleInputBlur07,
+    handleInputFocus08,
+    handleInputBlur08,
+    handleInputFocus09,
+    handleInputBlur09,
+    handleInputFocus10,
+    handleInputBlur10,
+    handleInputFocus11,
+    handleInputBlur11,
+    handleInputFocus12,
+    handleInputBlur12,
+    handleInputFocus13,
+    handleInputBlur13,
+    handleInputFocus14,
+    handleInputBlur14,
+    handleInputFocus15,
+    handleInputBlur15,
+    handleInputFocus16,
+    handleInputBlur16,
+    handleInputFocus17,
+    handleInputBlur17,
+    handleInputFocus18,
+    handleInputBlur18,
+    handleInputFocus19,
+    handleInputBlur19,
+    handleInputFocus20,
+    handleInputBlur20,
+    handleInputFocus21,
+    handleInputBlur21,
+    handleInputFocus22,
+    handleInputBlur22,
+    handleInputFocus23,
+    handleInputBlur23,
+    handleInputFocus24,
+    handleInputBlur24,
+    handleInputFocus25,
+    handleInputBlur25,
+    handleInputFocus26,
+    handleInputBlur26,
     isInputFocused01,
     isInputFocused02,
     isInputFocused03,
@@ -199,6 +272,88 @@ function Template02({ isVisible02 }: Template02Props) {
     isInputFocused24,
     isInputFocused25,
     isInputFocused26,
+    inputEdit01,
+    setInputEdit01,
+    editLocalTemplate,
+    handleCickFocus01,
+    handleCickBlur01,
+    handleCickFocus02,
+    handleCickBlur02,
+    handleCickFocus03,
+    handleCickBlur03,
+    handleCickFocus04,
+    handleCickBlur04,
+    handleCickFocus05,
+    handleCickBlur05,
+    handleCickFocus06,
+    handleCickBlur06,
+    handleCickFocus07,
+    handleCickBlur07,
+    handleCickFocus08,
+    handleCickBlur08,
+    handleCickFocus09,
+    handleCickBlur09,
+    handleCickFocus10,
+    handleCickBlur10,
+    handleCickFocus11,
+    handleCickBlur11,
+    handleCickFocus12,
+    handleCickBlur12,
+    handleCickFocus13,
+    handleCickBlur13,
+    handleCickFocus14,
+    handleCickBlur14,
+    handleCickFocus15,
+    handleCickBlur15,
+    handleCickFocus16,
+    handleCickBlur16,
+    handleCickFocus17,
+    handleCickBlur17,
+    handleCickFocus18,
+    handleCickBlur18,
+    handleCickFocus19,
+    handleCickBlur19,
+    handleCickFocus20,
+    handleCickBlur20,
+    handleCickFocus21,
+    handleCickBlur21,
+    handleCickFocus22,
+    handleCickBlur22,
+    handleCickFocus23,
+    handleCickBlur23,
+    handleCickFocus24,
+    handleCickBlur24,
+    handleCickFocus25,
+    handleCickBlur25,
+    handleCickFocus26,
+    handleCickBlur26,
+
+    inputEdit02,
+    inputEdit03,
+    inputEdit04,
+    inputEdit05,
+    inputEdit06,
+    inputEdit07,
+    inputEdit08,
+    inputEdit09,
+    inputEdit10,
+    inputEdit11,
+    inputEdit12,
+    inputEdit13,
+    inputEdit14,
+    inputEdit15,
+    inputEdit16,
+    inputEdit17,
+    inputEdit18,
+    inputEdit19,
+    inputEdit20,
+    inputEdit21,
+    inputEdit22,
+    inputEdit23,
+    inputEdit24,
+    inputEdit25,
+    inputEdit26,
+
 
   } = useContext(TemplateContext);
 
@@ -2645,8 +2800,23 @@ function Template02({ isVisible02 }: Template02Props) {
           <LineHeader></LineHeader>
 
         </div>
-        <h1 className={isInputFocused01 ? "active01" : ""} id="02">
-          {nomeEmpresaTemplate}
+        <h1 className={isInputFocused01 ? "active01" : ""} id="02"
+          onBlur={handleCickBlur01}
+          onClick={editLocalTemplate ? handleCickFocus01 : null}
+
+        >
+          {inputEdit01 ? (
+            <input
+              type="text"
+              value={nomeEmpresaTemplate}
+              onChange={(e) => setNomeEmpresaTemplate(e.target.value)}
+              onFocus={handleInputFocus01}
+              onBlur={handleInputBlur01}
+              className="white-text"
+            />
+          ) : (
+            nomeEmpresaTemplate
+          )}
         </h1>
         <LineHeaderBottom></LineHeaderBottom>
         <div className="container-header-footer-block">
@@ -2655,7 +2825,24 @@ function Template02({ isVisible02 }: Template02Props) {
               <PhoneCall size={16} weight="fill" />
               <span>Entre em contato</span>
             </div>
-            <h4 className={isInputFocused02 ? "active02" : ""}>{numeroCellText}</h4>
+            <h4 className={isInputFocused02 ? "active02" : ""}
+              onBlur={handleCickBlur02}
+              onClick={editLocalTemplate ? handleCickFocus02 : null}
+            >
+              {inputEdit02 ? (
+                <input
+                  type="text"
+                  value={numeroCellText}
+                  onChange={(e) => setNumeroCellText(e.target.value)}
+                  onFocus={handleInputFocus02}
+                  onBlur={handleInputBlur02}
+                  className="white-text-fonte"
+                />
+              ) : (
+                numeroCellText
+              )}
+
+            </h4>
           </div>
         </div>
       </HeaderBlock>
@@ -2663,10 +2850,47 @@ function Template02({ isVisible02 }: Template02Props) {
         <FirstBlockAbout id="03">
           <div className="container-block-about">
             <LineAbout > </LineAbout>
-            <span className={isInputFocused04 ? "active04" : ""}>{randomSubTitleHeaderText2} </span>
+            <span className={isInputFocused04 ? "active04" : ""}
+              onBlur={handleCickBlur04}
+              onClick={editLocalTemplate ? handleCickFocus04 : null}
+
+            >
+              {inputEdit04 ? (
+                <input
+                  type="text"
+                  value={randomSubTitleHeaderText2}
+                  onChange={(e) => setRandomSubTitleHeaderText2(e.target.value)}
+                  onFocus={handleInputFocus04}
+                  onBlur={handleInputBlur04}
+                  className="white-text-black"
+                />
+              ) : (
+                randomSubTitleHeaderText2
+              )}
+
+
+            </span>
           </div>
           <h2>Você veio ao lugar certo</h2>
-          <p className={isInputFocused03 ? "active03" : ""}>{randomTextoAboutText}</p>
+          <p className={isInputFocused03 ? "active03" : ""}
+            onBlur={handleCickBlur03}
+            onClick={editLocalTemplate ? handleCickFocus03 : null}
+
+          >
+            {inputEdit03 ? (
+              <input
+                type="text"
+                value={randomTextoAboutText}
+                onChange={(e) => setRandomTextoAboutText(e.target.value)}
+                onFocus={handleInputFocus03}
+                onBlur={handleInputBlur03}
+
+              />
+            ) : (
+              randomTextoAboutText
+            )}
+
+          </p>
 
         </FirstBlockAbout>
         <SecondBlockAbout>
@@ -2684,36 +2908,291 @@ function Template02({ isVisible02 }: Template02Props) {
             <Row>
               <div className="content-block-atuacao" id="05">
                 <LinkSimpleBreak size={32} weight="bold" id="11" />
-                <h3 className={isInputFocused05 ? "active05" : ""}>{areaAtuacaoOptions1Text}</h3>
-                <p className={isInputFocused11 ? "active11" : ""}>{randomAreaAtuacaoOptions1Text}</p>
+                <h3 className={isInputFocused05 ? "active05" : ""}
+                  onBlur={handleCickBlur05}
+                  onClick={editLocalTemplate ? handleCickFocus05 : null}
+
+
+                >
+
+
+                  {inputEdit05 ? (
+                    <input
+                      type="text"
+                      value={areaAtuacaoOptions1Text}
+                      onChange={(e) => setAreaAtuacaoOptions1Text(e.target.value)}
+                      onFocus={handleInputFocus05}
+                      onBlur={handleInputBlur05}
+
+                    />
+                  ) : (
+                    areaAtuacaoOptions1Text
+                  )}
+
+
+
+                </h3>
+
+                <p className={isInputFocused11 ? "active11" : ""}
+                  onBlur={handleCickBlur11}
+                  onClick={editLocalTemplate ? handleCickFocus11 : null}>
+
+
+
+
+                  {inputEdit11 ? (
+                    <input
+                      type="text"
+                      value={randomAreaAtuacaoOptions1Text}
+                      onChange={(e) => setRandomAreaAtuacaoOptions1Text(e.target.value)}
+                      onFocus={handleInputFocus11}
+                      onBlur={handleInputBlur11}
+
+                    />
+                  ) : (
+                    randomAreaAtuacaoOptions1Text
+                  )}
+
+
+
+                </p>
               </div>
               <div className="content-block-atuacao" id="06">
                 <NotePencil size={32} weight="bold" id="12" />
-                <h3 className={isInputFocused06 ? "active06" : ""}>{areaAtuacaoOptions2Text}</h3>
-                <p className={isInputFocused12 ? "active12" : ""}>{randomAreaAtuacaoOptions2Text}</p>
+                <h3 className={isInputFocused06 ? "active06" : ""}
+                  onBlur={handleCickBlur06}
+                  onClick={editLocalTemplate ? handleCickFocus06 : null}
+
+                >
+
+                  {inputEdit06 ? (
+                    <input
+                      type="text"
+                      value={areaAtuacaoOptions2Text}
+                      onChange={(e) => setAreaAtuacaoOptions2Text(e.target.value)}
+                      onFocus={handleInputFocus06}
+                      onBlur={handleInputBlur06}
+
+                    />
+                  ) : (
+                    areaAtuacaoOptions2Text
+                  )}
+
+
+                </h3>
+                <p className={isInputFocused12 ? "active12" : ""}
+                  onBlur={handleCickBlur12}
+                  onClick={editLocalTemplate ? handleCickFocus12 : null}
+
+                >
+
+
+                  {inputEdit12 ? (
+                    <input
+                      type="text"
+                      value={randomAreaAtuacaoOptions2Text}
+                      onChange={(e) => setRandomAreaAtuacaoOptions2Text(e.target.value)}
+                      onFocus={handleInputFocus12}
+                      onBlur={handleInputBlur12}
+
+                    />
+                  ) : (
+                    randomAreaAtuacaoOptions2Text
+                  )}
+
+
+
+
+                </p>
               </div>
               <div className="content-block-atuacao" id="07">
                 <Handshake size={32} weight="bold" id="13" />
-                <h3 className={isInputFocused07 ? "active07" : ""}>{areaAtuacaoOptions3Text}</h3>
-                <p className={isInputFocused13 ? "active13" : ""}>{randomAreaAtuacaoOptions3Text}</p>
+                <h3 className={isInputFocused07 ? "active07" : ""}
+
+                  onBlur={handleCickBlur07}
+                  onClick={editLocalTemplate ? handleCickFocus07 : null}
+                >
+                  {inputEdit07 ? (
+                    <input
+                      type="text"
+                      value={areaAtuacaoOptions3Text}
+                      onChange={(e) => setAreaAtuacaoOptions3Text(e.target.value)}
+                      onFocus={handleInputFocus07}
+                      onBlur={handleInputBlur07}
+
+                    />
+                  ) : (
+                    areaAtuacaoOptions3Text
+                  )}
+
+
+                </h3>
+                <p className={isInputFocused13 ? "active13" : ""}
+
+                  onBlur={handleCickBlur13}
+                  onClick={editLocalTemplate ? handleCickFocus13 : null}
+                >
+                  {inputEdit13 ? (
+                    <input
+                      type="text"
+                      value={randomAreaAtuacaoOptions3Text}
+                      onChange={(e) => setRandomAreaAtuacaoOptions3Text(e.target.value)}
+                      onFocus={handleInputFocus13}
+                      onBlur={handleInputBlur13}
+
+                    />
+                  ) : (
+                    randomAreaAtuacaoOptions3Text
+                  )}
+
+
+                </p>
               </div>
 
             </Row>
             <Row>
               <div className="content-block-atuacao" id="08">
                 <Heart size={32} weight="bold" id="14" />
-                <h3 className={isInputFocused08 ? "active08" : ""}>{areaAtuacaoOptions4Text}</h3>
-                <p className={isInputFocused14 ? "active14" : ""}>{randomAreaAtuacaoOptions4Text}</p>
+                <h3 className={isInputFocused08 ? "active08" : ""}
+                  onBlur={handleCickBlur08}
+                  onClick={editLocalTemplate ? handleCickFocus08 : null}
+                >
+
+                  {inputEdit08 ? (
+                    <input
+                      type="text"
+                      value={areaAtuacaoOptions4Text}
+                      onChange={(e) => setAreaAtuacaoOptions4Text(e.target.value)}
+                      onFocus={handleInputFocus08}
+                      onBlur={handleInputBlur08}
+
+                    />
+                  ) : (
+                    areaAtuacaoOptions4Text
+                  )}
+
+
+
+
+                </h3>
+                <p className={isInputFocused14 ? "active14" : ""}
+
+                  onBlur={handleCickBlur14}
+                  onClick={editLocalTemplate ? handleCickFocus14 : null}
+                >
+
+                  {inputEdit14 ? (
+                    <input
+                      type="text"
+                      value={randomAreaAtuacaoOptions4Text}
+                      onChange={(e) => setRandomAreaAtuacaoOptions4Text(e.target.value)}
+                      onFocus={handleInputFocus14}
+                      onBlur={handleInputBlur14}
+
+                    />
+                  ) : (
+                    randomAreaAtuacaoOptions4Text
+                  )}
+
+
+
+                </p>
               </div>
               <div className="content-block-atuacao" id="09">
                 <User size={32} weight="bold" id="15" />
-                <h3 className={isInputFocused09 ? "active09" : ""}>{areaAtuacaoOptions5Text}</h3>
-                <p className={isInputFocused15 ? "active15" : ""}>{randomAreaAtuacaoOptions5Text}</p>
+                <h3 className={isInputFocused09 ? "active09" : ""}
+                  onBlur={handleCickBlur09}
+                  onClick={editLocalTemplate ? handleCickFocus09 : null}
+
+                >
+                  {inputEdit09 ? (
+                    <input
+                      type="text"
+                      value={areaAtuacaoOptions5Text}
+                      onChange={(e) => setAreaAtuacaoOptions5Text(e.target.value)}
+                      onFocus={handleInputFocus09}
+                      onBlur={handleInputBlur09}
+
+                    />
+                  ) : (
+                    areaAtuacaoOptions5Text
+                  )}
+
+
+                </h3>
+                <p className={isInputFocused15 ? "active15" : ""}
+
+
+                  onBlur={handleCickBlur15}
+                  onClick={editLocalTemplate ? handleCickFocus15 : null}
+                >
+
+                  {inputEdit15 ? (
+                    <input
+                      type="text"
+                      value={randomAreaAtuacaoOptions5Text}
+                      onChange={(e) => setRandomAreaAtuacaoOptions5Text(e.target.value)}
+                      onFocus={handleInputFocus15}
+                      onBlur={handleInputBlur15}
+
+                    />
+                  ) : (
+                    randomAreaAtuacaoOptions5Text
+                  )}
+
+
+
+                </p>
               </div>
               <div className="content-block-atuacao" id="10">
                 <Scroll size={32} weight="bold" id="16" />
-                <h3 className={isInputFocused10 ? "active10" : ""}>{areaAtuacaoOptions6Text}</h3>
-                <p className={isInputFocused16 ? "active16" : ""}>{randomAreaAtuacaoOptions6Text}</p>
+                <h3 className={isInputFocused10 ? "active10" : ""}
+                  onBlur={handleCickBlur10}
+                  onClick={editLocalTemplate ? handleCickFocus10 : null}
+
+
+                >
+
+                  {inputEdit10 ? (
+                    <input
+                      type="text"
+                      value={areaAtuacaoOptions6Text}
+                      onChange={(e) => setAreaAtuacaoOptions6Text(e.target.value)}
+                      onFocus={handleInputFocus10}
+                      onBlur={handleInputBlur10}
+
+                    />
+                  ) : (
+                    areaAtuacaoOptions6Text
+                  )}
+
+
+
+
+                </h3>
+                <p className={isInputFocused16 ? "active16" : ""}
+                  onBlur={handleCickBlur16}
+                  onClick={editLocalTemplate ? handleCickFocus16 : null}
+
+                >
+                  {inputEdit16 ? (
+                    <input
+                      type="text"
+                      value={randomAreaAtuacaoOptions6Text}
+                      onChange={(e) => setRandomAreaAtuacaoOptions6Text(e.target.value)}
+                      onFocus={handleInputFocus16}
+                      onBlur={handleInputBlur16}
+
+                    />
+                  ) : (
+                    randomAreaAtuacaoOptions6Text
+                  )}
+
+
+
+
+
+                </p>
               </div>
 
 
@@ -2728,26 +3207,105 @@ function Template02({ isVisible02 }: Template02Props) {
             <div className="container-block-header">
               <LineHeader></LineHeader>
             </div>
-            <h2 className={isInputFocused17 ? "active17" : ""}>{whyChooseUs}</h2>
+            <h2 className={isInputFocused17 ? "active17" : ""}
+              onBlur={handleCickBlur17}
+              onClick={editLocalTemplate ? handleCickFocus17 : null}
+            >
+
+              {inputEdit17 ? (
+                <input
+                  type="text"
+                  value={whyChooseUs}
+                  onChange={(e) => setWhyChooseUs(e.target.value)}
+                  onFocus={handleInputFocus17}
+                  onBlur={handleInputBlur17}
+
+                />
+              ) : (
+                whyChooseUs
+              )}
+
+
+
+
+            </h2>
             <div className="block-whyus" id="18">
               <div className="wrap-block-whyus">
                 <h5>01</h5>
                 <div className="block-whyus-p">
-                  <h4 className={isInputFocused18 ? "active18" : ""}>{whyChooseUsOption01}</h4>
+                  <h4 className={isInputFocused18 ? "active18" : ""}
+                    onBlur={handleCickBlur18}
+                    onClick={editLocalTemplate ? handleCickFocus18 : null}
+
+                  >
+
+                    {inputEdit18 ? (
+                      <input
+                        type="text"
+                        value={whyChooseUsOption01}
+                        onChange={(e) => setWhyChooseUsOption01(e.target.value)}
+                        onFocus={handleInputFocus18}
+                        onBlur={handleInputBlur18}
+
+                      />
+                    ) : (
+                      whyChooseUsOption01
+                    )}
+
+
+                  </h4>
 
                 </div>
               </div>
               <div className="wrap-block-whyus" id="18">
                 <h5>02</h5>
                 <div className="block-whyus-p">
-                  <h4 className={isInputFocused19 ? "active19" : ""}>{whyChooseUsOption02}</h4>
+                  <h4 className={isInputFocused19 ? "active19" : ""}
+                    onBlur={handleCickBlur19}
+                    onClick={editLocalTemplate ? handleCickFocus19 : null}
+
+
+                  >
+                    {inputEdit19 ? (
+                      <input
+                        type="text"
+                        value={whyChooseUsOption02}
+                        onChange={(e) => setWhyChooseUsOption02(e.target.value)}
+                        onFocus={handleInputFocus19}
+                        onBlur={handleInputBlur19}
+
+                      />
+                    ) : (
+                      whyChooseUsOption02
+                    )}
+
+
+                  </h4>
 
                 </div>
               </div>
               <div className="wrap-block-whyus" id="19">
                 <h5>03</h5>
                 <div className="block-whyus-p">
-                  <h4 className={isInputFocused20 ? "active20" : ""}>{whyChooseUsOption03}</h4>
+                  <h4 className={isInputFocused20 ? "active20" : ""}
+                    onBlur={handleCickBlur20}
+                    onClick={editLocalTemplate ? handleCickFocus20 : null}
+                  >
+                    {inputEdit20 ? (
+                      <input
+                        type="text"
+                        value={whyChooseUsOption03}
+                        onChange={(e) => setWhyChooseUsOption03(e.target.value)}
+                        onFocus={handleInputFocus20}
+                        onBlur={handleInputBlur20}
+
+                      />
+                    ) : (
+                      whyChooseUsOption03
+                    )}
+
+
+                  </h4>
 
                 </div>
               </div>
@@ -2756,22 +3314,96 @@ function Template02({ isVisible02 }: Template02Props) {
           <RightSideWhyUs>
             <div className="rows-block">
               <div className="row-div-block" id="21">
-                <h2 className={isInputFocused21 ? "active21" : ""}>{numbers01}</h2>
+                <h2 className={isInputFocused21 ? "active21" : ""}
+                  onBlur={handleCickBlur21}
+                  onClick={editLocalTemplate ? handleCickFocus21 : null}
+                >
+                  {inputEdit21 ? (
+                    <input
+                      type="text"
+                      value={numbers01}
+                      onChange={(e) => setNumbers01(e.target.value)}
+                      onFocus={handleInputFocus21}
+                      onBlur={handleInputBlur21}
+
+                    />
+                  ) : (
+                    numbers01
+                  )}
+
+
+                </h2>
                 <span>Clientes satisfeitos</span>
               </div>
               <div className="row-div-block" id="22">
-                <h2 className={isInputFocused22 ? "active22" : ""}>{numbers02}</h2>
+                <h2 className={isInputFocused22 ? "active22" : ""}
+                  onBlur={handleCickBlur22}
+                  onClick={editLocalTemplate ? handleCickFocus22 : null}
+                >
+                  {inputEdit22 ? (
+                    <input
+                      type="text"
+                      value={numbers02}
+                      onChange={(e) => setNumbers02(e.target.value)}
+                      onFocus={handleInputFocus22}
+                      onBlur={handleInputBlur22}
+
+                    />
+                  ) : (
+                    numbers02
+                  )}
+
+
+                </h2>
                 <span>Anos no Mercado</span>
               </div>
             </div>
             <div className="rows-block">
               <div className="row-div-block" id="23">
-                <h2 className={isInputFocused23 ? "active23" : ""}>{numbers03}</h2>
+                <h2 className={isInputFocused23 ? "active23" : ""}
+                  onBlur={handleCickBlur23}
+                  onClick={editLocalTemplate ? handleCickFocus23 : null}
+
+                >
+                  {inputEdit23 ? (
+                    <input
+                      type="text"
+                      value={numbers03}
+                      onChange={(e) => setNumbers03(e.target.value)}
+                      onFocus={handleInputFocus23}
+                      onBlur={handleInputBlur23}
+
+                    />
+                  ) : (
+                    numbers03
+                  )}
+
+
+                </h2>
                 <span>Profissionais</span>
               </div>
               <div className="row-div-block" id="24">
 
-                <h2 className={isInputFocused24 ? "active24" : ""}>{numbers04}</h2>
+                <h2 className={isInputFocused24 ? "active24" : ""}
+                  onBlur={handleCickBlur24}
+                  onClick={editLocalTemplate ? handleCickFocus24 : null}
+                >
+
+                  {inputEdit24 ? (
+                    <input
+                      type="text"
+                      value={numbers04}
+                      onChange={(e) => setNumbers04(e.target.value)}
+                      onFocus={handleInputFocus24}
+                      onBlur={handleInputBlur24}
+
+                    />
+                  ) : (
+                    numbers04
+                  )}
+
+
+                </h2>
                 <span>Satisfação</span>
               </div>
             </div>
@@ -2787,7 +3419,16 @@ function Template02({ isVisible02 }: Template02Props) {
           <LineDivisorRight></LineDivisorRight>
         </div>
         <h2>{faleConoscoProfText}</h2>
-        <button className={isInputFocused25 ? "active25" : ""}>{faleConoscoText}</button>
+        <button className={isInputFocused25 ? "active25" : ""}
+          onBlur={handleCickBlur25}
+          onClick={editLocalTemplate ? handleCickFocus25 : null}
+        >
+
+          {faleConoscoText}
+
+
+
+        </button>
       </ContactSection>
       <Footer>
         <div className="content-footer">

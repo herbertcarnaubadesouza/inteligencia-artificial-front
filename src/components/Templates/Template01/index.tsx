@@ -2718,8 +2718,7 @@ function Template01({ isVisible01 }: Template01Props) {
 
         </h2>
         <button className={isInputFocused03 ? "active03" : ""}
-          onBlur={handleCickBlur03}
-          onClick={editLocalTemplate ? handleCickFocus03 : null}>
+        >
 
 
 

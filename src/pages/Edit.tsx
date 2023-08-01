@@ -28,13 +28,10 @@ function Preview() {
 
   // TELA LOADING
   useEffect(() => {
-    if (localStorageValue !== null) {
-      setLoading(localStorageValue === 'true');
-    }
 
     const timeoutId = setTimeout(() => {
       setLoading(false);
-    }, 15000);
+    }, 100);
 
     return () => {
       clearTimeout(timeoutId);
@@ -59,7 +56,9 @@ function Preview() {
         <TemplateProvider>
           {loading ? <Loading>
 
-            Estamos quase lá!
+            Você está quase lá! Agora você pode editar seu site clicando no texto diretamente ou usando a barra lateral
+
+
 
           </Loading> : null}
           <RightSideTextEdit

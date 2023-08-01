@@ -107,6 +107,78 @@ width:100%;
   border: 3px dashed wheat;
   position: relative;
 
+
+  input {
+      width: 100%;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      align-items: center;
+      display: flex;
+      border: none;
+      margin-right: 1px;
+      margin-bottom: 1rem;
+      border: none !important;
+      caret-color: rgb(0, 0, 0);
+      font-size: 16px;
+      font-weight: 500;
+      text-align: start;
+      background: rgba(255, 255, 255, 0);
+      font-family: 'Poppins';
+      color: #000000;
+      text-align: center;
+      white-space: pre-wrap;
+
+      &:focus {
+        outline: none;
+      }
+
+     
+    }
+
+
+.x-margin{
+  margin-bottom:2%;
+}
+
+      .white-text{
+        color: #ffffff;
+        font-size: 48px;
+        white-space: pre-wrap;
+      }
+
+      .white-text-fonte{
+        color: #ffffff;
+        font-size:20px;
+        width:20vw;
+        white-space: pre-wrap;
+        text-align:start;
+      }
+
+      .white-text-fonte-center{
+        color: #ffffff;
+        font-size:20px;
+        width:100vw;
+        white-space: pre-wrap;
+        text-align:start;
+      }
+
+      
+      .white-text-fonte-c{
+        color: #ffffff;
+        font-size:20px;
+    
+        white-space: pre-wrap;
+        text-align:center;
+      }
+      .white-text-black{
+    
+        height:auto;
+        color: #000000;
+        font-size: 16px;
+        white-space: pre-wrap;
+        width:100%;
+      }
+
 }
 `;
 

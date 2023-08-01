@@ -44,7 +44,8 @@
 }
 
 .btn-2 {
-  font-size: 20px;
+  width: 90%;
+  font-size: 15px;
   font-weight: bold;
   margin-top: 1rem;
   z-index: 999999;
@@ -52,6 +53,9 @@
   justify-content: center;
   align-items: center;
   font-family: 'Raleway', sans-serif;
+  text-align: center;
+  flex-direction: column;
+  line-height: 20px;
 }
 .btn-3 {
   z-index: 999999;
