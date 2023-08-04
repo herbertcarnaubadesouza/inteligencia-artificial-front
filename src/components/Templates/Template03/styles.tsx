@@ -143,7 +143,7 @@ export const Container = styled.div`
       
       .white-text-fonte-c{
         color: #ffffff;
-        <font-size:16></font-size:16>px;
+        font-size:16px;
     
         white-space: pre-wrap;
         text-align:center;
