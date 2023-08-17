@@ -19,7 +19,13 @@ export function useLeftSide() {
   } = useContext(TemplateContext);
 
 
+  const initializeTemplate = () => {
+    localStorage.setItem("TemplateEscolhido", "TEMPLATE01");
+    const TemplateEscolhidoLocal = localStorage.getItem("TemplateEscolhido");
+    setTemplateEscolhido("TEMPLATE01");
+  }
 
+  initializeTemplate();
 
   const [isVisible01, setIsVisible01] = useState(false);
   const [isVisible02, setIsVisible02] = useState(false);
