@@ -35,6 +35,10 @@ import { collection, db, getDoc, doc } from '../../../firebase';
 import { getDocs } from 'firebase/firestore';
 import { deleteDoc } from 'firebase/firestore';
 
+import UploadComponent from '../../UploadComponent';
+
+
+
 interface Template01Props {
   isVisible01: boolean;
 }
@@ -56,6 +60,9 @@ import { NULL } from 'sass';
 const apiKey = process.env.REACT_APP_API_KEY;
 
 function Template01({ isVisible01 }: Template01Props) {
+
+ 
+
 
 
   const {
@@ -288,6 +295,26 @@ function Template01({ isVisible01 }: Template01Props) {
     inputEdit26,
 
   } = useContext(TemplateContext);
+
+//   const [htmlContent, setHtmlContent] = useState(''); 
+//   const [showHTML, setShowHTML] = useState(false);
+  
+//   const getHTMLRepresentation = () => {
+//     return ReactDOMServer.renderToString(
+      
+//     );
+// };
+
+// const toggleHTMLView = () => {
+//     if (!htmlContent) {
+//         setHtmlContent(getHTMLRepresentation());
+//     }
+//     setShowHTML(!showHTML);
+// };
+  
+//   useEffect(() => {
+//       console.log(htmlContent);
+//   }, [htmlContent]);
 
   useEffect(() => {
     console.log(temaTemplateEscolhido);
@@ -2720,13 +2747,11 @@ function Template01({ isVisible01 }: Template01Props) {
         <button className={isInputFocused03 ? "active03" : ""}
         >
 
-
-
-
-
           {faleConoscoText}</button>
+
       </HeaderFooter>
 
+        <UploadComponent />
       <AboutSection>
 
 

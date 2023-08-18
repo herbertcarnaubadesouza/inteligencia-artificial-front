@@ -28,7 +28,7 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-font-family: ${(props: ThemeProps) => props.theme.font.fontFamily};
+font-family: ${(props: ThemeProps) => props.theme?.font?.fontFamily};
 background-color: ${(props: ThemeProps) => props.theme.containerBgColor};
 
   h2 {

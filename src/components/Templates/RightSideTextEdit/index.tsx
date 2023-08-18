@@ -16,6 +16,7 @@ import {
 import { TemplateContext } from '../useContext/TemplateContext';
 import { useContext } from 'react';
 
+
 function RightSideTextEdit() {
   const leftSide = useLeftSide();
   const [currentPaletteName, setCurrentPaletteName] = useState('');
